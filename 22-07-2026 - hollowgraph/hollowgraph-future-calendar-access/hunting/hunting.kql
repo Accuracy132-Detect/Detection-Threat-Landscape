@@ -1,0 +1,30 @@
+// Title: Far-future Microsoft Graph calendarView access
+// Status: Hunting query
+// Confidence: High for telemetry observability; Medium for maliciousness
+// Purpose: Identify calendarView requests whose startDateTime targets years
+//          2040-2099, generalizing the far-future calendar behavior observed
+//          in HOLLOWGRAPH.
+// Required table: MicrosoftGraphActivityLogs
+// Required fields: TimeGenerated, RequestMethod, RequestUri,
+//                  ResponseStatusCode, AppId, ServicePrincipalId, UserId,
+//                  IPAddress, UserAgent
+// MITRE ATT&CK: T1102.002, T1071.001
+//
+// This query must not be promoted directly to a production rule. First
+// establish which approved applications legitimately query far-future dates.
+// The regex assumes RequestUri retains a readable startDateTime parameter.
+
+MicrosoftGraphActivityLogs
+| where TimeGenerated >= ago(30d)
+| where RequestMethod == "GET"
+| where RequestUri contains "/calendarView"
+| where RequestUri matches regex @"(?i)[?&]startDateTime=20[4-9][0-9]-"
+| project
+    TimeGenerated,
+    AppId,
+    ServicePrincipalId,
+    UserId,
+    IPAddress,
+    UserAgent,
+    RequestUri,
+    ResponseStatusCode

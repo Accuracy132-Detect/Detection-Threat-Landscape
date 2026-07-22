@@ -1,0 +1,20 @@
+PRIMARY THREAT RESEARCH
+
+Group-IB - HOLLOWGRAPH: Turning Microsoft Graph into a Covert C2 Channel
+https://www.group-ib.com/blog/hollowgraph-microsoft-365/
+
+SCHEMA AND PLATFORM DOCUMENTATION
+
+Microsoft Learn - Microsoft Graph activity logs overview
+https://learn.microsoft.com/en-us/graph/microsoft-graph-activity-logs-overview
+
+Microsoft Learn - MicrosoftGraphActivityLogs table reference
+https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/microsoftgraphactivitylogs
+
+MITRE ATT&CK
+
+T1102.002 - Web Service: Bidirectional Communication
+https://attack.mitre.org/techniques/T1102/002/
+
+T1071.001 - Application Layer Protocol: Web Protocols
+https://attack.mitre.org/techniques/T1071/001/
