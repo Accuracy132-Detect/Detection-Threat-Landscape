@@ -1,0 +1,16 @@
+PRIMARY THREAT RESEARCH
+
+Cisco Talos
+UAT-11795 deploys novel Starland RAT and bespoke WLDR C2 implant in financially motivated campaign
+https://blog.talosintelligence.com/uat-11795-deploys-novel-starland-rat-and-bespoke-wldr-c2-implant-in-financially-motivated-campaign/
+
+AUTHORITATIVE PLATFORM DOCUMENTATION
+
+Microsoft Learn
+DeviceProcessEvents table in the advanced hunting schema
+https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+IMPLEMENTATION NOTE
+
+Talos directly supports the pythonw.exe and LICENSE.txt execution relationship.
+Potential ClickFix initial access is not treated as confirmed by this package.

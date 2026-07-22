@@ -15,13 +15,43 @@ Threat packages are organized chronologically using the following naming convent
 ```text
 Detection-Threat-Landscape/
 ├── README.md
-└── 22-07-2026 - hollowgraph/
-    ├── hollowgraph-calendar-c2/
-    │   └── production-candidates/
-    │       ├── detection.kql
-    │       ├── threat-analysis.pdf
-    │       └── references.txt
-    └── hollowgraph-future-calendar-access/
+├── 22-07-2026 - clickfix-pcalua-rundll32/
+│   └── clickfix-multi-stage-execution/
+│       └── production-candidates/
+│           ├── detection.kql
+│           ├── threat-analysis.pdf
+│           └── references.txt
+├── 22-07-2026 - clicklock/
+│   └── clicklock-macos-kill-loop/
+│       └── production-candidates/
+│           ├── detection.kql
+│           ├── threat-analysis.pdf
+│           └── references.txt
+├── 22-07-2026 - hollowgraph/
+│   ├── hollowgraph-calendar-c2/
+│   │   └── production-candidates/
+│   │       ├── detection.kql
+│   │       ├── threat-analysis.pdf
+│   │       └── references.txt
+│   └── hollowgraph-future-calendar-access/
+│       └── hunting/
+│           ├── hunting.kql
+│           ├── threat-analysis.pdf
+│           └── references.txt
+├── 22-07-2026 - starland-rat/
+│   └── pythonw-license-loader/
+│       └── hunting/
+│           ├── hunting.kql
+│           ├── threat-analysis.pdf
+│           └── references.txt
+├── 22-07-2026 - studio-5000-acd-path-traversal/
+│   └── studio-5000-novel-write-path/
+│       └── hunting/
+│           ├── hunting.kql
+│           ├── threat-analysis.pdf
+│           └── references.txt
+└── 22-07-2026 - teleshim/
+    └── feedback-scheduled-task/
         └── hunting/
             ├── hunting.kql
             ├── threat-analysis.pdf
@@ -32,7 +62,12 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Platform | Content | Status |
 |---|---|---|---|---|
+| 22 July 2026 | [ClickFix / Pcalua](./22-07-2026%20-%20clickfix-pcalua-rundll32/) | Defender XDR / Sentinel | Pcalua, hidden WMI process creation and remote Rundll32 execution | Production candidate |
+| 22 July 2026 | [ClickLock](./22-07-2026%20-%20clicklock/) | Defender XDR on macOS | High-rate termination of core GUI processes | Production candidate |
 | 22 July 2026 | [HOLLOWGRAPH](./22-07-2026%20-%20hollowgraph/) | Microsoft Graph / Sentinel | Calendar C2 detection and far-future calendar hunting | Production candidate + Hunting |
+| 22 July 2026 | [Starland RAT](./22-07-2026%20-%20starland-rat/) | Defender XDR / Sentinel | pythonw.exe executes a compiled loader masquerading as LICENSE.txt | Hunting |
+| 22 July 2026 | [Studio 5000 / CVE-2026-9108](./22-07-2026%20-%20studio-5000-acd-path-traversal/) | Defender XDR / Sentinel | ACD-associated Rockwell writes into novel device paths | Hunting / Validation |
+| 22 July 2026 | [TELESHIM](./22-07-2026%20-%20teleshim/) | Defender XDR / Sentinel | Feedback scheduled task targeting ProgramData | Hunting |
 
 ## Content classification
 
@@ -40,6 +75,7 @@ Detection-Threat-Landscape/
 |---|---|
 | **Production candidate** | Precise, testable logic supported by source evidence and documented telemetry. Requires environmental validation before deployment. |
 | **Hunting** | Investigation logic intended to establish prevalence, expected behavior, and tuning requirements. It must not be enabled as an alert without validation. |
+| **Validation** | A telemetry or baseline experiment used to determine whether a reliable detection can be built. A match is not evidence of confirmed exploitation. |
 
 ## Package contents
 
@@ -63,6 +99,6 @@ Each detection or hunting package contains:
 - Microsoft Sentinel / KQL
 - Splunk / SPL
 - Google Chronicle / YARA-L
-- Endpoint, identity, cloud, and network telemetry
+- Endpoint, identity, cloud, OT/ICS, and network telemetry
 
 Coverage expands only when the available evidence supports a precise and operationally useful detection or hunting hypothesis.

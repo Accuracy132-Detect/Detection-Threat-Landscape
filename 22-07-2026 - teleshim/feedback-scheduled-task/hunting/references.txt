@@ -1,0 +1,17 @@
+PRIMARY THREAT RESEARCH
+
+Zscaler ThreatLabz
+Targeted Attack on Government Entities in the Middle East - Part 1
+https://www.zscaler.com/blogs/security-research/targeted-attack-government-entities-middle-east-part-1
+
+AUTHORITATIVE PLATFORM DOCUMENTATION
+
+Microsoft Learn
+DeviceProcessEvents table in the advanced hunting schema
+https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+IMPLEMENTATION NOTE
+
+This package intentionally preserves the exact campaign artifact intersection.
+It remains hunting content because the task name, ten-minute recurrence and
+ProgramData target are mutable and do not constitute a durable behavior alone.

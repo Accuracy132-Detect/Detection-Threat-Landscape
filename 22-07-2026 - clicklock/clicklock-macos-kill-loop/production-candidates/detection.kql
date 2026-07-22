@@ -1,0 +1,26 @@
+// Title: ClickLock macOS Repeated Process-Termination Loop
+// Status: Production candidate - untested threshold
+// Confidence: Medium
+// Platform: Microsoft Defender XDR on macOS
+// Telemetry: DeviceProcessEvents
+// Purpose: Detect dense bursts of pkill/killall commands targeting macOS GUI
+// components involved in the ClickLock credential-coercion behavior.
+// ATT&CK: T1562.001, T1056.002, T1543.001
+// Assumption: MDE captures enough short-lived processes and command-line data.
+
+DeviceProcessEvents
+| where FileName in~ ("pkill", "killall")
+| where ProcessCommandLine has_any (
+    "Finder",
+    "Dock",
+    "SystemUIServer",
+    "NotificationCenter"
+)
+| summarize
+    FirstSeen = min(Timestamp),
+    LastSeen = max(Timestamp),
+    TerminationAttempts = count(),
+    Commands = make_set(ProcessCommandLine, 20),
+    Parents = make_set(InitiatingProcessFileName, 10)
+  by DeviceId, DeviceName, AccountName, bin(Timestamp, 1m)
+| where TerminationAttempts >= 20

@@ -1,0 +1,27 @@
+PRIMARY THREAT RESEARCH
+
+Microsoft Threat Intelligence and Microsoft Defender Experts
+Think before you Click(Fix): Analyzing the ClickFix social engineering technique
+https://www.microsoft.com/en-us/security/blog/2025/08/21/think-before-you-clickfix-analyzing-the-clickfix-social-engineering-technique/
+
+AUTHORITATIVE PLATFORM DOCUMENTATION
+
+Microsoft Learn
+DeviceProcessEvents table in the advanced hunting schema
+https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+TECHNIQUE REFERENCES
+
+LOLBAS Project
+Pcalua
+https://lolbas-project.github.io/lolbas/Binaries/Pcalua/
+
+MITRE ATT&CK
+System Binary Proxy Execution: Rundll32 - T1218.011
+https://attack.mitre.org/techniques/T1218/011/
+
+SOURCE-HANDLING NOTE
+
+The production candidate was derived from a confirmed private incident and
+generalized into public behavioral logic. Customer hostnames, domains, paths,
+identifiers and ticket references are intentionally excluded.
