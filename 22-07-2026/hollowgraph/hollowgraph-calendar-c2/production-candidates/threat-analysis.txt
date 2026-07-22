@@ -1,0 +1,105 @@
+HOLLOWGRAPH CALENDAR C2 ACCESS
+Classification: Production candidate
+Confidence: High
+Research date: 2026-07-22
+
+1. Operational relevance
+
+HOLLOWGRAPH is a .NET implant reported by Group-IB that uses a compromised
+Microsoft 365 mailbox calendar as a bidirectional dead-drop channel. This
+approach may blend command-and-control activity into legitimate Microsoft
+Graph traffic and reduces the value of network detections based only on
+attacker-controlled destinations.
+
+2. Source-observed facts
+
+According to Group-IB's analysis, the examined implant:
+
+- used Entra ID application credentials stored locally in logAzure.txt;
+- issued a GET request to /users/{mailbox}/calendarView;
+- supplied a time range on 2050-05-13 in the request URI;
+- retrieved tasking from a far-future calendar event and its attachment;
+- created events, uploaded attachments, and updated event subjects for
+  exfiltration;
+- used structured AAAA DNS queries under cloudlanecdn[.]com to update
+  configuration values.
+
+The source-observed domain is defanged here because it is an external IOC.
+
+3. Detection interpretation
+
+The strongest directly observable cloud condition is the successful GET
+request to calendarView containing the exact date 2050-05-13. Microsoft Graph
+Activity Logs document RequestUri and RequestMethod, allowing this condition
+to be evaluated without assuming visibility into the HTTP request body.
+
+The event subject, attachment filename, attachment content type, and future
+date used during event creation may be carried in request bodies. They are
+therefore excluded from this candidate because MicrosoftGraphActivityLogs
+does not document those payload values as standalone fields.
+
+4. Required telemetry
+
+Native Log Analytics table:
+- MicrosoftGraphActivityLogs
+
+Required fields:
+- TimeGenerated
+- RequestMethod
+- RequestUri
+- ResponseStatusCode
+- AppId
+- ServicePrincipalId
+- UserId
+- ClientAuthMethod
+- IPAddress
+- UserAgent
+
+5. Why the conditions exist
+
+- GET: matches the task-retrieval request observed by the source.
+- /calendarView: limits the logic to the observed Graph calendar endpoint.
+- 2050-05-13: matches the exact far-future date used by the analyzed sample.
+- HTTP 2xx: retains requests accepted by Microsoft Graph.
+- No count threshold: the source does not justify an arbitrary request count.
+
+6. False positives and tuning
+
+Potential legitimate causes include application testing with extreme dates,
+calendar migrations, retention tooling, or long-range scheduling services.
+Any matching AppId and ServicePrincipalId should be attributed to an owner and
+business purpose before an exclusion is created. Exclusions should be narrow
+and based on an approved application identity, not solely on IP address.
+
+7. Validation requirements
+
+Before deployment:
+
+1. Confirm that MicrosoftGraphActivityLogs is enabled and retained.
+2. Confirm that RequestUri preserves the startDateTime parameter.
+3. Search at least 90 days of history for legitimate matches.
+4. Reproduce an authorized Graph calendarView request to the same date and
+   verify that the query returns the test event.
+5. Review AppId, service principal, permissions, user context, IP address, and
+   user agent for every historical match.
+
+8. Failure conditions
+
+Do not deploy this candidate when:
+
+- MicrosoftGraphActivityLogs is unavailable;
+- RequestUri is truncated or query parameters are removed;
+- ResponseStatusCode is not populated consistently;
+- approved applications routinely query the specified date and cannot be
+  distinguished using validated application context.
+
+9. Limitations
+
+This candidate detects the exact behavior of the analyzed sample and may be
+evaded by changing the calendar date or Graph workflow. The companion hunting
+query broadens the date range but requires environmental baselining.
+
+10. ATT&CK mapping
+
+- T1102.002 - Web Service: Bidirectional Communication
+- T1071.001 - Application Layer Protocol: Web Protocols
