@@ -1,0 +1,36 @@
+// Title: HOLLOWGRAPH calendar C2 access via Microsoft Graph
+// Status: Production candidate
+// Confidence: High
+// Purpose: Detect successful Microsoft Graph calendarView requests to the
+//          exact far-future date observed in the HOLLOWGRAPH sample.
+// Required table: MicrosoftGraphActivityLogs
+// Required fields: TimeGenerated, RequestMethod, RequestUri,
+//                  ResponseStatusCode, AppId, ServicePrincipalId, UserId,
+//                  ClientAuthMethod, IPAddress, UserAgent
+// MITRE ATT&CK: T1102.002, T1071.001
+//
+// Important:
+// - This is a production candidate, not a production-validated rule.
+// - RequestUri must retain the startDateTime query parameter.
+// - The rule deliberately does not inspect event subjects, attachment names,
+//   or request-body content because MicrosoftGraphActivityLogs does not
+//   document those values as available fields.
+// - Validate legitimate long-range calendar applications before deployment.
+
+MicrosoftGraphActivityLogs
+| where TimeGenerated >= ago(1h)
+| where RequestMethod == "GET"
+| where RequestUri contains "/calendarView"
+| where RequestUri contains "2050-05-13"
+| where ResponseStatusCode between (200 .. 299)
+| project
+    TimeGenerated,
+    AppId,
+    ServicePrincipalId,
+    UserId,
+    ClientAuthMethod,
+    IPAddress,
+    UserAgent,
+    RequestMethod,
+    RequestUri,
+    ResponseStatusCode
