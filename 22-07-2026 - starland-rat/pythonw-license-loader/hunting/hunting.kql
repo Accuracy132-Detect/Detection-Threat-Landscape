@@ -1,0 +1,18 @@
+// Title: Starland RAT Python Loader Masquerading as LICENSE.txt
+// Status: Hunting query - campaign-specific artifact
+// Confidence: High
+// Platform: Microsoft Defender XDR / Microsoft Sentinel with MDE tables
+// Telemetry: DeviceProcessEvents
+// Purpose: Hunt for pythonw.exe executing the source-observed compiled Python
+// loader masquerading with a text-file name.
+// ATT&CK: T1059.006, T1036.008
+// Limitation: The filename is mutable and may be hidden by an execution wrapper.
+
+DeviceProcessEvents
+| where FileName =~ "pythonw.exe"
+| where ProcessCommandLine contains "LICENSE.txt"
+| project Timestamp, DeviceId, DeviceName, AccountName,
+          FolderPath, ProcessCommandLine,
+          InitiatingProcessFileName,
+          InitiatingProcessCommandLine,
+          SHA1, ReportId

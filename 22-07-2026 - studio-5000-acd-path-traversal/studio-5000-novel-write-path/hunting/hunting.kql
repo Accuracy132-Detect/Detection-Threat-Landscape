@@ -1,0 +1,54 @@
+// Title: Studio 5000 ACD-Associated Novel File Writes
+// Status: Hunting / validation query - not exploit proof
+// Confidence: Medium
+// Platform: Microsoft Defender XDR / Microsoft Sentinel with MDE tables
+// Telemetry: DeviceFileEvents
+// Purpose: Correlate recent .ACD project activity with Rockwell-attributed file
+// writes into device folders absent from the preceding 30-day baseline.
+// Vulnerability: CVE-2026-9108
+// Important: A match is only compatible with a path-traversal consequence. It
+// cannot prove that Studio 5000 opened a crafted project or that exploitation
+// occurred.
+
+let DetectionWindow = 1d;
+let BaselineWindow = 30d;
+let BaselinePaths = materialize(
+    DeviceFileEvents
+    | where Timestamp between (ago(BaselineWindow) .. ago(DetectionWindow))
+    | where InitiatingProcessVersionInfoCompanyName has "Rockwell"
+        or InitiatingProcessVersionInfoProductName has "Studio 5000"
+    | extend NormalizedFolder = tolower(FolderPath)
+    | summarize by DeviceId, NormalizedFolder
+);
+let RecentAcd = materialize(
+    DeviceFileEvents
+    | where Timestamp >= ago(DetectionWindow)
+    | where FileName endswith ".acd"
+    | project DeviceId, DeviceName, AcdTime=Timestamp,
+              AcdFileName=FileName, AcdFolderPath=FolderPath,
+              FileOriginUrl, FileOriginReferrerUrl, FileOriginIP, SHA1
+);
+let NovelRockwellWrites =
+    DeviceFileEvents
+    | where Timestamp >= ago(DetectionWindow)
+    | where ActionType in~ ("FileCreated", "FileModified", "FileRenamed")
+    | where InitiatingProcessVersionInfoCompanyName has "Rockwell"
+        or InitiatingProcessVersionInfoProductName has "Studio 5000"
+    | extend NormalizedFolder = tolower(FolderPath)
+    | join kind=leftanti BaselinePaths on DeviceId, NormalizedFolder
+    | project DeviceId, WriteTime=Timestamp, ActionType, FileName,
+              FolderPath, InitiatingProcessFileName,
+              InitiatingProcessCommandLine,
+              InitiatingProcessVersionInfoCompanyName,
+              InitiatingProcessVersionInfoProductName,
+              InitiatingProcessAccountName, ReportId;
+RecentAcd
+| join kind=inner NovelRockwellWrites on DeviceId
+| where WriteTime between (AcdTime - 5m .. AcdTime + 30m)
+| project AcdTime, WriteTime, DeviceName, AcdFileName,
+          AcdFolderPath, FileOriginUrl, FileOriginReferrerUrl,
+          FileOriginIP, ActionType, FileName, FolderPath,
+          InitiatingProcessFileName, InitiatingProcessCommandLine,
+          InitiatingProcessVersionInfoCompanyName,
+          InitiatingProcessVersionInfoProductName,
+          InitiatingProcessAccountName, SHA1, ReportId

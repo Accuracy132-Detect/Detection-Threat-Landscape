@@ -1,0 +1,24 @@
+// Title: ClickFix Multi-Stage Execution via Pcalua, WMI and Rundll32
+// Status: Production candidate - environment validation required
+// Confidence: High
+// Platform: Microsoft Defender XDR / Microsoft Sentinel with MDE tables
+// Telemetry: DeviceProcessEvents
+// Purpose: Detect a highly specific chain in which pcalua proxies PowerShell,
+// PowerShell uses WMI to create a hidden process, and rundll32 is instructed
+// to execute content from a remote path.
+// ATT&CK: T1202, T1047, T1218.011, T1059.001
+// Important: This behavior is compatible with an observed ClickFix incident,
+// but the match alone does not prove the initial lure or actor attribution.
+
+DeviceProcessEvents
+| where Timestamp >= ago(1h)
+| where FileName =~ "pcalua.exe"
+| where ProcessCommandLine has "powershell"
+| where ProcessCommandLine contains "Win32_Process"
+| where ProcessCommandLine contains "ShowWindow=0"
+| where ProcessCommandLine has "rundll32"
+| where ProcessCommandLine contains @"\\"
+    or ProcessCommandLine contains @"@SSL\"
+| project Timestamp, DeviceId, DeviceName, AccountName,
+          ProcessCommandLine, InitiatingProcessFileName,
+          InitiatingProcessCommandLine, SHA1, ReportId

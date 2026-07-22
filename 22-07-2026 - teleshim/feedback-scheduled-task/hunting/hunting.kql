@@ -1,0 +1,23 @@
+// Title: TELESHIM Feedback Scheduled Task in ProgramData
+// Status: Hunting query - campaign-specific artifacts
+// Confidence: High
+// Platform: Microsoft Defender XDR / Microsoft Sentinel with MDE tables
+// Telemetry: DeviceProcessEvents
+// Purpose: Hunt for the exact scheduled-task persistence construction observed
+// by Zscaler ThreatLabz in the TELESHIM-related campaign.
+// ATT&CK: T1053.005, T1574.002
+// Limitation: Task name, recurrence and payload path are attacker-controlled.
+
+DeviceProcessEvents
+| where FileName =~ "schtasks.exe"
+| where ProcessCommandLine contains "/create"
+| where ProcessCommandLine contains "/sc minute"
+| where ProcessCommandLine contains "/mo 10"
+| where ProcessCommandLine contains "/tn \"Feedback\""
+| where ProcessCommandLine contains "/tr"
+| where ProcessCommandLine contains @"\ProgramData\"
+| project Timestamp, DeviceId, DeviceName, AccountName,
+          ProcessCommandLine,
+          InitiatingProcessFileName,
+          InitiatingProcessCommandLine,
+          SHA1, ReportId

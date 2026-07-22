@@ -1,0 +1,24 @@
+PRIMARY VENDOR ADVISORY
+
+Rockwell Automation
+Security Advisories - CVE-2026-9108
+https://www.rockwellautomation.com/en-us/trust-center/security-advisories.html
+
+VULNERABILITY RECORD
+
+National Vulnerability Database
+CVE-2026-9108
+https://nvd.nist.gov/vuln/detail/CVE-2026-9108
+
+AUTHORITATIVE PLATFORM DOCUMENTATION
+
+Microsoft Learn
+DeviceFileEvents table in the advanced hunting schema
+https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-devicefileevents-table
+
+IMPLEMENTATION NOTE
+
+This query detects an endpoint consequence compatible with the advisory. It
+does not inspect embedded ACD paths, prove project opening, prove exploitation,
+or prove code execution. Rockwell process metadata, file-event completeness,
+normal output paths and the correlation window require validation.

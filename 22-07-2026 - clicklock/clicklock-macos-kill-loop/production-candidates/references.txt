@@ -1,0 +1,18 @@
+PRIMARY THREAT RESEARCH
+
+Group-IB
+ClickLock Stealer: Paste Once, Lose Everything
+https://www.group-ib.com/blog/clicklock-stealer-macos-malware/
+
+AUTHORITATIVE PLATFORM DOCUMENTATION
+
+Microsoft Learn
+DeviceProcessEvents table in the advanced hunting schema
+https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+IMPLEMENTATION NOTE
+
+The source supports the repeated termination behavior and approximate loop
+cadence. The threshold of 20 matching process events in one minute is an
+analytical implementation choice and must be validated against endpoint
+sampling and legitimate macOS automation.
