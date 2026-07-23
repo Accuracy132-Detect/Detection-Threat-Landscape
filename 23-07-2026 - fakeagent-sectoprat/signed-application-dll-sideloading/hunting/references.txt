@@ -1,0 +1,36 @@
+PRIMARY THREAT RESEARCH
+
+Huntress
+Inside FakeAgent: How a Claude Desktop Malvertising Campaign Hit 29
+Organizations with SectopRAT
+Published: 22 July 2026
+hxxps://www[.]huntress[.]com/blog/fakeagent-claude-desktop-malvertising-ends-in-dotnet-rat
+
+AUTHORITATIVE PLATFORM DOCUMENTATION
+
+Microsoft Learn
+DeviceImageLoadEvents table in the Microsoft Defender XDR advanced hunting
+schema
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceimageloadevents-table
+
+TECHNIQUE REFERENCES
+
+MITRE ATT&CK
+Hijack Execution Flow: DLL Side-Loading - T1574.002
+hxxps://attack[.]mitre[.]org/techniques/T1574/002/
+
+MITRE ATT&CK
+Masquerading - T1036
+hxxps://attack[.]mitre[.]org/techniques/T1036/
+
+MITRE ATT&CK
+Scheduled Task/Job: Scheduled Task - T1053.005
+hxxps://attack[.]mitre[.]org/techniques/T1053/005/
+
+IMPLEMENTATION NOTE
+
+The package intentionally detects only the source-supported process-module
+pairs. It does not use campaign domains, IP addresses, smart-contract
+identifiers, hashes or generic libcef.dll activity as blocking conditions.
+The query is research-derived and must be validated against the target
+environment before any alerting use.
