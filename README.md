@@ -50,8 +50,14 @@ Detection-Threat-Landscape/
 │           ├── hunting.kql
 │           ├── threat-analysis.pdf
 │           └── references.txt
-└── 22-07-2026 - teleshim/
-    └── feedback-scheduled-task/
+├── 22-07-2026 - teleshim/
+│   └── feedback-scheduled-task/
+│       └── hunting/
+│           ├── hunting.kql
+│           ├── threat-analysis.pdf
+│           └── references.txt
+└── 23-07-2026 - fakeagent-sectoprat/
+    └── signed-application-dll-sideloading/
         └── hunting/
             ├── hunting.kql
             ├── threat-analysis.pdf
@@ -62,6 +68,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Platform | Content | Status |
 |---|---|---|---|---|
+| 23 July 2026 | [FakeAgent / SectopRAT](./23-07-2026%20-%20fakeagent-sectoprat/) | Microsoft Defender XDR | Renamed signed applications loading source-observed DLL pairs | Hunting |
 | 22 July 2026 | [ClickFix / Pcalua](./22-07-2026%20-%20clickfix-pcalua-rundll32/) | Defender XDR / Sentinel | Pcalua, hidden WMI process creation and remote Rundll32 execution | Production candidate |
 | 22 July 2026 | [ClickLock](./22-07-2026%20-%20clicklock/) | Defender XDR on macOS | High-rate termination of core GUI processes | Production candidate |
 | 22 July 2026 | [HOLLOWGRAPH](./22-07-2026%20-%20hollowgraph/) | Microsoft Graph / Sentinel | Calendar C2 detection and far-future calendar hunting | Production candidate + Hunting |
