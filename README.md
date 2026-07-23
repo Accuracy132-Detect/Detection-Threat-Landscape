@@ -2,15 +2,13 @@
 
 A curated detection-engineering repository built from primary threat research and authoritative platform documentation.
 
-Only high-confidence content is included. Every package separates production candidates from hunting queries and documents telemetry requirements, assumptions, false-positive considerations, validation steps, MITRE ATT&CK mappings, and source references.
+Only high-confidence content is published. Every package separates production candidates from hunting or validation material and documents telemetry requirements, assumptions, false-positive considerations, validation steps, MITRE ATT&CK mappings, and source references.
 
 > **Important:** A production candidate is not production-validated. Every query must be tested against the target environment, actual schema, retention, and legitimate activity before deployment.
 
-## Threat landscape
+## Repository structure
 
-Threat packages are organized chronologically using the following naming convention:
-
-`DD-MM-YYYY - threat-name/`
+Threat packages are organized chronologically as `DD-MM-YYYY - threat-name/`.
 
 ```text
 Detection-Threat-Landscape/
@@ -68,13 +66,13 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Platform | Content | Status |
 |---|---|---|---|---|
-| 23 July 2026 | [FakeAgent / SectopRAT](./23-07-2026%20-%20fakeagent-sectoprat/) | Microsoft Defender XDR | Renamed signed applications loading source-observed DLL pairs | Hunting |
+| 23 July 2026 | [FakeAgent / SectopRAT](./23-07-2026%20-%20fakeagent-sectoprat/) | Microsoft Defender XDR | Source-observed process-module pairs used for DLL sideloading | Hunting |
 | 22 July 2026 | [ClickFix / Pcalua](./22-07-2026%20-%20clickfix-pcalua-rundll32/) | Defender XDR / Sentinel | Pcalua, hidden WMI process creation and remote Rundll32 execution | Production candidate |
 | 22 July 2026 | [ClickLock](./22-07-2026%20-%20clicklock/) | Defender XDR on macOS | High-rate termination of core GUI processes | Production candidate |
-| 22 July 2026 | [HOLLOWGRAPH](./22-07-2026%20-%20hollowgraph/) | Microsoft Graph / Sentinel | Calendar C2 detection and far-future calendar hunting | Production candidate + Hunting |
-| 22 July 2026 | [Starland RAT](./22-07-2026%20-%20starland-rat/) | Defender XDR / Sentinel | pythonw.exe executes a compiled loader masquerading as LICENSE.txt | Hunting |
+| 22 July 2026 | [HOLLOWGRAPH](./22-07-2026%20-%20hollowgraph/) | Microsoft Graph / Sentinel | Exact-date calendar C2 candidate and generalized far-future hunting | Production candidate + Hunting |
+| 22 July 2026 | [Starland RAT](./22-07-2026%20-%20starland-rat/) | Defender XDR / Sentinel | `pythonw.exe` executes a compiled loader masquerading as `LICENSE.txt` | Hunting |
 | 22 July 2026 | [Studio 5000 / CVE-2026-9108](./22-07-2026%20-%20studio-5000-acd-path-traversal/) | Defender XDR / Sentinel | ACD-associated Rockwell writes into novel device paths | Hunting / Validation |
-| 22 July 2026 | [TELESHIM](./22-07-2026%20-%20teleshim/) | Defender XDR / Sentinel | Feedback scheduled task targeting ProgramData | Hunting |
+| 22 July 2026 | [TELESHIM](./22-07-2026%20-%20teleshim/) | Defender XDR / Sentinel | `Feedback` scheduled task targeting `ProgramData` | Hunting |
 
 ## Content classification
 
@@ -89,8 +87,22 @@ Detection-Threat-Landscape/
 Each detection or hunting package contains:
 
 - a commented KQL, SPL, or YARA-L query;
-- a visual threat-analysis PDF describing the observed behavior and detection rationale;
-- primary research, official schema documentation, and MITRE ATT&CK references.
+- an eight-page A4 `threat-analysis.pdf`;
+- `references.txt` with primary research, official schema documentation, and ATT&CK references.
+
+## Visual publication standard
+
+All dossiers follow a permanent publication master maintained outside this public repository.
+
+The standard provides:
+
+- a high-contrast black, white, electric-violet, magenta, and lime identity;
+- consistent cover, assessment, attack-flow, telemetry, query, triage, validation, ATT&CK, and reference sections;
+- a consistent eight-page A4 structure generated from a controlled source;
+- no externally loaded report assets;
+- visual quality assurance for page and query overflow.
+
+Before publication, every PDF must be checked for eight A4 pages, overflow, clipped query text, readable tables, defanged references, correct classification, and absence of customer data.
 
 ## Quality principles
 
