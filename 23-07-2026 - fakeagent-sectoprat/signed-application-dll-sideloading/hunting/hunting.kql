@@ -1,0 +1,44 @@
+// Title: FakeAgent Signed-Application DLL Sideloading
+// Status: Hunting query - Untested implementation sketch
+// Confidence: High
+// Platform: Microsoft Defender XDR
+// Telemetry: DeviceImageLoadEvents
+// Purpose: Hunt for the process-module pairs observed by Huntress in the
+// FakeAgent campaign: renamed JetBrains components loading libcef.dll and an
+// IBM SPSS sslconf.exe binary loading tempdir.dll.
+// ATT&CK: T1574.002, T1036
+//
+// Evidence boundary:
+// - Each process-module pair is directly supported by the primary source.
+// - A match does not prove that the loaded DLL is modified or malicious.
+// - File provenance, original filename, signature, prevalence, persistence and
+//   follow-on endpoint activity must be reviewed before escalation.
+//
+// Validation:
+// Run over 30-90 days and group distinct process paths, module paths, hashes,
+// devices and software owners. Keep as hunting unless benign activity can be
+// separated through stable, narrowly scoped attributes.
+
+DeviceImageLoadEvents
+| where
+    (
+        InitiatingProcessFileName in~ ("ClaudeDesktop.exe", "DockerDesktop.exe")
+        and FileName =~ "libcef.dll"
+    )
+    or
+    (
+        InitiatingProcessFileName =~ "sslconf.exe"
+        and FileName =~ "tempdir.dll"
+    )
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    InitiatingProcessFileName,
+    InitiatingProcessFolderPath,
+    InitiatingProcessCommandLine,
+    FileName,
+    FolderPath,
+    SHA1,
+    InitiatingProcessSHA1,
+    ReportId
