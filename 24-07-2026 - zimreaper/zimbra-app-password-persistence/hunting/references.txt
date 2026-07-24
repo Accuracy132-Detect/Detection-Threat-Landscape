@@ -1,0 +1,14 @@
+Primary technical research
+Proofpoint Threat Research — TA488 Targets Zimbra Mailservers with Half-Click Exploits
+Publication date: 2026-07-23
+Observed campaign period: 2025-07 through 2026-02
+hxxps://www[.]proofpoint[.]com/us/blog/threat-insight/ta488-targets-zimbra-mailservers-half-click-exploits
+
+Official platform documentation
+Splunk Enterprise — search command
+Accessed: 2026-07-24
+hxxps://help[.]splunk[.]com/en/splunk-enterprise/spl-search-reference/9.0/search-commands/search
+
+MITRE ATT&CK
+T1098 — Account Manipulation
+hxxps://attack[.]mitre[.]org/techniques/T1098/

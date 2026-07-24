@@ -1,0 +1,21 @@
+// msaRAT browser-mediated C2: headless Chrome/Edge with CDP remote debugging
+// Status: Production candidate - Untested implementation sketch
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Required telemetry: Microsoft Defender for Endpoint DeviceProcessEvents
+// Source evidence: Cisco Talos observed msaRAT launching Chrome or Edge in
+// headless mode with a remote-debugging port so the RAT could control the
+// browser through Chrome DevTools Protocol.
+//
+// A match does not prove msaRAT. Browser automation, synthetic monitoring,
+// kiosk systems, software testing and developer debugging can use both flags.
+// Validate device role, parent process, browser profile and software owner.
+
+DeviceProcessEvents
+| where FileName in~ ("chrome.exe", "msedge.exe")
+| where ProcessCommandLine contains "--headless"
+| where ProcessCommandLine contains "--remote-debugging-port"
+| project Timestamp, DeviceId, DeviceName, AccountName,
+          FileName, FolderPath, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine,
+          SHA1, ReportId
+

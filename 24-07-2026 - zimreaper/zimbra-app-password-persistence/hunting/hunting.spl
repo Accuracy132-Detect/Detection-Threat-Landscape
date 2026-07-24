@@ -1,0 +1,4 @@
+index=<CUSTOMER_INDEX> source="/opt/zimbra/log/audit.log"
+("CreateAppSpecificPassword" OR "CreateAppSpecificPasswordRequest")
+"ZimbraWeb"
+| table _time host source sourcetype _raw

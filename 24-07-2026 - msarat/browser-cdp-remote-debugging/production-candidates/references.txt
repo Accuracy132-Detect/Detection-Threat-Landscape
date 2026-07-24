@@ -1,0 +1,15 @@
+Primary technical research
+Cisco Talos — Chaos ransomware's msaRAT: Living off the browser to build a covert C2 channel
+Publication date: 2026-07-23
+Observed activity: post-compromise execution before ransomware deployment; exact campaign date not stated publicly
+hxxps://blog[.]talosintelligence[.]com/chaos-msarat-living-off-the-browser-to-build-covert-c2-channel/
+
+Official platform documentation
+Microsoft Defender XDR — DeviceProcessEvents table in the advanced hunting schema
+Accessed: 2026-07-24
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK
+T1219 — Remote Access Software
+hxxps://attack[.]mitre[.]org/techniques/T1219/
+
