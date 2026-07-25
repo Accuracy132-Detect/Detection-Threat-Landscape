@@ -1,0 +1,31 @@
+CERTIGHOST / CVE-2026-54121
+Publication package date: 25 July 2026
+Research publication date: 24 July 2026
+Observed activity: controlled proof-of-concept in the researchers' lab; no active exploitation claimed
+
+PRIMARY TECHNICAL RESEARCH
+H0j3n and Aniq Fakhrul, "Certighost (CVE-2026-54121)"
+hxxps://gist[.]github[.]com/H0j3n/a5ef2609b5f2944ac2390a191a534c26
+
+PROOF-OF-CONCEPT IMPLEMENTATION
+Aniq Fakhrul, "CVE-2026-54121: Certighost POC"
+hxxps://github[.]com/aniqfakhrul/CVE-2026-54121
+
+OFFICIAL VULNERABILITY RECORD
+Microsoft Security Update Guide, CVE-2026-54121
+hxxps://msrc[.]microsoft[.]com/update-guide/vulnerability/CVE-2026-54121
+
+OFFICIAL TELEMETRY DOCUMENTATION
+Microsoft Defender XDR, DeviceNetworkEvents table
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-devicenetworkevents-table
+
+MITRE ATT&CK
+T1649 - Steal or Forge Authentication Certificates
+hxxps://attack[.]mitre[.]org/techniques/T1649/
+
+EVIDENCE BOUNDARY
+The researchers directly demonstrated an Enterprise CA opening SMB/LSA and
+LDAP connections to the requester-controlled cdc target. The published query
+validates that prerequisite only. A match does not establish certificate
+issuance, Domain Controller impersonation, PKINIT, DCSync, active exploitation,
+or attribution.

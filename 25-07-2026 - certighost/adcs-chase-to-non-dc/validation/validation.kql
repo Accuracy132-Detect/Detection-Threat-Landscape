@@ -1,0 +1,34 @@
+// Certighost AD CS chase to a non-Domain-Controller destination
+// Classification: Validation query - Untested implementation sketch
+// Confidence: Medium
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Required telemetry: DeviceNetworkEvents from every Enterprise CA host
+//
+// Replace the environment-specific values before execution. The CA and
+// Domain Controller inventories are required controls, not optional tuning.
+let EnterpriseCAHosts = dynamic(["<CA_FQDN>"]);
+let ApprovedDomainControllerIPs = dynamic(["<DC_IP_1>", "<DC_IP_2>"]);
+DeviceNetworkEvents
+| where DeviceName in~ (EnterpriseCAHosts)
+| where RemotePort in (389, 445)
+| where RemoteIP !in (ApprovedDomainControllerIPs)
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    RemoteIP,
+    RemotePort,
+    RemoteUrl,
+    Protocol,
+    ActionType,
+    InitiatingProcessFileName,
+    InitiatingProcessCommandLine,
+    ReportId
+
+// Interpretation:
+// A result shows source-observed CA egress to LDAP or SMB/LSA toward an
+// address that is absent from the approved DC inventory. It does not prove
+// successful certificate issuance, PKINIT, DCSync, or CVE-2026-54121 abuse.
+//
+// Promote only after validating inventory completeness, sensor coverage,
+// legitimate CA-to-member-server traffic, and corroborating CA/Kerberos logs.
