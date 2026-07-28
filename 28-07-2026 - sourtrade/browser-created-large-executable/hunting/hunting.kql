@@ -1,0 +1,52 @@
+// SourTrade browser-created oversized executable
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Required telemetry: DeviceFileEvents from Microsoft Defender for Endpoint
+//
+// Source evidence:
+// - SourTrade uses a browser SharedWorker to assemble a Windows executable.
+// - The published /config sample specifies a 665,136,399-byte AES-CTR stream.
+// - A ServiceWorker returns the assembled stream as a same-origin attachment.
+//
+// The 600,000,000-byte threshold is intentionally below the source-observed
+// random component. It is campaign-oriented hunting logic, not a general
+// malicious-file threshold and not a production alert.
+DeviceFileEvents
+| where ActionType == "FileCreated"
+| where InitiatingProcessFileName in~ (
+    "chrome.exe",
+    "msedge.exe",
+    "firefox.exe",
+    "brave.exe",
+    "opera.exe"
+)
+| where FileName endswith ".exe"
+| where FileSize >= 600000000
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    InitiatingProcessAccountUpn,
+    InitiatingProcessFileName,
+    FileName,
+    FolderPath,
+    FileSize,
+    SHA1,
+    FileOriginUrl,
+    FileOriginReferrerUrl,
+    FileOriginIP,
+    ReportId
+| order by Timestamp desc
+
+// Interpretation:
+// A result shows a supported browser creating an executable at least 600 MB
+// in size. This is consistent with the source-observed SourTrade delivery
+// shape but does not prove browser-side assembly, malicious bytecode, execution,
+// credential theft, or attribution.
+//
+// Validate:
+// 1. Confirm FileSize and FileOrigin* population for browser downloads.
+// 2. Inspect Mark of the Web, PE sections, signer metadata, and the .bun section.
+// 3. Baseline legitimate large browser-delivered installers and developer tools.
+// 4. Correlate manually with execution, network activity, and user intent.

@@ -32,9 +32,11 @@ Detection-Threat-Landscape/
 │   └── browser-cdp-remote-debugging/production-candidates/
 ├── 24-07-2026 - zimreaper/
 │   └── zimbra-app-password-persistence/hunting/
-└── 25-07-2026 - certighost/
-    └── adcs-chase-to-non-dc/validation/
-        ├── validation.kql
+├── 25-07-2026 - certighost/
+│   └── adcs-chase-to-non-dc/validation/
+└── 28-07-2026 - sourtrade/
+    └── browser-created-large-executable/hunting/
+        ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -43,6 +45,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 28 July 2026 | [SourTrade](./28-07-2026%20-%20sourtrade/) | Microsoft Defender XDR | Browser-created Windows executable at least 600 MB in size | Hunting |
 | 25 July 2026 | [Certighost / CVE-2026-54121](./25-07-2026%20-%20certighost/) | Microsoft Defender XDR | Enterprise CA SMB/LDAP chase traffic to non-approved Domain Controller destinations | Validation |
 | 24 July 2026 | [msaRAT](./24-07-2026%20-%20msarat/) | Microsoft Defender XDR | Headless Chrome or Edge with CDP remote debugging | Production candidate |
 | 24 July 2026 | [ZimReaper](./24-07-2026%20-%20zimreaper/) | Splunk | Zimbra app-specific password persistence named `ZimbraWeb` | Hunting |

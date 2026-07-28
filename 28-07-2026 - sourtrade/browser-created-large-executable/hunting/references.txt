@@ -1,0 +1,27 @@
+SOURTRADE BROWSER-ASSEMBLED MALWARE
+Publication package date: 28 July 2026
+Research publication date: 23 July 2026
+Campaign period: active since late 2024; current browser-assembly variant observed after 30 April 2026 and throughout 2026
+
+PRIMARY TECHNICAL RESEARCH
+Confiant Threat Intelligence, "SourTrade: Browser-Assembled Malware Delivered Through Malvertising"
+hxxps://blog[.]confiant[.]com/p/sourtrade-browser-assembled-malware
+
+OFFICIAL TELEMETRY DOCUMENTATION
+Microsoft Defender XDR, DeviceFileEvents table
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-devicefileevents-table
+
+MITRE ATT&CK
+T1204.002 - User Execution: Malicious File
+hxxps://attack[.]mitre[.]org/techniques/T1204/002/
+
+EVIDENCE BOUNDARY
+Confiant directly analyzed the landing-page JavaScript, /config response,
+ServiceWorker and SharedWorker flow. The published sample specifies a
+665,136,399-byte pseudorandom component and shows the browser delivering the
+assembled executable through a same-origin attachment path.
+
+The query observes only a browser-created executable whose size is consistent
+with that sample. It cannot prove that the browser assembled the file, that the
+file contains malicious JavaScriptCore bytecode, that the user executed it, or
+that SourTrade caused the event.
