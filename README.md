@@ -34,9 +34,11 @@ Detection-Threat-Landscape/
 │   └── zimbra-app-password-persistence/hunting/
 ├── 25-07-2026 - certighost/
 │   └── adcs-chase-to-non-dc/validation/
-└── 28-07-2026 - sourtrade/
-    └── browser-created-large-executable/hunting/
-        ├── hunting.kql
+├── 28-07-2026 - sourtrade/
+│   └── browser-created-large-executable/hunting/
+└── 29-07-2026 - hermes-hades/
+    └── webserver-to-hadoop-service/validation/
+        ├── validation.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -45,6 +47,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 29 July 2026 | [Hermes / Hades](./29-07-2026%20-%20hermes-hades/) | Microsoft Defender XDR | Web-server connectivity to inventoried HiveServer2 or WebHDFS nodes | Validation |
 | 28 July 2026 | [SourTrade](./28-07-2026%20-%20sourtrade/) | Microsoft Defender XDR | Browser-created Windows executable at least 600 MB in size | Hunting |
 | 25 July 2026 | [Certighost / CVE-2026-54121](./25-07-2026%20-%20certighost/) | Microsoft Defender XDR | Enterprise CA SMB/LDAP chase traffic to non-approved Domain Controller destinations | Validation |
 | 24 July 2026 | [msaRAT](./24-07-2026%20-%20msarat/) | Microsoft Defender XDR | Headless Chrome or Edge with CDP remote debugging | Production candidate |

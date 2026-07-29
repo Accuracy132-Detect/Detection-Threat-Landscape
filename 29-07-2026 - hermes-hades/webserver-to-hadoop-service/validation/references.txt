@@ -1,0 +1,30 @@
+HERMES / HADES WEB-SERVER TO HADOOP PIVOT
+Publication package date: 29 July 2026
+Research publication date: 23 July 2026
+Observed activity: 9-13 July 2026; infrastructure activity traced to mid/late June 2026
+
+PRIMARY TECHNICAL RESEARCH
+Hunt.io and Bob Diachenko, "Thailand's Ministry of Finance Targeted With
+Hermes AI Agent Running Unattended, Hades Implant Staged"
+hxxps://hunt[.]io/blog/thailand-ministry-finance-targeted-with-hermes-ai-agent
+
+OFFICIAL TELEMETRY DOCUMENTATION
+Microsoft Defender XDR, DeviceNetworkEvents table
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-devicenetworkevents-table
+
+MITRE ATT&CK
+T1505.003 - Server Software Component: Web Shell
+hxxps://attack[.]mitre[.]org/techniques/T1505/003/
+T1059 - Command and Scripting Interpreter
+hxxps://attack[.]mitre[.]org/techniques/T1059/
+
+EVIDENCE BOUNDARY
+Hunt.io recovered target-specific HiveServer2 tooling that opened a raw socket
+to TCP 10000, registered a malicious Java UDF, issued commands through Hive SQL
+and retrieved output through WebHDFS on TCP 50070. The researchers explicitly
+recommend alerting on web-server processes connecting to those internal ports.
+
+The validation query observes only network activity from inventoried web
+servers to inventoried Hadoop nodes on the two source-observed service ports.
+It does not establish a web shell, authentication, UDF registration, command
+execution, data access, exfiltration, or campaign attribution.

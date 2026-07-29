@@ -1,0 +1,44 @@
+// Web server to Hadoop service connectivity validation
+// Classification: Validation query - Untested implementation sketch
+// Confidence: Medium
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Required telemetry: DeviceNetworkEvents from every web server in scope
+//
+// Hunt.io directly documented tooling that used a compromised web server as
+// the launch point for HiveServer2 and WebHDFS access on TCP 10000 and 50070.
+// Replace both inventories before execution. They are required controls, not
+// optional allowlists.
+let WebServerDevices = dynamic(["<WEB_SERVER_FQDN>"]);
+let HadoopNodeIPs = dynamic(["<HADOOP_NODE_IP>"]);
+DeviceNetworkEvents
+| where DeviceName in~ (WebServerDevices)
+| where RemoteIP in (HadoopNodeIPs)
+| where RemotePort in (10000, 50070)
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    LocalIP,
+    RemoteIP,
+    RemotePort,
+    RemoteUrl,
+    Protocol,
+    ActionType,
+    InitiatingProcessFileName,
+    InitiatingProcessCommandLine,
+    InitiatingProcessAccountName,
+    InitiatingProcessSHA1,
+    ReportId
+| order by Timestamp desc
+
+// Interpretation:
+// A result proves only that an inventoried web server initiated network
+// activity toward an inventoried Hadoop node on a source-observed service port.
+// It does not prove a web shell, successful Hive authentication, UDF creation,
+// command execution, data access, or Hermes/Hades attribution.
+//
+// Validate:
+// 1. Confirm complete web-server and Hadoop-node inventories.
+// 2. Identify legitimate applications, service accounts, processes and flows.
+// 3. Confirm ActionType semantics and process/command-line population.
+// 4. Corroborate unexplained matches with web, HiveServer2, HDFS and EDR logs.
