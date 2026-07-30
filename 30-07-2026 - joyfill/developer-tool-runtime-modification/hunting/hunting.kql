@@ -1,0 +1,60 @@
+// Joyfill-derived Node.js writes to developer-tool runtime files
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Required telemetry: DeviceFileEvents from developer workstations and CI runners
+//
+// Source evidence: the Joyfill implant uses Node.js to inject a self-reloading
+// loader into the global npm CLI, @vscode/deviceid, Discord desktop core, and
+// GitHub Desktop main.js. This query does not rely on package names, versions,
+// hashes, C2 infrastructure, or a specific ActionType value.
+DeviceFileEvents
+| where InitiatingProcessFileName in~ ("node.exe", "node")
+| extend NormalizedPath =
+    tolower(replace_string(strcat(FolderPath, "/", FileName), "\\", "/"))
+| where
+    NormalizedPath endswith "/npm/lib/cli.js"
+    or NormalizedPath endswith "/@vscode/deviceid/dist/index.js"
+    or (
+        NormalizedPath contains "/discord_desktop_core"
+        and NormalizedPath endswith "/index.js"
+    )
+    or (
+        NormalizedPath endswith "/resources/app/main.js"
+        and (
+            NormalizedPath contains "/githubdesktop/"
+            or NormalizedPath contains "/github desktop.app/"
+        )
+    )
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    ActionType,
+    FileName,
+    FolderPath,
+    SHA1,
+    FileSize,
+    InitiatingProcessFileName,
+    InitiatingProcessFolderPath,
+    InitiatingProcessCommandLine,
+    InitiatingProcessAccountName,
+    InitiatingProcessSHA1,
+    InitiatingProcessId,
+    InitiatingProcessCreationTime,
+    ReportId
+| order by Timestamp desc
+
+// Interpretation:
+// A result establishes only that a Node.js process generated a recorded file
+// event against one of the source-observed developer-tool runtime files.
+// Review ActionType and surrounding process/file/network telemetry before
+// concluding that the file was modified or that the Joyfill implant executed.
+//
+// Validate:
+// 1. Confirm DeviceFileEvents coverage on developer endpoints and CI runners.
+// 2. Record ActionType values and benign matches during legitimate upgrades.
+// 3. Inspect the affected file for source-observed marker comments and diff it
+//    against a trusted application/package version.
+// 4. Pivot on InitiatingProcessId/CreationTime and DeviceId for detached
+//    node -e execution, runtime npm installs, and unexpected egress.

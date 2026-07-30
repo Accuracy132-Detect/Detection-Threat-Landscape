@@ -1,0 +1,31 @@
+JOYFILL NPM COMPROMISE - NODE.JS WRITES TO DEVELOPER-TOOL RUNTIME FILES
+Package date: 30 July 2026
+Research publication date: 28 July 2026
+Observed activity: malicious package versions published 28 July 2026
+
+PRIMARY TECHNICAL RESEARCH
+StepSecurity, "Compromised npm Packages: @joyfill/components and
+@joyfill/layouts Ship an Obfuscated Remote Access Trojan"
+hxxps://www[.]stepsecurity[.]io/blog/joyfill-npm-supply-chain-compromise
+
+OFFICIAL TELEMETRY DOCUMENTATION
+Microsoft Defender XDR, DeviceFileEvents table
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-devicefileevents-table
+
+MITRE ATT&CK
+T1195.002 - Supply Chain Compromise: Compromise Software Supply Chain
+hxxps://attack[.]mitre[.]org/techniques/T1195/002/
+T1059.007 - Command and Scripting Interpreter: JavaScript/JScript
+hxxps://attack[.]mitre[.]org/techniques/T1059/007/
+T1546 - Event Triggered Execution
+hxxps://attack[.]mitre[.]org/techniques/T1546/
+
+EVIDENCE BOUNDARY
+StepSecurity statically compared malicious and clean package bundles and
+detonated all six affected versions. The report documents a Node.js implant
+that injects a self-reloading loader into @vscode/deviceid, Discord desktop
+core, GitHub Desktop main.js and the global npm CLI.
+
+The query surfaces Node.js-initiated DeviceFileEvents against those runtime
+files. It does not prove file modification, malicious content, package import,
+credential theft, persistence, C2 communication or campaign attribution.
