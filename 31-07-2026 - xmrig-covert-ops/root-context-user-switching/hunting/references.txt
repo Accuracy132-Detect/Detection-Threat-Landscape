@@ -1,0 +1,31 @@
+XMRig covert operations — source and schema references
+Publication package date: 31 July 2026
+
+PRIMARY TECHNICAL RESEARCH
+Group-IB, "XMRig Covert Ops: The Cryptomining Campaign That Abuses Trusted Access and Deploys Forensic Smokescreens"
+Publication date: 30 July 2026
+Observed activity: May 2026
+hxxps://www[.]group-ib[.]com/blog/xmrig-covert-linux-pam-abuse/
+
+OFFICIAL PLATFORM DOCUMENTATION
+Microsoft Learn, "DeviceProcessEvents table in the advanced hunting schema"
+Schema page last updated: 28 March 2025; accessed 31 July 2026
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+Microsoft Learn, "Advanced hunting query best practices"
+Accessed: 31 July 2026
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-best-practices
+
+MITRE ATT&CK
+T1078 — Valid Accounts
+hxxps://attack[.]mitre[.]org/techniques/T1078/
+
+T1562.001 — Impair Defenses: Disable or Modify Tools
+hxxps://attack[.]mitre[.]org/techniques/T1562/001/
+
+NOTES
+- URLs are defanged.
+- The query is a Hunting query - Untested implementation sketch.
+- A match does not establish pam_rootok abuse, persistence, cryptomining, or campaign attribution.
+- T1564.013 is not mapped: the source uses that identifier for self-unlinking/process hiding,
+  while the current ATT&CK page defines T1564.013 as Bind Mounts. This dossier avoids that mismatch.

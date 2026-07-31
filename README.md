@@ -38,8 +38,13 @@ Detection-Threat-Landscape/
 │   └── browser-created-large-executable/hunting/
 ├── 29-07-2026 - hermes-hades/
 │   └── webserver-to-hadoop-service/validation/
-└── 30-07-2026 - joyfill/
-    └── developer-tool-runtime-modification/hunting/
+├── 30-07-2026 - joyfill/
+│   └── developer-tool-runtime-modification/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 31-07-2026 - xmrig-covert-ops/
+    └── root-context-user-switching/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -49,6 +54,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 31 July 2026 | [XMRig covert operations](./31-07-2026%20-%20xmrig-covert-ops/) | Microsoft Defender XDR | Root-context Linux `su` process execution for identity-distribution hunting | Hunting |
 | 30 July 2026 | [Joyfill npm compromise](./30-07-2026%20-%20joyfill/) | Microsoft Defender XDR | Node.js file events against source-observed developer-tool runtime files | Hunting |
 | 29 July 2026 | [Hermes / Hades](./29-07-2026%20-%20hermes-hades/) | Microsoft Defender XDR | Web-server connectivity to inventoried HiveServer2 or WebHDFS nodes | Validation |
 | 28 July 2026 | [SourTrade](./28-07-2026%20-%20sourtrade/) | Microsoft Defender XDR | Browser-created Windows executable at least 600 MB in size | Hunting |

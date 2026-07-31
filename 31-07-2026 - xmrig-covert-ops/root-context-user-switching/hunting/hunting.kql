@@ -1,0 +1,37 @@
+// XMRig covert operations: root-initiated Linux user switching
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium
+//
+// Evidence:
+// Group-IB observed the actor, after obtaining root, executing `su` to assume
+// multiple low-privileged identities without their passwords via pam_rootok.
+//
+// Detection boundary:
+// This query identifies root-context `su` process creation only. It does not
+// prove pam_rootok abuse, credential theft, persistence, cryptomining, or
+// campaign attribution. Review every result against approved administration.
+//
+// Prerequisite:
+// Microsoft Defender for Endpoint must be deployed on Linux endpoints, and the
+// tenant must confirm that DeviceProcessEvents populates AccountName and the
+// full ProcessCommandLine for controlled `su` activity.
+
+DeviceProcessEvents
+| where FileName =~ "su"
+| where AccountName =~ "root"
+| where isnotempty(ProcessCommandLine)
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    AccountName,
+    FileName,
+    ProcessCommandLine,
+    ProcessId,
+    ProcessCreationTime,
+    LogonId,
+    InitiatingProcessFileName,
+    InitiatingProcessCommandLine,
+    ReportId
+| order by Timestamp desc
