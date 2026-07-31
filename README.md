@@ -43,8 +43,13 @@ Detection-Threat-Landscape/
 │       ├── hunting.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 31-07-2026 - xmrig-covert-ops/
-    └── root-context-user-switching/hunting/
+├── 31-07-2026 - xmrig-covert-ops/
+│   └── root-context-user-switching/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 31-07-2026 - cve-2023-23397/
+    └── outlook-forced-ntlm-authentication/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -54,6 +59,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 31 July 2026 | [CVE-2023-23397](./31-07-2026%20-%20cve-2023-23397/) | Microsoft Defender XDR | CVE-specific MDO alert validation, public outbound SMB hunting, and WebDAV fallback evidence | Hunting |
 | 31 July 2026 | [XMRig covert operations](./31-07-2026%20-%20xmrig-covert-ops/) | Microsoft Defender XDR | Root-context Linux `su` process execution for identity-distribution hunting | Hunting |
 | 30 July 2026 | [Joyfill npm compromise](./30-07-2026%20-%20joyfill/) | Microsoft Defender XDR | Node.js file events against source-observed developer-tool runtime files | Hunting |
 | 29 July 2026 | [Hermes / Hades](./29-07-2026%20-%20hermes-hades/) | Microsoft Defender XDR | Web-server connectivity to inventoried HiveServer2 or WebHDFS nodes | Validation |
