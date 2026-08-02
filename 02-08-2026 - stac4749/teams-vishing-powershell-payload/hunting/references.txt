@@ -1,0 +1,21 @@
+STAC4749 / Chaos in Teams vishing - references
+
+Primary technical research
+- Sophos X-Ops, "Chaos in Teams vishing"
+  Publication date: 2026-07-28
+  Observed campaign period: 2026-02 through 2026-06
+  hxxps://www[.]sophos[.]com/en-us/blog/chaos-in-teams-vishing
+
+Official platform documentation
+- Microsoft Learn, DeviceProcessEvents table in the advanced hunting schema
+  Last updated: 2025-03-28
+  hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+- Microsoft Learn, DeviceRegistryEvents table in the advanced hunting schema
+  Last updated: 2025-06-11
+  hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceregistryevents-table
+
+ATT&CK references
+- PowerShell (T1059.001)
+  hxxps://attack[.]mitre[.]org/techniques/T1059/001/
+- Ingress Tool Transfer (T1105)
+  hxxps://attack[.]mitre[.]org/techniques/T1105/

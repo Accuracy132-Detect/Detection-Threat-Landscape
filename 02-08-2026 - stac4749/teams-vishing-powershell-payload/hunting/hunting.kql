@@ -1,0 +1,19 @@
+// STAC4749 PowerShell payload retrieval and tokenized implant launch
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Telemetry prerequisite: Microsoft Defender for Endpoint populating DeviceProcessEvents
+// Evidence: Sophos observed this command pattern in STAC4749 incidents (Feb-Jun 2026).
+// This campaign-specific hunt is not suitable for alerting until benign overlap is measured.
+DeviceProcessEvents
+| where FileName in~ ("powershell.exe", "pwsh.exe")
+| where ProcessCommandLine contains "Invoke-WebRequest"
+| where ProcessCommandLine contains "-OutFile"
+| where ProcessCommandLine contains "--token-raw"
+| where ProcessCommandLine contains "Start-Process"
+| where ProcessCommandLine contains @"\AppData\Roaming\"
+| project Timestamp, DeviceId, DeviceName, AccountUpn, AccountName,
+          FileName, FolderPath, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine,
+          ProcessId, ProcessUniqueId, ReportId
+| order by Timestamp desc
