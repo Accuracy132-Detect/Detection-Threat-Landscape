@@ -46,9 +46,11 @@ Detection-Threat-Landscape/
 │   └── outlook-forced-ntlm-authentication/hunting/
 ├── 02-08-2026 - stac4749/
 │   └── teams-vishing-powershell-payload/hunting/
-└── 03-08-2026 - n-central-cve-2026-18577/
-    └── cloudflared-service-registration/hunting/
-        ├── hunting.kql
+├── 03-08-2026 - n-central-cve-2026-18577/
+│   └── cloudflared-service-registration/hunting/
+└── 04-08-2026 - mirage-kitten/
+    └── appvshnotify-sspicli-sideloading/production-candidates/
+        ├── detection.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -57,6 +59,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 4 August 2026 | [Mirage Kitten / NightLedger](./04-08-2026%20-%20mirage-kitten/) | Microsoft Defender XDR | `AppVShNotify.exe` loads a co-located `SspiCli.dll` from outside the Windows directory | Production candidate |
 | 3 August 2026 | [N-central / CVE-2026-18577](./03-08-2026%20-%20n-central-cve-2026-18577/) | Microsoft Defender XDR | Source-confirmed `cloudflared` Windows service registration on N-central-managed endpoints | Hunting |
 | 2 August 2026 | [STAC4749](./02-08-2026%20-%20stac4749/) | Microsoft Defender XDR | PowerShell retrieves an AppData payload and launches it with the source-observed `--token-raw` argument | Hunting |
 | 31 July 2026 | [CVE-2023-23397](./31-07-2026%20-%20cve-2023-23397/) | Microsoft Defender XDR | CVE-specific MDO alert validation, public outbound SMB hunting, and WebDAV fallback evidence | Hunting |

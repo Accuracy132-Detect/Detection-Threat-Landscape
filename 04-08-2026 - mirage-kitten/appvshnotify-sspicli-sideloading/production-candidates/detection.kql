@@ -1,0 +1,27 @@
+// Title: AppVShNotify loads co-located SspiCli outside the Windows directory
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Status: Production candidate - Untested implementation sketch
+// Confidence: Medium
+// Telemetry prerequisite: Microsoft Defender for Endpoint; DeviceImageLoadEvents
+// Evidence: Kaspersky observed NightLedger masquerading as SspiCli.dll and using
+// AppVShNotify.exe for DLL search-order hijacking. The malicious DLL is co-located
+// with the legitimate executable. The non-Windows-path restriction is an analyst
+// assumption intended to reduce servicing and operating-system overlap.
+DeviceImageLoadEvents
+| where InitiatingProcessFileName =~ "AppVShNotify.exe"
+| where FileName =~ "SspiCli.dll"
+| where FolderPath =~ InitiatingProcessFolderPath
+| where not(InitiatingProcessFolderPath startswith @"C:\Windows\")
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    InitiatingProcessAccountName,
+    InitiatingProcessFolderPath,
+    InitiatingProcessCommandLine,
+    InitiatingProcessSHA1,
+    FolderPath,
+    FileName,
+    SHA1,
+    ReportId
+| order by Timestamp desc
