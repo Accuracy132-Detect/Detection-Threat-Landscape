@@ -1,0 +1,15 @@
+QuickFox / FDMTP csmonitor.exe DLL sideloading
+Publication date: 2026-08-04
+Observed campaign period: introduced between 2025-07-25 and 2025-08-13; active since at least 2025-08; loader generation 1 available from at least 2025-09; generation 2 available from 2026-05; infrastructure active at publication.
+
+Primary technical research
+FortiGuard Incident Response Team, "QuickFox Supply Chain Attack Used to Deploy FDMTP Implant," 2026-08-04.
+hxxps://www[.]fortinet[.]com/blog/threat-research/quickfox-supply-chain-attack-used-to-deploy-fdmtp-implant
+
+Official telemetry documentation
+Microsoft Learn, "DeviceImageLoadEvents table in the advanced hunting schema," accessed 2026-08-05.
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceimageloadevents-table
+
+ATT&CK reference
+MITRE ATT&CK, T1574.001 - Hijack Execution Flow: DLL, accessed 2026-08-05.
+hxxps://attack[.]mitre[.]org/techniques/T1574/001/

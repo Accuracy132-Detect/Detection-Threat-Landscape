@@ -1,0 +1,31 @@
+// QuickFox / FDMTP - csmonitor.exe DLL sideloading
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR
+// Telemetry: Microsoft Defender for Endpoint DeviceImageLoadEvents
+//
+// Source evidence: FortiGuard IR observed csmonitor.exe loading a malicious
+// Microsoft.ServiceHosting.Tools.dll from the same
+// ...\quickfox\updated directory in both loader generations.
+//
+// A match does not prove FDMTP execution or attribution. Validate the loader
+// and DLL hashes, signatures, file origin, software ownership, and follow-on
+// process/network activity before disposition.
+
+DeviceImageLoadEvents
+| where InitiatingProcessFileName =~ "csmonitor.exe"
+| where FileName =~ "Microsoft.ServiceHosting.Tools.dll"
+| where FolderPath =~ InitiatingProcessFolderPath
+| where FolderPath endswith @"\quickfox\updated"
+| project Timestamp,
+          DeviceId,
+          DeviceName,
+          InitiatingProcessAccountName,
+          InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine,
+          InitiatingProcessSHA1,
+          FolderPath,
+          FileName,
+          SHA1,
+          ReportId
+| order by Timestamp desc
