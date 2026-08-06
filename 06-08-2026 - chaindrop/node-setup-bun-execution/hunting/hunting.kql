@@ -1,0 +1,31 @@
+// CHAINDROP - node setup.mjs launches Bun payload
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR
+// Telemetry: Microsoft Defender for Endpoint DeviceProcessEvents
+//
+// Microsoft and Elastic observed the preinstall dropper setup.mjs launching Bun.
+// Microsoft published the parent command and Bun path/command-line conditions below.
+// A match is not proof of a compromised npm package: validate package provenance,
+// repository changes, script hashes, signer/origin, credentials and follow-on activity.
+
+DeviceProcessEvents
+| where InitiatingProcessFileName in~ ("node", "node.exe")
+| where InitiatingProcessCommandLine in~ ("node setup.mjs", "node  setup.mjs")
+| where FileName in~ ("bun", "bun.exe")
+| where FolderPath contains "bun-dl-" or ProcessCommandLine has "node_modules"
+| project Timestamp,
+          DeviceId,
+          DeviceName,
+          AccountName,
+          FileName,
+          FolderPath,
+          ProcessCommandLine,
+          ProcessUniqueId,
+          InitiatingProcessFileName,
+          InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine,
+          InitiatingProcessUniqueId,
+          SHA1,
+          ReportId
+| order by Timestamp desc

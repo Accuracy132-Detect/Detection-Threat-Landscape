@@ -1,0 +1,18 @@
+CHAINDROP Node-to-Bun execution
+Publication dates: 2026-08-04 (Microsoft); 2026-08-06 (Elastic)
+Observed activity: campaign identified on 2026-08-04; more than 400 npm packages affected at publication.
+
+Primary technical research
+Microsoft Security Research, "ChainDrop supply chain compromise: Anatomy of a self-propagating worm," 2026-08-04.
+hxxps://www[.]microsoft[.]com/en-us/security/blog/2026/08/04/chaindrop-supply-chain-compromise-anatomy-self-propagating-worm/
+
+Elastic Security Labs, "Shai-Hulud strikes again: CHAINDROP worm hits 400+ npm packages," 2026-08-06.
+hxxps://www[.]elastic[.]co/security-labs/shai-hulud-chaindrop-npm-supply-chain
+
+Official telemetry documentation
+Microsoft Learn, "DeviceProcessEvents table in the advanced hunting schema," accessed 2026-08-06.
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+ATT&CK reference
+MITRE ATT&CK, T1059.007 - Command and Scripting Interpreter: JavaScript, accessed 2026-08-06.
+hxxps://attack[.]mitre[.]org/techniques/T1059/007/

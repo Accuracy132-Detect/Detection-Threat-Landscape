@@ -50,8 +50,10 @@ Detection-Threat-Landscape/
 │   └── cloudflared-service-registration/hunting/
 ├── 04-08-2026 - mirage-kitten/
 │   └── appvshnotify-sspicli-sideloading/production-candidates/
-└── 05-08-2026 - quickfox/
-    └── fdmtp-csmonitor-dll-sideloading/hunting/
+├── 05-08-2026 - quickfox/
+│   └── fdmtp-csmonitor-dll-sideloading/hunting/
+└── 06-08-2026 - chaindrop/
+    └── node-setup-bun-execution/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -61,6 +63,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 6 August 2026 | [CHAINDROP / Shai-Hulud](./06-08-2026%20-%20chaindrop/) | Microsoft Defender XDR | `node setup.mjs` launches Bun from a temporary `bun-dl-` path or against content under `node_modules` | Hunting |
 | 5 August 2026 | [QuickFox / FDMTP](./05-08-2026%20-%20quickfox/) | Microsoft Defender XDR | `csmonitor.exe` loads a co-located `Microsoft.ServiceHosting.Tools.dll` from the source-observed `quickfox\updated` directory | Hunting |
 | 4 August 2026 | [Mirage Kitten / NightLedger](./04-08-2026%20-%20mirage-kitten/) | Microsoft Defender XDR | `AppVShNotify.exe` loads a co-located `SspiCli.dll` from outside the Windows directory | Production candidate |
 | 3 August 2026 | [N-central / CVE-2026-18577](./03-08-2026%20-%20n-central-cve-2026-18577/) | Microsoft Defender XDR | Source-confirmed `cloudflared` Windows service registration on N-central-managed endpoints | Hunting |
