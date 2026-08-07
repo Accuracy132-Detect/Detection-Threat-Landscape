@@ -1,0 +1,32 @@
+// Interlock - Volatility credential-extraction plugins
+// Classification: Production candidate - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR
+// Telemetry: Microsoft Defender for Endpoint DeviceProcessEvents
+//
+// Sophos EIR directly observed both plugin invocations in an Interlock intrusion.
+// The plugin strings describe SAM hash extraction and cached domain credential
+// extraction. Do not suppress approved DFIR activity by filename alone: validate
+// the actor, device, case/change record, memory image provenance and execution time.
+
+DeviceProcessEvents
+| where ProcessCommandLine contains "windows.hashdump.Hashdump"
+    or ProcessCommandLine contains "windows.cachedump.Cachedump"
+| project Timestamp,
+          DeviceId,
+          DeviceName,
+          AccountDomain,
+          AccountName,
+          FileName,
+          FolderPath,
+          ProcessCommandLine,
+          ProcessIntegrityLevel,
+          ProcessTokenElevation,
+          ProcessUniqueId,
+          InitiatingProcessFileName,
+          InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine,
+          InitiatingProcessUniqueId,
+          SHA1,
+          ReportId
+| order by Timestamp desc

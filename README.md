@@ -52,9 +52,11 @@ Detection-Threat-Landscape/
 │   └── appvshnotify-sspicli-sideloading/production-candidates/
 ├── 05-08-2026 - quickfox/
 │   └── fdmtp-csmonitor-dll-sideloading/hunting/
-└── 06-08-2026 - chaindrop/
-    └── node-setup-bun-execution/hunting/
-        ├── hunting.kql
+├── 06-08-2026 - chaindrop/
+│   └── node-setup-bun-execution/hunting/
+└── 07-08-2026 - interlock/
+    └── volatility-credential-plugins/production-candidates/
+        ├── detection.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -63,6 +65,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 7 August 2026 | [Interlock / GOLD EMBRACE](./07-08-2026%20-%20interlock/) | Microsoft Defender XDR | Volatility3 invokes the SAM hashdump or cached domain credential extraction plugin | Production candidate |
 | 6 August 2026 | [CHAINDROP / Shai-Hulud](./06-08-2026%20-%20chaindrop/) | Microsoft Defender XDR | `node setup.mjs` launches Bun from a temporary `bun-dl-` path or against content under `node_modules` | Hunting |
 | 5 August 2026 | [QuickFox / FDMTP](./05-08-2026%20-%20quickfox/) | Microsoft Defender XDR | `csmonitor.exe` loads a co-located `Microsoft.ServiceHosting.Tools.dll` from the source-observed `quickfox\updated` directory | Hunting |
 | 4 August 2026 | [Mirage Kitten / NightLedger](./04-08-2026%20-%20mirage-kitten/) | Microsoft Defender XDR | `AppVShNotify.exe` loads a co-located `SspiCli.dll` from outside the Windows directory | Production candidate |

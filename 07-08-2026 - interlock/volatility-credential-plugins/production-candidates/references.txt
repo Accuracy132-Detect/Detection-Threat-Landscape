@@ -1,0 +1,21 @@
+Interlock Volatility credential-extraction plugins
+Publication date: 2026-08-04
+Observed activity: March 2026 incident response engagement
+
+Primary technical research
+Sophos Emergency Incident Response, "Interlock ransomware gang creates volatile situation," 2026-08-04.
+hxxps://www[.]sophos[.]com/en-us/blog/2608-volatility-interlock
+
+Official telemetry and tool documentation
+Microsoft Learn, "DeviceProcessEvents table in the advanced hunting schema," accessed 2026-08-07.
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+Volatility Foundation, "volatility3.plugins.windows.registry package," accessed 2026-08-07.
+hxxps://volatility3[.]readthedocs[.]io/en/latest/volatility3.plugins.windows.registry.html
+
+ATT&CK references
+MITRE ATT&CK, T1003.002 - OS Credential Dumping: Security Account Manager, accessed 2026-08-07.
+hxxps://attack[.]mitre[.]org/techniques/T1003/002/
+
+MITRE ATT&CK, T1003.005 - OS Credential Dumping: Cached Domain Credentials, accessed 2026-08-07.
+hxxps://attack[.]mitre[.]org/techniques/T1003/005/
