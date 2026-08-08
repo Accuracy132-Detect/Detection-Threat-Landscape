@@ -1,0 +1,18 @@
+UNC6671 scripted SharePoint and OneDrive file access
+Publication date: 2026-08-06
+Observed activity: active UNC6671 compromises; infrastructure observed through 2026-08-06
+
+Primary technical research
+Google Threat Intelligence Group / Mandiant, "UNC6671 Rebrands: Multi-Brand Vishing Extortion Targets Financial Services and Enterprise Cloud Environments," 2026-08-06.
+hxxps://cloud[.]google[.]com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments
+
+Official telemetry documentation
+Microsoft Learn, "OfficeActivity," last updated 2026-07-27; accessed 2026-08-08.
+hxxps://learn[.]microsoft[.]com/en-us/azure/azure-monitor/reference/tables/officeactivity
+
+Microsoft Learn, "Audit log activities - File and page activities," accessed 2026-08-08.
+hxxps://learn[.]microsoft[.]com/en-us/purview/audit-log-activities
+
+ATT&CK reference
+MITRE ATT&CK, T1213.002 - Data from Information Repositories: SharePoint, version 1.1; accessed 2026-08-08.
+hxxps://attack[.]mitre[.]org/techniques/T1213/002/

@@ -1,0 +1,30 @@
+// UNC6671 - scripted SharePoint or OneDrive file access
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Telemetry: Microsoft 365 connector -> OfficeActivity
+//
+// GTIG recommends treating FileAccessed as seriously as FileDownloaded when
+// UserAgent identifies a scripting library. FileAccessed records access, not
+// confirmed download or exfiltration. Validate every match against approved
+// automation, service ownership, user/session context and accessed resources.
+
+OfficeActivity
+| where Operation == "FileAccessed"
+| where UserAgent startswith "python-requests/"
+    or UserAgent startswith "WindowsPowerShell/"
+    or UserAgent startswith "Go-http-client/"
+| project TimeGenerated,
+          UserId,
+          UserType,
+          ClientIP,
+          UserAgent,
+          OfficeWorkload,
+          Site_Url,
+          SourceRelativeUrl,
+          SourceFileName,
+          OfficeObjectId,
+          IsManagedDevice,
+          ResultStatus,
+          OfficeId
+| order by TimeGenerated desc
