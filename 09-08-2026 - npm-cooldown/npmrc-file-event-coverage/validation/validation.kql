@@ -1,0 +1,29 @@
+// npm cooldown state - endpoint file-event coverage
+// Classification: Validation query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR
+// Telemetry: Microsoft Defender for Endpoint -> DeviceFileEvents
+//
+// This query validates whether .npmrc activity is visible and whether the
+// initiating-process and path fields are populated. It does NOT inspect file
+// contents and therefore cannot prove that min-release-age was removed.
+// Do not convert matches into alerts. Use the results to decide whether a
+// privacy-preserving state snapshot is required for reliable posture monitoring.
+
+DeviceFileEvents
+| where FileName =~ ".npmrc"
+| project Timestamp,
+          DeviceId,
+          DeviceName,
+          ActionType,
+          FileName,
+          FolderPath,
+          PreviousFileName,
+          PreviousFolderPath,
+          InitiatingProcessFileName,
+          InitiatingProcessCommandLine,
+          InitiatingProcessAccountUpn,
+          InitiatingProcessAccountName,
+          SHA1,
+          ReportId
+| order by Timestamp desc

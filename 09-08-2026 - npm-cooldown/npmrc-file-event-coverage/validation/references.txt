@@ -1,0 +1,15 @@
+Primary technical research
+Elastic Security Labs, "The security signal log tailing can't see: tracking npm cooldown removals with Elastic Agent"
+Publication date: 2026-08-07
+Observed/experimental period: production deployment and parallel comparison described in the report; exact calendar period not published
+hxxps://www[.]elastic[.]co/security-labs/npm-cooldown-removal-detection-elastic-agent
+
+Official schema documentation
+Microsoft Learn, "DeviceFileEvents table in the advanced hunting schema"
+Last updated: 2026-06-22; accessed: 2026-08-09
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-devicefileevents-table
+
+MITRE ATT&CK context
+T1195.001 - Compromise Software Dependencies and Development Tools
+Accessed: 2026-08-09
+hxxps://attack[.]mitre[.]org/techniques/T1195/001/
