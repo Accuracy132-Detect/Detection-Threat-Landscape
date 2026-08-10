@@ -1,0 +1,11 @@
+Huntress, "Mac Malware Drains Crypto Wallets Via Fake CAPTCHA Scam," published 6 August 2026; incident infection observed approximately March 2026 and retrospectively hunted in June 2026.
+hxxps://www[.]huntress[.]com/blog/mac-crypto-draining-malware
+
+Microsoft Learn, "DeviceProcessEvents table in the advanced hunting schema," accessed 10 August 2026.
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+Microsoft Learn, "Microsoft Defender for Endpoint release notes," accessed 10 August 2026; confirms current macOS support context.
+hxxps://learn[.]microsoft[.]com/en-us/defender-endpoint/microsoft-defender-endpoint-releases
+
+MITRE ATT&CK, T1543.001 - Create or Modify System Process: Launch Agent, accessed 10 August 2026.
+hxxps://attack[.]mitre[.]org/techniques/T1543/001/

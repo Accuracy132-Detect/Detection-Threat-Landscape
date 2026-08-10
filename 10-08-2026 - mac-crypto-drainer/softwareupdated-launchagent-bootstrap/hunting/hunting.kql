@@ -1,0 +1,26 @@
+// Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Defender XDR advanced hunting
+// Telemetry: Microsoft Defender for Endpoint DeviceProcessEvents on macOS
+// Source-observed behavior: launchctl bootstraps the campaign LaunchAgent plist.
+// A match is campaign-specific persistence evidence, not proof of payload execution.
+DeviceProcessEvents
+| where FileName =~ "launchctl"
+| where ProcessCommandLine contains "bootstrap"
+| where ProcessCommandLine contains "/Library/LaunchAgents/com.apple.softwareupdated.plist"
+| project Timestamp,
+          DeviceId,
+          DeviceName,
+          AccountName,
+          AccountUpn,
+          FileName,
+          FolderPath,
+          ProcessCommandLine,
+          ProcessId,
+          ProcessUniqueId,
+          InitiatingProcessFileName,
+          InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine,
+          InitiatingProcessAccountName,
+          InitiatingProcessUniqueId,
+          ReportId
+| order by Timestamp desc
