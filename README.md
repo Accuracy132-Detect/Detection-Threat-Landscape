@@ -60,12 +60,12 @@ Detection-Threat-Landscape/
 │   └── scripted-sharepoint-file-access/hunting/
 ├── 09-08-2026 - npm-cooldown/
 │   └── npmrc-file-event-coverage/validation/
+│       ├── validation.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
 └── 10-08-2026 - mac-crypto-drainer/
     └── softwareupdated-launchagent-bootstrap/hunting/
         ├── hunting.kql
-        ├── references.txt
-        └── threat-analysis.pdf
-        ├── validation.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
