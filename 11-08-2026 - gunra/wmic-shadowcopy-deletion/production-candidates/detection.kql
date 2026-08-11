@@ -1,0 +1,35 @@
+// Gunra / WMIC shadow-copy deletion
+// Classification: Production candidate - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR Advanced Hunting
+// Required telemetry: Microsoft Defender for Endpoint process creation events
+// Source evidence: AA26-222A documents the exact WMIC shadowcopy delete behavior.
+// No threshold, rarity, join, sequence, hash, domain, or campaign attribution is used.
+
+DeviceProcessEvents
+| where FileName =~ "WMIC.exe"
+| where ProcessCommandLine has "shadowcopy"
+| where ProcessCommandLine has "delete"
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    AccountName,
+    AccountUpn,
+    FileName,
+    FolderPath,
+    ProcessCommandLine,
+    ProcessId,
+    ProcessUniqueId,
+    ProcessIntegrityLevel,
+    ProcessTokenElevation,
+    InitiatingProcessFileName,
+    InitiatingProcessCommandLine,
+    InitiatingProcessAccountName,
+    InitiatingProcessAccountUpn,
+    IsProcessRemoteSession,
+    ProcessRemoteSessionIP,
+    SHA1,
+    InitiatingProcessSHA1,
+    ReportId
+| order by Timestamp desc

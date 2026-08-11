@@ -1,0 +1,18 @@
+Gunra ransomware joint advisory
+Organization: FBI, CISA, DC3, NSA, USSS, KNPA
+Title: #StopRansomware: Gunra Ransomware
+Publication date: 2026-08-10
+Observed activity: Gunra first observed 2025-04; RaaS expansion from 2026-01; advisory includes recent and historical observations
+Direct source: hxxps://media[.]defense[.]gov/2026/Aug/10/2003976697/-1/-1/0/CSA_STOPRANSOMWARE_GUNRA_RANSOMWARE[.]PDF
+
+Microsoft Defender XDR schema
+Organization: Microsoft
+Title: DeviceProcessEvents table in the advanced hunting schema
+Last updated: 2026-08-07
+Accessed: 2026-08-11
+Direct source: hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK
+Technique: T1490 - Inhibit System Recovery
+Accessed: 2026-08-11
+Direct source: hxxps://attack[.]mitre[.]org/techniques/T1490/
