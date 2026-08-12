@@ -1,0 +1,17 @@
+Operation Dream Job / SecurityPDF temp child execution
+Publication date: 2026-08-11
+Campaign period: early 2026; SecurityPDF chain observed in July 2026
+Package date: 2026-08-12
+
+Primary technical research
+hxxps://research[.]checkpoint[.]com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/
+
+Official telemetry documentation
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK
+hxxps://attack[.]mitre[.]org/techniques/T1204/002/
+
+Notes
+- Check Point Research observed the trojanized SecurityPDF viewer checking a crafted PDF marker, writing the decrypted executable to %TEMP%\new.exe, and launching it as a child process.
+- The query does not inspect PDF contents and does not prove successful Troy loading, CVE-2026-68820 exploitation, EDR impairment, or Lazarus attribution.

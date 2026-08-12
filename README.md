@@ -64,13 +64,18 @@ Detection-Threat-Landscape/
 │       ├── references.txt
 │       └── threat-analysis.pdf
 ├── 10-08-2026 - mac-crypto-drainer/
-    └── softwareupdated-launchagent-bootstrap/hunting/
+│   └── softwareupdated-launchagent-bootstrap/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+├── 11-08-2026 - gunra/
+│   └── wmic-shadowcopy-deletion/production-candidates/
+│       ├── detection.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 12-08-2026 - operation-dream-job/
+    └── securitypdf-temp-child-execution/hunting/
         ├── hunting.kql
-        ├── references.txt
-        └── threat-analysis.pdf
-└── 11-08-2026 - gunra/
-    └── wmic-shadowcopy-deletion/production-candidates/
-        ├── detection.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -79,6 +84,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 12 August 2026 | [Operation Dream Job / SecurityPDF](./12-08-2026%20-%20operation-dream-job/) | Microsoft Defender XDR | Source-observed `SecurityPDF.exe` creates and launches `%TEMP%\\new.exe` after opening a crafted PDF | Hunting |
 | 11 August 2026 | [Gunra ransomware](./11-08-2026%20-%20gunra/) | Microsoft Defender XDR | `WMIC.exe` deletes volume shadow copies through the source-observed `shadowcopy ... delete` command pattern | Production candidate |
 | 10 August 2026 | [macOS ClickFix crypto drainer](./10-08-2026%20-%20mac-crypto-drainer/) | Microsoft Defender XDR | `launchctl bootstrap` registers the source-observed `com.apple.softwareupdated.plist` user LaunchAgent | Hunting |
 | 9 August 2026 | [npm cooldown posture](./09-08-2026%20-%20npm-cooldown/) | Microsoft Defender XDR | Validate whether `.npmrc` file activity and initiating-process context are visible before designing state-based monitoring | Validation |
