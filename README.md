@@ -73,8 +73,13 @@ Detection-Threat-Landscape/
 │       ├── detection.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 12-08-2026 - operation-dream-job/
-    └── securitypdf-temp-child-execution/hunting/
+├── 12-08-2026 - operation-dream-job/
+│   └── securitypdf-temp-child-execution/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 13-08-2026 - head-mare/
+    └── phantomgraph-temp-batch-services/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -84,6 +89,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 13 August 2026 | [Head Mare / PhantomGraph](./13-08-2026%20-%20head-mare/) | Microsoft Sentinel | Windows Security Event 4697 records source-observed `SysExcSvc` or `SysReadSvc` installation through `cmd /c` and a temporary `cmd_cmd_*.bat` file | Hunting |
 | 12 August 2026 | [Operation Dream Job / SecurityPDF](./12-08-2026%20-%20operation-dream-job/) | Microsoft Defender XDR | Source-observed `SecurityPDF.exe` creates and launches `%TEMP%\\new.exe` after opening a crafted PDF | Hunting |
 | 11 August 2026 | [Gunra ransomware](./11-08-2026%20-%20gunra/) | Microsoft Defender XDR | `WMIC.exe` deletes volume shadow copies through the source-observed `shadowcopy ... delete` command pattern | Production candidate |
 | 10 August 2026 | [macOS ClickFix crypto drainer](./10-08-2026%20-%20mac-crypto-drainer/) | Microsoft Defender XDR | `launchctl bootstrap` registers the source-observed `com.apple.softwareupdated.plist` user LaunchAgent | Hunting |

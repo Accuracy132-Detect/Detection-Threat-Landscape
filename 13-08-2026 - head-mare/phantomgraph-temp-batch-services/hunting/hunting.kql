@@ -1,0 +1,35 @@
+// Head Mare / PhantomGraph Windows service persistence
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required connector: Windows Security Events via AMA with Event ID 4697
+// Source evidence: Kaspersky observed SysExcSvc and SysReadSvc services whose
+// service command invokes a %TEMP%\cmd_cmd_*.bat file through cmd /c.
+// No threshold, rarity, join, sequence, hash, domain, or attribution is used.
+
+SecurityEvent
+| where EventID == 4697
+| where ServiceName in~ ("SysExcSvc", "SysReadSvc")
+| where ServiceFileName contains "cmd"
+| where ServiceFileName contains "/c"
+| where ServiceFileName contains @"\Temp\"
+| where ServiceFileName contains "cmd_cmd_"
+| where ServiceFileName contains ".bat"
+| project
+    TimeGenerated,
+    Computer,
+    EventID,
+    EventRecordId,
+    ServiceName,
+    ServiceFileName,
+    ServiceType,
+    ServiceStartType,
+    ServiceAccount,
+    SubjectUserSid,
+    SubjectUserName,
+    SubjectDomainName,
+    SubjectLogonId,
+    Activity,
+    EventSourceName,
+    _ResourceId
+| order by TimeGenerated desc
