@@ -1,0 +1,30 @@
+// Armored Likho / Still Toolkit Windows service installation
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required connector: Windows Security Events via AMA with Event ID 4697
+// Source evidence: Kaspersky observed Still Sync creating the TReload service
+// and Still Audio creating the auxhost service when --console is absent.
+// The service names are mutable campaign artifacts; a match requires triage.
+
+SecurityEvent
+| where EventID == 4697
+| where ServiceName in~ ("TReload", "auxhost")
+| project
+    TimeGenerated,
+    Computer,
+    EventID,
+    EventRecordId,
+    ServiceName,
+    ServiceFileName,
+    ServiceType,
+    ServiceStartType,
+    ServiceAccount,
+    SubjectUserSid,
+    SubjectUserName,
+    SubjectDomainName,
+    SubjectLogonId,
+    Activity,
+    EventSourceName,
+    _ResourceId
+| order by TimeGenerated desc

@@ -1,0 +1,24 @@
+Armored Likho / Still Toolkit Windows service installation
+Classification: Hunting query - Untested implementation sketch
+Confidence: Medium
+Report date: 2026-08-14
+
+Primary technical research
+Kaspersky GReAT, "Armored Likho expands its cyber-espionage toolkit"
+Publication date: 2026-08-13
+Campaign observed: May 2026
+hxxps://securelist[.]com/armored-likho-still-toolkit/121033/
+
+Official platform documentation
+Microsoft Learn, SecurityEvent table, updated 2026-07-27; accessed 2026-08-14
+hxxps://learn[.]microsoft[.]com/en-us/azure/azure-monitor/reference/tables/securityevent
+
+Microsoft Learn, Windows Security Event 4697; accessed 2026-08-14
+hxxps://learn[.]microsoft[.]com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4697
+
+MITRE ATT&CK
+T1543.003 - Create or Modify System Process: Windows Service
+hxxps://attack[.]mitre[.]org/techniques/T1543/003/
+
+Evidence boundary
+Kaspersky directly reports Still Sync creating a TReload service and Still Audio creating an auxhost service when --console is absent. The source does not publish the exact service command. Event 4697 proves service-installation metadata only; it does not prove implant execution, Telegram theft, audio capture, C2 activity, successful persistence, or Armored Likho attribution.
