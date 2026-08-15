@@ -88,9 +88,14 @@ Detection-Threat-Landscape/
 │       ├── hunting.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 15-08-2026 - honeymyte/
-    └── coolclient-msagent-driver-service/hunting/
-        ├── hunting.kql
+├── 15-08-2026 - honeymyte/
+│   └── coolclient-msagent-driver-service/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 15-08-2026 - cve-2026-8452/
+    └── netscaler-nsppe-crash-signals/validation/
+        ├── validation.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -99,6 +104,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 15 August 2026 | [NetScaler / CVE-2026-8452](./15-08-2026%20-%20cve-2026-8452/) | Microsoft Sentinel | Validate whether NetScaler `nsppe` crash, core, abort or restart signals are retained in `Syslog`; a match does not establish exploitation | Validation |
 | 15 August 2026 | [HoneyMyte / CoolClient](./15-08-2026%20-%20honeymyte/) | Microsoft Sentinel | Windows Security Event 4697 records the source-observed `msagent` service pointing to `msagent.sys` before kernel-rootkit behavior | Hunting |
 | 14 August 2026 | [Armored Likho / Still Toolkit](./14-08-2026%20-%20armored-likho/) | Microsoft Sentinel | Windows Security Event 4697 records source-observed `TReload` or `auxhost` service installation | Hunting |
 | 13 August 2026 | [Head Mare / PhantomGraph](./13-08-2026%20-%20head-mare/) | Microsoft Sentinel | Windows Security Event 4697 records source-observed `SysExcSvc` or `SysReadSvc` installation through `cmd /c` and a temporary `cmd_cmd_*.bat` file | Hunting |
