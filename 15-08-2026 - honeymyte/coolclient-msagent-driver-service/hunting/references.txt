@@ -1,0 +1,25 @@
+HoneyMyte / CoolClient kernel driver service hunt
+Report date: 15 August 2026
+
+Primary technical research
+- Kaspersky GReAT, "APT group HoneyMyte upgrades CoolClient: the backdoor gets a kernel-level Windows rootkit," published 14 August 2026; observed activity: late 2025 and 2026, with victims in Myanmar, Mongolia, Pakistan, and Russia.
+  hxxps://securelist[.]com/honeymyte-coolclient-driver-rootkit/121028/
+
+Official documentation
+- Microsoft Learn, "SecurityEvent" table, updated 27 July 2026; accessed 15 August 2026.
+  hxxps://learn[.]microsoft[.]com/en-us/azure/azure-monitor/reference/tables/securityevent
+- Microsoft Learn, "4697(S): A service was installed in the system," accessed 15 August 2026.
+  hxxps://learn[.]microsoft[.]com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4697
+- MITRE ATT&CK, T1543.003 Create or Modify System Process: Windows Service, accessed 15 August 2026.
+  hxxps://attack[.]mitre[.]org/techniques/T1543/003/
+
+Classification: Hunting query - Untested implementation sketch
+Confidence: Medium
+Logic type: Campaign-specific artifact
+Primary platform: Microsoft Sentinel
+Required telemetry: Windows Security Event 4697 via Windows Security Events using AMA
+
+Evidence boundary
+- The source directly reports creation of the msagent driver service and the msagent.sys filename.
+- Event 4697 records new-service installation metadata, including ServiceName and ServiceFileName.
+- The query does not prove driver load, successful service start, IOCTL use, rootkit effects, C2 success, or HoneyMyte attribution.

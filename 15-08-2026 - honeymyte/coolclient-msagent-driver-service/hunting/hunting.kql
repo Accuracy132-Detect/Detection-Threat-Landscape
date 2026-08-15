@@ -1,0 +1,25 @@
+// Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required connector: Windows Security Events via AMA
+// Required audit policy: Audit Security System Extension (Success)
+// Evidence: Kaspersky observed CoolClient creating the msagent driver service
+// and writing the driver as msagent.sys. A match is a campaign lead, not proof
+// that the driver loaded, its IOCTLs ran, or HoneyMyte operated the host.
+SecurityEvent
+| where EventID == 4697
+| where ServiceName =~ "msagent"
+| where ServiceFileName endswith @"\msagent.sys"
+| project
+    TimeGenerated,
+    Computer,
+    EventRecordId,
+    ServiceName,
+    ServiceFileName,
+    ServiceType,
+    ServiceStartType,
+    SubjectUserSid,
+    SubjectUserName,
+    SubjectDomainName,
+    SubjectLogonId,
+    _ResourceId
+| order by TimeGenerated desc
