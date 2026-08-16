@@ -93,9 +93,14 @@ Detection-Threat-Landscape/
 │       ├── hunting.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 15-08-2026 - cve-2026-8452/
-    └── netscaler-nsppe-crash-signals/validation/
-        ├── validation.kql
+├── 15-08-2026 - cve-2026-8452/
+│   └── netscaler-nsppe-crash-signals/validation/
+│       ├── validation.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 16-08-2026 - evooo1bot/
+    └── cron-download-pipe-shell/hunting/
+        ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -104,6 +109,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 16 August 2026 | [Evooo1Bot](./16-08-2026%20-%20evooo1bot/) | Microsoft Defender XDR | Source-observed recurring Linux `wget`/`curl` downloader pipeline executed through `/bin/sh` with output suppressed | Hunting |
 | 15 August 2026 | [NetScaler / CVE-2026-8452](./15-08-2026%20-%20cve-2026-8452/) | Microsoft Sentinel | Validate whether NetScaler `nsppe` crash, core, abort or restart signals are retained in `Syslog`; a match does not establish exploitation | Validation |
 | 15 August 2026 | [HoneyMyte / CoolClient](./15-08-2026%20-%20honeymyte/) | Microsoft Sentinel | Windows Security Event 4697 records the source-observed `msagent` service pointing to `msagent.sys` before kernel-rootkit behavior | Hunting |
 | 14 August 2026 | [Armored Likho / Still Toolkit](./14-08-2026%20-%20armored-likho/) | Microsoft Sentinel | Windows Security Event 4697 records source-observed `TReload` or `auxhost` service installation | Hunting |

@@ -1,0 +1,25 @@
+// Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Defender XDR / Advanced Hunting
+// Required telemetry: Microsoft Defender for Endpoint process creation on Linux
+// Evidence: FortiGuard observed Evooo1Bot installing a five-minute cron entry
+// that executes this dual downloader-to-shell pipeline with output suppressed.
+// A match is a persistence lead, not proof of Evooo1Bot attribution.
+DeviceProcessEvents
+| where FileName in~ ("sh", "bash")
+| where ProcessCommandLine contains "wget -qO-"
+| where ProcessCommandLine contains "|| curl -sL"
+| where ProcessCommandLine contains "| /bin/sh"
+| where ProcessCommandLine contains "> /dev/null 2>&1"
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    ReportId,
+    FileName,
+    FolderPath,
+    ProcessCommandLine,
+    AccountName,
+    InitiatingProcessFileName,
+    InitiatingProcessCommandLine,
+    InitiatingProcessAccountName
+| order by Timestamp desc

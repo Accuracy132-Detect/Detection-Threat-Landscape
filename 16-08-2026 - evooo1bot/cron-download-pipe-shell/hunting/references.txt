@@ -1,0 +1,28 @@
+Evooo1Bot recurring downloader-to-shell persistence hunt
+Report date: 16 August 2026
+
+Primary technical research
+- FortiGuard Labs, "Multi-Functional Linux Botnet Evooo1Bot," published 13 August 2026; active targeting observed since July 2026.
+  hxxps://www[.]fortinet[.]com/blog/threat-research/multi-functional-linux-botnet-evooo1bot
+
+Official documentation
+- Microsoft Learn, "DeviceProcessEvents table in the advanced hunting schema," updated 7 August 2026; accessed 16 August 2026.
+  hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+- Microsoft Learn, "Prerequisites for Microsoft Defender for Endpoint on Linux," updated 12 June 2026; accessed 16 August 2026.
+  hxxps://learn[.]microsoft[.]com/en-us/defender-endpoint/mde-linux-prerequisites
+- Microsoft Learn, "Use eBPF-based sensor for Microsoft Defender for Endpoint on Linux," accessed 16 August 2026.
+  hxxps://learn[.]microsoft[.]com/en-us/defender-endpoint/linux-support-ebpf
+- MITRE ATT&CK, T1059.004 Unix Shell and T1053.003 Cron; accessed 16 August 2026.
+  hxxps://attack[.]mitre[.]org/techniques/T1059/004/
+  hxxps://attack[.]mitre[.]org/techniques/T1053/003/
+
+Classification: Hunting query - Untested implementation sketch
+Confidence: Medium
+Logic type: Campaign-specific behavioral artifact
+Primary platform: Microsoft Defender XDR
+Required telemetry: DeviceProcessEvents from Linux servers onboarded to Microsoft Defender for Endpoint
+
+Evidence boundary
+- FortiGuard directly reports a cron entry that runs every five minutes and uses wget/curl piped to /bin/sh with output redirected to /dev/null.
+- DeviceProcessEvents documents process creation and ProcessCommandLine.
+- The query does not prove cron ownership, successful download, payload execution, persistence success, C2 activity or Evooo1Bot attribution.
