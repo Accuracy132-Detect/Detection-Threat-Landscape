@@ -1,0 +1,26 @@
+// Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Defender XDR / Advanced Hunting
+// Required telemetry: Microsoft Defender for Endpoint registry events on Windows
+// Evidence: Acronis TRU observed PATCHCORD writing its executable path to the
+// BeaconBrowserHijack value under the current user's Run key.
+// This campaign-specific artifact is a persistence lead, not attribution proof.
+DeviceRegistryEvents
+| where RegistryKey endswith @"\Software\Microsoft\Windows\CurrentVersion\Run"
+| where RegistryValueName =~ "BeaconBrowserHijack"
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    ReportId,
+    ActionType,
+    RegistryKey,
+    RegistryValueName,
+    RegistryValueData,
+    PreviousRegistryValueData,
+    InitiatingProcessFileName,
+    InitiatingProcessFolderPath,
+    InitiatingProcessCommandLine,
+    InitiatingProcessAccountName,
+    InitiatingProcessSHA1,
+    InitiatingProcessUniqueId
+| order by Timestamp desc

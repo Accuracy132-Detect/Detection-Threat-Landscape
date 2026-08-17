@@ -1,0 +1,22 @@
+PATCHCORD - BeaconBrowserHijack Run-key persistence hunt
+Report date: 17 August 2026
+
+Primary technical research
+- Acronis Threat Research Unit, "PATCHCORD: New malware cluster targets Afghan telecom and South Asian critical infrastructure," published 13 August 2026; campaign artifact discovered in June 2026; accessed 17 August 2026.
+  hxxps://www[.]acronis[.]com/en/tru/posts/patchcord-new-malware-cluster-targets-afghan-telecom-and-south-asian-critical-infrastructure/
+
+Official telemetry documentation
+- Microsoft Learn, "DeviceRegistryEvents table in the advanced hunting schema," last updated 11 June 2025; accessed 17 August 2026.
+  hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceregistryevents-table
+- MITRE ATT&CK, T1060 Registry Run Keys / Startup Folder, accessed 17 August 2026.
+  hxxps://attack[.]mitre[.]org/techniques/T1060/
+
+Classification: Hunting query - Untested implementation sketch
+Confidence: Medium
+Primary platform: Microsoft Defender XDR
+Required telemetry: DeviceRegistryEvents populated by Microsoft Defender for Endpoint
+
+Evidence boundary
+- Acronis directly reports that PATCHCORD checks and writes the value BeaconBrowserHijack under HKCU\Software\Microsoft\Windows\CurrentVersion\Run, with its own executable path as data.
+- The query identifies this exact campaign-specific persistence artifact. It does not verify the file behind RegistryValueData, browser-shortcut rewriting, successful execution, C2 communication or APT36 attribution.
+- ActionType is projected for investigation but not filtered because supported values must be verified in the target portal schema.

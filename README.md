@@ -98,8 +98,13 @@ Detection-Threat-Landscape/
 │       ├── validation.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 16-08-2026 - evooo1bot/
-    └── cron-download-pipe-shell/hunting/
+├── 16-08-2026 - evooo1bot/
+│   └── cron-download-pipe-shell/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 17-08-2026 - patchcord/
+    └── beaconbrowserhijack-run-key/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -109,6 +114,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 17 August 2026 | [PATCHCORD](./17-08-2026%20-%20patchcord/) | Microsoft Defender XDR | Source-observed `BeaconBrowserHijack` value written under the current user's Windows `Run` key | Hunting |
 | 16 August 2026 | [Evooo1Bot](./16-08-2026%20-%20evooo1bot/) | Microsoft Defender XDR | Source-observed recurring Linux `wget`/`curl` downloader pipeline executed through `/bin/sh` with output suppressed | Hunting |
 | 15 August 2026 | [NetScaler / CVE-2026-8452](./15-08-2026%20-%20cve-2026-8452/) | Microsoft Sentinel | Validate whether NetScaler `nsppe` crash, core, abort or restart signals are retained in `Syslog`; a match does not establish exploitation | Validation |
 | 15 August 2026 | [HoneyMyte / CoolClient](./15-08-2026%20-%20honeymyte/) | Microsoft Sentinel | Windows Security Event 4697 records the source-observed `msagent` service pointing to `msagent.sys` before kernel-rootkit behavior | Hunting |
