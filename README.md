@@ -103,8 +103,13 @@ Detection-Threat-Landscape/
 │       ├── hunting.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 17-08-2026 - patchcord/
-    └── beaconbrowserhijack-run-key/hunting/
+├── 17-08-2026 - patchcord/
+│   └── beaconbrowserhijack-run-key/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 18-08-2026 - jewelbug/
+    └── com-microsoft-runedge-native-messaging-host/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -114,6 +119,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 18 August 2026 | [Jewelbug / XG-Web](./18-08-2026%20-%20jewelbug/) | Microsoft Defender XDR | Source-observed Chrome native-messaging host key `com.microsoft.runedge` used to bridge a malicious browser extension to a Windows helper | Hunting |
 | 17 August 2026 | [PATCHCORD](./17-08-2026%20-%20patchcord/) | Microsoft Defender XDR | Source-observed `BeaconBrowserHijack` value written under the current user's Windows `Run` key | Hunting |
 | 16 August 2026 | [Evooo1Bot](./16-08-2026%20-%20evooo1bot/) | Microsoft Defender XDR | Source-observed recurring Linux `wget`/`curl` downloader pipeline executed through `/bin/sh` with output suppressed | Hunting |
 | 15 August 2026 | [NetScaler / CVE-2026-8452](./15-08-2026%20-%20cve-2026-8452/) | Microsoft Sentinel | Validate whether NetScaler `nsppe` crash, core, abort or restart signals are retained in `Syslog`; a match does not establish exploitation | Validation |

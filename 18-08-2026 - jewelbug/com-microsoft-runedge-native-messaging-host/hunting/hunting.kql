@@ -1,0 +1,26 @@
+// Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Defender XDR / Advanced Hunting
+// Required telemetry: Microsoft Defender for Endpoint registry events on Windows
+// Evidence: Symantec observed Jewelbug writing the Chrome native-messaging host
+// key HKCU\SOFTWARE\Google\Chrome\NativeMessagingHosts\com.microsoft.runedge.
+// This exact campaign artifact is a triage lead, not attribution proof.
+DeviceRegistryEvents
+| where RegistryKey endswith @"\SOFTWARE\Google\Chrome\NativeMessagingHosts\com.microsoft.runedge"
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    ReportId,
+    ActionType,
+    RegistryKey,
+    RegistryValueName,
+    RegistryValueType,
+    RegistryValueData,
+    PreviousRegistryValueData,
+    InitiatingProcessFileName,
+    InitiatingProcessFolderPath,
+    InitiatingProcessCommandLine,
+    InitiatingProcessAccountName,
+    InitiatingProcessSHA1,
+    InitiatingProcessUniqueId
+| order by Timestamp desc

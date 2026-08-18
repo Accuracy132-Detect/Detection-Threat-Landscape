@@ -1,0 +1,23 @@
+Jewelbug - com.microsoft.runedge native-messaging host hunt
+Report date: 18 August 2026
+
+Primary technical research
+- Symantec and Carbon Black Threat Hunter Team, "Jewelbug: APT Group Runs Espionage and Crypto Fraud Operations Side by Side," published 13 August 2026; investigation described as months-long and includes active-operation database evidence; accessed 18 August 2026.
+  hxxps://www[.]security[.]com/threat-intelligence/jewelbug-crypto-fraud-espionage
+
+Official telemetry documentation
+- Microsoft Learn, "DeviceRegistryEvents table in the advanced hunting schema," last updated 11 June 2025; accessed 18 August 2026.
+  hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceregistryevents-table
+- MITRE ATT&CK, T1176 Browser Extensions, accessed 18 August 2026.
+  hxxps://attack[.]mitre[.]org/techniques/T1176/
+
+Classification: Hunting query - Untested implementation sketch
+Logic type: Campaign-specific artifact
+Confidence: Medium
+Primary platform: Microsoft Defender XDR
+Required telemetry: DeviceRegistryEvents populated by Microsoft Defender for Endpoint
+
+Evidence boundary
+- Symantec directly reports that the Antino-delivered PDF Viewer extension used a Windows native-messaging helper registered under the misleading name com.microsoft.runedge and shows the exact Chrome registry path.
+- The query identifies Registry events touching that exact key. It does not prove the referenced manifest or helper is malicious, that the browser extension was loaded, that commands executed, that data was exfiltrated, or that Jewelbug is responsible.
+- RegistryValueData is projected for investigation but not filtered because the source does not publish its value. ActionType is also projected rather than filtered because supported values must be verified in the target portal schema.
