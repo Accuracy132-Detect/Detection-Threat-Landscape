@@ -1,0 +1,29 @@
+// Production candidate - Untested implementation sketch
+// Primary platform: Microsoft Defender XDR / Advanced Hunting
+// Required telemetry: Microsoft Defender for Endpoint registry events on Windows
+// Evidence: CISA, FBI and HHS report Medusa actors adding mimilib to the LSA
+// Security Packages REG_MULTI_SZ value so the credential-stealing SSP loads in LSASS.
+// Detection boundary: a match proves the Registry value contained "mimilib"; it does
+// not prove the DLL loaded, passwords were captured, or Medusa attribution.
+DeviceRegistryEvents
+| where RegistryKey endswith @"\SYSTEM\CurrentControlSet\Control\Lsa"
+| where RegistryValueName =~ "Security Packages"
+| where RegistryValueData contains "mimilib"
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    ReportId,
+    ActionType,
+    RegistryKey,
+    RegistryValueName,
+    RegistryValueType,
+    RegistryValueData,
+    PreviousRegistryValueData,
+    InitiatingProcessFileName,
+    InitiatingProcessFolderPath,
+    InitiatingProcessCommandLine,
+    InitiatingProcessAccountName,
+    InitiatingProcessSHA1,
+    InitiatingProcessUniqueId
+| order by Timestamp desc

@@ -1,0 +1,24 @@
+PRIMARY SOURCE
+CISA, FBI, and HHS, "#StopRansomware: Medusa Ransomware," Product ID AA25-071A.
+Original publication: 2025-03-12. Last updated: 2026-08-18.
+Updated with FBI investigations through 2026-04.
+hxxps://www[.]ic3[.]gov/CSA/2026/260818[.]pdf
+
+OFFICIAL PLATFORM DOCUMENTATION
+Microsoft Learn, "DeviceRegistryEvents table in the advanced hunting schema."
+Page updated: 2025-06-11. Accessed: 2026-08-19.
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceregistryevents-table
+
+ATT&CK
+MITRE ATT&CK, T1547.005, "Boot or Logon Autostart Execution: Security Support Provider."
+Live page last modified: 2025-10-24. Accessed: 2026-08-19.
+hxxps://attack[.]mitre[.]org/techniques/T1547/005/
+
+MITRE ATT&CK, T1003.001, "OS Credential Dumping: LSASS Memory."
+Accessed: 2026-08-19.
+hxxps://attack[.]mitre[.]org/techniques/T1003/001/
+
+EVIDENCE BOUNDARY
+The advisory directly reports the Registry command, the mimilib.dll purpose, and the
+kiwissp.log output path. The query detects only the Registry-value modification. It does
+not establish successful DLL loading, credential capture, log-file creation, or attribution.
