@@ -113,9 +113,14 @@ Detection-Threat-Landscape/
 │       ├── hunting.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 19-08-2026 - medusa/
-    └── mimilib-lsa-security-package/production-candidates/
-        ├── detection.kql
+├── 19-08-2026 - medusa/
+│   └── mimilib-lsa-security-package/production-candidates/
+│       ├── detection.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 20-08-2026 - grandoreiro/
+    └── dff-dupfdll-mingwm10-sideload/hunting/
+        ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -124,6 +129,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 20 August 2026 | [Grandoreiro](./20-08-2026%20-%20grandoreiro/) | Microsoft Defender XDR | One renamed process loads the source-observed co-located `dupfdll.dll` and `mingwm10.dll` Duplicate Files Finder sideload chain | Hunting |
 | 19 August 2026 | [Medusa ransomware](./19-08-2026%20-%20medusa/) | Microsoft Defender XDR | LSA `Security Packages` Registry value modified to load the source-observed Mimikatz `mimilib` credential-stealing SSP | Production candidate |
 | 18 August 2026 | [Jewelbug / XG-Web](./18-08-2026%20-%20jewelbug/) | Microsoft Defender XDR | Source-observed Chrome native-messaging host key `com.microsoft.runedge` used to bridge a malicious browser extension to a Windows helper | Hunting |
 | 17 August 2026 | [PATCHCORD](./17-08-2026%20-%20patchcord/) | Microsoft Defender XDR | Source-observed `BeaconBrowserHijack` value written under the current user's Windows `Run` key | Hunting |

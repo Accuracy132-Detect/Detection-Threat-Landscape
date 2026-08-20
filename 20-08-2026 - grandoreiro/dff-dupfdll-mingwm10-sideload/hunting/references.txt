@@ -1,0 +1,24 @@
+PRIMARY TECHNICAL RESEARCH
+Acronis Threat Research Unit, "Grandoreiro goes north: From Brazil to Mexico
+with a new DLL sideloading campaign."
+Publication date: 2026-08-19.
+Campaign observed: May 2026; telemetry period: the last 30 days of June 2026.
+Accessed: 2026-08-20.
+hxxps://www[.]acronis[.]com/en/tru/posts/grandoreiro-goes-north-from-brazil-to-mexico-with-a-new-dll-sideloading-campaign/
+
+OFFICIAL PLATFORM DOCUMENTATION
+Microsoft Learn, "DeviceImageLoadEvents table in the advanced hunting schema."
+Page updated: 2025-06-11. Accessed: 2026-08-20.
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceimageloadevents-table
+
+ATT&CK
+MITRE ATT&CK, T1574.002, "Hijack Execution Flow: DLL Side-Loading."
+Accessed: 2026-08-20.
+hxxps://attack[.]mitre[.]org/techniques/T1574/002/
+
+EVIDENCE BOUNDARY
+Acronis directly reports a renamed Duplicate Files Finder executable loading
+dupfdll.dll and then a malicious replacement mingwm10.dll from the same directory.
+The query identifies that exact module combination within one process identity. A
+match does not establish malicious file content, successful payload execution,
+Grandoreiro attribution, credential theft, or C2 communication.

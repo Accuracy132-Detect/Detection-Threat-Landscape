@@ -1,0 +1,30 @@
+// Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Defender XDR / Advanced Hunting
+// Required telemetry: Microsoft Defender for Endpoint DLL load events on Windows
+// Evidence: Acronis TRU observed a renamed Duplicate Files Finder executable loading
+// dupfdll.dll and then a malicious mingwm10.dll replacement from the same directory.
+// The process name is not filtered because the campaign renames the executable.
+let DffDependencyLoads =
+    DeviceImageLoadEvents
+    | where FileName =~ "dupfdll.dll"
+    | where isnotempty(InitiatingProcessUniqueId)
+    | project
+        DeviceId,
+        InitiatingProcessUniqueId,
+        DffDependencyTimestamp = Timestamp,
+        DffDependencyFolder = FolderPath;
+DeviceImageLoadEvents
+| where FileName =~ "mingwm10.dll"
+| where isnotempty(InitiatingProcessUniqueId)
+| join kind=innerunique DffDependencyLoads on DeviceId, InitiatingProcessUniqueId
+| where FolderPath =~ DffDependencyFolder
+| where FolderPath =~ InitiatingProcessFolderPath
+| project
+    Timestamp, DffDependencyTimestamp, DeviceId, DeviceName, ReportId,
+    InitiatingProcessUniqueId, InitiatingProcessFileName,
+    InitiatingProcessFolderPath, InitiatingProcessSHA1,
+    InitiatingProcessVersionInfoOriginalFileName,
+    MaliciousCandidateFileName = FileName,
+    MaliciousCandidateFolder = FolderPath, MaliciousCandidateSHA1 = SHA1,
+    DffDependencyFolder
+| order by Timestamp desc
