@@ -1,0 +1,33 @@
+// Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Defender XDR / Advanced Hunting
+// Required telemetry: Microsoft Defender for Endpoint process creation events on Windows
+// Evidence: Cisco Talos observed UAT-10147 adding the two standard IIS inetsrv
+// directories to Microsoft Defender exclusions with Add-MpPreference and reg.exe.
+DeviceProcessEvents
+| where
+    (
+        FileName in~ ("powershell.exe", "powershell_ise.exe", "pwsh.exe")
+        and ProcessCommandLine contains "Add-MpPreference"
+        and ProcessCommandLine contains "-ExclusionPath"
+    )
+    or
+    (
+        FileName =~ "reg.exe"
+        and ProcessCommandLine contains "reg add"
+        and ProcessCommandLine contains @"Windows Defender\Exclusions\Paths"
+    )
+| where
+    ProcessCommandLine contains @"C:\Windows\System32\inetsrv"
+    or ProcessCommandLine contains @"C:\Windows\SysWOW64\inetsrv"
+| extend ExclusionMethod = iff(FileName =~ "reg.exe", "Registry command", "PowerShell cmdlet")
+| project
+    Timestamp, DeviceId, DeviceName, ReportId,
+    AccountDomain, AccountName, AccountSid,
+    FileName, FolderPath, SHA1, ProcessCommandLine,
+    ProcessIntegrityLevel, ProcessTokenElevation, ProcessUniqueId,
+    InitiatingProcessFileName, InitiatingProcessFolderPath,
+    InitiatingProcessCommandLine, InitiatingProcessSHA1,
+    InitiatingProcessAccountDomain, InitiatingProcessAccountName,
+    IsProcessRemoteSession, ProcessRemoteSessionIP,
+    ExclusionMethod
+| order by Timestamp desc

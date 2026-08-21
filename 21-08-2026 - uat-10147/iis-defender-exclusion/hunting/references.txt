@@ -1,0 +1,30 @@
+PRIMARY TECHNICAL RESEARCH
+Cisco Talos, "UAT-10147: Chinese-speaking adversary integrates agentic AI
+into post-compromise operations."
+Publication date: 2026-08-20. Accessed: 2026-08-21.
+Observed activity: 2026 campaign; the report does not provide a single complete
+campaign start/end interval for every documented intrusion.
+hxxps://blog[.]talosintelligence[.]com/uat-10147-chinese-speaking-adversary-integrates-agentic-ai-into-post-compromise-operations/
+
+COMPANION PRIMARY TECHNICAL RESEARCH
+Cisco Talos, "UAT-10147 deploys SPECTRE: A cross-platform implant with Linux
+rootkit and BYOVD capabilities."
+Publication date: 2026-08-20. Accessed: 2026-08-21.
+hxxps://blog[.]talosintelligence[.]com/uat-10147-deploys-spectre-a-cross-platform-implant-with-linux-rootkit-and-byovd-capabilities/
+
+OFFICIAL PLATFORM DOCUMENTATION
+Microsoft Learn, "DeviceProcessEvents table in the advanced hunting schema."
+Page updated: 2026-08-07. Accessed: 2026-08-21.
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+ATT&CK
+MITRE ATT&CK, T1685, "Disable or Modify Tools."
+Page created: 2026-04-14; last modified: 2026-05-12; accessed: 2026-08-21.
+hxxps://attack[.]mitre[.]org/techniques/T1685/
+
+EVIDENCE BOUNDARY
+Talos directly reports PowerShell Add-MpPreference and reg.exe commands that
+add C:\Windows\System32\inetsrv and C:\Windows\SysWOW64\inetsrv to Microsoft
+Defender exclusions. The query detects those command patterns. A match does not
+prove that the exclusion took effect, that malware was written to the excluded
+directories, that SPECTRE or BadIIS executed, or that UAT-10147 is responsible.

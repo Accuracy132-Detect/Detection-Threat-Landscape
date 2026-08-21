@@ -118,8 +118,13 @@ Detection-Threat-Landscape/
 │       ├── detection.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 20-08-2026 - grandoreiro/
-    └── dff-dupfdll-mingwm10-sideload/hunting/
+├── 20-08-2026 - grandoreiro/
+│   └── dff-dupfdll-mingwm10-sideload/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 21-08-2026 - uat-10147/
+    └── iis-defender-exclusion/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -129,6 +134,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 21 August 2026 | [UAT-10147](./21-08-2026%20-%20uat-10147/) | Microsoft Defender XDR | Source-observed PowerShell or Registry commands add the standard IIS `inetsrv` directories to Microsoft Defender exclusions | Hunting |
 | 20 August 2026 | [Grandoreiro](./20-08-2026%20-%20grandoreiro/) | Microsoft Defender XDR | One renamed process loads the source-observed co-located `dupfdll.dll` and `mingwm10.dll` Duplicate Files Finder sideload chain | Hunting |
 | 19 August 2026 | [Medusa ransomware](./19-08-2026%20-%20medusa/) | Microsoft Defender XDR | LSA `Security Packages` Registry value modified to load the source-observed Mimikatz `mimilib` credential-stealing SSP | Production candidate |
 | 18 August 2026 | [Jewelbug / XG-Web](./18-08-2026%20-%20jewelbug/) | Microsoft Defender XDR | Source-observed Chrome native-messaging host key `com.microsoft.runedge` used to bridge a malicious browser extension to a Windows helper | Hunting |
