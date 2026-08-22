@@ -123,9 +123,14 @@ Detection-Threat-Landscape/
 │       ├── hunting.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 21-08-2026 - uat-10147/
-    └── iis-defender-exclusion/hunting/
-        ├── hunting.kql
+├── 21-08-2026 - uat-10147/
+│   └── iis-defender-exclusion/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 22-08-2026 - cve-2026-73570/
+    └── zimbra-service-status-log-signals/validation/
+        ├── validation.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -134,6 +139,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 22 August 2026 | [Zimbra / CVE-2026-73570](./22-08-2026%20-%20cve-2026-73570/) | Microsoft Sentinel | Validate whether source-recommended Zimbra `Service status change` records are retained in `Syslog`; a match does not establish exploitation | Validation |
 | 21 August 2026 | [UAT-10147](./21-08-2026%20-%20uat-10147/) | Microsoft Defender XDR | Source-observed PowerShell or Registry commands add the standard IIS `inetsrv` directories to Microsoft Defender exclusions | Hunting |
 | 20 August 2026 | [Grandoreiro](./20-08-2026%20-%20grandoreiro/) | Microsoft Defender XDR | One renamed process loads the source-observed co-located `dupfdll.dll` and `mingwm10.dll` Duplicate Files Finder sideload chain | Hunting |
 | 19 August 2026 | [Medusa ransomware](./19-08-2026%20-%20medusa/) | Microsoft Defender XDR | LSA `Security Packages` Registry value modified to load the source-observed Mimikatz `mimilib` credential-stealing SSP | Production candidate |
