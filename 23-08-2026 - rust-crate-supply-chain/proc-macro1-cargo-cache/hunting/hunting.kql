@@ -1,0 +1,36 @@
+// Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Defender XDR / Advanced Hunting
+// Required telemetry: Microsoft Defender for Endpoint file events on developer
+// workstations and persistent or self-hosted CI runners.
+// Evidence: the Rust Security Response Team recommends checking Cargo registry
+// caches for these exact compromised versions and attacker-owned crate names.
+DeviceFileEvents
+| where FolderPath contains ".cargo"
+    and FolderPath contains "registry"
+    and FolderPath contains "cache"
+| where
+    FileName in~ (
+        "arrayref-0.3.10.crate",
+        "internment-0.8.7.crate",
+        "append-only-vec-0.1.9.crate"
+    )
+    or (
+        FileName endswith ".crate"
+        and (
+            FileName startswith "proc-macro1-"
+            or FileName startswith "proc-macro-en-"
+            or FileName startswith "aovine-"
+            or FileName startswith "arone-"
+            or FileName startswith "aronenao-"
+            or FileName startswith "tinymember-"
+        )
+    )
+| project
+    Timestamp, DeviceId, DeviceName, ReportId, ActionType,
+    FileName, FolderPath, PreviousFileName, PreviousFolderPath,
+    FileSize, SHA1, SHA256, FileOriginUrl, FileOriginIP,
+    InitiatingProcessAccountDomain, InitiatingProcessAccountName,
+    InitiatingProcessAccountUpn, InitiatingProcessFileName,
+    InitiatingProcessFolderPath, InitiatingProcessCommandLine,
+    InitiatingProcessId, InitiatingProcessUniqueId
+| order by Timestamp desc

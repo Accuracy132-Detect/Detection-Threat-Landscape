@@ -1,0 +1,37 @@
+OFFICIAL INCIDENT ADVISORY
+Rust Security Response Team, "Supply chain attack on arrayref."
+Publication and incident date: 2026-08-20. Accessed: 2026-08-23.
+The team verified that proc-macro1 contained a build script that downloaded a
+malicious payload. It lists the three compromised legitimate crate versions,
+six attacker-owned crate names, exact publication/deletion times, and the Cargo
+cache filenames defenders should inspect.
+hxxps://blog[.]rust-lang[.]org/2026/08/20/supply-chain-attack-on-arrayref/
+
+INDEPENDENT TECHNICAL RECONSTRUCTION
+StepSecurity, "Rust Supply-Chain Attack: arrayref, internment, and
+append-only-vec Poisoned by the proc-macro1 Build-Time Dropper."
+Publication/update date: 2026-08-20. Accessed: 2026-08-23.
+The analysis reconstructs registry history, dependency changes, build.rs
+behavior and the build-time execution chain. It separates registry-verified
+artifacts from stage-2 observations reported by third parties.
+hxxps://www[.]stepsecurity[.]io/blog/arrayref-rust-crate-supply-chain-attack
+
+OFFICIAL PLATFORM DOCUMENTATION
+Microsoft Learn, "DeviceFileEvents table in the advanced hunting schema."
+Page updated: 2026-06-22. Accessed: 2026-08-23.
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-devicefileevents-table
+
+ATT&CK
+MITRE ATT&CK, T1195.001, "Compromise Software Dependencies and Development
+Tools."
+Version 1.3; last modified: 2026-05-12; accessed: 2026-08-23.
+hxxps://attack[.]mitre[.]org/techniques/T1195/001/
+
+EVIDENCE BOUNDARY
+The query searches file-system events for the official Cargo cache filenames.
+A match shows that an affected or attacker-owned .crate artifact was observed
+in a Cargo registry cache; it does not prove that Cargo compiled the crate, that
+build.rs executed, that the payload was downloaded, or that secrets were stolen.
+The C2 addresses, /tmp/rust-setup and stage-2 persistence artifacts are excluded
+from this primary query because this package is limited to the official cache
+check and avoids mixing evidence tiers.
