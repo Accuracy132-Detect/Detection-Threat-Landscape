@@ -1,0 +1,41 @@
+PRIMARY TECHNICAL RESEARCH
+Check Point Research, "BTR Reforged: Weaponizing Defender's Remediation Driver
+as a Kernel Operation Primitive."
+Publication date: 2026-08-20. Accessed: 2026-08-24.
+The researchers reverse engineered BTR.sys and reproduced the BTR_CLI PoC. In
+Sysmon Event ID 15 they observed the PoC writing feedback to a secondary .dat
+ADS on the .sys driver, whereas legitimate MpEngine.dll wrote feedback as a
+standalone file under the Windows Defender RebootActions directory. They did
+not observe real-world abuse.
+hxxps://research[.]checkpoint[.]com/2026/btr-reforged-weaponizing-defenders-remediation-driver-as-a-kernel-operation-primitive/
+
+OFFICIAL TELEMETRY DOCUMENTATION
+Microsoft Sysinternals, "Sysmon."
+Page updated: 2026-06-17. Accessed: 2026-08-24.
+Event ID 15, FileCreateStreamHash, records creation of named file streams and
+the stream contents.
+hxxps://learn[.]microsoft[.]com/en-us/sysinternals/downloads/sysmon
+
+Microsoft Learn, "WindowsEvent table."
+Page updated: 2026-07-28. Accessed: 2026-08-24.
+Documents Channel, Computer, Correlation, EventData, EventID, EventRecordId,
+Provider, RawEventData, SystemProcessId, SystemUserId and TimeGenerated.
+hxxps://learn[.]microsoft[.]com/en-us/azure/azure-monitor/reference/tables/windowsevent
+
+Microsoft Learn, "Collect events from Microsoft Sentinel sources by using the
+Windows Event Forwarding connector."
+Accessed: 2026-08-24.
+hxxps://learn[.]microsoft[.]com/en-us/azure/sentinel/data-connectors/windows-event-forwarding
+
+ATT&CK
+MITRE ATT&CK, T1564.004, "Hide Artifacts: NTFS File Attributes."
+Version 2.0; last modified: 2026-05-12; accessed: 2026-08-24.
+hxxps://attack[.]mitre[.]org/techniques/T1564/004/
+
+EVIDENCE BOUNDARY
+The query validates the current BTR_CLI-specific feedback artifact. A match is
+not proof that BTR.sys executed malicious operations, that Defender was
+disabled, or that a real attacker was present. The universal .sys:changelist
+stream is deliberately excluded because Check Point observed it in both
+legitimate Defender remediation and the PoC. EventData.TargetFilename must be
+confirmed against a raw Event ID 15 sample in the target workspace.

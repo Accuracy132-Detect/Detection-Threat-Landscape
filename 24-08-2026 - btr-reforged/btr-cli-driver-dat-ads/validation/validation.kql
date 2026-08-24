@@ -1,0 +1,19 @@
+// Validation query - Untested implementation sketch
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Prerequisite: Sysmon Event ID 15 from Microsoft-Windows-Sysmon/Operational
+// collected into WindowsEvent through an AMA DCR or Windows Event Forwarding.
+// Evidence: Check Point observed BTR_CLI writing its feedback report to a
+// secondary .dat ADS on the .sys driver. The current legitimate Defender
+// workflow writes feedback as a standalone file under RebootActions instead.
+WindowsEvent
+| where Provider == "Microsoft-Windows-Sysmon"
+| where Channel == "Microsoft-Windows-Sysmon/Operational"
+| where EventID == 15
+| extend TargetFilename = tostring(EventData.TargetFilename)
+| where TargetFilename contains ".sys:"
+    and TargetFilename endswith ".dat"
+| project
+    TimeGenerated, Computer, EventRecordId, Provider, Channel, EventID,
+    TargetFilename, EventData, RawEventData, SystemProcessId, SystemUserId,
+    Correlation, _ResourceId
+| order by TimeGenerated desc
