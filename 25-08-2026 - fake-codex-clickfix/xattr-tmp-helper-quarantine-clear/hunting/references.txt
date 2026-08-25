@@ -1,0 +1,30 @@
+Fake Codex ClickFix - xattr clearing on staged /tmp/helper
+Report date: 25 August 2026
+Classification: Hunting query - Untested implementation sketch
+Confidence: Medium
+
+PRIMARY TECHNICAL RESEARCH
+
+Cato CTRL, "When Trust Becomes the Payload in a Fake Codex ClickFix Campaign."
+Publication date: 24 August 2026.
+Observed activity date / campaign period: not stated as a discrete date; Cato describes multiple observed infrastructure sets and continuing tracking as of publication.
+Direct support: the deobfuscated second stage downloads the final payload to /tmp/helper, runs xattr -c, applies chmod +x, and executes the Mach-O.
+hxxps://www[.]catonetworks[.]com/blog/cato-ctrl-when-trust-becomes-payload-in-fake-codex-clickfix-campaign/
+
+OFFICIAL TELEMETRY DOCUMENTATION
+
+Microsoft Learn, "DeviceProcessEvents table in the advanced hunting schema."
+Accessed: 25 August 2026.
+Direct support: DeviceProcessEvents contains process-creation records from Microsoft Defender for Endpoint and documents the fields used by hunting.kql.
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+ATT&CK REFERENCE
+
+MITRE ATT&CK, T1553.001, "Subvert Trust Controls: Gatekeeper Bypass."
+Last modified: 12 May 2026. Accessed: 25 August 2026.
+Direct support: removal of macOS quarantine extended attributes can subvert Gatekeeper warning and trust checks.
+hxxps://attack[.]mitre[.]org/techniques/T1553/001/
+
+EVIDENCE BOUNDARY
+
+The exact /tmp/helper path is a mutable campaign artifact. The query does not inspect the downloaded script or Mach-O contents and does not prove that chmod or payload execution succeeded. Cato assesses strong overlap with AMOS delivery activity; the xattr event alone must not be used for malware-family attribution.

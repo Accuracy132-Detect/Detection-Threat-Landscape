@@ -1,0 +1,36 @@
+// Fake Codex ClickFix - xattr clearing on staged /tmp/helper
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR / Advanced Hunting
+// Required telemetry: Microsoft Defender for Endpoint process events on macOS
+//
+// Evidence: Cato CTRL observed the second-stage shell downloading a Mach-O
+// payload to /tmp/helper, invoking xattr -c on that file, then chmod +x and
+// execution. This query isolates the directly observed anti-quarantine action.
+// A match is an investigation lead; it does not prove AMOS execution,
+// successful C2, credential theft, or attribution.
+
+DeviceProcessEvents
+| where FileName =~ "xattr"
+| where ProcessCommandLine contains "-c"
+| where ProcessCommandLine contains "/tmp/helper"
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    ReportId,
+    ActionType,
+    FileName,
+    FolderPath,
+    ProcessCommandLine,
+    ProcessId,
+    AccountName,
+    AccountUpn,
+    InitiatingProcessFileName,
+    InitiatingProcessFolderPath,
+    InitiatingProcessCommandLine,
+    InitiatingProcessId,
+    InitiatingProcessAccountName,
+    InitiatingProcessAccountUpn,
+    SHA1
+| order by Timestamp desc

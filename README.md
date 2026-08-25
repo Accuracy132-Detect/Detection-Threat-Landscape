@@ -138,9 +138,14 @@ Detection-Threat-Landscape/
 │       ├── hunting.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 24-08-2026 - btr-reforged/
-    └── btr-cli-driver-dat-ads/validation/
-        ├── validation.kql
+├── 24-08-2026 - btr-reforged/
+│   └── btr-cli-driver-dat-ads/validation/
+│       ├── validation.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 25-08-2026 - fake-codex-clickfix/
+    └── xattr-tmp-helper-quarantine-clear/hunting/
+        ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -149,6 +154,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 25 August 2026 | [Fake Codex ClickFix](./25-08-2026%20-%20fake-codex-clickfix/) | Microsoft Defender XDR | Source-observed `xattr -c` against the staged `/tmp/helper` Mach-O before permission change and execution | Hunting |
 | 24 August 2026 | [BTR Reforged](./24-08-2026%20-%20btr-reforged/) | Microsoft Sentinel | Validate the current BTR_CLI-specific secondary `.dat` ADS on a `.sys` driver through Sysmon Event ID 15; a match does not establish malicious BTR execution | Validation |
 | 23 August 2026 | [Rust crate supply-chain attack](./23-08-2026%20-%20rust-crate-supply-chain/) | Microsoft Defender XDR | Officially listed compromised and attacker-owned `.crate` artifacts observed in Cargo registry caches on developer or CI systems | Hunting |
 | 22 August 2026 | [Zimbra / CVE-2026-73570](./22-08-2026%20-%20cve-2026-73570/) | Microsoft Sentinel | Validate whether source-recommended Zimbra `Service status change` records are retained in `Syslog`; a match does not establish exploitation | Validation |
