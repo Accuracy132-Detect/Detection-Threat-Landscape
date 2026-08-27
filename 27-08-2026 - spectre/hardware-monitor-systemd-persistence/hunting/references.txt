@@ -1,0 +1,23 @@
+SPECTRE / UAT-10147 primary research
+Organization: Cisco Talos
+Title: UAT-10147 deploys SPECTRE: A cross-platform implant with Linux rootkit and BYOVD capabilities
+Publication date: 2026-08-20
+Observed activity period: campaign activity described by Talos; exact start/end dates not disclosed in the report
+Direct URL (defanged): hxxps://blog[.]talosintelligence[.]com/uat-10147-deploys-spectre-a-cross-platform-implant-with-linux-rootkit-and-byovd-capabilities/
+
+Microsoft Defender XDR schema
+Organization: Microsoft
+Title: DeviceFileEvents table in the advanced hunting schema
+Last updated: 2026-06-22
+Direct URL (defanged): hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-devicefileevents-table
+
+Microsoft Defender for Endpoint on Linux sensor visibility
+Organization: Microsoft
+Title: Use eBPF-based sensor for Microsoft Defender for Endpoint on Linux
+Page date observed: 2026-02-07
+Direct URL (defanged): hxxps://learn[.]microsoft[.]com/en-us/defender-endpoint/linux-support-ebpf
+
+MITRE ATT&CK
+Technique: T1543.002 - Create or Modify System Process: Systemd Service
+Direct URL (defanged): hxxps://attack[.]mitre[.]org/techniques/T1543/002/
+

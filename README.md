@@ -143,8 +143,13 @@ Detection-Threat-Landscape/
 │       ├── validation.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 25-08-2026 - fake-codex-clickfix/
-    └── xattr-tmp-helper-quarantine-clear/hunting/
+├── 25-08-2026 - fake-codex-clickfix/
+│   └── xattr-tmp-helper-quarantine-clear/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 27-08-2026 - spectre/
+    └── hardware-monitor-systemd-persistence/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -154,6 +159,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 27 August 2026 | [SPECTRE / UAT-10147](./27-08-2026%20-%20spectre/) | Microsoft Defender XDR | Source-observed `hardware-monitor.service` systemd persistence artifact on Linux servers | Hunting |
 | 25 August 2026 | [Fake Codex ClickFix](./25-08-2026%20-%20fake-codex-clickfix/) | Microsoft Defender XDR | Source-observed `xattr -c` against the staged `/tmp/helper` Mach-O before permission change and execution | Hunting |
 | 24 August 2026 | [BTR Reforged](./24-08-2026%20-%20btr-reforged/) | Microsoft Sentinel | Validate the current BTR_CLI-specific secondary `.dat` ADS on a `.sys` driver through Sysmon Event ID 15; a match does not establish malicious BTR execution | Validation |
 | 23 August 2026 | [Rust crate supply-chain attack](./23-08-2026%20-%20rust-crate-supply-chain/) | Microsoft Defender XDR | Officially listed compromised and attacker-owned `.crate` artifacts observed in Cargo registry caches on developer or CI systems | Hunting |

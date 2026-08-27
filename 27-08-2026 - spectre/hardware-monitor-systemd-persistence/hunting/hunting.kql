@@ -1,0 +1,18 @@
+// SPECTRE hardware-monitor.service persistence hunt
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Telemetry: DeviceFileEvents from Microsoft Defender for Endpoint on Linux
+// Meaning: A match identifies creation/modification/observation of the source-reported
+// systemd unit name in a system unit directory. It does not prove SPECTRE execution.
+DeviceFileEvents
+| where FileName =~ "hardware-monitor.service"
+| where FolderPath startswith "/etc/systemd/system/"
+    or FolderPath startswith "/usr/lib/systemd/system/"
+    or FolderPath startswith "/lib/systemd/system/"
+| project Timestamp, DeviceId, DeviceName, ActionType, FileName, FolderPath,
+          SHA1, FileSize, InitiatingProcessFileName,
+          InitiatingProcessCommandLine, InitiatingProcessAccountName,
+          ReportId
+| order by Timestamp desc
+
