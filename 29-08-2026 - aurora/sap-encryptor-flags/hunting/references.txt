@@ -1,0 +1,11 @@
+CloudSEK TRIAD — Caught in 4K: The Aurora Files
+Publication date: 2026-08-27
+Observed activity: 2026-04 through 2026-07
+hxxps://www[.]cloudsek[.]com/blog/aurora-ransomware-affiliate-ai-attack-planning-crypto-payments
+
+Microsoft Learn — DeviceProcessEvents table in the advanced hunting schema
+Last updated: 2026-08-07
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK — T1486 Data Encrypted for Impact
+hxxps://attack[.]mitre[.]org/techniques/T1486/

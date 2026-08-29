@@ -148,8 +148,13 @@ Detection-Threat-Landscape/
 │       ├── hunting.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 27-08-2026 - spectre/
-    └── hardware-monitor-systemd-persistence/hunting/
+├── 27-08-2026 - spectre/
+│   └── hardware-monitor-systemd-persistence/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 29-08-2026 - aurora/
+    └── sap-encryptor-flags/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -159,6 +164,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 29 August 2026 | [Aurora ransomware](./29-08-2026%20-%20aurora/) | Microsoft Defender XDR | Source-recovered Windows `sap.exe` encryptor execution with compiled Aurora flag patterns | Hunting |
 | 27 August 2026 | [SPECTRE / UAT-10147](./27-08-2026%20-%20spectre/) | Microsoft Defender XDR | Source-observed `hardware-monitor.service` systemd persistence artifact on Linux servers | Hunting |
 | 25 August 2026 | [Fake Codex ClickFix](./25-08-2026%20-%20fake-codex-clickfix/) | Microsoft Defender XDR | Source-observed `xattr -c` against the staged `/tmp/helper` Mach-O before permission change and execution | Hunting |
 | 24 August 2026 | [BTR Reforged](./24-08-2026%20-%20btr-reforged/) | Microsoft Sentinel | Validate the current BTR_CLI-specific secondary `.dat` ADS on a `.sys` driver through Sysmon Event ID 15; a match does not establish malicious BTR execution | Validation |

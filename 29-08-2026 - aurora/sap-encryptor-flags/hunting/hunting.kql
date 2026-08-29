@@ -1,0 +1,18 @@
+// Aurora Windows encryptor execution with source-documented flags
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Status: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Telemetry prerequisite: Microsoft Defender for Endpoint -> DeviceProcessEvents
+// Scope: campaign-specific artifact; a match requires investigation and is not proof of encryption.
+DeviceProcessEvents
+| where FileName =~ "sap.exe"
+| where ProcessCommandLine contains "-percent"
+    or ProcessCommandLine contains "-scanners"
+    or ProcessCommandLine contains "-noparallel"
+    or ProcessCommandLine contains "-esxi"
+    or ProcessCommandLine contains "-allowfolders"
+| project Timestamp, DeviceId, DeviceName, FileName, FolderPath,
+          ProcessCommandLine, SHA1, ProcessId, ProcessUniqueId,
+          AccountName, AccountSid, InitiatingProcessFileName,
+          InitiatingProcessCommandLine, ReportId
+| order by Timestamp desc
