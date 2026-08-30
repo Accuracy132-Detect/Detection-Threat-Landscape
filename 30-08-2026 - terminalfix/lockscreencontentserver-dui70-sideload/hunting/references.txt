@@ -1,0 +1,23 @@
+TerminalFix campaign deploys a reverse tunnel through multistage intrusion
+Organization: Microsoft Security Research
+Publication date: 2026-08-28
+Observed activity date / campaign period: not disclosed in the public report
+URL: hxxps://www[.]microsoft[.]com/en-us/security/blog/2026/08/28/terminalfix-campaign-deploys-reverse-tunnel-through-multistage-intrusion/
+
+DeviceImageLoadEvents table in the advanced hunting schema
+Organization: Microsoft Learn
+Last updated: 2025-06-11
+URL: hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceimageloadevents-table
+
+parse_path() - Kusto
+Organization: Microsoft Learn
+Last updated: 2024-08-20
+URL: hxxps://learn[.]microsoft[.]com/en-us/kusto/query/parse-path-function
+
+Create custom detection rules in Microsoft Defender XDR
+Organization: Microsoft Learn
+Last updated: 2026-07-02
+URL: hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/custom-detection-rules
+
+MITRE ATT&CK T1574.002 - Hijack Execution Flow: DLL Side-Loading
+URL: hxxps://attack[.]mitre[.]org/techniques/T1574/002/

@@ -1,0 +1,21 @@
+// TerminalFix - LockScreenContentServer.exe loads co-located dui70.dll outside SystemApps
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: Microsoft Defender for Endpoint DeviceImageLoadEvents
+// Source behavior: Microsoft Security Research, published 2026-08-28
+// A match identifies the source-observed sideload pair; it does not by itself prove TerminalFix compromise.
+
+DeviceImageLoadEvents
+| where InitiatingProcessFileName =~ "LockScreenContentServer.exe"
+| where FileName =~ "dui70.dll"
+| extend LoadedDllDirectory = tostring(parse_path(FolderPath).DirectoryPath)
+| where LoadedDllDirectory =~ InitiatingProcessFolderPath
+| where not(InitiatingProcessFolderPath startswith @"C:\\Windows\\SystemApps\\")
+| project Timestamp, DeviceId, DeviceName,
+          InitiatingProcessFileName, InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine, InitiatingProcessUniqueId,
+          FileName, FolderPath, SHA1,
+          InitiatingProcessAccountName, InitiatingProcessAccountSid,
+          ReportId
+| order by Timestamp desc

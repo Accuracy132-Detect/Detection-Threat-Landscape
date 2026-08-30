@@ -153,8 +153,13 @@ Detection-Threat-Landscape/
 │       ├── hunting.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 29-08-2026 - aurora/
-    └── sap-encryptor-flags/hunting/
+├── 29-08-2026 - aurora/
+│   └── sap-encryptor-flags/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 30-08-2026 - terminalfix/
+    └── lockscreencontentserver-dui70-sideload/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -164,6 +169,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 30 August 2026 | [TerminalFix](./30-08-2026%20-%20terminalfix/) | Microsoft Defender XDR | Source-observed `LockScreenContentServer.exe` loading a co-located `dui70.dll` outside the standard Windows SystemApps location | Hunting |
 | 29 August 2026 | [Aurora ransomware](./29-08-2026%20-%20aurora/) | Microsoft Defender XDR | Source-recovered Windows `sap.exe` encryptor execution with compiled Aurora flag patterns | Hunting |
 | 27 August 2026 | [SPECTRE / UAT-10147](./27-08-2026%20-%20spectre/) | Microsoft Defender XDR | Source-observed `hardware-monitor.service` systemd persistence artifact on Linux servers | Hunting |
 | 25 August 2026 | [Fake Codex ClickFix](./25-08-2026%20-%20fake-codex-clickfix/) | Microsoft Defender XDR | Source-observed `xattr -c` against the staged `/tmp/helper` Mach-O before permission change and execution | Hunting |
