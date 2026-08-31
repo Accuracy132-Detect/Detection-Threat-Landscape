@@ -250,3 +250,4 @@ HTML templates, rendering sources, intermediate images, and working assets are n
 - Isolated IOCs are not treated as durable behavioral detections.
 - Every unexecuted query is labeled as an untested implementation sketch.
 - Accuracy and explainability take priority over query volume.
+

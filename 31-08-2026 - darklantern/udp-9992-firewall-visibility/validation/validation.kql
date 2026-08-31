@@ -1,0 +1,21 @@
+// DARKLANTERN inbound UDP/9992 firewall visibility
+// Classification: Validation query - Untested implementation sketch
+// Confidence: Medium
+// Platform: Microsoft Sentinel / Log Analytics
+// Prerequisite: perimeter firewall traffic logs mapped to CommonSecurityLog through CEF via AMA.
+// Purpose: validate whether the environment can observe traffic to the source-documented listener.
+// A match does not prove the 19-byte probe, command packet, device response, implant presence, or compromise.
+
+CommonSecurityLog
+| where Protocol =~ "UDP"
+| where DestinationPort == 9992
+| project TimeGenerated,
+          DeviceVendor, DeviceProduct, DeviceName,
+          CommunicationDirection,
+          SourceIP, SourcePort,
+          DestinationIP, DestinationPort,
+          DestinationTranslatedAddress, DestinationTranslatedPort,
+          Protocol, DeviceAction, SimplifiedDeviceAction,
+          DeviceInboundInterface, DeviceOutboundInterface,
+          Message
+| order by TimeGenerated desc

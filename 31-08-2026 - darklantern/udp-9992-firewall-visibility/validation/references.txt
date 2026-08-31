@@ -1,0 +1,31 @@
+DARKLANTERN inbound UDP/9992 firewall visibility validation
+Report date: 2026-08-31
+Classification: Validation query - Untested implementation sketch
+Confidence: Medium
+
+Primary technical research
+- VulnCheck, "Chinese Implants in the Supply Chain"
+  Publication date: 2026-08-27
+  Observed scan period: 2026-08-18 through 2026-08-21
+  hxxps://www[.]vulncheck[.]com/blog/zbt-darklantern-speakingstone
+
+Official platform documentation
+- Microsoft Learn, CommonSecurityLog table reference
+  Last updated: 2026-07-27
+  hxxps://learn[.]microsoft[.]com/en-us/azure/azure-monitor/reference/tables/commonsecuritylog
+- Microsoft Learn, CEF and CommonSecurityLog field mapping
+  Last updated: 2026-05-14
+  hxxps://learn[.]microsoft[.]com/en-us/azure/sentinel/cef-name-mapping
+- Microsoft Learn, Ingest syslog and CEF messages to Microsoft Sentinel with Azure Monitor Agent
+  Last updated: 2026-07-02
+  hxxps://learn[.]microsoft[.]com/en-us/azure/sentinel/connect-cef-syslog-ama
+
+ATT&CK mapping
+- None assigned. UDP/9992 traffic alone does not directly establish a specific ATT&CK technique.
+
+Evidence boundary
+- The source documents a DARKLANTERN service listening on UDP/9992, a 19-byte probe,
+  a UDP/8897 response, and command packets that can execute arbitrary commands.
+- The published query only retrieves firewall metadata for traffic whose destination port is 9992.
+- It cannot inspect packet payloads or prove delivery, response, implant presence, command execution,
+  or compromise.
