@@ -163,9 +163,14 @@ Detection-Threat-Landscape/
 │       ├── hunting.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 31-08-2026 - darklantern/
-    └── udp-9992-firewall-visibility/validation/
-        ├── validation.kql
+├── 31-08-2026 - darklantern/
+│   └── udp-9992-firewall-visibility/validation/
+│       ├── validation.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 01-09-2026 - valleyrat/
+    └── qnwallpaper-peloader/hunting/
+        ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -174,6 +179,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 1 September 2026 | [ValleyRAT](./01-09-2026%20-%20valleyrat/) | Microsoft Defender XDR | Exact `PeLoader` filename, QNWallpaper version-path prefix and source-observed MD5 for exposure hunting; a match does not establish decryption, memory loading or execution | Hunting |
 | 31 August 2026 | [DARKLANTERN](./31-08-2026%20-%20darklantern/) | Microsoft Sentinel | Validate perimeter CEF visibility for UDP traffic directed to the source-documented router listener on port 9992; a match does not establish protocol payload, implant presence, or compromise | Validation |
 | 30 August 2026 | [TerminalFix](./30-08-2026%20-%20terminalfix/) | Microsoft Defender XDR | Source-observed `LockScreenContentServer.exe` loading a co-located `dui70.dll` outside the standard Windows SystemApps location | Hunting |
 | 29 August 2026 | [Aurora ransomware](./29-08-2026%20-%20aurora/) | Microsoft Defender XDR | Source-recovered Windows `sap.exe` encryptor execution with compiled Aurora flag patterns | Hunting |

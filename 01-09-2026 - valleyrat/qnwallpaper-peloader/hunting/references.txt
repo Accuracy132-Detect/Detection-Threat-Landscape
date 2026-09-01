@@ -1,0 +1,32 @@
+VALLEYRAT QNWALLPAPER PELOADER HUNT
+Report date: 2026-09-01
+Classification: Hunting query - Untested implementation sketch
+Confidence: Medium
+
+PRIMARY RESEARCH
+Kaspersky GReAT — ValleyRAT masquerading as adware
+Publication date: 2026-08-31
+Observed activity: samples and telemetry described for 2026; exact first-seen date not stated
+hxxps://securelist[.]com/valleyrat-backdoor-adware/121175/
+
+OFFICIAL PLATFORM DOCUMENTATION
+Microsoft Learn — DeviceFileEvents table in the advanced hunting schema
+Last updated: 2026-06-22
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-devicefileevents-table
+
+Microsoft Learn — DisableAntiSpyware
+Last updated: 2024-03-29
+hxxps://learn[.]microsoft[.]com/en-us/windows-hardware/customize/desktop/unattend/security-malware-windows-defender-disableantispyware
+
+MITRE ATT&CK — T1027.013 Encrypted/Encoded File
+Version 2.0; last modified: 2026-05-12
+hxxps://attack[.]mitre[.]org/techniques/T1027/013/
+
+SOURCE-OBSERVED ARTIFACTS USED BY THE QUERY
+File name: PeLoader
+Folder prefix: C:\\Program Files\\QNWallpaper\\5.4.0.1662\\
+MD5: 48826d5ca845979d2e6ebd66dc1aae90
+
+LIMITATION
+This is an IOC-based campaign hunt. It does not detect generic encrypted payload staging,
+DLL sideloading, memory loading, persistence, or successful ValleyRAT execution.

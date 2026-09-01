@@ -1,0 +1,21 @@
+// ValleyRAT QNWallpaper PeLoader artifact
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR Advanced Hunting
+// Telemetry prerequisite: Microsoft Defender for Endpoint / DeviceFileEvents
+// Scope: exact source-observed campaign artifact. A match is not proof of payload execution.
+
+DeviceFileEvents
+| where FileName == "PeLoader"
+| where FolderPath startswith @"C:\\Program Files\\QNWallpaper\\5.4.0.1662\\"
+| where MD5 =~ "48826d5ca845979d2e6ebd66dc1aae90"
+| project Timestamp,
+          DeviceId, DeviceName, ActionType,
+          FileName, FolderPath, FileSize,
+          MD5, SHA1, SHA256,
+          FileOriginUrl, FileOriginReferrerUrl, FileOriginIP,
+          InitiatingProcessFileName, InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine, InitiatingProcessMD5,
+          InitiatingProcessSHA1, InitiatingProcessAccountName,
+          ReportId
+| order by Timestamp desc
