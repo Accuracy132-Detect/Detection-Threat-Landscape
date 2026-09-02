@@ -1,0 +1,25 @@
+// NodeRabbit MicrosoftEdgeUpdate Run-key persistence
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR Advanced Hunting
+// Telemetry prerequisite: Microsoft Defender for Endpoint / DeviceRegistryEvents
+// Scope: source-observed campaign persistence for NodeRabbit variant 1.
+// A match establishes a matching registry modification, not successful execution or C2.
+
+DeviceRegistryEvents
+| where RegistryKey endswith @"\Software\Microsoft\Windows\CurrentVersion\Run"
+| where RegistryValueName =~ "MicrosoftEdgeUpdate"
+| where RegistryValueData contains "nodew.exe"
+| where RegistryValueData contains "msedge_update.js"
+| project Timestamp,
+          DeviceId, DeviceName, ActionType,
+          RegistryKey, RegistryValueName, RegistryValueType, RegistryValueData,
+          PreviousRegistryValueData,
+          InitiatingProcessFileName, InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine,
+          InitiatingProcessSHA1, InitiatingProcessMD5,
+          InitiatingProcessAccountName, InitiatingProcessAccountSid,
+          InitiatingProcessIntegrityLevel, InitiatingProcessTokenElevation,
+          IsInitiatingProcessRemoteSession, InitiatingProcessRemoteSessionIP,
+          ReportId
+| order by Timestamp desc

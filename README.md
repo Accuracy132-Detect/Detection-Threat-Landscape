@@ -168,8 +168,13 @@ Detection-Threat-Landscape/
 │       ├── validation.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 01-09-2026 - valleyrat/
-    └── qnwallpaper-peloader/hunting/
+├── 01-09-2026 - valleyrat/
+│   └── qnwallpaper-peloader/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 02-09-2026 - noderabbit/
+    └── microsoftedgeupdate-run-key/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -179,6 +184,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 2 September 2026 | [NodeRabbit / Mirage Kitten](./02-09-2026%20-%20noderabbit/) | Microsoft Defender XDR | Source-observed `MicrosoftEdgeUpdate` Run value referencing both `nodew.exe` and `msedge_update.js`; a match does not establish logon execution, implant activity or C2 | Hunting |
 | 1 September 2026 | [ValleyRAT](./01-09-2026%20-%20valleyrat/) | Microsoft Defender XDR | Exact `PeLoader` filename, QNWallpaper version-path prefix and source-observed MD5 for exposure hunting; a match does not establish decryption, memory loading or execution | Hunting |
 | 31 August 2026 | [DARKLANTERN](./31-08-2026%20-%20darklantern/) | Microsoft Sentinel | Validate perimeter CEF visibility for UDP traffic directed to the source-documented router listener on port 9992; a match does not establish protocol payload, implant presence, or compromise | Validation |
 | 30 August 2026 | [TerminalFix](./30-08-2026%20-%20terminalfix/) | Microsoft Defender XDR | Source-observed `LockScreenContentServer.exe` loading a co-located `dui70.dll` outside the standard Windows SystemApps location | Hunting |

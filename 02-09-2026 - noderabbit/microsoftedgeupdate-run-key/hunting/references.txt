@@ -1,0 +1,32 @@
+NODERABBIT MICROSOFTEDGEUPDATE RUN-KEY HUNT
+Report date: 2026-09-02
+Classification: Hunting query - Untested implementation sketch
+Confidence: Medium
+
+PRIMARY RESEARCH
+Kaspersky GReAT — Mirage Kitten targeting aviation and FinTech sectors across
+the Middle East and Africa with a new malware set
+Publication date: 2026-09-01
+Observed activity: three NodeRabbit infections in Afghanistan, Egypt and Ethiopia;
+exact observation dates are not stated in the public report
+hxxps://securelist[.]com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/
+
+OFFICIAL PLATFORM DOCUMENTATION
+Microsoft Learn — DeviceRegistryEvents table in the advanced hunting schema
+Last updated: 2025-06-11
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceregistryevents-table
+
+MITRE ATT&CK — T1547.001 Registry Run Keys / Startup Folder
+Version 2.1; last modified: 2026-05-12
+hxxps://attack[.]mitre[.]org/techniques/T1547/001/
+
+SOURCE-OBSERVED CONDITIONS USED BY THE QUERY
+Registry location: HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+Registry value name: MicrosoftEdgeUpdate
+Referenced executable: nodew.exe
+Referenced script: msedge_update.js
+
+LIMITATION
+This is campaign-specific hunting logic for NodeRabbit variant 1. It does not detect
+later NodeRabbit persistence variants, successful logon execution, payload integrity,
+command execution, or C2 activity.
