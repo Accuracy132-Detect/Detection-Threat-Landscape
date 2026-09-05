@@ -1,0 +1,16 @@
+ASCII smuggling crosses over from AI prompt injection to phishing evasion
+Organization: Microsoft Security Research
+Publication date: 2026-09-03
+Observed activity: signature spike on 2026-02-09; high-volume use for approximately three months; sharp decline after 2026-05-15; residual activity through mid-June 2026
+https://www[.]microsoft[.]com/en-us/security/blog/2026/09/03/ascii-smuggling-crosses-over-from-ai-prompt-injection-to-phishing-evasion/
+
+EmailEvents table in the advanced hunting schema
+Organization: Microsoft Learn
+Last updated: 2026-09-02
+https://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-emailevents-table
+
+MITRE ATT&CK T1566 - Phishing
+https://attack[.]mitre[.]org/techniques/T1566/
+
+MITRE ATT&CK T1027 - Obfuscated Files or Information
+https://attack[.]mitre[.]org/techniques/T1027/

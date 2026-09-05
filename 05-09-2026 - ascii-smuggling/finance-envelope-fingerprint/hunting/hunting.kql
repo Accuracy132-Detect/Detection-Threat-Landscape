@@ -1,0 +1,25 @@
+// ASCII-smuggling campaign infrastructure hunt
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Required telemetry: Defender for Office 365 EmailEvents
+// Evidence: Microsoft Security Research, 2026-09-03, Query 1.
+// Scope limitation: EmailEvents does not expose the message body. This query
+// hunts the source-observed sender-domain fingerprint, not Unicode tag content.
+
+// Finance/brand vocabulary the operator recombines into disposable domains.
+let kwds = @"(capital|fund|hedge|express|solutions|choice|lend|growth|loan|loc|finance|business|pillar|advance|boost|catalyst|digital|direct|elevate|guardian|harbor|online|pulse|rocket|rush|united|wave|way|surge|swift|elite)";
+EmailEvents
+| where Timestamp > ago(30d)
+| where EmailDirection == "Inbound"
+// Header sender domain made of 3 or more adjacent finance/brand tokens.
+| where SenderFromDomain matches regex strcat("(?i)", kwds, kwds, kwds)
+// Envelope (MAIL FROM) shape: em-[digits] | acems[digits] | emsd[digits].
+| where SenderMailFromDomain matches regex @"(?i)(em-|acems|emsd)\d"
+| project Timestamp, NetworkMessageId, InternetMessageId,
+          SenderFromAddress, SenderFromDomain,
+          SenderMailFromAddress, SenderMailFromDomain,
+          SenderIPv4, RecipientEmailAddress, Subject,
+          DeliveryAction, DeliveryLocation, ThreatTypes,
+          DetectionMethods, ConfidenceLevel, EmailClusterId
+| sort by Timestamp desc

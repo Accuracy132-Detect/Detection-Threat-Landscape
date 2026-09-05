@@ -173,8 +173,13 @@ Detection-Threat-Landscape/
 │       ├── hunting.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 02-09-2026 - noderabbit/
-    └── microsoftedgeupdate-run-key/hunting/
+├── 02-09-2026 - noderabbit/
+│   └── microsoftedgeupdate-run-key/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 05-09-2026 - ascii-smuggling/
+    └── finance-envelope-fingerprint/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -184,6 +189,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 5 September 2026 | [ASCII smuggling phishing campaign](./05-09-2026%20-%20ascii-smuggling/) | Microsoft Defender XDR | Source-observed finance-token header/P2 domain combined with an operator-shaped envelope/P1 domain; the hunt does not inspect Unicode body content or prove compromise | Hunting |
 | 2 September 2026 | [NodeRabbit / Mirage Kitten](./02-09-2026%20-%20noderabbit/) | Microsoft Defender XDR | Source-observed `MicrosoftEdgeUpdate` Run value referencing both `nodew.exe` and `msedge_update.js`; a match does not establish logon execution, implant activity or C2 | Hunting |
 | 1 September 2026 | [ValleyRAT](./01-09-2026%20-%20valleyrat/) | Microsoft Defender XDR | Exact `PeLoader` filename, QNWallpaper version-path prefix and source-observed MD5 for exposure hunting; a match does not establish decryption, memory loading or execution | Hunting |
 | 31 August 2026 | [DARKLANTERN](./31-08-2026%20-%20darklantern/) | Microsoft Sentinel | Validate perimeter CEF visibility for UDP traffic directed to the source-documented router listener on port 9992; a match does not establish protocol payload, implant presence, or compromise | Validation |
