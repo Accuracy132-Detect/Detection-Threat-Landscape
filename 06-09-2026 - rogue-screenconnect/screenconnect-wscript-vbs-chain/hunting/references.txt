@@ -1,0 +1,21 @@
+Rogue ScreenConnect Installations Across Unrelated Hosts Suggest Worm-Like Activity
+Organization: Huntress
+Publication date: 2026-09-03
+Observed activity: 2026-08-20 and 2026-08-24; additional incidents confirmed in the 2026-09-03 update
+https://www[.]huntress[.]com/blog/rogue-screenconnect-installations
+
+ScreenConnect Remote Access: Guest File Transfer Advisory
+Organization: ConnectWise
+Publication date: 2026-09-03
+Status on review date: fix in development; interim TransferFiles permission mitigation available
+https://www[.]connectwise[.]com/company/trust/advisories
+
+DeviceProcessEvents table in the advanced hunting schema
+Organization: Microsoft Learn
+https://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK T1059.005 - Visual Basic
+https://attack[.]mitre[.]org/techniques/T1059/005/
+
+MITRE ATT&CK T1219.002 - Remote Access Software
+https://attack[.]mitre[.]org/techniques/T1219/002/

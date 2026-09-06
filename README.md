@@ -178,8 +178,13 @@ Detection-Threat-Landscape/
 │       ├── hunting.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 05-09-2026 - ascii-smuggling/
-    └── finance-envelope-fingerprint/hunting/
+├── 05-09-2026 - ascii-smuggling/
+│   └── finance-envelope-fingerprint/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 06-09-2026 - rogue-screenconnect/
+    └── screenconnect-wscript-vbs-chain/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -189,6 +194,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 6 September 2026 | [Rogue ScreenConnect](./06-09-2026%20-%20rogue-screenconnect/) | Microsoft Defender XDR | Source-observed `ScreenConnect.WindowsClient.exe` parent spawning `wscript.exe` with numbered `1.vbs` through `4.vbs` stages; a match requires authorized-RMM validation and does not prove client modification or propagation | Hunting |
 | 5 September 2026 | [ASCII smuggling phishing campaign](./05-09-2026%20-%20ascii-smuggling/) | Microsoft Defender XDR | Source-observed finance-token header/P2 domain combined with an operator-shaped envelope/P1 domain; the hunt does not inspect Unicode body content or prove compromise | Hunting |
 | 2 September 2026 | [NodeRabbit / Mirage Kitten](./02-09-2026%20-%20noderabbit/) | Microsoft Defender XDR | Source-observed `MicrosoftEdgeUpdate` Run value referencing both `nodew.exe` and `msedge_update.js`; a match does not establish logon execution, implant activity or C2 | Hunting |
 | 1 September 2026 | [ValleyRAT](./01-09-2026%20-%20valleyrat/) | Microsoft Defender XDR | Exact `PeLoader` filename, QNWallpaper version-path prefix and source-observed MD5 for exposure hunting; a match does not establish decryption, memory loading or execution | Hunting |
@@ -274,3 +280,4 @@ HTML templates, rendering sources, intermediate images, and working assets are n
 - Isolated IOCs are not treated as durable behavioral detections.
 - Every unexecuted query is labeled as an untested implementation sketch.
 - Accuracy and explainability take priority over query volume.
+
