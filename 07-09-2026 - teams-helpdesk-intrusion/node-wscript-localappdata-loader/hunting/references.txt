@@ -1,0 +1,16 @@
+Impersonating IT support: how threat actors turn a remote session into enterprise-wide access
+Organization: Microsoft Security Research
+Publication date: 2026-09-02
+Observed activity: active human-operated campaign; exact campaign start/end not disclosed
+https://www[.]microsoft[.]com/en-us/security/blog/2026/09/02/impersonating-it-support-threat-actors-turn-remote-session-into-enterprise-wide-access/
+
+DeviceProcessEvents table in the advanced hunting schema
+Organization: Microsoft Learn
+Last updated: 2026-08-07
+https://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK T1059.007 - JavaScript/JScript
+https://attack[.]mitre[.]org/techniques/T1059/007/
+
+MITRE ATT&CK T1036 - Masquerading
+https://attack[.]mitre[.]org/techniques/T1036/

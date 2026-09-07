@@ -1,0 +1,26 @@
+// Portable Node.js launched by WScript from LocalAppData
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Required telemetry: Microsoft Defender for Endpoint DeviceProcessEvents
+// Evidence: Microsoft Security Research, published 2026-09-02.
+
+DeviceProcessEvents
+| where FileName =~ "node.exe"
+| where ProcessCommandLine has @"\AppData\Local\"
+    and ProcessCommandLine !contains ".js"
+| where InitiatingProcessFileName =~ "wscript.exe"
+| where InitiatingProcessCommandLine has_all (@"\AppData\Local\", "node.exe", ".js")
+| project Timestamp, DeviceId, DeviceName, ActionType,
+          FileName, FolderPath, ProcessCommandLine,
+          ProcessVersionInfoOriginalFileName,
+          SHA1, ProcessId, ProcessCreationTime,
+          AccountDomain, AccountName, AccountSid, AccountUpn,
+          InitiatingProcessFileName, InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine, InitiatingProcessId,
+          InitiatingProcessCreationTime, InitiatingProcessSHA1,
+          InitiatingProcessAccountDomain, InitiatingProcessAccountName,
+          InitiatingProcessAccountSid, InitiatingProcessAccountUpn,
+          InitiatingProcessIntegrityLevel, InitiatingProcessTokenElevation,
+          ReportId
+| order by Timestamp desc
