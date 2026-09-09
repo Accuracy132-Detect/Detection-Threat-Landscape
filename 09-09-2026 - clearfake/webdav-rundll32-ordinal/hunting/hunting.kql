@@ -1,0 +1,20 @@
+// ClearFake WebDAV rundll32 ordinal execution
+// Status: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: Microsoft Defender for Endpoint / DeviceProcessEvents
+// Evidence: Cisco Talos observed 32-bit rundll32.exe executing disguised DLLs
+// directly from WebDAV UNC paths through export ordinal #1.
+// A match does not establish ClickFix delivery, Amatera execution, credential
+// theft, NetSupport installation, C2, or compromise.
+DeviceProcessEvents
+| where FileName =~ "rundll32.exe"
+| where ProcessCommandLine contains @"\\"
+| where ProcessCommandLine contains "#1"
+| project Timestamp, DeviceId, DeviceName, ActionType,
+          FileName, FolderPath, ProcessCommandLine,
+          SHA1, AccountDomain, AccountName, AccountUpn,
+          InitiatingProcessFileName, InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine, InitiatingProcessSHA1,
+          ProcessIntegrityLevel, ProcessTokenElevation, ReportId
+| order by Timestamp desc

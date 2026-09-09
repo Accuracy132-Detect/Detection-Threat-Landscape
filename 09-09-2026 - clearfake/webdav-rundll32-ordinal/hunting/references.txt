@@ -1,0 +1,11 @@
+Cisco Talos — ClearFake WebDAV infection chain delivers Amatera stealer, ZigCryptoStealer, and NetSupport Manager
+Publication date: 2026-09-08
+Observed activity: 2026-04 (verification.google); reconstructed pf.ch chain and follow-on activity observed through 2026-07
+hxxps://blog[.]talosintelligence[.]com/clearfake-webdav-infection-chain/
+
+Microsoft Learn — DeviceProcessEvents table in the advanced hunting schema
+Last updated: 2026-08-07
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK — T1218.011 Signed Binary Proxy Execution: Rundll32
+hxxps://attack[.]mitre[.]org/techniques/T1218/011/
