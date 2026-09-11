@@ -1,0 +1,29 @@
+// GTG-20006 actor-controlled device registration
+// Classification: Validation query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required telemetry: Microsoft Entra audit logs exported to Log Analytics
+// Objective: validate the tenant-specific audit representation of device registration.
+// A result is not evidence of malicious activity.
+// No threshold, rarity, join, parsing, or success-only filter is applied.
+
+AuditLogs
+| where OperationName in ("Add device", "Register device")
+| project
+    TimeGenerated,
+    ActivityDateTime,
+    Id,
+    CorrelationId,
+    OperationName,
+    ActivityDisplayName,
+    AADOperationType,
+    LoggedByService,
+    Identity,
+    InitiatedBy,
+    TargetResources,
+    AdditionalDetails,
+    Result,
+    ResultType,
+    ResultDescription
+| order by TimeGenerated desc
+

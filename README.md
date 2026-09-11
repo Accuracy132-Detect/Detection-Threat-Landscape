@@ -189,13 +189,18 @@ Detection-Threat-Landscape/
 │       ├── references.txt
 │       └── threat-analysis.pdf
 ├── 07-09-2026 - teams-helpdesk-intrusion/
-    └── node-wscript-localappdata-loader/hunting/
-        ├── hunting.kql
-        ├── references.txt
-        └── threat-analysis.pdf
-└── 09-09-2026 - clearfake/
-    └── webdav-rundll32-ordinal/hunting/
-        ├── hunting.kql
+│   └── node-wscript-localappdata-loader/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+├── 09-09-2026 - clearfake/
+│   └── webdav-rundll32-ordinal/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 11-09-2026 - gtg-20006/
+    └── actor-controlled-device-registration/validation/
+        ├── validation.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -204,6 +209,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 11 September 2026 | [GTG-20006 / actor-controlled device registration](./11-09-2026%20-%20gtg-20006/) | Microsoft Sentinel | Validate how source-observed actor-controlled device registration is represented in Microsoft Entra `AuditLogs`; a match does not establish malicious ownership, persistence or compromise | Validation |
 | 9 September 2026 | [ClearFake / Amatera](./09-09-2026%20-%20clearfake/) | Microsoft Defender XDR | Source-observed `rundll32.exe` execution of disguised DLLs directly from WebDAV UNC paths through export ordinal `#1`; a match does not establish ClickFix delivery, payload execution or C2 | Hunting |
 | 7 September 2026 | [Teams helpdesk intrusion](./07-09-2026%20-%20teams-helpdesk-intrusion/) | Microsoft Defender XDR | Source-observed WScript bootstrap launches portable Node.js from LocalAppData while the child command line omits a JavaScript file; a match does not establish Teams contact, implant decryption, persistence or C2 | Hunting |
 | 6 September 2026 | [Rogue ScreenConnect](./06-09-2026%20-%20rogue-screenconnect/) | Microsoft Defender XDR | Source-observed `ScreenConnect.WindowsClient.exe` parent spawning `wscript.exe` with numbered `1.vbs` through `4.vbs` stages; a match requires authorized-RMM validation and does not prove client modification or propagation | Hunting |

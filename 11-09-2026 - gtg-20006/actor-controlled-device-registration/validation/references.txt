@@ -1,0 +1,33 @@
+PRIMARY RESEARCH
+
+Anthropic Threat Intelligence
+Detecting and countering misuse of AI: September 2026
+Publication date: 2026-09-10
+Observed activity: 2025-12 through 2026-08
+hxxps://www[.]anthropic[.]com/threat-intelligence-report-september-2026
+
+OFFICIAL PLATFORM DOCUMENTATION
+
+Microsoft
+Microsoft Entra audit activity reference
+Accessed: 2026-09-11
+hxxps://learn[.]microsoft[.]com/en-us/entra/identity/monitoring-health/reference-audit-activities
+
+Microsoft
+AuditLogs table
+Last updated: 2026-08-28
+hxxps://learn[.]microsoft[.]com/en-us/azure/azure-monitor/reference/tables/auditlogs
+
+Microsoft
+Integrate Microsoft Entra logs with Azure Monitor logs
+Last updated: 2026-06-15
+hxxps://learn[.]microsoft[.]com/en-us/entra/identity/monitoring-health/howto-integrate-activity-logs-with-azure-monitor-logs
+
+ASSESSMENT NOTES
+
+Classification: Validation query - Untested implementation sketch
+Confidence: Medium
+Primary platform: Microsoft Sentinel / Log Analytics
+MITRE ATT&CK: No technique assigned to the device-registration validation event.
+The query validates telemetry and raw event semantics. A match does not establish malicious device ownership, persistence, or compromise.
+
