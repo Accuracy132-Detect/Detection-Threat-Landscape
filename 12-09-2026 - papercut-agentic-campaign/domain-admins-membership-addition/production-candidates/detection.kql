@@ -1,0 +1,28 @@
+// PaperCut campaign - account added to Domain Admins
+// Status: Production candidate - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required connector: Windows Security Events via AMA
+// Required audit policy: Audit Security Group Management on domain controllers
+// Evidence: GreyNoise observed an adversary-created account being added to Domain Admins.
+// RID 512 identifies the Domain Admins global group in every AD domain.
+// This query has no threshold, aggregation, sequence, or join.
+// A result is a privileged group change; validate it against the approved change record.
+
+SecurityEvent
+| where EventID == 4728
+| where TargetSid endswith "-512"
+| project
+    TimeGenerated,
+    Computer,
+    EventID,
+    Activity,
+    SubjectAccount,
+    SubjectUserSid,
+    SubjectLogonId,
+    TargetAccount,
+    TargetDomainName,
+    TargetSid,
+    MemberName,
+    MemberSid
+| order by TimeGenerated desc

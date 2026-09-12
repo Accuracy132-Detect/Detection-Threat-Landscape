@@ -1,0 +1,54 @@
+// PaperCut campaign - SYSTEM/SECURITY hive staging with reg.exe or certutil.exe
+// Status: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: Microsoft Defender for Endpoint / DeviceProcessEvents
+// Logic type: Campaign-specific artifact
+// Exact paths and filenames were published by GreyNoise and are mutable.
+// No result proves exfiltration, DCSync, credential recovery, or PaperCut exploitation.
+
+DeviceProcessEvents
+| where
+    (
+        FileName =~ "reg.exe"
+        and ProcessCommandLine has "save"
+        and (
+            ProcessCommandLine contains @"HKLM\SYSTEM"
+            or ProcessCommandLine contains @"HKLM\SECURITY"
+        )
+        and ProcessCommandLine has_any (
+            "pc-sys.hiv",
+            "pc-sec.hiv",
+            "pc-security.hiv",
+            "pc-system.hiv",
+            "pc-sys-reg.hiv"
+        )
+    )
+    or
+    (
+        FileName =~ "certutil.exe"
+        and ProcessCommandLine contains "-encode"
+        and ProcessCommandLine has_any (
+            "pc-sys.hiv",
+            "pc-sec.hiv",
+            "pc-security.hiv",
+            "pc-system.hiv",
+            "pc-sys-reg.hiv"
+        )
+        and ProcessCommandLine contains ".b64"
+    )
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    AccountDomain,
+    AccountName,
+    FileName,
+    FolderPath,
+    ProcessCommandLine,
+    ProcessId,
+    ProcessUniqueId,
+    InitiatingProcessFileName,
+    InitiatingProcessCommandLine,
+    ReportId
+| order by Timestamp desc

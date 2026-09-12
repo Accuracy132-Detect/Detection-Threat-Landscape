@@ -1,0 +1,24 @@
+GreyNoise - Agents Gone Wild: An AI-Orchestrated Global Campaign Against PaperCut NG/MF
+Publication date: 2026-09-09
+Observed activity: 2026-08-31 onward; campaign last-observation date not stated
+hxxps://www[.]greynoise[.]io/blog/ai-orchestrated-campaign-against-papercut-ng-mf
+
+PaperCut - URGENT Security Advisory: PaperCut NG/MF Security Bulletin
+Publication date: 2026-08-27; last updated: 2026-09-10
+hxxps://www[.]papercut[.]com/kb/Main/security-bulletin-27-aug-2026-urgent-security-advisory/
+
+Microsoft Learn - Audit Security Group Management
+Event 4728: member added to a security-enabled global group
+hxxps://learn[.]microsoft[.]com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/audit-security-group-management
+
+Microsoft Learn - SecurityEvent table
+Last updated: 2026-08-27
+hxxps://learn[.]microsoft[.]com/en-us/azure/azure-monitor/reference/tables/securityevent
+
+Microsoft Learn - Security Identifiers
+Domain Admins is S-1-5-domain-512; RID 512 uniquely identifies that group per domain.
+hxxps://learn[.]microsoft[.]com/en-us/windows-server/identity/ad-ds/manage/understand-security-identifiers
+
+MITRE ATT&CK - T1098.007 Additional Local or Domain Groups
+Last modified: 2026-05-12
+hxxps://attack[.]mitre[.]org/techniques/T1098/007/
