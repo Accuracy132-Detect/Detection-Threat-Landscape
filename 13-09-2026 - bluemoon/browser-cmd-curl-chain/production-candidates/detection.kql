@@ -1,0 +1,21 @@
+// BlueMoon browser -> cmd.exe -> curl.exe process chain
+// Status: Production candidate - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR Advanced Hunting
+// Required telemetry: Microsoft Defender for Endpoint / DeviceProcessEvents
+// Evidence: Proofpoint directly reported chrome.exe -> cmd.exe -> curl.exe and
+// the default curl download to %TEMP% followed by execution.
+// Boundary: A match does not prove browser exploitation, payload execution,
+// actor attribution, or compromise. Validate browser provenance and destination.
+
+DeviceProcessEvents
+| where FileName =~ "curl.exe"
+| where InitiatingProcessFileName =~ "cmd.exe"
+| where InitiatingProcessParentFileName in~ ("chrome.exe", "msedge.exe", "brave.exe", "vivaldi.exe")
+| where ProcessCommandLine contains "-o"
+| where ProcessCommandLine contains @"\Temp\"
+| project Timestamp, DeviceId, DeviceName, AccountDomain, AccountName,
+    FileName, FolderPath, ProcessCommandLine, ProcessId, ProcessUniqueId,
+    InitiatingProcessFileName, InitiatingProcessCommandLine,
+    InitiatingProcessParentFileName, ReportId
+| order by Timestamp desc

@@ -199,16 +199,26 @@ Detection-Threat-Landscape/
 │       ├── references.txt
 │       └── threat-analysis.pdf
 ├── 11-09-2026 - gtg-20006/
-    └── actor-controlled-device-registration/validation/
-        ├── validation.kql
-        ├── references.txt
-        └── threat-analysis.pdf
-└── 12-09-2026 - papercut-agentic-campaign/
-    ├── domain-admins-membership-addition/production-candidates/
-    │   ├── detection.kql
-    │   ├── references.txt
-    │   └── threat-analysis.pdf
-    └── registry-hive-staging/hunting/
+│   └── actor-controlled-device-registration/validation/
+│       ├── validation.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+├── 12-09-2026 - papercut-agentic-campaign/
+│   ├── domain-admins-membership-addition/production-candidates/
+│   │   ├── detection.kql
+│   │   ├── references.txt
+│   │   └── threat-analysis.pdf
+│   └── registry-hive-staging/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+├── 13-09-2026 - bluemoon/
+│   └── browser-cmd-curl-chain/production-candidates/
+│       ├── detection.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 13-09-2026 - cisco-fmc-exploitation/
+    └── package-info-license-tmp/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -218,6 +228,8 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 13 September 2026 | [BlueMoon exploit kit](./13-09-2026%20-%20bluemoon/) | Microsoft Defender XDR | Browser grandparent `chrome.exe` or another supported Chromium browser launches `cmd.exe`, which starts `curl.exe` with an output path under Temp; a match does not prove exploitation or payload execution | Production candidate |
+| 13 September 2026 | [Cisco FMC exploitation](./13-09-2026%20-%20cisco-fmc-exploitation/) | Microsoft Defender XDR | Source-observed execution of `/usr/local/sf/bin/package_info.pl /var/tmp/license.tmp --lsm`; platform update workflows can overlap and every result requires appliance-owner validation | Hunting |
 | 12 September 2026 | [PaperCut agentic campaign](./12-09-2026%20-%20papercut-agentic-campaign/) | Microsoft Sentinel / Defender XDR | Event 4728 additions to Domain Admins identified by RID 512, plus a campaign-specific hunt for source-observed SYSTEM/SECURITY hive staging with reg.exe and certutil.exe | Production candidate + Hunting |
 | 11 September 2026 | [GTG-20006 / actor-controlled device registration](./11-09-2026%20-%20gtg-20006/) | Microsoft Sentinel | Validate how source-observed actor-controlled device registration is represented in Microsoft Entra `AuditLogs`; a match does not establish malicious ownership, persistence or compromise | Validation |
 | 9 September 2026 | [ClearFake / Amatera](./09-09-2026%20-%20clearfake/) | Microsoft Defender XDR | Source-observed `rundll32.exe` execution of disguised DLLs directly from WebDAV UNC paths through export ordinal `#1`; a match does not establish ClickFix delivery, payload execution or C2 | Hunting |
@@ -308,5 +320,3 @@ HTML templates, rendering sources, intermediate images, and working assets are n
 - Isolated IOCs are not treated as durable behavioral detections.
 - Every unexecuted query is labeled as an untested implementation sketch.
 - Accuracy and explainability take priority over query volume.
-
-
