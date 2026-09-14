@@ -1,0 +1,11 @@
+Microsoft Security Research — Passkey-themed social engineering leads to identity and cloud compromise
+Publication date: 09 September 2026
+Observed activity: since May 2026; sustained collection observed over hours to days
+hxxps://www[.]microsoft[.]com/en-us/security/blog/2026/09/09/passkey-themed-social-engineering-leads-identity-cloud-compromise/
+
+Microsoft Learn — CloudAppEvents table in the advanced hunting schema
+Last updated: 15 May 2025; accessed: 14 September 2026
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-cloudappevents-table
+
+MITRE ATT&CK — T1213.002 Data from Information Repositories: SharePoint
+hxxps://attack[.]mitre[.]org/techniques/T1213/002/

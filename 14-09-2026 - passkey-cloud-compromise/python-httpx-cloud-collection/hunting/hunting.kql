@@ -1,0 +1,23 @@
+// Programmatic SharePoint/OneDrive collection using python-httpx
+// Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: CloudAppEvents populated by Microsoft Defender for Cloud Apps
+// Threshold and two-hour window are source-published for the observed campaign.
+// UserAgent alone is not treated as malicious; investigate identity compromise,
+// IP/ISP context, file sensitivity, and preceding authentication-method changes.
+CloudAppEvents
+| where ApplicationId in (20892, 15600)
+| where ActionType in ("FileDownloaded", "FileAccessed", "SyncDownloadedFull")
+| where isnotempty(AccountObjectId)
+| where isnotempty(IPAddress)
+| where isnotempty(UserAgent)
+| where UncommonForUser has_any ("ISP", "UserAgent")
+| where UserAgent has "python-httpx"
+| summarize FilesAccessedLastWindow = count(),
+    FirstSeen = min(Timestamp), LastSeen = max(Timestamp),
+    ActionTypes = make_set(ActionType, 5),
+    SampleObjects = make_set(ObjectName, 10)
+    by AccountObjectId, IPAddress, Isp, UserAgent, bin(Timestamp, 2h)
+| where FilesAccessedLastWindow >= 100
+| order by FilesAccessedLastWindow desc

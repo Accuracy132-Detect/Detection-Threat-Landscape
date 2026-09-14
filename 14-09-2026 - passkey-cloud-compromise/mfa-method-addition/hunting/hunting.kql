@@ -1,0 +1,28 @@
+// Actor-controlled MFA method addition
+// Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: CloudAppEvents populated by Microsoft Defender for Cloud Apps
+// Source evidence: Microsoft observed actors adding a phone, authenticator app,
+// or software OTP token and published this OldValue/NewValue comparison.
+// A match proves only that an MFA device record was added. Validate ownership.
+CloudAppEvents
+| where ActionType == "Update user."
+| where tostring(RawEventData.ResultStatus) == "Success"
+| where RawEventData has_any
+    ("StrongAuthenticationPhoneAppDetail", "StrongAuthenticationUserDetails")
+| extend AccountObjectId = extract(@"User_([a-f0-9\-]+)", 1,
+    tostring(RawEventData.Target))
+| where isnotempty(AccountObjectId)
+| mv-expand ModifiedProp = RawEventData.ModifiedProperties
+| where tostring(ModifiedProp.Name) in
+    ("StrongAuthenticationPhoneAppDetail", "StrongAuthenticationUserDetails")
+| extend OldValue = tostring(ModifiedProp.OldValue),
+         NewValue = tostring(ModifiedProp.NewValue)
+| extend OldDeviceCount = countof(OldValue, @"""Id"""),
+         NewDeviceCount = countof(NewValue, @"""Id""")
+| where NewDeviceCount > OldDeviceCount
+| project Timestamp, AccountObjectId, AccountId, AccountDisplayName,
+    IPAddress, Application, ActionType, OldDeviceCount, NewDeviceCount,
+    OldValue, NewValue, ReportId
+| order by Timestamp desc

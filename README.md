@@ -217,8 +217,17 @@ Detection-Threat-Landscape/
 │       ├── detection.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 13-09-2026 - cisco-fmc-exploitation/
-    └── package-info-license-tmp/hunting/
+├── 13-09-2026 - cisco-fmc-exploitation/
+│   └── package-info-license-tmp/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 14-09-2026 - passkey-cloud-compromise/
+    ├── mfa-method-addition/hunting/
+    │   ├── hunting.kql
+    │   ├── references.txt
+    │   └── threat-analysis.pdf
+    └── python-httpx-cloud-collection/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -228,6 +237,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 14 September 2026 | [Passkey-themed cloud compromise](./14-09-2026%20-%20passkey-cloud-compromise/) | Microsoft Defender XDR | New MFA device-record deltas in `CloudAppEvents`, plus source-observed high-volume SharePoint/OneDrive access using `python-httpx`; both require ownership and benign-automation validation | Hunting |
 | 13 September 2026 | [BlueMoon exploit kit](./13-09-2026%20-%20bluemoon/) | Microsoft Defender XDR | Browser grandparent `chrome.exe` or another supported Chromium browser launches `cmd.exe`, which starts `curl.exe` with an output path under Temp; a match does not prove exploitation or payload execution | Production candidate |
 | 13 September 2026 | [Cisco FMC exploitation](./13-09-2026%20-%20cisco-fmc-exploitation/) | Microsoft Defender XDR | Source-observed execution of `/usr/local/sf/bin/package_info.pl /var/tmp/license.tmp --lsm`; platform update workflows can overlap and every result requires appliance-owner validation | Hunting |
 | 12 September 2026 | [PaperCut agentic campaign](./12-09-2026%20-%20papercut-agentic-campaign/) | Microsoft Sentinel / Defender XDR | Event 4728 additions to Domain Admins identified by RID 512, plus a campaign-specific hunt for source-observed SYSTEM/SECURITY hive staging with reg.exe and certutil.exe | Production candidate + Hunting |
