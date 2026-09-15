@@ -222,13 +222,18 @@ Detection-Threat-Landscape/
 │       ├── hunting.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 14-09-2026 - passkey-cloud-compromise/
-    ├── mfa-method-addition/hunting/
-    │   ├── hunting.kql
-    │   ├── references.txt
-    │   └── threat-analysis.pdf
-    └── python-httpx-cloud-collection/hunting/
-        ├── hunting.kql
+├── 14-09-2026 - passkey-cloud-compromise/
+│   ├── mfa-method-addition/hunting/
+│   │   ├── hunting.kql
+│   │   ├── references.txt
+│   │   └── threat-analysis.pdf
+│   └── python-httpx-cloud-collection/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 15-09-2026 - gitlab-cve-2026-85706/
+    └── anonymous-file-path-secret-target/production-candidates/
+        ├── detection.spl
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -237,6 +242,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 15 September 2026 | [GitLab CVE-2026-85706](./15-09-2026%20-%20gitlab-cve-2026-85706/) | Splunk | Official high-signal anonymous multipart request shape in raw `api_json.log`: empty file part, `content-type`, `file.path`, and a configuration or secrets target; a match proves an attempt, not a successful read | Production candidate |
 | 14 September 2026 | [Passkey-themed cloud compromise](./14-09-2026%20-%20passkey-cloud-compromise/) | Microsoft Defender XDR | New MFA device-record deltas in `CloudAppEvents`, plus source-observed high-volume SharePoint/OneDrive access using `python-httpx`; both require ownership and benign-automation validation | Hunting |
 | 13 September 2026 | [BlueMoon exploit kit](./13-09-2026%20-%20bluemoon/) | Microsoft Defender XDR | Browser grandparent `chrome.exe` or another supported Chromium browser launches `cmd.exe`, which starts `curl.exe` with an output path under Temp; a match does not prove exploitation or payload execution | Production candidate |
 | 13 September 2026 | [Cisco FMC exploitation](./13-09-2026%20-%20cisco-fmc-exploitation/) | Microsoft Defender XDR | Source-observed execution of `/usr/local/sf/bin/package_info.pl /var/tmp/license.tmp --lsm`; platform update workflows can overlap and every result requires appliance-owner validation | Hunting |
