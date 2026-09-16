@@ -1,0 +1,11 @@
+CHOSEN BRICK joint advisory — NCSC, FBI, AIVD — published 2026-09-15 — observed activity from at least 2025
+hxxps://www[.]ncsc[.]gov[.]uk/news/iranian-cyber-targeting-of-dissidents-activists-and-journalists
+
+FBI / IC3 technical advisory PDF — Version 1, 2026-09-15
+hxxps://www[.]ic3[.]gov/CSA/2026/260915-2[.]pdf
+
+Microsoft Defender XDR DeviceRegistryEvents schema — accessed 2026-09-16
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceregistryevents-table
+
+MITRE ATT&CK T1547.001 — Registry Run Keys / Startup Folder
+hxxps://attack[.]mitre[.]org/techniques/T1547/001/

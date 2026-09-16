@@ -1,0 +1,18 @@
+// CHOSEN BRICK - Run-key persistence to a non-standard spaced Windows directory
+// Status: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR Advanced Hunting
+// Required telemetry: Microsoft Defender for Endpoint DeviceRegistryEvents
+// Source-observed behavior: HKCU Run-key persistence and the most commonly
+// observed payload directory C:\Windows \SysWOW64 (literal space after Windows).
+// A match indicates the source-observed persistence artifact; it does not prove
+// CHOSEN BRICK execution, Telegram C2, collection, or exfiltration.
+
+DeviceRegistryEvents
+| where RegistryKey endswith @"\Software\Microsoft\Windows\CurrentVersion\Run"
+| where RegistryValueData contains @"C:\Windows \SysWOW64\"
+| project Timestamp, DeviceId, DeviceName, ActionType,
+          RegistryKey, RegistryValueName, RegistryValueData,
+          InitiatingProcessFileName, InitiatingProcessCommandLine,
+          InitiatingProcessAccountName, ReportId
+| order by Timestamp desc
