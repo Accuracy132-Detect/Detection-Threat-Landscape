@@ -1,0 +1,19 @@
+// AMOS execution from hidden Apple-lookalike Application Support directories
+// Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Defender XDR Advanced Hunting
+// Required telemetry: Microsoft Defender for Endpoint on macOS -> DeviceProcessEvents
+// Confidence: Medium
+// A match establishes execution of a source-observed artifact, not credential theft or exfiltration.
+
+DeviceProcessEvents
+| where
+    (FileName == "AccountsHelper" and
+     FolderPath endswith "/Library/Application Support/.com.apple.accountsd")
+    or
+    (FileName == "mdworker_shared" and
+     FolderPath endswith "/Library/Application Support/.com.apple.metadata.mds")
+| project Timestamp, DeviceId, DeviceName, AccountName,
+          FileName, FolderPath, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine,
+          SHA1, SHA256, ReportId
+| order by Timestamp desc

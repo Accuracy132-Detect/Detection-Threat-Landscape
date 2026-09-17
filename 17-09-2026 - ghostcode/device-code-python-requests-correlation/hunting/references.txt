@@ -1,0 +1,16 @@
+Primary technical research
+- eSentire Threat Response Unit, "GhostCode: Dissecting a Novel Device Code Phishing Kit," published 2026-09-15; activity observed in late August 2026.
+  hxxps://www[.]esentire[.]com/blog/ghostcode-dissecting-a-novel-device-code-phishing-kit
+
+Official platform documentation
+- Microsoft, Azure Monitor Logs reference — SigninLogs; accessed 2026-09-17; page last updated 2026-08-27.
+  hxxps://learn[.]microsoft[.]com/en-us/azure/azure-monitor/reference/tables/signinlogs
+- Microsoft, OAuth 2.0 device authorization grant flow; accessed 2026-09-17.
+  hxxps://learn[.]microsoft[.]com/en-us/entra/identity-platform/v2-oauth2-device-code
+
+MITRE ATT&CK
+- T1528 — Steal Application Access Token.
+  hxxps://attack[.]mitre[.]org/techniques/T1528/
+
+Scope note
+- The 10-minute forward window and python-requests signal are source-supported. Correlation is by UserPrincipalName because the public evidence does not provide a shared session identifier across both records. The query is therefore Hunting, not a Production candidate.

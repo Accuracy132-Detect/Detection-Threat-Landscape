@@ -232,12 +232,22 @@ Detection-Threat-Landscape/
 │       ├── references.txt
 │       └── threat-analysis.pdf
 ├── 15-09-2026 - gitlab-cve-2026-85706/
-    └── anonymous-file-path-secret-target/production-candidates/
-        ├── detection.spl
+│   └── anonymous-file-path-secret-target/production-candidates/
+│       ├── detection.spl
+│       ├── references.txt
+│       └── threat-analysis.pdf
+├── 16-09-2026 - chosen-brick/
+    └── spaced-windows-run-key/hunting/
+        ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
-└── 16-09-2026 - chosen-brick/
-    └── spaced-windows-run-key/hunting/
+├── 17-09-2026 - amos/
+│   └── hidden-application-support-execution/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 17-09-2026 - ghostcode/
+    └── device-code-python-requests-correlation/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -247,6 +257,8 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 17 September 2026 | [GhostCode](./17-09-2026%20-%20ghostcode/) | Microsoft Sentinel | Successful device-code authentication followed by non-interactive `python-requests` token use for the same UPN within the source-supported 10-minute window; a match does not prove compromise | Hunting |
+| 17 September 2026 | [Atomic macOS Stealer](./17-09-2026%20-%20amos/) | Microsoft Defender XDR | Source-observed `AccountsHelper` or `mdworker_shared` execution from hidden Apple-lookalike Application Support paths; mutable artifact coverage, not durable family detection | Hunting |
 | 16 September 2026 | [CHOSEN BRICK](./16-09-2026%20-%20chosen-brick/) | Microsoft Defender XDR | Run-key value pointing to the source-observed actor-created `C:\Windows \SysWOW64` lookalike directory, with a literal space after `Windows`; a match does not establish malware execution, C2, collection, or attribution | Hunting |
 | 15 September 2026 | [GitLab CVE-2026-85706](./15-09-2026%20-%20gitlab-cve-2026-85706/) | Splunk | Official high-signal anonymous multipart request shape in raw `api_json.log`: empty file part, `content-type`, `file.path`, and a configuration or secrets target; a match proves an attempt, not a successful read | Production candidate |
 | 14 September 2026 | [Passkey-themed cloud compromise](./14-09-2026%20-%20passkey-cloud-compromise/) | Microsoft Defender XDR | New MFA device-record deltas in `CloudAppEvents`, plus source-observed high-volume SharePoint/OneDrive access using `python-httpx`; both require ownership and benign-automation validation | Hunting |

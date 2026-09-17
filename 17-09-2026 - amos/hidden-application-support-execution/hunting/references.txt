@@ -1,0 +1,16 @@
+Primary technical research
+- Palo Alto Networks Unit 42, Bradley Duncan, "Atomic macOS (AMOS) Stealer Activity," published 2026-09-16; lab infection generated 2026-08-05.
+  hxxps://unit42[.]paloaltonetworks[.]com/atomic-macos-amos-stealer-activity/
+
+Official platform documentation
+- Microsoft, DeviceProcessEvents table in the Microsoft Defender XDR advanced hunting schema; accessed 2026-09-17; page last updated 2026-08-07.
+  hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK
+- T1059.004 — Unix Shell.
+  hxxps://attack[.]mitre[.]org/techniques/T1059/004/
+- T1036 — Masquerading.
+  hxxps://attack[.]mitre[.]org/techniques/T1036/
+
+Scope note
+- Unit 42 states that AMOS filenames, hashes, paths, domains and addresses change frequently. The query intentionally remains a campaign-artifact hunt and does not claim durable family coverage.

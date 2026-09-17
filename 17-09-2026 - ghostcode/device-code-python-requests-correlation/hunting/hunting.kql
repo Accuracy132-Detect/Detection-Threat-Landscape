@@ -1,0 +1,36 @@
+// GhostCode device-code authentication followed by python-requests token use
+// Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required connector: Microsoft Entra ID diagnostic settings -> SigninLogs
+// Confidence: Medium
+// A match is a correlation for investigation; it does not prove GhostCode or account compromise.
+
+let DeviceCodeAuths =
+    SigninLogs
+    | where AuthenticationProtocol == "deviceCode"
+    | where ResultType == "0"
+    | project DeviceCodeTime = TimeGenerated,
+              UserPrincipalName,
+              DeviceCodeIP = IPAddress,
+              DeviceCodeApp = AppDisplayName,
+              DeviceCodeCorrelationId = CorrelationId;
+let PythonRequests =
+    SigninLogs
+    | where IsInteractive == false
+    | where UserAgent contains "python-requests"
+    | project PythonTime = TimeGenerated,
+              UserPrincipalName,
+              PythonIP = IPAddress,
+              ResourceDisplayName,
+              PythonResultType = ResultType,
+              PythonResultDescription = ResultDescription,
+              IncomingTokenType,
+              PythonCorrelationId = CorrelationId;
+DeviceCodeAuths
+| join kind=inner PythonRequests on UserPrincipalName
+| where PythonTime >= DeviceCodeTime and PythonTime <= DeviceCodeTime + 10m
+| project DeviceCodeTime, PythonTime, UserPrincipalName,
+          DeviceCodeIP, PythonIP, DeviceCodeApp, ResourceDisplayName,
+          IncomingTokenType, PythonResultType, PythonResultDescription,
+          DeviceCodeCorrelationId, PythonCorrelationId
+| order by DeviceCodeTime desc
