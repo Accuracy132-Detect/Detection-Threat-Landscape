@@ -1,0 +1,15 @@
+// NightEagle / rdp2tcp virtual-channel telemetry validation
+// Validation query - Untested implementation sketch
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required telemetry: Azure Monitor Agent DCR collecting
+// Microsoft-Windows-RemoteDesktopServices-RdpCoreTS/Operational into Event
+// Confidence: Medium
+// A result establishes event collection only. It does not establish malicious rdp2tcp use.
+
+Event
+| where EventLog == "Microsoft-Windows-RemoteDesktopServices-RdpCoreTS/Operational"
+| where EventID in (132, 148)
+| project TimeGenerated, Computer, EventID, EventLog, Source,
+          RenderedDescription, EventData, ParameterXml,
+          UserName, _ResourceId
+| order by TimeGenerated desc

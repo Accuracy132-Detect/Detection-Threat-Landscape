@@ -1,0 +1,18 @@
+Primary technical research
+- Kaspersky Global Emergency Response Team, "NightEagle targets Russian companies," published 2026-09-16; incidents investigated during the preceding year.
+  hxxps://securelist[.]com/tr/nighteagle-apt-ghostcontainer-and-tunneling/121323/
+
+Official platform documentation
+- Microsoft, Azure Monitor Logs reference - Event; accessed 2026-09-18; page last updated 2026-07-28.
+  hxxps://learn[.]microsoft[.]com/en-us/azure/azure-monitor/reference/tables/event
+- Microsoft, Collect Windows events from virtual machines with Azure Monitor Agent; accessed 2026-09-18; page last updated 2026-03-03.
+  hxxps://learn[.]microsoft[.]com/en-us/azure/azure-monitor/vm/data-collection-windows-events
+
+MITRE ATT&CK
+- T1021.001 - Remote Services: Remote Desktop Protocol.
+  hxxps://attack[.]mitre[.]org/techniques/T1021/001/
+- T1090 - Proxy.
+  hxxps://attack[.]mitre[.]org/techniques/T1090/
+
+Scope note
+- Kaspersky observed event IDs 132 and 148 carrying rdp2tcp or attacker-selected random channel names. The public source does not document the EventData key used for the channel name in Azure Monitor, so this package intentionally validates raw schema before any content filter is designed.

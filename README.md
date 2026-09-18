@@ -237,18 +237,23 @@ Detection-Threat-Landscape/
 │       ├── references.txt
 │       └── threat-analysis.pdf
 ├── 16-09-2026 - chosen-brick/
-    └── spaced-windows-run-key/hunting/
-        ├── hunting.kql
-        ├── references.txt
-        └── threat-analysis.pdf
+│   └── spaced-windows-run-key/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
 ├── 17-09-2026 - amos/
 │   └── hidden-application-support-execution/hunting/
 │       ├── hunting.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 17-09-2026 - ghostcode/
-    └── device-code-python-requests-correlation/hunting/
-        ├── hunting.kql
+├── 17-09-2026 - ghostcode/
+│   └── device-code-python-requests-correlation/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 18-09-2026 - nighteagle/
+    └── rdp-virtual-channel-schema/validation/
+        ├── validation.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -257,6 +262,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 18 September 2026 | [NightEagle](./18-09-2026%20-%20nighteagle/) | Microsoft Sentinel | Validates ingestion and raw field representation for RdpCoreTS Operational Event IDs 132 and 148 before any channel-name detection; a match proves telemetry availability, not `rdp2tcp` use or attribution | Validation |
 | 17 September 2026 | [GhostCode](./17-09-2026%20-%20ghostcode/) | Microsoft Sentinel | Successful device-code authentication followed by non-interactive `python-requests` token use for the same UPN within the source-supported 10-minute window; a match does not prove compromise | Hunting |
 | 17 September 2026 | [Atomic macOS Stealer](./17-09-2026%20-%20amos/) | Microsoft Defender XDR | Source-observed `AccountsHelper` or `mdworker_shared` execution from hidden Apple-lookalike Application Support paths; mutable artifact coverage, not durable family detection | Hunting |
 | 16 September 2026 | [CHOSEN BRICK](./16-09-2026%20-%20chosen-brick/) | Microsoft Defender XDR | Run-key value pointing to the source-observed actor-created `C:\Windows \SysWOW64` lookalike directory, with a literal space after `Windows`; a match does not establish malware execution, C2, collection, or attribution | Hunting |
