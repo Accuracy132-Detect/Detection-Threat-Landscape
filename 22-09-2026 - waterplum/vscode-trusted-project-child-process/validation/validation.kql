@@ -1,0 +1,18 @@
+// WaterPlum / Contagious Interview — VS Code child-process telemetry validation
+// Classification: Validation query — Untested implementation sketch
+// Confidence: Medium
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Required table: DeviceProcessEvents
+// Purpose: validate whether task-triggered child processes from VS Code are
+// represented with Code.exe as their direct initiating process and retain
+// sufficient command-line context for later detection engineering.
+// Important: results are not malicious by themselves. Normal builds, tests,
+// terminals, extensions, package managers, and developer automation overlap.
+
+DeviceProcessEvents
+| where InitiatingProcessFileName =~ "Code.exe"
+| project Timestamp, DeviceId, DeviceName, AccountName,
+          FileName, FolderPath, ProcessCommandLine,
+          InitiatingProcessCommandLine,
+          InitiatingProcessUniqueId, ProcessUniqueId, ReportId
+| order by Timestamp desc

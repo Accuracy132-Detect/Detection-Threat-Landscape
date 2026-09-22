@@ -1,0 +1,20 @@
+WaterPlum / Contagious Interview — joint cybersecurity advisory
+Publication date: 2026-09-18
+Observed activity: December 2025–July 2026
+hxxps://www[.]ic3[.]gov/CSA/2026/260918[.]pdf
+
+Visual Studio Code — Workspace Trust
+Accessed: 2026-09-22
+hxxps://code[.]visualstudio[.]com/docs/editing/workspaces/workspace-trust
+
+Visual Studio Code — Integrate with External Tools via Tasks
+Accessed: 2026-09-22
+hxxps://code[.]visualstudio[.]com/docs/debugtest/tasks
+
+Microsoft Defender XDR — DeviceProcessEvents table
+Accessed: 2026-09-22
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK — T1204.002 Malicious File
+Accessed: 2026-09-22
+hxxps://attack[.]mitre[.]org/techniques/T1204/002/
