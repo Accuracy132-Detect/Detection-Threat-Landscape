@@ -1,0 +1,15 @@
+// Exvicy ClickFix PowerShell download-and-InvokeScript
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Status: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Required telemetry: Microsoft Defender for Endpoint DeviceProcessEvents
+// A match does not prove ClickFix delivery, Exvicy attribution, malicious content, or successful execution.
+DeviceProcessEvents
+| where FileName in~ ("powershell.exe", "pwsh.exe")
+| where ProcessCommandLine contains "$ExecutionContext.InvokeCommand.InvokeScript"
+| where ProcessCommandLine has "irm"
+| project Timestamp, DeviceId, DeviceName, AccountName, AccountUpn,
+          FileName, FolderPath, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine,
+          ProcessUniqueId, InitiatingProcessUniqueId, ReportId
+| order by Timestamp desc

@@ -1,0 +1,16 @@
+Primary technical research
+Sekoia TDR — Exvicy: A Copycat of the ErrTraffic Malware Distribution Framework
+Publication date: 2026-09-21
+Observed / infrastructure period: 2026-05-26 through 2026-08-25; source reports active customer-environment C2 telemetry
+hxxps://www[.]sekoia[.]com/blog/exvicy-a-copycat-of-the-errtraffic-malware-distribution-framework
+
+Official schema documentation
+Microsoft — DeviceProcessEvents advanced hunting schema
+Last updated: 2026-08-07; accessed: 2026-09-24
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK
+T1059.001 — Command and Scripting Interpreter: PowerShell
+hxxps://attack[.]mitre[.]org/techniques/T1059/001/
+T1105 — Ingress Tool Transfer
+hxxps://attack[.]mitre[.]org/techniques/T1105/
