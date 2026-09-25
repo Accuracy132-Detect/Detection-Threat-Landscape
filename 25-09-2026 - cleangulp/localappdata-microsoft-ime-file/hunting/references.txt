@@ -1,0 +1,32 @@
+CLEANGULP — MicrosoftIME.exe staged under %LOCALAPPDATA%\Microsoft\IME
+Classification: Hunting query — Untested implementation sketch
+Confidence: Medium
+Report date: 2026-09-25
+
+Primary technical research
+- Volexity, "Mind the (Patch) Gap, Part 2: Fake Websites Used to Deploy Chrome & Windows 0-Day Exploits"
+  Publication date: 2026-09-21
+  Observed campaign period: 2026-09-03 to 2026-09-04
+  Accessed: 2026-09-25
+  hxxps://www[.]volexity[.]com/blog/2026/09/21/mind-the-patch-gap-part-2-fake-websites-used-to-deploy-chrome-windows-0-day-exploits/
+
+Official schema documentation
+- Microsoft, "DeviceFileEvents table in the advanced hunting schema"
+  Last updated: 2026-06-22
+  Accessed: 2026-09-25
+  hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-devicefileevents-table
+
+MITRE ATT&CK
+- T1105 — Ingress Tool Transfer
+  hxxps://attack[.]mitre[.]org/techniques/T1105/
+- T1053.005 — Scheduled Task/Job: Scheduled Task
+  hxxps://attack[.]mitre[.]org/techniques/T1053/005/
+
+Evidence notes
+- Volexity directly reports CLEANGULP installation to
+  %LOCALAPPDATA%\Microsoft\IME\MicrosoftIME.exe and persistence through a
+  scheduled task named MicrosoftIME.
+- The query covers the file-system artifact only. The scheduled task, exploit
+  chain, C2 traffic, execution success, and actor attribution are not asserted
+  by a result.
+- URLs are defanged for safe repository publication.

@@ -1,0 +1,20 @@
+// CLEANGULP — MicrosoftIME.exe staged under %LOCALAPPDATA%\Microsoft\IME
+// Classification: Hunting query — Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR advanced hunting
+// Required telemetry: Microsoft Defender for Endpoint DeviceFileEvents
+// Evidence boundary: a match proves only a file-system event at the
+// source-observed path. It does not prove exploitation, execution,
+// scheduled-task persistence, C2, malware identity, or attribution.
+
+DeviceFileEvents
+| where FileName =~ "MicrosoftIME.exe"
+| where FolderPath endswith @"\AppData\Local\Microsoft\IME"
+| project Timestamp, DeviceId, DeviceName, ActionType,
+          FileName, FolderPath, FileSize, SHA1, MD5,
+          FileOriginUrl, FileOriginReferrerUrl, FileOriginIP,
+          InitiatingProcessFileName, InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine, InitiatingProcessUniqueId,
+          InitiatingProcessAccountName, InitiatingProcessAccountUpn,
+          ReportId
+| order by Timestamp desc
