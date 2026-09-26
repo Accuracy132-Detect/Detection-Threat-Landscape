@@ -266,8 +266,13 @@ Detection-Threat-Landscape/
 │       ├── hunting.kql
 │       ├── references.txt
 │       └── threat-analysis.pdf
-└── 25-09-2026 - cleangulp/
-    └── localappdata-microsoft-ime-file/hunting/
+├── 25-09-2026 - cleangulp/
+│   └── localappdata-microsoft-ime-file/hunting/
+│       ├── hunting.kql
+│       ├── references.txt
+│       └── threat-analysis.pdf
+└── 26-09-2026 - carbonato/
+    └── nsenter-pid1-host-namespace/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -277,6 +282,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 26 September 2026 | [CARBONATO](./26-09-2026%20-%20carbonato/) | Microsoft Defender XDR | Source-recovered `nsenter -t 1 -m -u -n -i sh -c id` execution from a privileged container to enter PID 1 host namespaces; a match does not prove exposed-Docker exploitation, successful host entry, persistence, C2, malware identity or attribution | Hunting |
 | 25 September 2026 | [CLEANGULP](./25-09-2026%20-%20cleangulp/) | Microsoft Defender XDR | Source-observed `MicrosoftIME.exe` file activity under the Microsoft IME-like LocalAppData directory; a match does not prove exploitation, execution, scheduled-task persistence, C2, malware identity or attribution | Hunting |
 | 24 September 2026 | [Exvicy](./24-09-2026%20-%20exvicy/) | Microsoft Defender XDR | Source-observed PowerShell download with `irm` followed by in-memory execution through `ExecutionContext.InvokeCommand.InvokeScript`; a match does not prove ClickFix delivery, malicious content, successful execution or attribution | Hunting |
 | 22 September 2026 | [WaterPlum / Contagious Interview](./22-09-2026%20-%20waterplum/) | Microsoft Defender XDR | Validates whether processes launched by trusted Visual Studio Code project tasks are represented with a direct `Code.exe` parent and sufficient command-line context; results are normal developer activity until provenance and task evidence prove otherwise | Validation |

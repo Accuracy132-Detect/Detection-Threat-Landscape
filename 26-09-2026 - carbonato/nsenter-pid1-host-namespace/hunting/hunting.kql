@@ -1,0 +1,24 @@
+// CARBONATO privileged-container host namespace entry
+// Status: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Platform: Microsoft Defender XDR advanced hunting
+// Telemetry: Microsoft Defender for Endpoint DeviceProcessEvents
+// Evidence: ThreatDown recovered the exact CARBONATO Docker exec command:
+//           nsenter -t 1 -m -u -n -i sh -c id
+// Boundary: A match shows this command shape; it does not prove Docker API
+// exploitation, container escape success, CARBONATO identity, or attribution.
+// Required validation: confirm Linux/container process coverage and baseline
+// approved SRE, incident-response, and container troubleshooting workflows.
+
+DeviceProcessEvents
+| where FileName =~ "nsenter"
+| where ProcessCommandLine contains "-t 1"
+| where ProcessCommandLine contains "-m -u -n -i"
+| where ProcessCommandLine contains "sh -c"
+| project Timestamp, DeviceId, DeviceName, AccountName,
+          FileName, FolderPath, ProcessCommandLine,
+          ProcessId, ProcessUniqueId,
+          InitiatingProcessFileName, InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine, InitiatingProcessId,
+          InitiatingProcessUniqueId, SHA1, ReportId
+| order by Timestamp desc

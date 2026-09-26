@@ -1,0 +1,24 @@
+CARBONATO — nsenter PID 1 host-namespace entry
+Report date: 2026-09-26
+
+Primary technical research
+- ThreatDown, "CARBONATO: a botnet built around an AI agent"
+  Published: 2026-09-22
+  Research period: exposed Docker registry discovered 2026-08; recovered archive spans 2024-10 through 2026-08
+  hxxps://www[.]threatdown[.]com/blog/carbonato/
+
+Official platform documentation
+- Microsoft Learn, "DeviceProcessEvents table in the advanced hunting schema"
+  Updated: 2026-08-07; accessed: 2026-09-26
+  hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+ATT&CK references
+- MITRE ATT&CK T1611 — Escape to Host
+  hxxps://attack[.]mitre[.]org/techniques/T1611/
+- MITRE ATT&CK T1059.004 — Unix Shell
+  hxxps://attack[.]mitre[.]org/techniques/T1059/004/
+
+Evidence boundary
+- ThreatDown recovered the exact Docker exec command `nsenter -t 1 -m -u -n -i sh -c id` from CARBONATO infrastructure and command history.
+- The source does not establish that every command recovered from the exposed registry executed successfully on a victim host.
+- The KQL is an untested hunting sketch. It does not prove unauthenticated Docker access, successful namespace entry, persistence, mining, C2, CARBONATO identity, or attribution.
