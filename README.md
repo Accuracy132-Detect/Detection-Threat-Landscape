@@ -276,8 +276,13 @@ Detection-Threat-Landscape/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
-└── 27-09-2026 - defender-cve-2026-50656/
+├── 27-09-2026 - defender-cve-2026-50656/
     └── defender-engine-exposure/validation/
+        ├── validation.kql
+        ├── references.txt
+        └── threat-analysis.pdf
+└── 28-09-2026 - payload-ransomware/
+    └── domain-root-gpo-change/validation/
         ├── validation.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -287,6 +292,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 28 September 2026 | [PAYLOAD ransomware](./28-09-2026%20-%20payload-ransomware/) | Microsoft Sentinel | Validates ingestion and raw representation of Active Directory Event IDs 5136/5137 before detecting source-observed `groupPolicyContainer` creation or domain-root `gPLink` changes; a row does not prove malicious GPO activity, impact, or attribution | Validation |
 | 27 September 2026 | [Microsoft Defender CVE-2026-50656](./27-09-2026%20-%20defender-cve-2026-50656/) | Microsoft Defender XDR | Validates whether Defender Vulnerability Management currently reports devices exposed to the local privilege-escalation vulnerability fixed in Windows Antivirus Engine/Platform 1.1.26060.3008 / 4.18.26060.3008; a row is assessment state, not evidence of exploitation | Validation |
 | 26 September 2026 | [CARBONATO](./26-09-2026%20-%20carbonato/) | Microsoft Defender XDR | Source-recovered `nsenter -t 1 -m -u -n -i sh -c id` execution from a privileged container to enter PID 1 host namespaces; a match does not prove exposed-Docker exploitation, successful host entry, persistence, C2, malware identity or attribution | Hunting |
 | 25 September 2026 | [CLEANGULP](./25-09-2026%20-%20cleangulp/) | Microsoft Defender XDR | Source-observed `MicrosoftIME.exe` file activity under the Microsoft IME-like LocalAppData directory; a match does not prove exploitation, execution, scheduled-task persistence, C2, malware identity or attribution | Hunting |

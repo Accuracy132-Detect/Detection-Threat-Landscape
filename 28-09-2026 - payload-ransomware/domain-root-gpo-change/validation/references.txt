@@ -1,0 +1,28 @@
+PAYLOAD RANSOMWARE / DOMAIN-ROOT GPO CHANGE TELEMETRY
+Publication date: 2026-09-21
+Observed incident period: 2026-04-11 through 2026-04-16
+
+Primary technical research
+- Kaspersky Securelist, "PAYLOAD ransomware via Group Policy"
+  hxxps://securelist[.]com/tr/payload-ransomware-via-group-policy/121335/
+
+Official schema and event documentation
+- Microsoft Learn, Azure Monitor Logs reference - SecurityEvent (updated 2026-08-27)
+  hxxps://learn[.]microsoft[.]com/en-us/azure/azure-monitor/reference/tables/securityevent
+- Microsoft Learn, 5136(S): A directory service object was modified (updated 2021-09-08)
+  hxxps://learn[.]microsoft[.]com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-5136
+- Microsoft Learn, 5137(S): A directory service object was created (updated 2021-09-07)
+  hxxps://learn[.]microsoft[.]com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-5137
+- Microsoft Learn, Audit Directory Service Changes (updated 2021-09-06)
+  hxxps://learn[.]microsoft[.]com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/audit-directory-service-changes
+- Microsoft Sentinel, Windows security event sets (updated 2026-08-28)
+  hxxps://docs[.]azure[.]cn/en-us/sentinel/windows-security-event-id-reference
+
+Campaign artifacts retained for investigation only, not used as detection conditions
+- PAYLOAD GPO GUID: {C897F2C7-C2AC-4E6F-BF48-58036FF29E79}
+- win Firewall Off GPO GUID: {22099AD2-E062-4F56-B574-5099BBA4E7A6}
+
+Scope boundary
+- The query validates Event IDs 5136/5137 ingestion and raw representation.
+- A match does not prove malicious GPO creation, domain-root linkage, policy application,
+  encryption, exfiltration, persistence, successful impact, or actor attribution.

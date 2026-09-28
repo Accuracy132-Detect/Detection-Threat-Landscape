@@ -1,0 +1,20 @@
+// PAYLOAD ransomware - Active Directory GPO change telemetry validation
+// Classification: Validation query - Untested implementation sketch
+// Confidence: Medium
+// Platform: Microsoft Sentinel / Log Analytics
+// Required connector: Windows Security Events via AMA
+// Prerequisites: Audit Directory Service Changes (Success), appropriate SACLs,
+//                and collection of Event IDs 5136 and 5137 from every domain controller.
+// Purpose: verify ingestion, actor attribution, and raw event representation before
+//          designing a rule for groupPolicyContainer creation or domain-root gPLink changes.
+// Important: a returned row is not proof of malicious GPO activity or PAYLOAD attribution.
+//            EventData must be inspected to confirm ObjectDN, ObjectClass,
+//            AttributeLDAPDisplayName, Value, and OperationType population.
+
+SecurityEvent
+| where EventSourceName == "Microsoft-Windows-Security-Auditing"
+| where EventID in (5136, 5137)
+| project TimeGenerated, Computer, EventID, Activity,
+          SubjectAccount, SubjectUserName, SubjectDomainName,
+          SubjectUserSid, SubjectLogonId, EventData
+| order by TimeGenerated desc
