@@ -60,227 +60,92 @@ Detection-Threat-Landscape/
 │   └── scripted-sharepoint-file-access/hunting/
 ├── 09-08-2026 - npm-cooldown/
 │   └── npmrc-file-event-coverage/validation/
-│       ├── validation.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 10-08-2026 - mac-crypto-drainer/
 │   └── softwareupdated-launchagent-bootstrap/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 11-08-2026 - gunra/
 │   └── wmic-shadowcopy-deletion/production-candidates/
-│       ├── detection.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 12-08-2026 - operation-dream-job/
 │   └── securitypdf-temp-child-execution/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 13-08-2026 - head-mare/
 │   └── phantomgraph-temp-batch-services/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 14-08-2026 - armored-likho/
 │   └── still-toolkit-service-installation/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 15-08-2026 - honeymyte/
 │   └── coolclient-msagent-driver-service/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 15-08-2026 - cve-2026-8452/
 │   └── netscaler-nsppe-crash-signals/validation/
-│       ├── validation.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 16-08-2026 - evooo1bot/
 │   └── cron-download-pipe-shell/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 17-08-2026 - patchcord/
 │   └── beaconbrowserhijack-run-key/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 18-08-2026 - jewelbug/
 │   └── com-microsoft-runedge-native-messaging-host/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 19-08-2026 - medusa/
 │   └── mimilib-lsa-security-package/production-candidates/
-│       ├── detection.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 20-08-2026 - grandoreiro/
 │   └── dff-dupfdll-mingwm10-sideload/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 21-08-2026 - uat-10147/
 │   └── iis-defender-exclusion/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 22-08-2026 - cve-2026-73570/
 │   └── zimbra-service-status-log-signals/validation/
-│       ├── validation.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 23-08-2026 - rust-crate-supply-chain/
 │   └── proc-macro1-cargo-cache/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 24-08-2026 - btr-reforged/
 │   └── btr-cli-driver-dat-ads/validation/
-│       ├── validation.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 25-08-2026 - fake-codex-clickfix/
 │   └── xattr-tmp-helper-quarantine-clear/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 27-08-2026 - spectre/
 │   └── hardware-monitor-systemd-persistence/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 29-08-2026 - aurora/
 │   └── sap-encryptor-flags/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 30-08-2026 - terminalfix/
 │   └── lockscreencontentserver-dui70-sideload/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 31-08-2026 - darklantern/
 │   └── udp-9992-firewall-visibility/validation/
-│       ├── validation.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 01-09-2026 - valleyrat/
 │   └── qnwallpaper-peloader/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 02-09-2026 - noderabbit/
 │   └── microsoftedgeupdate-run-key/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 05-09-2026 - ascii-smuggling/
 │   └── finance-envelope-fingerprint/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 06-09-2026 - rogue-screenconnect/
 │   └── screenconnect-wscript-vbs-chain/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 07-09-2026 - teams-helpdesk-intrusion/
 │   └── node-wscript-localappdata-loader/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 09-09-2026 - clearfake/
 │   └── webdav-rundll32-ordinal/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 11-09-2026 - gtg-20006/
 │   └── actor-controlled-device-registration/validation/
-│       ├── validation.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 12-09-2026 - papercut-agentic-campaign/
 │   ├── domain-admins-membership-addition/production-candidates/
-│   │   ├── detection.kql
-│   │   ├── references.txt
-│   │   └── threat-analysis.pdf
 │   └── registry-hive-staging/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 13-09-2026 - bluemoon/
 │   └── browser-cmd-curl-chain/production-candidates/
-│       ├── detection.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 13-09-2026 - cisco-fmc-exploitation/
 │   └── package-info-license-tmp/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 14-09-2026 - passkey-cloud-compromise/
 │   ├── mfa-method-addition/hunting/
-│   │   ├── hunting.kql
-│   │   ├── references.txt
-│   │   └── threat-analysis.pdf
 │   └── python-httpx-cloud-collection/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 15-09-2026 - gitlab-cve-2026-85706/
 │   └── anonymous-file-path-secret-target/production-candidates/
-│       ├── detection.spl
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 16-09-2026 - chosen-brick/
 │   └── spaced-windows-run-key/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 17-09-2026 - amos/
 │   └── hidden-application-support-execution/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 17-09-2026 - ghostcode/
 │   └── device-code-python-requests-correlation/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 18-09-2026 - nighteagle/
 │   └── rdp-virtual-channel-schema/validation/
-│       ├── validation.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 22-09-2026 - waterplum/
 │   └── vscode-trusted-project-child-process/validation/
-│       ├── validation.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 24-09-2026 - exvicy/
 │   └── clickfix-invokescript-download/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 25-09-2026 - cleangulp/
 │   └── localappdata-microsoft-ime-file/hunting/
-│       ├── hunting.kql
-│       ├── references.txt
-│       └── threat-analysis.pdf
 ├── 26-09-2026 - carbonato/
-    └── nsenter-pid1-host-namespace/hunting/
-        ├── hunting.kql
-        ├── references.txt
-        └── threat-analysis.pdf
+│   └── nsenter-pid1-host-namespace/hunting/
 ├── 27-09-2026 - defender-cve-2026-50656/
-    └── defender-engine-exposure/validation/
-        ├── validation.kql
-        ├── references.txt
-        └── threat-analysis.pdf
+│   └── defender-engine-exposure/validation/
 └── 28-09-2026 - payload-ransomware/
     └── domain-root-gpo-change/validation/
         ├── validation.kql
