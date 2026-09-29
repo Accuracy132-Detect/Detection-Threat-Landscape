@@ -146,9 +146,11 @@ Detection-Threat-Landscape/
 │   └── nsenter-pid1-host-namespace/hunting/
 ├── 27-09-2026 - defender-cve-2026-50656/
 │   └── defender-engine-exposure/validation/
-└── 28-09-2026 - payload-ransomware/
-    └── domain-root-gpo-change/validation/
-        ├── validation.kql
+├── 28-09-2026 - payload-ransomware/
+│   └── domain-root-gpo-change/validation/
+└── 29-09-2026 - peoplesoft-cve-2026-35273/
+    └── weblogic-java-shell-child/hunting/
+        ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -157,6 +159,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 29 September 2026 | [Oracle PeopleSoft CVE-2026-35273](./29-09-2026%20-%20peoplesoft-cve-2026-35273/) | Microsoft Defender XDR | Source-observed `cmd.exe`, `sh`, or `bash` spawned directly by a WebLogic Java process on an explicitly inventoried PeopleSoft web-tier node; a match does not prove exploitation, web-shell deployment, data theft, or UNC6240 attribution | Hunting |
 | 28 September 2026 | [PAYLOAD ransomware](./28-09-2026%20-%20payload-ransomware/) | Microsoft Sentinel | Validates ingestion and raw representation of Active Directory Event IDs 5136/5137 before detecting source-observed `groupPolicyContainer` creation or domain-root `gPLink` changes; a row does not prove malicious GPO activity, impact, or attribution | Validation |
 | 27 September 2026 | [Microsoft Defender CVE-2026-50656](./27-09-2026%20-%20defender-cve-2026-50656/) | Microsoft Defender XDR | Validates whether Defender Vulnerability Management currently reports devices exposed to the local privilege-escalation vulnerability fixed in Windows Antivirus Engine/Platform 1.1.26060.3008 / 4.18.26060.3008; a row is assessment state, not evidence of exploitation | Validation |
 | 26 September 2026 | [CARBONATO](./26-09-2026%20-%20carbonato/) | Microsoft Defender XDR | Source-recovered `nsenter -t 1 -m -u -n -i sh -c id` execution from a privileged container to enter PID 1 host namespaces; a match does not prove exposed-Docker exploitation, successful host entry, persistence, C2, malware identity or attribution | Hunting |
