@@ -1,0 +1,14 @@
+Microsoft Threat Intelligence
+Star Blizzard refines phishing and malware delivery with the RedFlick technique
+Published: 2026-09-29; campaign period: 2026-01 through 2026-08
+hxxps://www[.]microsoft[.]com/en-us/security/blog/2026/09/29/star-blizzard-refines-phishing-and-malware-delivery-with-the-redflick-technique/
+
+Microsoft Learn
+DeviceProcessEvents table in the advanced hunting schema
+Updated: 2026-08-07
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK
+T1059.003 Windows Command Shell; T1021.004 SSH
+hxxps://attack[.]mitre[.]org/techniques/T1059/003/
+hxxps://attack[.]mitre[.]org/techniques/T1021/004/

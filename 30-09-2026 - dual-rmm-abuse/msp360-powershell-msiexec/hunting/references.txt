@@ -1,0 +1,15 @@
+Microsoft Security Research / Microsoft Defender Experts
+Phishing Abuses RMM Tools for Persistent Access
+Published: 2026-09-29; observed activity: 2026-07
+hxxps://www[.]microsoft[.]com/en-us/security/blog/2026/09/29/phishing-abuses-rmm-tools-persistent-access/
+
+Microsoft Learn
+DeviceProcessEvents table in the advanced hunting schema
+Updated: 2026-08-07
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK
+T1059.001 PowerShell; T1218.007 Msiexec; T1219 Remote Access Software
+hxxps://attack[.]mitre[.]org/techniques/T1059/001/
+hxxps://attack[.]mitre[.]org/techniques/T1218/007/
+hxxps://attack[.]mitre[.]org/techniques/T1219/

@@ -1,0 +1,15 @@
+// Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR / DeviceProcessEvents
+// Objective: identify the source-observed SSH option pairing used to launch local cmd.exe.
+// A match does not prove Star Blizzard, a successful download, MSI execution, or CosmicPulse.
+DeviceProcessEvents
+| where FileName =~ "ssh.exe"
+| where ProcessCommandLine has "PermitLocalCommand=yes"
+| where ProcessCommandLine has "LocalCommand=cmd.exe"
+| project Timestamp, DeviceId, DeviceName,
+          FileName, FolderPath, ProcessCommandLine,
+          AccountName, ProcessId, ProcessUniqueId,
+          InitiatingProcessFileName, InitiatingProcessCommandLine,
+          InitiatingProcessParentFileName, ReportId
+| order by Timestamp desc

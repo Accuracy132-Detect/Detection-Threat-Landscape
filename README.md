@@ -148,8 +148,12 @@ Detection-Threat-Landscape/
 │   └── defender-engine-exposure/validation/
 ├── 28-09-2026 - payload-ransomware/
 │   └── domain-root-gpo-change/validation/
-└── 29-09-2026 - peoplesoft-cve-2026-35273/
-    └── weblogic-java-shell-child/hunting/
+├── 29-09-2026 - peoplesoft-cve-2026-35273/
+│   └── weblogic-java-shell-child/hunting/
+├── 30-09-2026 - dual-rmm-abuse/
+│   └── msp360-powershell-msiexec/hunting/
+└── 30-09-2026 - star-blizzard-redflick/
+    └── ssh-local-command/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -159,6 +163,8 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 30 September 2026 | [Dual-RMM abuse](./30-09-2026%20-%20dual-rmm-abuse/) | Microsoft Defender XDR | MSP360 RMM Agent launches PowerShell and PowerShell with an MSP360 parent starts an MSI from Temp; a match does not prove phishing, malicious ScreenConnect use, credential access, or attribution | Hunting |
+| 30 September 2026 | [Star Blizzard / RedFlick](./30-09-2026%20-%20star-blizzard-redflick/) | Microsoft Defender XDR | ssh.exe receives both PermitLocalCommand=yes and LocalCommand=cmd.exe; a match does not prove a successful connection, MSI execution, CosmicPulse installation, or actor attribution | Hunting |
 | 29 September 2026 | [Oracle PeopleSoft CVE-2026-35273](./29-09-2026%20-%20peoplesoft-cve-2026-35273/) | Microsoft Defender XDR | Source-observed `cmd.exe`, `sh`, or `bash` spawned directly by a WebLogic Java process on an explicitly inventoried PeopleSoft web-tier node; a match does not prove exploitation, web-shell deployment, data theft, or UNC6240 attribution | Hunting |
 | 28 September 2026 | [PAYLOAD ransomware](./28-09-2026%20-%20payload-ransomware/) | Microsoft Sentinel | Validates ingestion and raw representation of Active Directory Event IDs 5136/5137 before detecting source-observed `groupPolicyContainer` creation or domain-root `gPLink` changes; a row does not prove malicious GPO activity, impact, or attribution | Validation |
 | 27 September 2026 | [Microsoft Defender CVE-2026-50656](./27-09-2026%20-%20defender-cve-2026-50656/) | Microsoft Defender XDR | Validates whether Defender Vulnerability Management currently reports devices exposed to the local privilege-escalation vulnerability fixed in Windows Antivirus Engine/Platform 1.1.26060.3008 / 4.18.26060.3008; a row is assessment state, not evidence of exploitation | Validation |

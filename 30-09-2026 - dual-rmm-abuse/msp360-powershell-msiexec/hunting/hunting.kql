@@ -1,0 +1,24 @@
+// Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Primary platform: Microsoft Defender XDR / DeviceProcessEvents
+// Objective: identify the source-observed MSP360 RMM -> PowerShell -> MSI installation lineage.
+// A match does not prove phishing, malicious ScreenConnect use, or credential access.
+DeviceProcessEvents
+| where
+    (FileName =~ "powershell.exe"
+        and InitiatingProcessFileName =~ "RMM.Agent.exe")
+    or
+    (FileName =~ "msiexec.exe"
+        and InitiatingProcessFileName =~ "powershell.exe"
+        and InitiatingProcessParentFileName =~ "RMM.Agent.exe"
+        and ProcessCommandLine has "\\Temp\\"
+        and ProcessCommandLine has ".msi")
+| project Timestamp, DeviceId, DeviceName,
+          FileName, FolderPath, ProcessCommandLine,
+          ProcessId, ProcessUniqueId,
+          AccountDomain, AccountName,
+          InitiatingProcessFileName, InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine, InitiatingProcessId,
+          InitiatingProcessUniqueId, InitiatingProcessParentFileName,
+          ReportId
+| order by Timestamp desc
