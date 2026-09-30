@@ -1,3 +1,4 @@
+// Rule name: [T1219][T1059.001][T1218.007] MSP360 RMM Agent to PowerShell and MSIExec
 // Hunting query - Untested implementation sketch
 // Confidence: Medium
 // Primary platform: Microsoft Defender XDR / DeviceProcessEvents

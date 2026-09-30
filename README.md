@@ -14,146 +14,146 @@ Threat packages are organized chronologically as `DD-MM-YYYY - threat-name/`.
 Detection-Threat-Landscape/
 ├── README.md
 ├── 22-07-2026 - clickfix-pcalua-rundll32/
-│   └── clickfix-multi-stage-execution/production-candidates/
+│   └── T1218.011-clickfix-multi-stage-execution/production-candidates/
 ├── 22-07-2026 - clicklock/
-│   └── clicklock-macos-kill-loop/production-candidates/
+│   └── T1562.001-T1056.002-T1543.001-clicklock-macos-kill-loop/production-candidates/
 ├── 22-07-2026 - hollowgraph/
-│   ├── hollowgraph-calendar-c2/production-candidates/
-│   └── hollowgraph-future-calendar-access/hunting/
+│   ├── T1102.002-T1071.001-hollowgraph-calendar-c2/production-candidates/
+│   └── T1102.002-T1071.001-hollowgraph-future-calendar-access/hunting/
 ├── 22-07-2026 - starland-rat/
-│   └── pythonw-license-loader/hunting/
+│   └── T1059.006-T1036.008-pythonw-license-loader/hunting/
 ├── 22-07-2026 - studio-5000-acd-path-traversal/
-│   └── studio-5000-novel-write-path/hunting/
+│   └── NO-MITRE-MAPPING-studio-5000-novel-write-path/hunting/
 ├── 22-07-2026 - teleshim/
-│   └── feedback-scheduled-task/hunting/
+│   └── T1053.005-T1574.002-feedback-scheduled-task/hunting/
 ├── 23-07-2026 - fakeagent-sectoprat/
-│   └── signed-application-dll-sideloading/hunting/
+│   └── T1574.002-T1036-T1053.005-signed-application-dll-sideloading/hunting/
 ├── 24-07-2026 - msarat/
-│   └── browser-cdp-remote-debugging/production-candidates/
+│   └── T1219-browser-cdp-remote-debugging/production-candidates/
 ├── 24-07-2026 - zimreaper/
-│   └── zimbra-app-password-persistence/hunting/
+│   └── T1098-zimbra-app-password-persistence/hunting/
 ├── 25-07-2026 - certighost/
-│   └── adcs-chase-to-non-dc/validation/
+│   └── T1649-adcs-chase-to-non-dc/validation/
 ├── 28-07-2026 - sourtrade/
-│   └── browser-created-large-executable/hunting/
+│   └── T1204.002-browser-created-large-executable/hunting/
 ├── 29-07-2026 - hermes-hades/
-│   └── webserver-to-hadoop-service/validation/
+│   └── T1505.003-T1059-webserver-to-hadoop-service/validation/
 ├── 30-07-2026 - joyfill/
-│   └── developer-tool-runtime-modification/hunting/
+│   └── T1195.002-T1059.007-T1546-developer-tool-runtime-modification/hunting/
 ├── 31-07-2026 - xmrig-covert-ops/
-│   └── root-context-user-switching/hunting/
+│   └── T1078-T1562.001-T1564.013-root-context-user-switching/hunting/
 ├── 31-07-2026 - cve-2023-23397/
-│   └── outlook-forced-ntlm-authentication/hunting/
+│   └── T1187-outlook-forced-ntlm-authentication/hunting/
 ├── 02-08-2026 - stac4749/
-│   └── teams-vishing-powershell-payload/hunting/
+│   └── T1059.001-T1105-teams-vishing-powershell-payload/hunting/
 ├── 03-08-2026 - n-central-cve-2026-18577/
-│   └── cloudflared-service-registration/hunting/
+│   └── T1543.003-cloudflared-service-registration/hunting/
 ├── 04-08-2026 - mirage-kitten/
-│   └── appvshnotify-sspicli-sideloading/production-candidates/
+│   └── T1574.001-appvshnotify-sspicli-sideloading/production-candidates/
 ├── 05-08-2026 - quickfox/
-│   └── fdmtp-csmonitor-dll-sideloading/hunting/
+│   └── T1574.001-fdmtp-csmonitor-dll-sideloading/hunting/
 ├── 06-08-2026 - chaindrop/
-│   └── node-setup-bun-execution/hunting/
+│   └── T1059.007-node-setup-bun-execution/hunting/
 ├── 07-08-2026 - interlock/
-│   └── volatility-credential-plugins/production-candidates/
+│   └── T1003.002-T1003.005-volatility-credential-plugins/production-candidates/
 ├── 08-08-2026 - unc6671/
-│   └── scripted-sharepoint-file-access/hunting/
+│   └── T1213.002-scripted-sharepoint-file-access/hunting/
 ├── 09-08-2026 - npm-cooldown/
-│   └── npmrc-file-event-coverage/validation/
+│   └── T1195.001-npmrc-file-event-coverage/validation/
 ├── 10-08-2026 - mac-crypto-drainer/
-│   └── softwareupdated-launchagent-bootstrap/hunting/
+│   └── T1543.001-softwareupdated-launchagent-bootstrap/hunting/
 ├── 11-08-2026 - gunra/
-│   └── wmic-shadowcopy-deletion/production-candidates/
+│   └── T1490-wmic-shadowcopy-deletion/production-candidates/
 ├── 12-08-2026 - operation-dream-job/
-│   └── securitypdf-temp-child-execution/hunting/
+│   └── T1204-securitypdf-temp-child-execution/hunting/
 ├── 13-08-2026 - head-mare/
-│   └── phantomgraph-temp-batch-services/hunting/
+│   └── T1543.003-phantomgraph-temp-batch-services/hunting/
 ├── 14-08-2026 - armored-likho/
-│   └── still-toolkit-service-installation/hunting/
+│   └── T1543.003-still-toolkit-service-installation/hunting/
 ├── 15-08-2026 - honeymyte/
-│   └── coolclient-msagent-driver-service/hunting/
+│   └── T1543.003-coolclient-msagent-driver-service/hunting/
 ├── 15-08-2026 - cve-2026-8452/
-│   └── netscaler-nsppe-crash-signals/validation/
+│   └── T1190-netscaler-nsppe-crash-signals/validation/
 ├── 16-08-2026 - evooo1bot/
-│   └── cron-download-pipe-shell/hunting/
+│   └── T1059.004-T1053.003-cron-download-pipe-shell/hunting/
 ├── 17-08-2026 - patchcord/
-│   └── beaconbrowserhijack-run-key/hunting/
+│   └── T1060-beaconbrowserhijack-run-key/hunting/
 ├── 18-08-2026 - jewelbug/
-│   └── com-microsoft-runedge-native-messaging-host/hunting/
+│   └── T1176-com-microsoft-runedge-native-messaging-host/hunting/
 ├── 19-08-2026 - medusa/
-│   └── mimilib-lsa-security-package/production-candidates/
+│   └── T1547.005-T1003.001-mimilib-lsa-security-package/production-candidates/
 ├── 20-08-2026 - grandoreiro/
-│   └── dff-dupfdll-mingwm10-sideload/hunting/
+│   └── T1574.002-dff-dupfdll-mingwm10-sideload/hunting/
 ├── 21-08-2026 - uat-10147/
-│   └── iis-defender-exclusion/hunting/
+│   └── T1685-iis-defender-exclusion/hunting/
 ├── 22-08-2026 - cve-2026-73570/
-│   └── zimbra-service-status-log-signals/validation/
+│   └── T1190-zimbra-service-status-log-signals/validation/
 ├── 23-08-2026 - rust-crate-supply-chain/
-│   └── proc-macro1-cargo-cache/hunting/
+│   └── T1195.001-proc-macro1-cargo-cache/hunting/
 ├── 24-08-2026 - btr-reforged/
-│   └── btr-cli-driver-dat-ads/validation/
+│   └── T1564.004-btr-cli-driver-dat-ads/validation/
 ├── 25-08-2026 - fake-codex-clickfix/
-│   └── xattr-tmp-helper-quarantine-clear/hunting/
+│   └── T1553.001-xattr-tmp-helper-quarantine-clear/hunting/
 ├── 27-08-2026 - spectre/
-│   └── hardware-monitor-systemd-persistence/hunting/
+│   └── T1543.002-hardware-monitor-systemd-persistence/hunting/
 ├── 29-08-2026 - aurora/
-│   └── sap-encryptor-flags/hunting/
+│   └── T1486-sap-encryptor-flags/hunting/
 ├── 30-08-2026 - terminalfix/
-│   └── lockscreencontentserver-dui70-sideload/hunting/
+│   └── T1574.002-lockscreencontentserver-dui70-sideload/hunting/
 ├── 31-08-2026 - darklantern/
-│   └── udp-9992-firewall-visibility/validation/
+│   └── NO-MITRE-MAPPING-udp-9992-firewall-visibility/validation/
 ├── 01-09-2026 - valleyrat/
-│   └── qnwallpaper-peloader/hunting/
+│   └── T1027.013-qnwallpaper-peloader/hunting/
 ├── 02-09-2026 - noderabbit/
-│   └── microsoftedgeupdate-run-key/hunting/
+│   └── T1547.001-microsoftedgeupdate-run-key/hunting/
 ├── 05-09-2026 - ascii-smuggling/
-│   └── finance-envelope-fingerprint/hunting/
+│   └── T1566-T1027-finance-envelope-fingerprint/hunting/
 ├── 06-09-2026 - rogue-screenconnect/
-│   └── screenconnect-wscript-vbs-chain/hunting/
+│   └── T1059.005-T1219.002-screenconnect-wscript-vbs-chain/hunting/
 ├── 07-09-2026 - teams-helpdesk-intrusion/
-│   └── node-wscript-localappdata-loader/hunting/
+│   └── T1059.007-T1036-node-wscript-localappdata-loader/hunting/
 ├── 09-09-2026 - clearfake/
-│   └── webdav-rundll32-ordinal/hunting/
+│   └── T1218.011-webdav-rundll32-ordinal/hunting/
 ├── 11-09-2026 - gtg-20006/
-│   └── actor-controlled-device-registration/validation/
+│   └── NO-MITRE-MAPPING-actor-controlled-device-registration/validation/
 ├── 12-09-2026 - papercut-agentic-campaign/
-│   ├── domain-admins-membership-addition/production-candidates/
-│   └── registry-hive-staging/hunting/
+│   ├── T1098.007-domain-admins-membership-addition/production-candidates/
+│   └── T1003.004-registry-hive-staging/hunting/
 ├── 13-09-2026 - bluemoon/
-│   └── browser-cmd-curl-chain/production-candidates/
+│   └── T1059.003-T1105-browser-cmd-curl-chain/production-candidates/
 ├── 13-09-2026 - cisco-fmc-exploitation/
-│   └── package-info-license-tmp/hunting/
+│   └── T1059-package-info-license-tmp/hunting/
 ├── 14-09-2026 - passkey-cloud-compromise/
-│   ├── mfa-method-addition/hunting/
-│   └── python-httpx-cloud-collection/hunting/
+│   ├── T1098.005-mfa-method-addition/hunting/
+│   └── T1213.002-python-httpx-cloud-collection/hunting/
 ├── 15-09-2026 - gitlab-cve-2026-85706/
-│   └── anonymous-file-path-secret-target/production-candidates/
+│   └── T1190-T1552.001-anonymous-file-path-secret-target/production-candidates/
 ├── 16-09-2026 - chosen-brick/
-│   └── spaced-windows-run-key/hunting/
+│   └── T1547.001-spaced-windows-run-key/hunting/
 ├── 17-09-2026 - amos/
-│   └── hidden-application-support-execution/hunting/
+│   └── T1059.004-T1036-hidden-application-support-execution/hunting/
 ├── 17-09-2026 - ghostcode/
-│   └── device-code-python-requests-correlation/hunting/
+│   └── T1528-device-code-python-requests-correlation/hunting/
 ├── 18-09-2026 - nighteagle/
-│   └── rdp-virtual-channel-schema/validation/
+│   └── T1021.001-T1090-rdp-virtual-channel-schema/validation/
 ├── 22-09-2026 - waterplum/
-│   └── vscode-trusted-project-child-process/validation/
+│   └── T1204.002-vscode-trusted-project-child-process/validation/
 ├── 24-09-2026 - exvicy/
-│   └── clickfix-invokescript-download/hunting/
+│   └── T1059.001-T1105-clickfix-invokescript-download/hunting/
 ├── 25-09-2026 - cleangulp/
-│   └── localappdata-microsoft-ime-file/hunting/
+│   └── T1105-T1053.005-localappdata-microsoft-ime-file/hunting/
 ├── 26-09-2026 - carbonato/
-│   └── nsenter-pid1-host-namespace/hunting/
+│   └── T1611-T1059.004-nsenter-pid1-host-namespace/hunting/
 ├── 27-09-2026 - defender-cve-2026-50656/
-│   └── defender-engine-exposure/validation/
+│   └── NO-MITRE-MAPPING-defender-engine-exposure/validation/
 ├── 28-09-2026 - payload-ransomware/
-│   └── domain-root-gpo-change/validation/
+│   └── T1484.001-domain-root-gpo-change/validation/
 ├── 29-09-2026 - peoplesoft-cve-2026-35273/
-│   └── weblogic-java-shell-child/hunting/
+│   └── T1059.003-T1059.004-weblogic-java-shell-child/hunting/
 ├── 30-09-2026 - dual-rmm-abuse/
-│   └── msp360-powershell-msiexec/hunting/
+│   └── T1219-T1059.001-T1218.007-msp360-powershell-msiexec/hunting/
 └── 30-09-2026 - star-blizzard-redflick/
-    └── ssh-local-command/hunting/
+    └── T1021.004-T1059.003-ssh-local-command/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -163,8 +163,8 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
-| 30 September 2026 | [Dual-RMM abuse](./30-09-2026%20-%20dual-rmm-abuse/) | Microsoft Defender XDR | MSP360 RMM Agent launches PowerShell and PowerShell with an MSP360 parent starts an MSI from Temp; a match does not prove phishing, malicious ScreenConnect use, credential access, or attribution | Hunting |
-| 30 September 2026 | [Star Blizzard / RedFlick](./30-09-2026%20-%20star-blizzard-redflick/) | Microsoft Defender XDR | ssh.exe receives both PermitLocalCommand=yes and LocalCommand=cmd.exe; a match does not prove a successful connection, MSI execution, CosmicPulse installation, or actor attribution | Hunting |
+| 30 September 2026 | [Dual-RMM abuse](./30-09-2026%20-%20dual-rmm-abuse/) | Microsoft Defender XDR | **[T1219][T1059.001][T1218.007] MSP360 RMM Agent to PowerShell and MSIExec** — MSP360 RMM Agent launches PowerShell and PowerShell with an MSP360 parent starts an MSI from Temp; a match does not prove phishing, malicious ScreenConnect use, credential access, or attribution | Hunting |
+| 30 September 2026 | [Star Blizzard / RedFlick](./30-09-2026%20-%20star-blizzard-redflick/) | Microsoft Defender XDR | **[T1021.004][T1059.003] SSH PermitLocalCommand to Local CMD Execution** — `ssh.exe` receives both `PermitLocalCommand=yes` and `LocalCommand=cmd.exe`; a match does not prove a successful connection, MSI execution, CosmicPulse installation, or actor attribution | Hunting |
 | 29 September 2026 | [Oracle PeopleSoft CVE-2026-35273](./29-09-2026%20-%20peoplesoft-cve-2026-35273/) | Microsoft Defender XDR | Source-observed `cmd.exe`, `sh`, or `bash` spawned directly by a WebLogic Java process on an explicitly inventoried PeopleSoft web-tier node; a match does not prove exploitation, web-shell deployment, data theft, or UNC6240 attribution | Hunting |
 | 28 September 2026 | [PAYLOAD ransomware](./28-09-2026%20-%20payload-ransomware/) | Microsoft Sentinel | Validates ingestion and raw representation of Active Directory Event IDs 5136/5137 before detecting source-observed `groupPolicyContainer` creation or domain-root `gPLink` changes; a row does not prove malicious GPO activity, impact, or attribution | Validation |
 | 27 September 2026 | [Microsoft Defender CVE-2026-50656](./27-09-2026%20-%20defender-cve-2026-50656/) | Microsoft Defender XDR | Validates whether Defender Vulnerability Management currently reports devices exposed to the local privilege-escalation vulnerability fixed in Windows Antivirus Engine/Platform 1.1.26060.3008 / 4.18.26060.3008; a row is assessment state, not evidence of exploitation | Validation |
