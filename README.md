@@ -152,8 +152,10 @@ Detection-Threat-Landscape/
 │   └── T1059.003-T1059.004-weblogic-java-shell-child/hunting/
 ├── 30-09-2026 - dual-rmm-abuse/
 │   └── T1219-T1059.001-T1218.007-msp360-powershell-msiexec/hunting/
-└── 30-09-2026 - star-blizzard-redflick/
-    └── T1021.004-T1059.003-ssh-local-command/hunting/
+├── 30-09-2026 - star-blizzard-redflick/
+│   └── T1021.004-T1059.003-ssh-local-command/hunting/
+└── 01-10-2026 - storm-3168/
+    └── T1485-azure-multi-resource-deletion/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -163,6 +165,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 1 October 2026 | [Storm-3168](./01-10-2026%20-%20storm-3168/) | Microsoft Sentinel | **[T1485] Azure control-plane multi-resource deletion** — hunts administrative deletion operations for Storage Accounts, Key Vaults, Function Apps, App Services, and App Service plans; a match does not prove compromise, successful deletion, data loss, or Storm-3168 attribution | Hunting |
 | 30 September 2026 | [Dual-RMM abuse](./30-09-2026%20-%20dual-rmm-abuse/) | Microsoft Defender XDR | **[T1219][T1059.001][T1218.007] MSP360 RMM Agent to PowerShell and MSIExec** — MSP360 RMM Agent launches PowerShell and PowerShell with an MSP360 parent starts an MSI from Temp; a match does not prove phishing, malicious ScreenConnect use, credential access, or attribution | Hunting |
 | 30 September 2026 | [Star Blizzard / RedFlick](./30-09-2026%20-%20star-blizzard-redflick/) | Microsoft Defender XDR | **[T1021.004][T1059.003] SSH PermitLocalCommand to Local CMD Execution** — `ssh.exe` receives both `PermitLocalCommand=yes` and `LocalCommand=cmd.exe`; a match does not prove a successful connection, MSI execution, CosmicPulse installation, or actor attribution | Hunting |
 | 29 September 2026 | [Oracle PeopleSoft CVE-2026-35273](./29-09-2026%20-%20peoplesoft-cve-2026-35273/) | Microsoft Defender XDR | Source-observed `cmd.exe`, `sh`, or `bash` spawned directly by a WebLogic Java process on an explicitly inventoried PeopleSoft web-tier node; a match does not prove exploitation, web-shell deployment, data theft, or UNC6240 attribution | Hunting |

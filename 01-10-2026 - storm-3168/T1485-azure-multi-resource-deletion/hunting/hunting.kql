@@ -1,0 +1,22 @@
+// [T1485] Azure multi-resource control-plane deletion
+// Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required connector: Azure Activity
+// Confidence: Medium
+// A match proves a delete operation was requested; it does not prove compromise,
+// ransomware, agentic execution, exfiltration, or Storm-3168 attribution.
+
+AzureActivity
+| where CategoryValue =~ "Administrative"
+| where OperationNameValue in~ (
+    "MICROSOFT.STORAGE/STORAGEACCOUNTS/DELETE",
+    "MICROSOFT.KEYVAULT/VAULTS/DELETE",
+    "MICROSOFT.WEB/SITES/DELETE",
+    "MICROSOFT.WEB/SERVERFARMS/DELETE"
+)
+| project TimeGenerated, SubscriptionId, ResourceGroup,
+          ResourceProviderValue, ResourceId,
+          OperationNameValue, ActivityStatusValue,
+          Caller, CallerIpAddress, CorrelationId,
+          Authorization_d, Properties_d
+| order by TimeGenerated desc

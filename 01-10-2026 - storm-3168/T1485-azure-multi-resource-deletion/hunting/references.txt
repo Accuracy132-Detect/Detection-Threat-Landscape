@@ -1,0 +1,21 @@
+Primary technical research
+Microsoft Security Research — Storm-3168: Agentic-driven cloud attacks using compromised service principals
+Published: 2026-09-25; observed activity: early June 2026
+hxxps://www[.]microsoft[.]com/en-us/security/blog/2026/09/25/storm-3168-agentic-driven-cloud-attacks-using-compromised-service-principals/
+
+Official documentation
+Microsoft Learn — AzureActivity table schema
+hxxps://learn[.]microsoft[.]com/en-us/azure/azure-monitor/reference/tables/AzureActivity
+
+Microsoft Learn — Activity Log in Azure Monitor
+hxxps://learn[.]microsoft[.]com/en-us/azure/azure-monitor/platform/activity-log
+
+Microsoft Learn — Audit Microsoft Sentinel queries and activities / Azure Activity connector prerequisite
+hxxps://learn[.]microsoft[.]com/en-us/azure/sentinel/audit-sentinel-data
+
+Microsoft Learn — Storage Accounts List Keys REST API, API version 2026-06-01
+hxxps://learn[.]microsoft[.]com/en-us/rest/api/storagerp/storage-accounts/list-keys?view=rest-storagerp-2026-06-01
+
+MITRE ATT&CK
+T1485 — Data Destruction
+hxxps://attack[.]mitre[.]org/techniques/T1485/
