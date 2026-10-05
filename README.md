@@ -156,9 +156,12 @@ Detection-Threat-Landscape/
 │   └── T1021.004-T1059.003-ssh-local-command/hunting/
 ├── 01-10-2026 - storm-3168/
 │   └── T1485-azure-multi-resource-deletion/hunting/
-└── 02-10-2026 - zimbra-cve-2026-73570/
-    └── T1190-T1059.004-swatchdog-snmp-shell-injection/production-candidates/
-        ├── detection.kql
+├── 02-10-2026 - zimbra-cve-2026-73570/
+│   └── T1190-T1059.004-swatchdog-snmp-shell-injection/production-candidates/
+└── 05-10-2026 - citrix-netscaler-cve-2026-88771-88772/
+    ├── T1190-T1059.004-netscaler-log-poisoning-shell-injection/production-candidates/
+    └── T1190-netscaler-dtls-fragment-volume/validation/
+        ├── validation.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -167,6 +170,8 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 5 October 2026 | [Citrix NetScaler CVE-2026-88772](./05-10-2026%20-%20citrix-netscaler-cve-2026-88771-88772/T1190-netscaler-dtls-fragment-volume/validation/) | Microsoft Sentinel | **[T1190] DTLS fragment-volume validation** — identifies the exact public laboratory traffic shape of 120 records or 176,640 bytes toward inventoried NetScaler destinations; aggregated CEF cannot establish malformed fragments, memory corruption, RCE, or DoS | Validation |
+| 5 October 2026 | [Citrix NetScaler CVE-2026-88771](./05-10-2026%20-%20citrix-netscaler-cve-2026-88771-88772/T1190-T1059.004-netscaler-log-poisoning-shell-injection/production-candidates/) | Microsoft Sentinel | **[T1190][T1059.004] Exploit-shaped log poisoning** — detects the source-documented fake Pitboss/NSPPE failure grammar plus shell metacharacters in untruncated NetScaler logs; a match supports an exploitation attempt, not deferred command execution or compromise | Production candidate |
 | 2 October 2026 | [Zimbra CVE-2026-73570](./02-10-2026%20-%20zimbra-cve-2026-73570/) | Microsoft Defender XDR | **[T1190][T1059.004] Zimbra swatchdog/SNMP shell injection boundary** — Perl `.swatchdog_script` launches a Unix shell containing the documented `snmptrap -c` grammar, Zimbra service markers, and shell metacharacters; a match confirms shell-mediated execution but not downstream payload outcomes | Production candidate |
 | 1 October 2026 | [Storm-3168](./01-10-2026%20-%20storm-3168/) | Microsoft Sentinel | **[T1485] Azure control-plane multi-resource deletion** — hunts administrative deletion operations for Storage Accounts, Key Vaults, Function Apps, App Services, and App Service plans; a match does not prove compromise, successful deletion, data loss, or Storm-3168 attribution | Hunting |
 | 30 September 2026 | [Dual-RMM abuse](./30-09-2026%20-%20dual-rmm-abuse/) | Microsoft Defender XDR | **[T1219][T1059.001][T1218.007] MSP360 RMM Agent to PowerShell and MSIExec** — MSP360 RMM Agent launches PowerShell and PowerShell with an MSP360 parent starts an MSI from Temp; a match does not prove phishing, malicious ScreenConnect use, credential access, or attribution | Hunting |
