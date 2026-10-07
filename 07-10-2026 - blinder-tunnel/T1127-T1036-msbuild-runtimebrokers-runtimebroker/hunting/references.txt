@@ -1,0 +1,21 @@
+PRIMARY RESEARCH
+Palo Alto Networks Unit 42 — Blinder Tunnel Campaign Targets Iraqi Infrastructure
+Publication date: 2026-10-06
+Observed activity: infrastructure staging from 2025-11; campaign active from 2026-03; coding challenge observed 2026-04
+hxxps://unit42[.]paloaltonetworks[.]com/blinder-tunnel-targets-critical-infrastructure/
+
+OFFICIAL SCHEMA DOCUMENTATION
+Microsoft Learn — DeviceProcessEvents table in the advanced hunting schema
+Last updated: 2026-08-07; accessed: 2026-10-07
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK
+T1127 — Trusted Developer Utilities Proxy Execution
+hxxps://attack[.]mitre[.]org/techniques/T1127/
+T1036 — Masquerading
+hxxps://attack[.]mitre[.]org/techniques/T1036/
+
+SCOPE NOTE
+The query detects the source-observed msbuild.exe -> RuntimeBroker.exe execution
+from the user-writable RuntimeBrokers directory. It is not an IOC-only verdict
+and does not establish actor attribution, successful DLL sideloading, C2, or impact.

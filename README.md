@@ -158,10 +158,12 @@ Detection-Threat-Landscape/
 │   └── T1485-azure-multi-resource-deletion/hunting/
 ├── 02-10-2026 - zimbra-cve-2026-73570/
 │   └── T1190-T1059.004-swatchdog-snmp-shell-injection/production-candidates/
-└── 05-10-2026 - citrix-netscaler-cve-2026-88771-88772/
-    ├── T1190-T1059.004-netscaler-log-poisoning-shell-injection/production-candidates/
-    └── T1190-netscaler-dtls-fragment-volume/validation/
-        ├── validation.kql
+├── 05-10-2026 - citrix-netscaler-cve-2026-88771-88772/
+│   ├── T1190-T1059.004-netscaler-log-poisoning-shell-injection/production-candidates/
+│   └── T1190-netscaler-dtls-fragment-volume/validation/
+└── 07-10-2026 - blinder-tunnel/
+    └── T1127-T1036-msbuild-runtimebrokers-runtimebroker/hunting/
+        ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -170,6 +172,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 7 October 2026 | [Blinder Tunnel](./07-10-2026%20-%20blinder-tunnel/T1127-T1036-msbuild-runtimebrokers-runtimebroker/hunting/) | Microsoft Defender XDR | **[T1127][T1036] MSBuild to masqueraded RuntimeBroker** — hunts the source-documented parent–child execution from a user-writable RuntimeBrokers path; a match does not prove sideloading, C2, impact, or attribution | Hunting |
 | 5 October 2026 | [Citrix NetScaler CVE-2026-88772](./05-10-2026%20-%20citrix-netscaler-cve-2026-88771-88772/T1190-netscaler-dtls-fragment-volume/validation/) | Microsoft Sentinel | **[T1190] DTLS fragment-volume validation** — identifies the exact public laboratory traffic shape of 120 records or 176,640 bytes toward inventoried NetScaler destinations; aggregated CEF cannot establish malformed fragments, memory corruption, RCE, or DoS | Validation |
 | 5 October 2026 | [Citrix NetScaler CVE-2026-88771](./05-10-2026%20-%20citrix-netscaler-cve-2026-88771-88772/T1190-T1059.004-netscaler-log-poisoning-shell-injection/production-candidates/) | Microsoft Sentinel | **[T1190][T1059.004] Exploit-shaped log poisoning** — detects the source-documented fake Pitboss/NSPPE failure grammar plus shell metacharacters in untruncated NetScaler logs; a match supports an exploitation attempt, not deferred command execution or compromise | Production candidate |
 | 2 October 2026 | [Zimbra CVE-2026-73570](./02-10-2026%20-%20zimbra-cve-2026-73570/) | Microsoft Defender XDR | **[T1190][T1059.004] Zimbra swatchdog/SNMP shell injection boundary** — Perl `.swatchdog_script` launches a Unix shell containing the documented `snmptrap -c` grammar, Zimbra service markers, and shell metacharacters; a match confirms shell-mediated execution but not downstream payload outcomes | Production candidate |

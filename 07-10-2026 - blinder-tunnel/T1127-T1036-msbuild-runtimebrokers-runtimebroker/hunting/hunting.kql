@@ -1,0 +1,18 @@
+// MITRE ATT&CK: T1127 (Trusted Developer Utilities Proxy Execution), T1036 (Masquerading)
+// Classification: Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Defender XDR Advanced Hunting
+// Required telemetry: Microsoft Defender for Endpoint / DeviceProcessEvents
+// Evidence: Unit 42 observed msbuild.exe launching a renamed vshost.exe as
+// RuntimeBroker.exe from %LOCALAPPDATA%\Microsoft\RuntimeBrokers.
+// A match supports the source-observed execution shape; it does not prove
+// Blinder Tunnel attribution, DLL sideloading, C2, or successful compromise.
+DeviceProcessEvents
+| where FileName =~ "RuntimeBroker.exe"
+| where FolderPath contains @"\AppData\Local\Microsoft\RuntimeBrokers\"
+| where InitiatingProcessFileName =~ "msbuild.exe"
+| project Timestamp, DeviceName, AccountUpn, FileName, FolderPath,
+          ProcessCommandLine, SHA1, ProcessVersionInfoOriginalFileName,
+          InitiatingProcessFileName, InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine, ProcessId, InitiatingProcessId,
+          ProcessUniqueId, InitiatingProcessUniqueId, ReportId
+| order by Timestamp desc
