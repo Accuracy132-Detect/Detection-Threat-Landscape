@@ -161,8 +161,10 @@ Detection-Threat-Landscape/
 ├── 05-10-2026 - citrix-netscaler-cve-2026-88771-88772/
 │   ├── T1190-T1059.004-netscaler-log-poisoning-shell-injection/production-candidates/
 │   └── T1190-netscaler-dtls-fragment-volume/validation/
-└── 07-10-2026 - blinder-tunnel/
-    └── T1127-T1036-msbuild-runtimebrokers-runtimebroker/hunting/
+├── 07-10-2026 - blinder-tunnel/
+│   └── T1127-T1036-msbuild-runtimebrokers-runtimebroker/hunting/
+└── 08-10-2026 - artex-south-korea-finance/
+    └── T1090-artex-proxy-infrastructure/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -172,6 +174,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 8 October 2026 | [ARTEX South Korea finance campaign](./08-10-2026%20-%20artex-south-korea-finance/T1090-artex-proxy-infrastructure/hunting/) | Microsoft Defender XDR | **[T1090] Source-documented proxy and ARTEX infrastructure** — hunts endpoint connections to nine observed proxy IPs and one ARTEX host; a match does not prove exploitation, AI-agent execution, data theft, compromise, or attribution | Hunting |
 | 7 October 2026 | [Blinder Tunnel](./07-10-2026%20-%20blinder-tunnel/T1127-T1036-msbuild-runtimebrokers-runtimebroker/hunting/) | Microsoft Defender XDR | **[T1127][T1036] MSBuild to masqueraded RuntimeBroker** — hunts the source-documented parent–child execution from a user-writable RuntimeBrokers path; a match does not prove sideloading, C2, impact, or attribution | Hunting |
 | 5 October 2026 | [Citrix NetScaler CVE-2026-88772](./05-10-2026%20-%20citrix-netscaler-cve-2026-88771-88772/T1190-netscaler-dtls-fragment-volume/validation/) | Microsoft Sentinel | **[T1190] DTLS fragment-volume validation** — identifies the exact public laboratory traffic shape of 120 records or 176,640 bytes toward inventoried NetScaler destinations; aggregated CEF cannot establish malformed fragments, memory corruption, RCE, or DoS | Validation |
 | 5 October 2026 | [Citrix NetScaler CVE-2026-88771](./05-10-2026%20-%20citrix-netscaler-cve-2026-88771-88772/T1190-T1059.004-netscaler-log-poisoning-shell-injection/production-candidates/) | Microsoft Sentinel | **[T1190][T1059.004] Exploit-shaped log poisoning** — detects the source-documented fake Pitboss/NSPPE failure grammar plus shell metacharacters in untruncated NetScaler logs; a match supports an exploitation attempt, not deferred command execution or compromise | Production candidate |

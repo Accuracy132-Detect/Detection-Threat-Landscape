@@ -1,0 +1,21 @@
+PRIMARY TECHNICAL RESEARCH
+CrowdStrike — Unknown Threat Actor Uses AI-Driven ARTEX to Target South Korean Finance
+Publication date: 2026-10-07
+Observed campaign period: late 2026-09 to early 2026-10
+hxxps://www[.]crowdstrike[.]com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance/
+
+OFFICIAL SCHEMA DOCUMENTATION
+Microsoft Learn — DeviceNetworkEvents table in the advanced hunting schema
+Last updated: 2026-06-22; accessed: 2026-10-08
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-devicenetworkevents-table
+
+ATT&CK
+MITRE ATT&CK — T1090 Proxy
+Accessed: 2026-10-08
+hxxps://attack[.]mitre[.]org/techniques/T1090/
+
+ANALYTICAL LIMIT
+The CrowdStrike report identifies nine proxy IP addresses and one threat actor-controlled
+ARTEX host. A match is an IOC-based investigative lead; it does not establish exploitation,
+AI-agent execution, data theft, attribution, or compromise.
+@

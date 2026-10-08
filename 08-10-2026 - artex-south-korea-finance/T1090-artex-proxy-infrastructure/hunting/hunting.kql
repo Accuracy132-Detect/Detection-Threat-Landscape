@@ -1,0 +1,17 @@
+// MITRE ATT&CK: T1090 (Proxy)
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium; IOC-based and time-bounded
+// Primary platform: Microsoft Defender XDR Advanced Hunting
+// Required telemetry: Microsoft Defender for Endpoint / DeviceNetworkEvents
+let ArtexInfrastructure = dynamic([
+    "101.53.80.20", "205.214.59.31", "124.155.252.63",
+    "154.201.79.246", "23.248.249.90", "23.158.220.98",
+    "103.248.148.84", "203.160.133.172", "209.209.85.38",
+    "38.244.50.120"
+]);
+DeviceNetworkEvents
+| where RemoteIP in (ArtexInfrastructure)
+| project Timestamp, DeviceName, RemoteIP, RemotePort, Protocol,
+          RemoteUrl, InitiatingProcessFileName, InitiatingProcessCommandLine,
+          InitiatingProcessSHA1, InitiatingProcessAccountUpn, ReportId
+| order by Timestamp desc
