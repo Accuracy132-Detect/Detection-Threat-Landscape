@@ -1,0 +1,20 @@
+// UAT-11985 Google AitM infrastructure in email and QR-code URLs
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Status: Hunting query - Untested implementation sketch
+// Confidence: Medium (source-confirmed IOC match; IOC expiry and tenant testing required)
+// Prerequisite: Microsoft Defender for Office 365 populating EmailUrlInfo
+// Evidence: Cisco Talos, 2026-10-08; IOCs published in Cisco-Talos/IOCs.
+// Interpretation: A result is an IOC association, not proof of credential theft,
+// MFA bypass, account takeover, campaign attribution, or successful delivery.
+let UAT11985Domains = dynamic([
+    "google.morelessty.com",
+    "jmlh.morelessty.com",
+    "google.centerhoti.com",
+    "google.natrlyi.com",
+    "accounts.natrlyi.com"
+]);
+EmailUrlInfo
+| where UrlDomain in~ (UAT11985Domains)
+| project Timestamp, NetworkMessageId, Url, UrlDomain, UrlLocation,
+          UrlChainId, UrlChainPosition, ReportId
+| order by Timestamp desc

@@ -1,0 +1,19 @@
+UAT-11985 primary technical research
+Cisco Talos. "UAT-11985: AI-assisted event lures delivering real-time Google AitM phishing."
+Publication date: 2026-10-08. Observed activity: mid-2026.
+hxxps://blog[.]talosintelligence[.]com/uat-11985/
+
+Source-maintained IOC list
+Cisco Talos IOCs repository. uat-11985.txt. Accessed 2026-10-09.
+hxxps://github[.]com/Cisco-Talos/IOCs/blob/main/2026/10/uat-11985.txt
+
+Official schema documentation
+Microsoft Learn. EmailUrlInfo advanced hunting table. Accessed 2026-10-09.
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-emailurlinfo-table
+
+ATT&CK mapping
+MITRE ATT&CK T1566.002 - Phishing: Spearphishing Link.
+hxxps://attack[.]mitre[.]org/techniques/T1566/002/
+
+Scope note
+The query matches five source-published hostnames in Defender for Office 365 URL telemetry. It does not detect the AitM protocol behavior and does not establish compromise or attribution.
