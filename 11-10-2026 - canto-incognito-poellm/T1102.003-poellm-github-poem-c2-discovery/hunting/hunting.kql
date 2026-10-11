@@ -1,0 +1,28 @@
+// Canto Incognito / PoeLLM - GitHub poem-based C2 discovery
+// MITRE ATT&CK: T1102.003 - Web Service: One-Way Communication
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Status: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Required telemetry: Microsoft Defender for Endpoint DeviceNetworkEvents
+// Evidence: Black Lotus Labs observed PoeLLM retrieving a file named dash.css
+// from a GitHub repository owned by ejejejdfbbebe to derive the current C2 IP.
+// Limitation: RemoteUrl may contain only an FQDN in some events. Absence of
+// results therefore does not prove absence of PoeLLM or the GitHub fetch.
+
+DeviceNetworkEvents
+| where RemoteUrl has "ejejejdfbbebe"
+| where RemoteUrl endswith "dash.css"
+| project
+    Timestamp,
+    DeviceName,
+    RemoteUrl,
+    RemoteIP,
+    RemotePort,
+    Protocol,
+    InitiatingProcessFileName,
+    InitiatingProcessCommandLine,
+    InitiatingProcessFolderPath,
+    InitiatingProcessSHA1,
+    InitiatingProcessAccountName,
+    ReportId
+| order by Timestamp desc

@@ -1,0 +1,25 @@
+CANTO INCOGNITO / POELLM - REFERENCES
+Published: 2026-10-07
+Campaign period: at least 2026-04 through publication
+Prepared: 2026-10-11
+
+PRIMARY TECHNICAL RESEARCH
+
+Black Lotus Labs, Lumen Technologies
+Canto incognito: tracking the PoeLLM malware
+hxxps://www[.]lumen[.]com/blog/en-us/canto-incognito-tracking-the-poellm-malware
+Published 2026-10-07; accessed 2026-10-11.
+
+OFFICIAL SCHEMA DOCUMENTATION
+
+Microsoft Learn
+DeviceNetworkEvents table in the advanced hunting schema
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-devicenetworkevents-table
+Last updated 2026-06-22; accessed 2026-10-11.
+
+NOTES
+
+The primary hunt intentionally uses the source-documented GitHub account and
+file name instead of mutable C2 IP addresses. No customer data is included.
+The query is an untested hunting implementation and must be validated against
+the target tenant's Linux onboarding coverage and RemoteUrl population.
