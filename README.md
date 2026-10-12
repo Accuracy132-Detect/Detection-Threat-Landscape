@@ -167,8 +167,10 @@ Detection-Threat-Landscape/
 │   └── T1090-artex-proxy-infrastructure/hunting/
 ├── 09-10-2026 - uat-11985/
 │   └── T1566.002-google-aitm-email-qr-url/hunting/
-└── 11-10-2026 - canto-incognito-poellm/
-    └── T1102.003-poellm-github-poem-c2-discovery/hunting/
+├── 11-10-2026 - canto-incognito-poellm/
+│   └── T1102.003-poellm-github-poem-c2-discovery/hunting/
+└── 12-10-2026 - integrity-tech-flax-typhoon/
+    └── T1133-T1036.003-softether-system-binary-masquerade/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -178,6 +180,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 12 October 2026 | [Integrity Tech / Flax Typhoon](./12-10-2026%20-%20integrity-tech-flax-typhoon/T1133-T1036.003-softether-system-binary-masquerade/hunting/) | Microsoft Defender XDR | **[T1133][T1036.003] Masqueraded SoftEther installer execution** — hunts `conhost.exe` or `dllhost.exe` outside legitimate Windows system directories; a match does not identify SoftEther, persistence, C2, compromise, or attribution | Hunting |
 | 11 October 2026 | [Canto Incognito / PoeLLM](./11-10-2026%20-%20canto-incognito-poellm/T1102.003-poellm-github-poem-c2-discovery/hunting/) | Microsoft Defender XDR | **[T1102.003] GitHub poem-based C2 discovery** — hunts the source-observed repository account and `dash.css` file used by PoeLLM to derive rotating C2 addresses; a match does not prove malware execution, successful C2, mining, scanning, exploitation, or attribution | Hunting |
 | 9 October 2026 | [UAT-11985 Google AitM phishing](./09-10-2026%20-%20uat-11985/T1566.002-google-aitm-email-qr-url/hunting/) | Microsoft Defender XDR | **[T1566.002] Source-published phishing URL infrastructure in email and QR codes** — hunts five Talos-published hostnames in `EmailUrlInfo`; a match does not prove delivery, credential theft, MFA bypass, account takeover, or attribution | Hunting |
 | 8 October 2026 | [ARTEX South Korea finance campaign](./08-10-2026%20-%20artex-south-korea-finance/T1090-artex-proxy-infrastructure/hunting/) | Microsoft Defender XDR | **[T1090] Source-documented proxy and ARTEX infrastructure** — hunts endpoint connections to nine observed proxy IPs and one ARTEX host; a match does not prove exploitation, AI-agent execution, data theft, compromise, or attribution | Hunting |

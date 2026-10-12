@@ -1,0 +1,31 @@
+// Integrity Tech / Flax Typhoon - masqueraded SoftEther installer execution
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Status: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// MITRE ATT&CK: T1133, T1036.003
+// Required telemetry: Microsoft Defender for Endpoint DeviceProcessEvents
+// Evidence: AA26-281A states that actors downloaded SoftEther installers and
+// often named them conhost.exe or dllhost.exe to resemble Windows binaries.
+// This query deliberately excludes the legitimate Windows binary directories.
+// A result is not proof that the binary is SoftEther or actor-controlled.
+
+DeviceProcessEvents
+| where FileName in~ ("conhost.exe", "dllhost.exe")
+| where not(FolderPath startswith @"C:\Windows\System32\")
+| where not(FolderPath startswith @"C:\Windows\SysWOW64\")
+| project
+    Timestamp,
+    DeviceName,
+    AccountName,
+    FileName,
+    FolderPath,
+    ProcessCommandLine,
+    ProcessVersionInfoCompanyName,
+    ProcessVersionInfoOriginalFileName,
+    SHA1,
+    InitiatingProcessFileName,
+    InitiatingProcessFolderPath,
+    InitiatingProcessCommandLine,
+    InitiatingProcessAccountName,
+    ReportId
+| order by Timestamp desc

@@ -1,0 +1,32 @@
+INTEGRITY TECH / FLAX TYPHOON - REFERENCES
+Prepared: 2026-10-12
+
+PRIMARY GOVERNMENT TECHNICAL RESEARCH
+
+FBI, CISA, NSA, NCSC-UK and international partners
+AA26-281A - Chinese Government-linked Cyber Threat Actors Combine Automated
+and Hands-on Hacking Tools to Steal Sensitive Data
+hxxps://www[.]ic3[.]gov/CSA/2026/261008[.]pdf
+Published 2026-10-08; accessed 2026-10-12.
+Observed activity: as early as 2017; initial access details since at least
+mid-January 2021; specific compromise windows vary by incident.
+
+U.S. Department of Justice
+Justice Department and FBI Seize Vulnerability Scanning and Spear Phishing
+Tools Operated and Used by China-State Sponsored Hackers
+hxxps://www[.]justice[.]gov/opa/pr/justice-department-and-fbi-seize-vulnerability-scanning-and-spear-phishing-tools-operated
+Published and updated 2026-10-08; accessed 2026-10-12.
+
+OFFICIAL SCHEMA DOCUMENTATION
+
+Microsoft Learn
+DeviceProcessEvents table in the advanced hunting schema
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+Accessed 2026-10-12.
+
+NOTES
+
+The query is an untested hunting implementation. It detects source-observed
+masquerading filenames outside legitimate Windows directories; it does not
+identify SoftEther by content and does not establish attribution. Validate
+signer, hash, PE metadata, network behavior, and change ownership before alerting.
