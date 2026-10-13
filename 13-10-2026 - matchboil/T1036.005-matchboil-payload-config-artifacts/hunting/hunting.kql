@@ -1,0 +1,20 @@
+// MATCHBOIL payload and configuration artifact hunt
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Status: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Telemetry prerequisite: Microsoft Defender for Endpoint populating DeviceFileEvents
+// Scope: Use the portal time selector appropriate to local retention and the investigation.
+// Interpretation: A row is an artifact match. It does not prove execution, persistence,
+// C2 communication, compromise, or UAC-0099 attribution.
+DeviceFileEvents
+| where
+    (FileName == "SMTPClientApplication.exe"
+        and FolderPath endswith @"\AppData\Local\SMTPClient")
+    or (FileName == "config.library-ms"
+        and FolderPath == @"C:\Users\Public\Libraries")
+    or (FileName == "WallpappersSet.jpg"
+        and FolderPath endswith @"\Pictures")
+| project Timestamp, DeviceId, DeviceName, ActionType, FileName, FolderPath,
+          SHA1, InitiatingProcessFileName, InitiatingProcessCommandLine,
+          InitiatingProcessAccountName
+| order by Timestamp desc
