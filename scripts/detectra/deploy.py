@@ -29,7 +29,7 @@ class PinnedHost(paramiko.MissingHostKeyPolicy):
     def missing_host_key(self, client, hostname, key):
         actual = fingerprint(key)
         if not hmac.compare_digest(actual, self.expected):
-            raise RuntimeError('SSH host fingerprint mismatch. Authentication and upload stopped.')
+            raise RuntimeError('SSH host fingerprint mismatch. Server public key (' + key.get_name() + '): ' + actual + '. Authentication and upload stopped; verify with your trusted FileZilla connection.')
         client.get_host_keys().add(hostname, key.get_name(), key)
 
 
