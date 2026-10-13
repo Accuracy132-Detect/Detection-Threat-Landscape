@@ -1,0 +1,36 @@
+name: Update Detectra research on OVH
+on:
+  push:
+    branches: [threat-landscape]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: detectra-ovh-research
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/threat-landscape'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out latest published research
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: threat-landscape
+          persist-credentials: false
+      - name: Install exporter and SFTP dependencies
+        run: |
+          python3 -m venv "$RUNNER_TEMP/detectra-venv"
+          "$RUNNER_TEMP/detectra-venv/bin/pip" install -r scripts/detectra/requirements.txt
+      - name: Verify exporter and deployment protections
+        run: '"$RUNNER_TEMP/detectra-venv/bin/python" -m unittest discover -s scripts/detectra -p "test_*.py"'
+      - name: Generate and validate research data, reports and covers
+        run: '"$RUNNER_TEMP/detectra-venv/bin/python" scripts/detectra/build.py --output "$RUNNER_TEMP/detectra-publish"'
+      - name: Publish research to OVH
+        env:
+          OVH_SFTP_HOST: ${{ secrets.OVH_SFTP_HOST }}
+          OVH_SFTP_USER: ${{ secrets.OVH_SFTP_USER }}
+          OVH_SFTP_PASSWORD: ${{ secrets.OVH_SFTP_PASSWORD }}
+          OVH_SFTP_FINGERPRINT: ${{ secrets.OVH_SFTP_FINGERPRINT }}
+        run: '"$RUNNER_TEMP/detectra-venv/bin/python" scripts/detectra/deploy.py --source "$RUNNER_TEMP/detectra-publish"'
