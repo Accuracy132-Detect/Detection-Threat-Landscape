@@ -1,0 +1,26 @@
+// REF8801 / Apex Accelerator - WScript launches PowerShell from campaign-named Temp scripts
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Status: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Classification: Campaign-specific artifact with direct parent-child execution behavior
+// Required telemetry: Microsoft Defender for Endpoint DeviceProcessEvents
+// Evidence: Elastic observed wscript.exe launching a VBS wrapper that starts PowerShell
+// with -NoProfile -ExecutionPolicy Bypass -File against _apex_run.ps1 or _audit_run.ps1.
+// This hunt does not prove npm execution, successful payload download, malware execution,
+// persistence, credential access, C2, compromise, or REF8801 attribution.
+DeviceProcessEvents
+| where FileName =~ "powershell.exe"
+| where InitiatingProcessFileName =~ "wscript.exe"
+| where ProcessCommandLine contains "-NoProfile"
+    and ProcessCommandLine contains "-ExecutionPolicy"
+    and ProcessCommandLine contains "Bypass"
+    and ProcessCommandLine contains "-File"
+| where ProcessCommandLine contains "_apex_run.ps1"
+    or ProcessCommandLine contains "_audit_run.ps1"
+| where InitiatingProcessCommandLine contains "_apex_run.vbs"
+    or InitiatingProcessCommandLine contains "_audit_run.vbs"
+| project Timestamp, DeviceId, DeviceName, AccountName,
+          FileName, FolderPath, ProcessCommandLine, SHA1,
+          InitiatingProcessFileName, InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine, ReportId
+| order by Timestamp desc

@@ -1,0 +1,11 @@
+Primary technical research — Elastic Security Labs, "Auditing the auditor: Unmasking Apex Accelerator", published 2026-10-12; observed activity period not disclosed; accessed 2026-10-14:
+hxxps://www[.]elastic[.]co/security-labs/auditing-the-auditor-unmasking-apex-accelerator
+
+Official schema documentation — Microsoft Learn, "DeviceProcessEvents table in the advanced hunting schema", updated 2026-08-07; accessed 2026-10-14:
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK — T1059.001 PowerShell; accessed 2026-10-14:
+hxxps://attack[.]mitre[.]org/techniques/T1059/001/
+
+MITRE ATT&CK — T1059.005 Visual Basic; accessed 2026-10-14:
+hxxps://attack[.]mitre[.]org/techniques/T1059/005/
