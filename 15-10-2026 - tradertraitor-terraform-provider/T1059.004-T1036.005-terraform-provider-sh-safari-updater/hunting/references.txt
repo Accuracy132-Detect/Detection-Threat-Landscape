@@ -1,0 +1,10 @@
+Primary technical research
+Zscaler ThreatLabz — Suspected TraderTraitor Group Uses Trojanized Terraform Provider to Deliver Cross-Platform Malware
+Publication date: 2026-10-08
+Observed campaign period: July 2026
+hxxps://www[.]zscaler[.]com/blogs/security-research/suspected-tradertraitor-group-uses-trojanized-terraform-provider-deliver
+
+Official schema documentation
+Microsoft Learn — DeviceProcessEvents table in the advanced hunting schema
+Accessed: 2026-10-15
+hxxps://learn[.]microsoft[.]com/defender-xdr/advanced-hunting-deviceprocessevents-table

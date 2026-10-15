@@ -173,8 +173,10 @@ Detection-Threat-Landscape/
 │   └── T1133-T1036.003-softether-system-binary-masquerade/hunting/
 ├── 13-10-2026 - matchboil/
 │   └── T1036.005-matchboil-payload-config-artifacts/hunting/
-└── 14-10-2026 - ref8801-apex-accelerator/
-    └── T1059.005-T1059.001-wscript-powershell-temp-staging/hunting/
+├── 14-10-2026 - ref8801-apex-accelerator/
+│   └── T1059.005-T1059.001-wscript-powershell-temp-staging/hunting/
+└── 15-10-2026 - tradertraitor-terraform-provider/
+    └── T1059.004-T1036.005-terraform-provider-sh-safari-updater/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -184,6 +186,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 15 October 2026 | [Suspected TraderTraitor / trojanized Terraform provider](./15-10-2026%20-%20tradertraitor-terraform-provider/T1059.004-T1036.005-terraform-provider-sh-safari-updater/hunting/) | Microsoft Defender XDR | **[T1059.004][T1036.005] Terraform provider to `sh -c` temporary loader** — hunts the source-observed `terraform-provider-awsbeta_v1.0.0` parent starting `sh` or `bash` with `safari_updater`; a match does not prove payload retrieval, later-stage execution, compromise, or attribution | Hunting |
 | 14 October 2026 | [REF8801 / Apex Accelerator](./14-10-2026%20-%20ref8801-apex-accelerator/T1059.005-T1059.001-wscript-powershell-temp-staging/hunting/) | Microsoft Defender XDR | **[T1059.005][T1059.001] WScript to PowerShell paired Temp staging** — hunts the source-observed parent-child process plus `_apex_run` or `_audit_run` VBS/PS1 pairs; a match does not prove npm execution, payload retrieval, malware execution, C2, compromise, or attribution | Hunting |
 | 13 October 2026 | [MATCHBOIL / UAC-0099](./13-10-2026%20-%20matchboil/T1036.005-matchboil-payload-config-artifacts/hunting/) | Microsoft Defender XDR | **[T1036.005] Source-observed payload and configuration file placement** — hunts three exact filename-folder combinations documented by ESET; a match does not prove execution, persistence, C2, compromise, or attribution | Hunting |
 | 12 October 2026 | [Integrity Tech / Flax Typhoon](./12-10-2026%20-%20integrity-tech-flax-typhoon/T1133-T1036.003-softether-system-binary-masquerade/hunting/) | Microsoft Defender XDR | **[T1133][T1036.003] Masqueraded SoftEther installer execution** — hunts `conhost.exe` or `dllhost.exe` outside legitimate Windows system directories; a match does not identify SoftEther, persistence, C2, compromise, or attribution | Hunting |

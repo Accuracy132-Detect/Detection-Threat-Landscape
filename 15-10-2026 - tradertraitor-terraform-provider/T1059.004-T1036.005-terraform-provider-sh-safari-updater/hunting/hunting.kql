@@ -1,0 +1,15 @@
+// Hunting query - Untested implementation sketch
+// Confidence: Medium | Primary platform: Microsoft Defender XDR
+// Behavior: source-observed Terraform provider starts sh/bash through -c
+// with a command line referencing the temporary safari_updater loader.
+// This is a campaign-specific hunt; a match does not prove compromise.
+DeviceProcessEvents
+| where InitiatingProcessFileName =~ "terraform-provider-awsbeta_v1.0.0"
+| where FileName in~ ("sh", "bash")
+| where ProcessCommandLine contains "safari_updater"
+| where ProcessCommandLine contains "-c"
+| project Timestamp, DeviceId, DeviceName, AccountName,
+          FileName, FolderPath, ProcessCommandLine, SHA1,
+          InitiatingProcessFileName, InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine, ReportId
+| order by Timestamp desc
