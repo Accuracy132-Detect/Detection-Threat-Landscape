@@ -1,0 +1,17 @@
+// Production candidate - Untested implementation sketch
+// Confidence: Medium | Primary platform: Microsoft Defender XDR
+// Behavior: source-observed Linux named-pipe reverse shell combining
+// mkfifo, an interactive Bash shell and Netcat in one command line.
+// A match does not prove successful C2, impact, or CL-UNK-1211 attribution.
+DeviceProcessEvents
+| where FileName in~ ("sh", "bash")
+| where ProcessCommandLine contains "mkfifo"
+| where ProcessCommandLine contains "/tmp/f"
+| where ProcessCommandLine contains "bash -i"
+| where ProcessCommandLine contains "nc "
+| where ProcessCommandLine contains "|"
+| project Timestamp, DeviceId, DeviceName, AccountName,
+          FileName, FolderPath, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine,
+          ReportId
+| order by Timestamp desc
