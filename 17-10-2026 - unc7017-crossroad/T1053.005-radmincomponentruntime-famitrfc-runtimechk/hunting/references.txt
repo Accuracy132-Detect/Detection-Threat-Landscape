@@ -1,0 +1,14 @@
+Primary technical research
+Google Threat Intelligence Group / Mandiant - Investigating Ephemeral Supply Chain Tampering
+Publication date: 2026-10-15
+Observed campaign period: 2026-04 through 2026-07
+hxxps://cloud[.]google[.]com/blog/topics/threat-intelligence/investigating-ephemeral-supply-chain-tampering
+
+Official schema documentation
+Microsoft Learn - DeviceProcessEvents table in the advanced hunting schema
+Accessed: 2026-10-17
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK
+T1053.005 - Scheduled Task/Job: Scheduled Task
+hxxps://attack[.]mitre[.]org/techniques/T1053/005/

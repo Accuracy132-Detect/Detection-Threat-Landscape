@@ -177,9 +177,11 @@ Detection-Threat-Landscape/
 │   └── T1059.005-T1059.001-wscript-powershell-temp-staging/hunting/
 ├── 15-10-2026 - tradertraitor-terraform-provider/
 │   └── T1059.004-T1036.005-terraform-provider-sh-safari-updater/hunting/
-└── 16-10-2026 - cl-unk-1211/
-    └── T1059.004-mkfifo-bash-nc-reverse-shell/production-candidates/
-        ├── detection.kql
+├── 16-10-2026 - cl-unk-1211/
+│   └── T1059.004-mkfifo-bash-nc-reverse-shell/production-candidates/
+└── 17-10-2026 - unc7017-crossroad/
+    └── T1053.005-radmincomponentruntime-famitrfc-runtimechk/hunting/
+        ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -188,6 +190,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 17 October 2026 | [UNC7017 / CROSSROAD](./17-10-2026%20-%20unc7017-crossroad/T1053.005-radmincomponentruntime-famitrfc-runtimechk/hunting/) | Microsoft Defender XDR | **[T1053.005] Radmin scheduled-task runtime execution** — hunts source-observed `FamItrfc.exe` or `FamItrf2.exe` under the LocalAppData Radmin directory with `--runtimechk`; a match does not prove task creation, DLL hijacking, successful C2, supply-chain delivery, compromise or attribution | Hunting |
 | 16 October 2026 | [CL-UNK-1211](./16-10-2026%20-%20cl-unk-1211/T1059.004-mkfifo-bash-nc-reverse-shell/production-candidates/) | Microsoft Defender XDR | **[T1059.004] Named-pipe Bash/Netcat reverse shell** — detects the source-observed command grammar combining `mkfifo`, `/tmp/f`, `bash -i`, `nc` and a shell pipe; a match supports reverse-shell execution but does not prove successful C2, downstream activity, impact or attribution | Production candidate |
 | 15 October 2026 | [Suspected TraderTraitor / trojanized Terraform provider](./15-10-2026%20-%20tradertraitor-terraform-provider/T1059.004-T1036.005-terraform-provider-sh-safari-updater/hunting/) | Microsoft Defender XDR | **[T1059.004][T1036.005] Terraform provider to `sh -c` temporary loader** — hunts the source-observed `terraform-provider-awsbeta_v1.0.0` parent starting `sh` or `bash` with `safari_updater`; a match does not prove payload retrieval, later-stage execution, compromise, or attribution | Hunting |
 | 14 October 2026 | [REF8801 / Apex Accelerator](./14-10-2026%20-%20ref8801-apex-accelerator/T1059.005-T1059.001-wscript-powershell-temp-staging/hunting/) | Microsoft Defender XDR | **[T1059.005][T1059.001] WScript to PowerShell paired Temp staging** — hunts the source-observed parent-child process plus `_apex_run` or `_audit_run` VBS/PS1 pairs; a match does not prove npm execution, payload retrieval, malware execution, C2, compromise, or attribution | Hunting |

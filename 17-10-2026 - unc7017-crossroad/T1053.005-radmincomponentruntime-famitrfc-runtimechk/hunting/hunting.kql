@@ -1,0 +1,17 @@
+// Hunting query - Untested implementation sketch
+// Classification: Hunting query | Confidence: Medium
+// Primary platform: Microsoft Defender XDR advanced hunting
+// Telemetry: DeviceProcessEvents
+// Source-observed behavior: RadminComponentRuntime executes the signed Radmin
+// binary from %LOCALAPPDATA%\Radmin with --runtimechk. FamItrf2.exe is an
+// observed alternative. A match does not prove task creation, DLL hijacking,
+// successful C2, supply-chain delivery, compromise, or UNC7017 attribution.
+DeviceProcessEvents
+| where FileName in~ ("FamItrfc.exe", "FamItrf2.exe")
+| where FolderPath contains @"\AppData\Local\Radmin\"
+| where ProcessCommandLine contains "--runtimechk"
+| project Timestamp, DeviceId, DeviceName, AccountName,
+          FileName, FolderPath, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine,
+          ReportId
+| order by Timestamp desc
