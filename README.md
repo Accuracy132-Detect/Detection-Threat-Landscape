@@ -179,8 +179,10 @@ Detection-Threat-Landscape/
 │   └── T1059.004-T1036.005-terraform-provider-sh-safari-updater/hunting/
 ├── 16-10-2026 - cl-unk-1211/
 │   └── T1059.004-mkfifo-bash-nc-reverse-shell/production-candidates/
-└── 17-10-2026 - unc7017-crossroad/
-    └── T1053.005-radmincomponentruntime-famitrfc-runtimechk/hunting/
+├── 17-10-2026 - unc7017-crossroad/
+│   └── T1053.005-radmincomponentruntime-famitrfc-runtimechk/hunting/
+└── 18-10-2026 - romulus-clickfix/
+    └── T1059.001-T1105-clickfix-powershell-url-staging/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -189,7 +191,8 @@ Detection-Threat-Landscape/
 ## Threat catalog
 
 | Date | Threat | Primary platform | Content | Status |
-|---|---|---|---|---|\n| 18 October 2026 | [ROMULUS / ClickFix](./18-10-2026%20-%20romulus-clickfix/T1059.001-T1105-clickfix-powershell-url-staging/hunting/) | Microsoft Defender XDR | **[T1059.001][T1105] PowerShell URL staging with evasion switches** — hunts PowerShell or PowerShell Core command lines combining a source-supported evasion switch with an HTTP(S) URL; a match does not prove ClickFix delivery, payload retrieval, execution, C2, compromise, or attribution | Hunting |
+|---|---|---|---|---|
+| 18 October 2026 | [ROMULUS / ClickFix](./18-10-2026%20-%20romulus-clickfix/T1059.001-T1105-clickfix-powershell-url-staging/hunting/) | Microsoft Defender XDR | **[T1059.001][T1105] PowerShell URL staging with evasion switches** — hunts PowerShell or PowerShell Core command lines combining a source-supported evasion switch with an HTTP(S) URL; a match does not prove ClickFix delivery, payload retrieval, execution, C2, compromise, or attribution | Hunting |
 | 17 October 2026 | [UNC7017 / CROSSROAD](./17-10-2026%20-%20unc7017-crossroad/T1053.005-radmincomponentruntime-famitrfc-runtimechk/hunting/) | Microsoft Defender XDR | **[T1053.005] Radmin scheduled-task runtime execution** — hunts source-observed `FamItrfc.exe` or `FamItrf2.exe` under the LocalAppData Radmin directory with `--runtimechk`; a match does not prove task creation, DLL hijacking, successful C2, supply-chain delivery, compromise or attribution | Hunting |
 | 16 October 2026 | [CL-UNK-1211](./16-10-2026%20-%20cl-unk-1211/T1059.004-mkfifo-bash-nc-reverse-shell/production-candidates/) | Microsoft Defender XDR | **[T1059.004] Named-pipe Bash/Netcat reverse shell** — detects the source-observed command grammar combining `mkfifo`, `/tmp/f`, `bash -i`, `nc` and a shell pipe; a match supports reverse-shell execution but does not prove successful C2, downstream activity, impact or attribution | Production candidate |
 | 15 October 2026 | [Suspected TraderTraitor / trojanized Terraform provider](./15-10-2026%20-%20tradertraitor-terraform-provider/T1059.004-T1036.005-terraform-provider-sh-safari-updater/hunting/) | Microsoft Defender XDR | **[T1059.004][T1036.005] Terraform provider to `sh -c` temporary loader** — hunts the source-observed `terraform-provider-awsbeta_v1.0.0` parent starting `sh` or `bash` with `safari_updater`; a match does not prove payload retrieval, later-stage execution, compromise, or attribution | Hunting |
@@ -247,7 +250,8 @@ Detection-Threat-Landscape/
 | 15 August 2026 | [HoneyMyte / CoolClient](./15-08-2026%20-%20honeymyte/) | Microsoft Sentinel | Windows Security Event 4697 records the source-observed `msagent` service pointing to `msagent.sys` before kernel-rootkit behavior | Hunting |
 | 14 August 2026 | [Armored Likho / Still Toolkit](./14-08-2026%20-%20armored-likho/) | Microsoft Sentinel | Windows Security Event 4697 records source-observed `TReload` or `auxhost` service installation | Hunting |
 | 13 August 2026 | [Head Mare / PhantomGraph](./13-08-2026%20-%20head-mare/) | Microsoft Sentinel | Windows Security Event 4697 records source-observed `SysExcSvc` or `SysReadSvc` installation through `cmd /c` and a temporary `cmd_cmd_*.bat` file | Hunting |
-| 12 August 2026 | [Operation Dream Job / SecurityPDF](./12-08-2026%20-%20operation-dream-job/) | Microsoft Defender XDR | Source-observed `SecurityPDF.exe` creates and launches `%TEMP%\\new.exe` after opening a crafted PDF | Hunting |
+| 12 August 2026 | [Operation Dream Job / SecurityPDF](./12-08-2026%20-%20operation-dream-job/) | Microsoft Defender XDR | Source-observed `SecurityPDF.exe` creates and launches `%TEMP%\
+ew.exe` after opening a crafted PDF | Hunting |
 | 11 August 2026 | [Gunra ransomware](./11-08-2026%20-%20gunra/) | Microsoft Defender XDR | `WMIC.exe` deletes volume shadow copies through the source-observed `shadowcopy ... delete` command pattern | Production candidate |
 | 10 August 2026 | [macOS ClickFix crypto drainer](./10-08-2026%20-%20mac-crypto-drainer/) | Microsoft Defender XDR | `launchctl bootstrap` registers the source-observed `com.apple.softwareupdated.plist` user LaunchAgent | Hunting |
 | 9 August 2026 | [npm cooldown posture](./09-08-2026%20-%20npm-cooldown/) | Microsoft Defender XDR | Validate whether `.npmrc` file activity and initiating-process context are visible before designing state-based monitoring | Validation |
