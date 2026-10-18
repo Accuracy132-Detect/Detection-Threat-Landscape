@@ -1,0 +1,19 @@
+ROMULUS: Analysis of a New Multi-Payload ClickFix Delivery Platform
+Organization: Forescout Research - Vedere Labs
+Publication date: 2026-10-15
+Observed activity: September-October 2026; exact campaign start not established by the source
+URL: hxxps://www[.]forescout[.]com/blog/romulus-analysis-of-a-new-multi-payload-clickfix-delivery-platform/
+
+DeviceProcessEvents table in the advanced hunting schema
+Organization: Microsoft
+Document type: Official documentation
+Accessed: 2026-10-18
+URL: hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK T1059.001 - PowerShell
+Accessed: 2026-10-18
+URL: hxxps://attack[.]mitre[.]org/techniques/T1059/001/
+
+MITRE ATT&CK T1105 - Ingress Tool Transfer
+Accessed: 2026-10-18
+URL: hxxps://attack[.]mitre[.]org/techniques/T1105/

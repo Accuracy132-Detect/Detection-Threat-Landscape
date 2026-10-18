@@ -1,0 +1,21 @@
+// ROMULUS ClickFix PowerShell URL staging
+// Classification: Hunting query - Untested implementation sketch
+// Confidence: Medium
+// Platform: Microsoft Defender XDR Advanced Hunting
+// Telemetry: DeviceProcessEvents
+// A result identifies PowerShell with source-supported evasion switches plus a URL.
+// It does not prove ClickFix delivery, payload retrieval, execution, C2, or compromise.
+DeviceProcessEvents
+| where FileName in~ ("powershell.exe", "pwsh.exe")
+| where ProcessCommandLine has_any (
+    "-NoProfile", "-nop",
+    "-ExecutionPolicy Bypass", "-ep bypass",
+    "-WindowStyle Hidden", "-w hidden"
+)
+| where ProcessCommandLine contains "http://"
+    or ProcessCommandLine contains "https://"
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
+          FolderPath, SHA1, InitiatingProcessFileName,
+          InitiatingProcessCommandLine, InitiatingProcessFolderPath,
+          InitiatingProcessAccountName, ReportId, DeviceId
+| order by Timestamp desc
