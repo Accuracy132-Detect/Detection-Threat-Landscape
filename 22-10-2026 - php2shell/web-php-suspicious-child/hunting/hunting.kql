@@ -1,0 +1,26 @@
+// Hunting query - Untested implementation sketch
+// Purpose: surface a PHP/web-server process starting a shell or high-risk utility
+// in a command shape consistent with post-exploitation after web RCE.
+// A match does NOT identify CVE-2026-109618/CVE-2026-109619, prove exploitation,
+// or establish malicious intent. Validate on Linux hosts onboarded to MDE.
+DeviceProcessEvents
+| where Timestamp > ago(7d)
+| where InitiatingProcessFileName in~ ("apache2", "httpd", "nginx", "php-cgi")
+    or InitiatingProcessFileName startswith "php-fpm"
+    or InitiatingProcessFileName startswith "lsphp"
+| where
+    (
+        FileName in~ ("bash", "dash", "sh", "zsh", "ksh")
+        and ProcessCommandLine has_any
+            ("/dev/tcp/", "base64 -d", "curl ", "wget ", "/etc/shadow",
+             "mkfifo", "nc ", "socat", "whoami", "hostname", "uname -a")
+    )
+    or FileName in~ ("curl", "wget", "nc", "socat")
+    or (
+        FileName in~ ("python", "python3", "perl", "ruby", "node", "php")
+        and ProcessCommandLine has_any (" -c ", " -e ", " -r ")
+    )
+| project Timestamp, DeviceId, DeviceName, AccountName,
+          InitiatingProcessFileName, InitiatingProcessCommandLine,
+          FileName, FolderPath, ProcessCommandLine, SHA1, ReportId
+| order by Timestamp desc

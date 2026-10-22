@@ -181,8 +181,10 @@ Detection-Threat-Landscape/
 │   └── T1059.004-mkfifo-bash-nc-reverse-shell/production-candidates/
 ├── 17-10-2026 - unc7017-crossroad/
 │   └── T1053.005-radmincomponentruntime-famitrfc-runtimechk/hunting/
-└── 18-10-2026 - romulus-clickfix/
-    └── T1059.001-T1105-clickfix-powershell-url-staging/hunting/
+├── 18-10-2026 - romulus-clickfix/
+│   └── T1059.001-T1105-clickfix-powershell-url-staging/hunting/
+└── 22-10-2026 - php2shell/
+    └── web-php-suspicious-child/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -192,6 +194,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 22 October 2026 | [php2shell / PHP core RCE coverage](./22-10-2026%20-%20php2shell/web-php-suspicious-child/hunting/) | Microsoft Defender XDR | **[T1190 context][T1059 observed] Web/PHP worker suspicious child execution** — hunts direct web/PHP-parent starts of shells, downloaders, reverse-shell helpers or interpreters with source-supported command grammar; a match does not identify either CVE, prove exploitation, compromise or attribution | Hunting |
 | 18 October 2026 | [ROMULUS / ClickFix](./18-10-2026%20-%20romulus-clickfix/T1059.001-T1105-clickfix-powershell-url-staging/hunting/) | Microsoft Defender XDR | **[T1059.001][T1105] PowerShell URL staging with evasion switches** — hunts PowerShell or PowerShell Core command lines combining a source-supported evasion switch with an HTTP(S) URL; a match does not prove ClickFix delivery, payload retrieval, execution, C2, compromise, or attribution | Hunting |
 | 17 October 2026 | [UNC7017 / CROSSROAD](./17-10-2026%20-%20unc7017-crossroad/T1053.005-radmincomponentruntime-famitrfc-runtimechk/hunting/) | Microsoft Defender XDR | **[T1053.005] Radmin scheduled-task runtime execution** — hunts source-observed `FamItrfc.exe` or `FamItrf2.exe` under the LocalAppData Radmin directory with `--runtimechk`; a match does not prove task creation, DLL hijacking, successful C2, supply-chain delivery, compromise or attribution | Hunting |
 | 16 October 2026 | [CL-UNK-1211](./16-10-2026%20-%20cl-unk-1211/T1059.004-mkfifo-bash-nc-reverse-shell/production-candidates/) | Microsoft Defender XDR | **[T1059.004] Named-pipe Bash/Netcat reverse shell** — detects the source-observed command grammar combining `mkfifo`, `/tmp/f`, `bash -i`, `nc` and a shell pipe; a match supports reverse-shell execution but does not prove successful C2, downstream activity, impact or attribution | Production candidate |

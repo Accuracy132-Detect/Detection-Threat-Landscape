@@ -1,0 +1,11 @@
+Primary technical research - published 2026-10-21
+hxxps://www[.]elastic[.]co/security-labs/threat-command/php2shell-php-rce-detection
+
+Official PHP security advisory - published 2026-10-21
+hxxps://www[.]php[.]net/archive/2026[.]php#2026-10-21-1
+
+Microsoft Defender XDR DeviceProcessEvents schema - last updated 2026-08-07
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK T1190 - Exploit Public-Facing Application
+hxxps://attack[.]mitre[.]org/techniques/T1190/
