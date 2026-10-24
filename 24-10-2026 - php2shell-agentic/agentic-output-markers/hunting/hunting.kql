@@ -1,0 +1,12 @@
+// Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Defender XDR Advanced Hunting
+// Classification: Hunting | Confidence: Medium | Logic: Campaign-specific artifact
+// Source-observed markers: Unit 42, PHP2Shell update dated 2026-10-23.
+// A match does not prove exploitation, agentic AI use, credential access, or attribution.
+DeviceProcessEvents
+| where ProcessCommandLine has_any ("==SHELLUSER==", "==PASSWD==")
+| project Timestamp, DeviceId, DeviceName, AccountDomain, AccountName,
+          FileName, FolderPath, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine,
+          InitiatingProcessAccountName, ReportId
+| order by Timestamp desc
