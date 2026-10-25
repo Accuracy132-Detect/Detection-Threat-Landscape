@@ -1,0 +1,12 @@
+// Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Defender XDR Advanced Hunting
+// Classification: Hunting | Confidence: Medium | Logic: Campaign-specific artifact
+// Joint advisory AA26-293A states SafePay actors executed commands via b2.exe to exfiltrate victim data.
+// A match proves only process execution; it does not prove exfiltration, ransomware activity, or attribution.
+DeviceProcessEvents
+| where FileName =~ "b2.exe"
+| project Timestamp, DeviceId, DeviceName, AccountDomain, AccountName,
+          FileName, FolderPath, ProcessCommandLine, SHA1,
+          InitiatingProcessFileName, InitiatingProcessCommandLine,
+          InitiatingProcessAccountName, ReportId
+| order by Timestamp desc

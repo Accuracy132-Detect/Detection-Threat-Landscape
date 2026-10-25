@@ -1,0 +1,18 @@
+PRIMARY GOVERNMENT ADVISORY
+FBI, CISA, USSS, LKA Rheinland-Pfalz, UK NCA, UK NWROCU
+"#StopRansomware: SafePay Ransomware" (AA26-293A)
+Publication: 2026-10-20
+Observed activity: November 2024 through August 2026; investigative TTPs as recent as August 2026.
+hxxps://www[.]ic3[.]gov/CSA/2026/261020.pdf
+
+OFFICIAL SCHEMA DOCUMENTATION
+Microsoft Learn, "DeviceProcessEvents table in the advanced hunting schema"
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK
+T1048 - Exfiltration Over Alternative Protocol
+hxxps://attack[.]mitre[.]org/techniques/T1048/
+
+NOTE
+b2.exe is legitimate Backblaze B2 tooling. Its execution is a hunting lead only and requires owner, command-line,
+network-destination and data-access validation. No customer data or unverified indicators are included.

@@ -185,8 +185,10 @@ Detection-Threat-Landscape/
 │   └── T1059.001-T1105-clickfix-powershell-url-staging/hunting/
 ├── 22-10-2026 - php2shell/
 │   └── web-php-suspicious-child/hunting/
-└── 24-10-2026 - php2shell-agentic/
-    └── agentic-output-markers/hunting/
+├── 24-10-2026 - php2shell-agentic/
+│   └── agentic-output-markers/hunting/
+└── 25-10-2026 - safepay/
+    └── b2-exfiltration-tool/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -196,6 +198,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 25 October 2026 | [SafePay](./25-10-2026%20-%20safepay/b2-exfiltration-tool/hunting/) | Microsoft Defender XDR | **[T1048] Backblaze B2 command-line client execution** — hunts source-observed `b2.exe` use; a match does not prove upload, actor-controlled destination, ransomware activity or attribution | Hunting |
 | 24 October 2026 | [PHP2Shell agentic output markers](./24-10-2026%20-%20php2shell-agentic/agentic-output-markers/hunting/) | Microsoft Defender XDR | **[T1059] Machine-readable command-batch delimiters** — hunts the exact source-observed `==SHELLUSER==` and `==PASSWD==` strings in process command lines; a match does not prove PHP exploitation, agentic AI use, credential access or attribution | Hunting |
 | 22 October 2026 | [php2shell / PHP core RCE coverage](./22-10-2026%20-%20php2shell/web-php-suspicious-child/hunting/) | Microsoft Defender XDR | **[T1190 context][T1059 observed] Web/PHP worker suspicious child execution** — hunts direct web/PHP-parent starts of shells, downloaders, reverse-shell helpers or interpreters with source-supported command grammar; a match does not identify either CVE, prove exploitation, compromise or attribution | Hunting |
 | 18 October 2026 | [ROMULUS / ClickFix](./18-10-2026%20-%20romulus-clickfix/T1059.001-T1105-clickfix-powershell-url-staging/hunting/) | Microsoft Defender XDR | **[T1059.001][T1105] PowerShell URL staging with evasion switches** — hunts PowerShell or PowerShell Core command lines combining a source-supported evasion switch with an HTTP(S) URL; a match does not prove ClickFix delivery, payload retrieval, execution, C2, compromise, or attribution | Hunting |
