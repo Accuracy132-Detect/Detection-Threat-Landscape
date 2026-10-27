@@ -1,0 +1,27 @@
+PRIMARY TECHNICAL RESEARCH
+Huntress, "AI, Scripts, Operator: Inside the ConnectWise Attack"
+Publication date: 2026-10-26
+Observed activity: 2026-10-15; related password spray 2026-10-10 through 2026-10-14
+hxxps://www[.]huntress[.]com/blog/connectwise-attack-ai
+
+OFFICIAL DOCUMENTATION
+Microsoft Learn, Azure Monitor Logs reference - AuditLogs
+Last updated: 2026-08-28
+hxxps://learn[.]microsoft[.]com/en-us/azure/azure-monitor/reference/tables/auditlogs
+
+Microsoft Learn, Microsoft Entra audit log activity reference
+RoleManagement activities include "Add member to role" and "Add eligible member to role"
+hxxps://learn[.]microsoft[.]com/en-us/entra/identity/monitoring-health/reference-audit-activities
+
+Microsoft Learn, Microsoft Entra activity logs schema
+Last updated: 2025-05-27
+hxxps://learn[.]microsoft[.]com/en-us/entra/identity/monitoring-health/concept-activity-log-schemas
+
+MITRE ATT&CK
+T1098.003 - Account Manipulation: Additional Cloud Roles
+hxxps://attack[.]mitre[.]org/techniques/T1098/003/
+
+QUALITY BOUNDARY
+The query preserves InitiatedBy and TargetResources as raw dynamic fields.
+It does not assert a stable nested-field mapping, self-assignment, Global Administrator,
+actor attribution, AI use, or malicious intent until target-environment samples are inspected.

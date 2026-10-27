@@ -1,0 +1,15 @@
+// Storm-0940 / ConnectWise privilege-escalation telemetry validation
+// Classification: Validation query - Untested implementation sketch
+// Confidence: Medium
+// Platform: Microsoft Sentinel / Log Analytics
+// Prerequisite: Microsoft Entra ID audit logs connected to the AuditLogs table.
+// Purpose: collect raw successful role-assignment events and validate the local
+// representation of the initiating app, assigned principal and directory role.
+// This is not an alert and does not yet prove self-assignment or malicious intent.
+AuditLogs
+| where OperationName in ("Add member to role", "Add eligible member to role")
+| where Result =~ "success"
+| project TimeGenerated, Id, CorrelationId, OperationName, Category,
+          LoggedByService, Identity, InitiatedBy, TargetResources,
+          Result, ResultDescription
+| order by TimeGenerated desc

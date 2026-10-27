@@ -187,17 +187,20 @@ Detection-Threat-Landscape/
 │   └── web-php-suspicious-child/hunting/
 ├── 24-10-2026 - php2shell-agentic/
 │   └── agentic-output-markers/hunting/
-└── 25-10-2026 - safepay/
-    └── b2-exfiltration-tool/hunting/
-        ├── hunting.kql
+├── 25-10-2026 - safepay/
+│   └── b2-exfiltration-tool/hunting/
+└── 27-10-2026 - storm-0940-connectwise/
+    └── T1098.003-service-principal-self-role-assignment/validation/
         ├── references.txt
-        └── threat-analysis.pdf
+        ├── threat-analysis.pdf
+        └── validation.kql
 ```
 
 ## Threat catalog
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 27 October 2026 | [Storm-0940 / ConnectWise](./27-10-2026%20-%20storm-0940-connectwise/T1098.003-service-principal-self-role-assignment/validation/) | Microsoft Sentinel | **[T1098.003] Entra role-assignment raw-schema validation** — collects successful `Add member to role` and `Add eligible member to role` events while preserving raw `InitiatedBy` and `TargetResources`; a row does not prove self-assignment, Global Administrator, compromise, Storm-0940 attribution or AI use | Validation |
 | 25 October 2026 | [SafePay](./25-10-2026%20-%20safepay/b2-exfiltration-tool/hunting/) | Microsoft Defender XDR | **[T1048] Backblaze B2 command-line client execution** — hunts source-observed `b2.exe` use; a match does not prove upload, actor-controlled destination, ransomware activity or attribution | Hunting |
 | 24 October 2026 | [PHP2Shell agentic output markers](./24-10-2026%20-%20php2shell-agentic/agentic-output-markers/hunting/) | Microsoft Defender XDR | **[T1059] Machine-readable command-batch delimiters** — hunts the exact source-observed `==SHELLUSER==` and `==PASSWD==` strings in process command lines; a match does not prove PHP exploitation, agentic AI use, credential access or attribution | Hunting |
 | 22 October 2026 | [php2shell / PHP core RCE coverage](./22-10-2026%20-%20php2shell/web-php-suspicious-child/hunting/) | Microsoft Defender XDR | **[T1190 context][T1059 observed] Web/PHP worker suspicious child execution** — hunts direct web/PHP-parent starts of shells, downloaders, reverse-shell helpers or interpreters with source-supported command grammar; a match does not identify either CVE, prove exploitation, compromise or attribution | Hunting |
