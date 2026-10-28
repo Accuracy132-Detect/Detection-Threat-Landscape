@@ -1,0 +1,21 @@
+PRIMARY RESEARCH
+Huntress — Camera Management Software Compromise Leads to Malware Deployment
+Publication date: 2026-10-27
+Observed activity: September-October 2026
+hxxps://www[.]huntress[.]com/blog/camera-management-software-compromise-malware
+
+OFFICIAL SCHEMA
+Microsoft Learn — DeviceProcessEvents table in the advanced hunting schema
+Accessed: 2026-10-28
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+MITRE ATT&CK
+T1574.002 — Hijack Execution Flow: DLL Side-Loading
+hxxps://attack[.]mitre[.]org/techniques/T1574/002/
+T1547.001 — Registry Run Keys / Startup Folder
+hxxps://attack[.]mitre[.]org/techniques/T1547/001/
+
+SCOPE NOTE
+The published query hunts WpcMon.exe process execution from AppData. It does not
+assert that the adjacent DLL was loaded, that the observed binary is Microsoft-signed,
+that initial access occurred through camera-management software, or that C2 succeeded.

@@ -1,0 +1,13 @@
+// Hunting query - Untested implementation sketch
+// Purpose: find execution of the legitimate WpcMon.exe binary from a user-writable
+// AppData path. Huntress observed this placement during DLL sideloading incidents.
+// A result does not prove DLL sideloading, camera-software compromise, C2, or attribution.
+DeviceProcessEvents
+| where FileName =~ "WpcMon.exe"
+| where FolderPath contains @"\AppData\"
+| project Timestamp, DeviceId, DeviceName, AccountName,
+          FileName, FolderPath, SHA1, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessFolderPath,
+          InitiatingProcessCommandLine, ProcessId, InitiatingProcessId,
+          ProcessUniqueId, InitiatingProcessUniqueId, ReportId
+| order by Timestamp desc

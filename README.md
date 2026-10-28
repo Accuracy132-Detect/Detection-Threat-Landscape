@@ -189,17 +189,20 @@ Detection-Threat-Landscape/
 │   └── agentic-output-markers/hunting/
 ├── 25-10-2026 - safepay/
 │   └── b2-exfiltration-tool/hunting/
-└── 27-10-2026 - storm-0940-connectwise/
-    └── T1098.003-service-principal-self-role-assignment/validation/
+├── 27-10-2026 - storm-0940-connectwise/
+│   └── T1098.003-service-principal-self-role-assignment/validation/
+└── 28-10-2026 - camera-management-compromise/
+    └── T1574.002-wpcmon-appdata-execution/hunting/
+        ├── hunting.kql
         ├── references.txt
-        ├── threat-analysis.pdf
-        └── validation.kql
+        └── threat-analysis.pdf
 ```
 
 ## Threat catalog
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 28 October 2026 | [Camera management compromise](./28-10-2026%20-%20camera-management-compromise/T1574.002-wpcmon-appdata-execution/hunting/) | Microsoft Defender XDR | **[T1574.002] WpcMon.exe execution from AppData** — hunts the source-observed legitimate Windows utility running from a user-writable AppData path; a match does not prove DLL sideloading, camera-software compromise, persistence, C2 or attribution | Hunting |
 | 27 October 2026 | [Storm-0940 / ConnectWise](./27-10-2026%20-%20storm-0940-connectwise/T1098.003-service-principal-self-role-assignment/validation/) | Microsoft Sentinel | **[T1098.003] Entra role-assignment raw-schema validation** — collects successful `Add member to role` and `Add eligible member to role` events while preserving raw `InitiatedBy` and `TargetResources`; a row does not prove self-assignment, Global Administrator, compromise, Storm-0940 attribution or AI use | Validation |
 | 25 October 2026 | [SafePay](./25-10-2026%20-%20safepay/b2-exfiltration-tool/hunting/) | Microsoft Defender XDR | **[T1048] Backblaze B2 command-line client execution** — hunts source-observed `b2.exe` use; a match does not prove upload, actor-controlled destination, ransomware activity or attribution | Hunting |
 | 24 October 2026 | [PHP2Shell agentic output markers](./24-10-2026%20-%20php2shell-agentic/agentic-output-markers/hunting/) | Microsoft Defender XDR | **[T1059] Machine-readable command-batch delimiters** — hunts the exact source-observed `==SHELLUSER==` and `==PASSWD==` strings in process command lines; a match does not prove PHP exploitation, agentic AI use, credential access or attribution | Hunting |
