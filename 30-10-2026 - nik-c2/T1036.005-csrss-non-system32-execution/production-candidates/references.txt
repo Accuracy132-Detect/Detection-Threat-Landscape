@@ -1,0 +1,24 @@
+PRIMARY TECHNICAL RESEARCH
+
+Cisco Talos
+NIK C2: The new AI-enabled command-and-control framework
+Publication date: 2026-10-29
+Observed activity: samples and active infrastructure observed in the wild; exact campaign period not published
+hxxps://blog[.]talosintelligence[.]com/nik-c2-new-ai-enabled-framework/
+
+OFFICIAL DOCUMENTATION
+
+Microsoft Learn
+DeviceProcessEvents table in the advanced hunting schema
+Accessed: 2026-10-30
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+Microsoft Learn
+Debugging CSRSS
+Accessed: 2026-10-30
+hxxps://learn[.]microsoft[.]com/en-us/windows-hardware/drivers/debugger/debugging-csrss
+
+MITRE ATT&CK
+
+T1036.005 - Masquerading: Match Legitimate Resource Name or Location
+hxxps://attack[.]mitre[.]org/techniques/T1036/005/

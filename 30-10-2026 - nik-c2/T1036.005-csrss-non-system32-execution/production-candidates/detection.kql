@@ -1,0 +1,27 @@
+// NIK C2 / system-process masquerading
+// Production candidate - Untested implementation sketch
+// Primary platform: Microsoft Defender XDR Advanced Hunting
+// Required telemetry: Microsoft Defender for Endpoint DeviceProcessEvents
+// A match proves only that a process named csrss.exe executed outside the
+// canonical Windows System32 path. It does not establish NIK C2 attribution.
+DeviceProcessEvents
+| where FileName =~ "csrss.exe"
+| where not(FolderPath startswith @"C:\Windows\System32\")
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    AccountName,
+    FileName,
+    FolderPath,
+    SHA1,
+    ProcessCommandLine,
+    ProcessIntegrityLevel,
+    ProcessTokenElevation,
+    InitiatingProcessFileName,
+    InitiatingProcessFolderPath,
+    InitiatingProcessCommandLine,
+    ProcessId,
+    ProcessUniqueId,
+    ReportId
+| order by Timestamp desc
