@@ -1,0 +1,24 @@
+// Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Defender XDR Advanced Hunting
+// Purpose: identify source-published file artifacts written by the trojanized
+// anthropic.claude-code Cursor Marketplace extension versions 2.1.312/2.1.313.
+// A match is an investigative lead, not proof of successful reverse SSH access.
+DeviceFileEvents
+| where Timestamp > ago(30d)
+| where SHA256 in~ (
+    "ecb58cb29078d9646ad1dcdbe51526f2d9cfea06be5fb2ab183e8ecc3ab6bf15",
+    "7e0a52885fadee05544a9e99eb18c792bec05900a5e1a66d68f8383decb0e278"
+  )
+  or FileName in~ (
+    ".smt",
+    ".smtk",
+    "smt.cmd",
+    "smtk",
+    "sysmon.cmd",
+    "com.apple.sysmond.plist"
+  )
+  or FileName startswith ".stk_"
+| project Timestamp, DeviceId, DeviceName, ActionType, FolderPath, FileName,
+          SHA256, InitiatingProcessFileName, InitiatingProcessCommandLine,
+          InitiatingProcessAccountName
+| order by Timestamp desc

@@ -1,0 +1,19 @@
+Primary technical research
+Microsoft Security Research, "Inside a malicious Claude Code-branded extension and its persistent SSH backdoor"
+Publication date: 2026-10-30
+Marketplace exposure: 2026-10-29, approximately 02:27-13:35 PDT
+hxxps://www[.]microsoft[.]com/en-us/security/blog/2026/10/30/inside-malicious-claude-code-branded-cursor-extension-persistent-ssh-backdoor/
+
+Official platform documentation
+Microsoft Learn, DeviceFileEvents table in the advanced hunting schema
+hxxps://learn[.]microsoft[.]com/defender-xdr/advanced-hunting-devicefileevents-table
+
+MITRE ATT&CK
+T1098.004 - Account Manipulation: SSH Authorized Keys
+hxxps://attack[.]mitre[.]org/techniques/T1098/004/
+T1572 - Protocol Tunneling
+hxxps://attack[.]mitre[.]org/techniques/T1572/
+T1053.003 - Scheduled Task/Job: Cron
+hxxps://attack[.]mitre[.]org/techniques/T1053/003/
+T1053.005 - Scheduled Task/Job: Scheduled Task
+hxxps://attack[.]mitre[.]org/techniques/T1053/005/

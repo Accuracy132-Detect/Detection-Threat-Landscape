@@ -193,9 +193,11 @@ Detection-Threat-Landscape/
 │   └── T1098.003-service-principal-self-role-assignment/validation/
 ├── 28-10-2026 - camera-management-compromise/
 │   └── T1574.002-wpcmon-appdata-execution/hunting/
-└── 30-10-2026 - nik-c2/
-    └── T1036.005-csrss-non-system32-execution/production-candidates/
-        ├── detection.kql
+├── 30-10-2026 - nik-c2/
+│   └── T1036.005-csrss-non-system32-execution/production-candidates/
+└── 31-10-2026 - malicious-claude-code-extension/
+    └── T1098.004-T1572-ssh-backdoor-persistence/hunting/
+        ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
 ```
@@ -204,6 +206,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 31 October 2026 | [Malicious Claude Code-branded extension](./31-10-2026%20-%20malicious-claude-code-extension/T1098.004-T1572-ssh-backdoor-persistence/hunting/) | Microsoft Defender XDR | **[T1098.004][T1572] Source-published SSH backdoor file artifacts** — hunts exact hashes, filenames and the temporary identity prefix written by the trojanized Cursor Marketplace extension; a match does not prove extension execution, tunnel success, attacker access or attribution | Hunting |
 | 30 October 2026 | [NIK C2](./30-10-2026%20-%20nik-c2/T1036.005-csrss-non-system32-execution/production-candidates/) | Microsoft Defender XDR | **[T1036.005] csrss.exe execution outside System32** — detects a process using the protected Windows runtime name from a non-canonical path; a match supports masquerading but does not prove NIK C2, C2 activity, credential theft, ransomware, or attribution | Production candidate |
 | 28 October 2026 | [Camera management compromise](./28-10-2026%20-%20camera-management-compromise/T1574.002-wpcmon-appdata-execution/hunting/) | Microsoft Defender XDR | **[T1574.002] WpcMon.exe execution from AppData** — hunts the source-observed legitimate Windows utility running from a user-writable AppData path; a match does not prove DLL sideloading, camera-software compromise, persistence, C2 or attribution | Hunting |
 | 27 October 2026 | [Storm-0940 / ConnectWise](./27-10-2026%20-%20storm-0940-connectwise/T1098.003-service-principal-self-role-assignment/validation/) | Microsoft Sentinel | **[T1098.003] Entra role-assignment raw-schema validation** — collects successful `Add member to role` and `Add eligible member to role` events while preserving raw `InitiatedBy` and `TargetResources`; a row does not prove self-assignment, Global Administrator, compromise, Storm-0940 attribution or AI use | Validation |
