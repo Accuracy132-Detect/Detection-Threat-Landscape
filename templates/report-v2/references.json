@@ -1,0 +1,17 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Source title",
+      "organization": "Publishing organization",
+      "author": null,
+      "published": "YYYY-MM-DD",
+      "event_date": null,
+      "accessed": "YYYY-MM-DD",
+      "type": "primary",
+      "url": "https://example.com/source",
+      "supports": ["C001", "C002"]
+    }
+  ]
+}

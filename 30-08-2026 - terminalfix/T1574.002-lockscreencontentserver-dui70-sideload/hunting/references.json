@@ -1,0 +1,85 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Observed activity date / campaign period: not disclosed in the public report",
+      "organization": "Microsoft Security Research",
+      "author": null,
+      "published": "2026-08-28",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "original-research",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/08/28/terminalfix-campaign-deploys-reverse-tunnel-through-multistage-intrusion/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Organization: Microsoft Learn",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2025-06-11",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceimageloadevents-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Organization: Microsoft Learn",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2025-06-11",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/kusto/query/parse-path-function",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "Organization: Microsoft Learn",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2025-06-11",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/custom-detection-rules",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S005",
+      "title": "MITRE ATT&CK T1574.002 - Hijack Execution Flow: DLL Side-Loading",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-07-02",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1574/002/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

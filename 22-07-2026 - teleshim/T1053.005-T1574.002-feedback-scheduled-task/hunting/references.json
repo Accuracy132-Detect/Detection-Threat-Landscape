@@ -1,0 +1,37 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Targeted Attack on Government Entities in the Middle East - Part 1",
+      "organization": "zscaler.com",
+      "author": null,
+      "published": "undated",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "original-research",
+      "url": "https://www.zscaler.com/blogs/security-research/targeted-attack-government-entities-middle-east-part-1",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "DeviceProcessEvents table in the advanced hunting schema",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "undated",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

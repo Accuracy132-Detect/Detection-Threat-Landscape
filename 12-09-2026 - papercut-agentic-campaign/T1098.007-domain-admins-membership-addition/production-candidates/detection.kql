@@ -1,3 +1,17 @@
+// Rule: [T1098.007] Papercut Agentic Campaign - Domain Admins Membership Addition
+// MITRE ATT&CK: T1098.007
+// Classification: Production candidate
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required telemetry: SecurityEvent
+// Purpose: Detects an account being added to the Domain Admins global group by filtering its stable RID 512. Every result requires approved-change validation.
+// Logic: Evaluate SecurityEvent for domain admins membership addition using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result is a privileged group change; validate it against the approved change record.
+// A match does not prove: successful exploitation, malicious ownership, downstream impact, campaign attribution or complete compromise without corroborating evidence.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // PaperCut campaign - account added to Domain Admins
 // Status: Production candidate - Untested implementation sketch
 // Confidence: Medium

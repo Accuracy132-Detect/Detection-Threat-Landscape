@@ -1,0 +1,53 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Observed campaign period: late 2026-09 to early 2026-10",
+      "organization": "crowdstrike.com",
+      "author": null,
+      "published": "2026-10-07",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "original-research",
+      "url": "https://www.crowdstrike.com/en-us/blog/unknown-threat-actor-uses-artex-to-target-south-korean-finance/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Microsoft Learn - DeviceNetworkEvents table in the advanced hunting schema",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-06-22",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-devicenetworkevents-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "MITRE ATT&CK - T1090 Proxy",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-06-22",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1090/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

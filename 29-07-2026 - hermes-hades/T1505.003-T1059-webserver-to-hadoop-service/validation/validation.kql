@@ -1,3 +1,17 @@
+// Rule: [T1505.003][T1059] Hermes Hades - Webserver to Hadoop Service
+// MITRE ATT&CK: T1505.003, T1059
+// Classification: Validation query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceNetworkEvents
+// Purpose: Validating source-observed connections from compromised web infrastructure to HiveServer2 and WebHDFS.
+// Logic: Evaluate DeviceNetworkEvents for webserver to hadoop service using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: An inventoried web server initiated traﬃc to an inventoried Hadoop node on a source- observed service port. What it does not prove Web shell, successful authentication, UDF execution, data access, exfiltration or attribution.
+// A match does not prove: a web shell, successful Hive authentication, UDF creation, command execution, data access, or Hermes/Hades attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Web server to Hadoop service connectivity validation
 // Classification: Validation query - Untested implementation sketch
 // Confidence: Medium

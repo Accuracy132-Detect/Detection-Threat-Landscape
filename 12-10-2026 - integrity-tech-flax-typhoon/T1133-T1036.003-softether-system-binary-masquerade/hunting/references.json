@@ -1,0 +1,53 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "and Hands-on Hacking Tools to Steal Sensitive Data",
+      "organization": "ic3.gov",
+      "author": null,
+      "published": "undated",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "primary",
+      "url": "https://www.ic3.gov/CSA/2026/261008.pdf",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Tools Operated and Used by China-State Sponsored Hackers",
+      "organization": "justice.gov",
+      "author": null,
+      "published": "undated",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "primary",
+      "url": "https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-vulnerability-scanning-and-spear-phishing-tools-operated",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "DeviceProcessEvents table in the advanced hunting schema",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-10-08",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

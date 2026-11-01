@@ -1,3 +1,17 @@
+// Rule: [T1195.001] Rust Crate Supply Chain - Proc MACRO1 Cargo Cache
+// MITRE ATT&CK: T1195.001
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR /
+// Required telemetry: DeviceFileEvents
+// Purpose: Retrospective hunt for officially listed compromised and attacker-owned crate artifacts on developer and CI systems.
+// Logic: Evaluate DeviceFileEvents for proc macro1 cargo cache using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: An officially listed archive name was observed in a Cargo registry cache and requires dependency/build investigation.
+// A match does not prove: Malicious build execution, payload launch, credential theft, persistence or attacker attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Hunting query - Untested implementation sketch
 // Primary platform: Microsoft Defender XDR / Advanced Hunting
 // Required telemetry: Microsoft Defender for Endpoint file events on developer

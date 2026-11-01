@@ -1,0 +1,41 @@
+{
+  "schema_version": "2.0",
+  "claims": [
+    {
+      "id": "C001",
+      "statement": "The package retains a legacy source ledger and the pre-migration PDF hash for review; individual narrative claims have not yet been remapped mechanically.",
+      "evidence_type": "analyst-inference",
+      "source_ids": [
+        "S001",
+        "S002",
+        "S003"
+      ],
+      "confidence": "Medium",
+      "confirm_or_refute": "Review each material legacy statement against the normalized source set and split it into atomic documented or inferred claims."
+    },
+    {
+      "id": "C002",
+      "statement": "The unchanged query selects Evaluate DeviceImageLoadEvents for appvshnotify sspicli sideloading using the existing source-derived conditions while preserving projected investigation context.",
+      "evidence_type": "analyst-inference",
+      "source_ids": [
+        "S001",
+        "S002",
+        "S003"
+      ],
+      "confidence": "Medium",
+      "confirm_or_refute": "Execute authorized positive and negative controls, verify every field and condition, and retain the raw results."
+    },
+    {
+      "id": "C003",
+      "statement": "A matching result does not prove Malicious DLL contents, successful C2, operator activity, data theft or Mirage Kitten attribution.",
+      "evidence_type": "analyst-inference",
+      "source_ids": [
+        "S001",
+        "S002",
+        "S003"
+      ],
+      "confidence": "High",
+      "confirm_or_refute": "Require an independent evidence layer before making any excluded conclusion."
+    }
+  ]
+}

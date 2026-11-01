@@ -1,3 +1,17 @@
+// Rule: [T1059.001][T1105] Exvicy - Clickfix Invokescript Download
+// MITRE ATT&CK: T1059.001, T1105
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Hunts for the source-observed PowerShell pattern that downloads script text with irm and executes it in memory through ExecutionContext.InvokeCommand.InvokeScript.
+// Logic: Evaluate DeviceProcessEvents for clickfix invokescript download using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceProcessEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: successful exploitation, malicious ownership, downstream impact, campaign attribution or complete compromise without corroborating evidence.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Exvicy ClickFix PowerShell download-and-InvokeScript
 // Platform: Microsoft Defender XDR Advanced Hunting
 // Status: Hunting query - Untested implementation sketch

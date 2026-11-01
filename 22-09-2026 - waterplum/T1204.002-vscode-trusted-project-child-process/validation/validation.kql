@@ -1,3 +1,17 @@
+// Rule: [T1204.002] Waterplum - VS Code Trusted Project Child Process
+// MITRE ATT&CK: T1204.002
+// Classification: Validation query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Validates whether processes launched by Visual Studio Code tasks are represented with a direct Code.exe parent and retain
+// Logic: Evaluate DeviceProcessEvents for vs code trusted project child process using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceProcessEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: successful exploitation, malicious ownership, downstream impact, campaign attribution or complete compromise without corroborating evidence.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // WaterPlum / Contagious Interview — VS Code child-process telemetry validation
 // Classification: Validation query — Untested implementation sketch
 // Confidence: Medium

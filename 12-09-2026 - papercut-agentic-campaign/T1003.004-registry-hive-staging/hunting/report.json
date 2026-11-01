@@ -1,0 +1,158 @@
+{
+  "schema_version": "2.0",
+  "id": "2026-09-12-papercut-agentic-campaign-registry-hive-staging",
+  "title": "Papercut Agentic Campaign - Registry Hive Staging",
+  "short_title": "Papercut Agentic Campaign",
+  "subtitle": "Hunts source-observed reg.exe and certutil.exe staging commands for SYSTEM/ SECURITY hives using the campaign's pc-* filenames.",
+  "published": "2026-09-12",
+  "report_type": "campaign",
+  "classification": "Hunting query",
+  "maturity": "hunting",
+  "confidence": "Medium",
+  "operational_value": 9,
+  "primary_platform": "Microsoft Defender XDR",
+  "mitre": [
+    "T1003.004"
+  ],
+  "decision": "Retain this package as a hunting query and migrate it to the canonical visual and evidence contract without changing query conditions. Treat every result as an investigative lead until local schema, field population, benign overlap and the legacy claim provenance are reviewed.",
+  "key_findings": [
+    "The original query conditions and source ledger were preserved during layout migration; legacy PDF SHA-256 dbc9d89fbf1fccb0... is recorded for traceability. [C001]",
+    "The principal observable is Evaluate DeviceProcessEvents for registry hive staging using the existing source-derived conditions while preserving projected investigation context. [C002]",
+    "The evidence boundary remains explicit: a match does not prove successful exploitation, malicious ownership, downstream impact, campaign attribution or complete compromise without corroborating evidence. [C003]"
+  ],
+  "source_facts": [
+    "The retained legacy source ledger contains 4 normalized references; claim-to-source mapping remains review-required after mechanical migration. [C001]"
+  ],
+  "analyst_assessment": [
+    "The existing logic is retained at hunting maturity; repository migration is not execution evidence and does not increase validation status. [C002]",
+    "The folder and query header map the package to T1003.004; operational relevance still depends on local telemetry and ownership context. [C003]"
+  ],
+  "assumptions": [
+    "The named telemetry is collected across the intended asset or identity scope with adequate retention. [C002]",
+    "Projected fields preserve their expected semantics in the target connector and parser. [C002]",
+    "Approved activity, owners and change records are available to analysts during disposition. [C003]"
+  ],
+  "unknowns": [
+    "A matching result does not prove successful exploitation, malicious ownership, downstream impact, campaign attribution or complete compromise without corroborating evidence.",
+    "Target-environment field population, benign prevalence, parser behavior and operational ownership have not been validated by this repository migration."
+  ],
+  "technical_background": "The retained dossier links Papercut Agentic Campaign to the detection opportunity described as registry hive staging. The v2 migration preserves the query exactly and exposes its match boundary, but does not reinterpret legacy source claims as laboratory evidence. Evaluate DeviceProcessEvents for registry hive staging using the existing source-derived conditions while preserving projected investigation context. [C001][C002]",
+  "attack_chain": [
+    {
+      "phase": "Threat context",
+      "behavior": "Hunts source-observed reg.exe and certutil.exe staging commands for SYSTEM/ SECURITY hives using the campaign's pc-* filenames.",
+      "observable": "Context retained from the legacy dossier and source ledger.",
+      "claim_ids": [
+        "C001"
+      ]
+    },
+    {
+      "phase": "Observable candidate",
+      "behavior": "Evaluate DeviceProcessEvents for registry hive staging using the existing source-derived conditions while preserving projected investigation context.",
+      "observable": "Events from DeviceProcessEvents and projected fields.",
+      "claim_ids": [
+        "C002"
+      ]
+    },
+    {
+      "phase": "Contextual enrichment",
+      "behavior": "Resolve asset, identity, process, ownership and change context before disposition.",
+      "observable": "Raw event, surrounding timeline, inventory and authorized-change evidence.",
+      "claim_ids": [
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "phase": "Decision gate",
+      "behavior": "Escalate only when corroborating evidence closes the documented non-claim boundary.",
+      "observable": "Controlled validation, explainable negatives and analyst-readable evidence.",
+      "claim_ids": [
+        "C003"
+      ]
+    }
+  ],
+  "telemetry": [
+    {
+      "field": "DeviceProcessEvents",
+      "status": "Required",
+      "purpose": "Primary event source selected by the unchanged query logic."
+    },
+    {
+      "field": "Event time and entity identifiers",
+      "status": "Required",
+      "purpose": "Chronology, deduplication, scoping and investigation pivots."
+    },
+    {
+      "field": "Raw projected context",
+      "status": "Required",
+      "purpose": "Preserve the fields emitted by the query before normalization or tuning."
+    },
+    {
+      "field": "Asset, identity and change inventory",
+      "status": "Enrichment",
+      "purpose": "Separate authorized activity and define operational ownership."
+    }
+  ],
+  "query": {
+    "file": "hunting.kql",
+    "language": "KQL",
+    "status": "Untested implementation sketch",
+    "logic": "Evaluate DeviceProcessEvents for registry hive staging using the existing source-derived conditions while preserving projected investigation context.",
+    "match_proves": "A result proves that the published query conditions matched in DeviceProcessEvents; it is an investigative event, not a malicious verdict.",
+    "match_does_not_prove": "successful exploitation, malicious ownership, downstream impact, campaign attribution or complete compromise without corroborating evidence."
+  },
+  "triage": [
+    "Preserve the complete raw matching event, query version, timestamp, connector or sensor version and stable entity identifiers.",
+    "Confirm the event originated from the intended Microsoft Defender XDR data source and verify the semantics of every condition used by the query.",
+    "Resolve asset, identity, process, software and destination ownership against authoritative inventories and approved change records.",
+    "Build the surrounding endpoint, identity, network or appliance timeline and seek an independent evidence layer before escalation.",
+    "Classify benign overlap explicitly; tune only with durable ownership or provenance controls, never by suppressing the core behavior globally.",
+    "Escalate only when corroborating evidence establishes malicious or unauthorized activity beyond the documented match boundary."
+  ],
+  "false_positives": [
+    {
+      "source": "Authorized administration or software",
+      "control": "Require owner, purpose, approved change and expected execution or configuration provenance."
+    },
+    {
+      "source": "Benign artifact or command collision",
+      "control": "Require the full condition set plus an independent evidence layer or stable provenance."
+    },
+    {
+      "source": "Parser, inventory or retention ambiguity",
+      "control": "Reproduce a controlled event and reconcile raw fields, collection scope and authoritative inventory."
+    }
+  ],
+  "validation": {
+    "steps": [
+      "Generate an authorized controlled equivalent of the primary observable without using live malicious infrastructure.",
+      "Verify each query condition and projected field against retained raw telemetry.",
+      "Run representative approved and near-match negative controls.",
+      "Measure historical prevalence and classify every returned owner or workflow.",
+      "Record parser, connector, retention and asset-scope dependencies with the test evidence."
+    ],
+    "success": "The controlled positive produces a complete, explainable row and representative negatives are separable through durable context.",
+    "rejection": "Reject promotion when field semantics, collection scope, benign ownership or the core behavior cannot be established reproducibly.",
+    "visibility_gaps": [
+      "Unvalidated local schema",
+      "Missing projected fields",
+      "Incomplete retention or asset scope",
+      "Mutable attacker behavior",
+      "Legacy claim provenance review pending"
+    ],
+    "promotion_gate": "Require claim-level source review, a retained controlled positive, representative negatives, measured prevalence and an accountable operational owner."
+  },
+  "conclusion": "This package now uses the canonical v2 layout and evidence contract while preserving the original hunting.kql conditions. It remains a hunting query at medium confidence. The visual migration is complete; claim-level provenance and target-environment execution remain explicit promotion gates.",
+  "artwork": {
+    "kind": "persistence",
+    "label": "T1003.004 · hunting · observability"
+  },
+  "migration": {
+    "provenance_status": "legacy-review-required",
+    "migrated_on": "2026-11-01",
+    "legacy_pdf_sha256": "dbc9d89fbf1fccb070baf8e0154924e0d55b871aa51e94c6bb263f02c9b08deb",
+    "legacy_query_sha256": "cd9c2ae9bf7e79eab30fc80a19185eeeeecdee0230baf28d176023fd913576af",
+    "query_conditions_changed": false
+  }
+}

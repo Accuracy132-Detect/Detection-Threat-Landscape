@@ -1,3 +1,17 @@
+# Rule: [T1098] Zimreaper - Zimbra App Password Persistence
+# MITRE ATT&CK: T1098
+# Classification: Hunting query
+# Status: Untested implementation sketch
+# Primary platform: Splunk
+# Required telemetry: See query body and local connector contract
+# Purpose: A raw-audit hunting model for attacker created application passwords that bypass mailbox two-factor authentication.
+# Logic: Evaluate the named telemetry for zimbra app password persistence using the existing source-derived conditions while preserving projected investigation context.
+# A match proves: A result proves that the published query conditions matched in the named telemetry; it is an investigative event, not a malicious verdict.
+# A match does not prove: successful exploitation, malicious ownership, downstream impact, campaign attribution or complete compromise without corroborating evidence.
+# Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+# Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+# Evidence claims: C001, C002, C003
+#
 index=<CUSTOMER_INDEX> source="/opt/zimbra/log/audit.log"
 ("CreateAppSpecificPassword" OR "CreateAppSpecificPasswordRequest")
 "ZimbraWeb"

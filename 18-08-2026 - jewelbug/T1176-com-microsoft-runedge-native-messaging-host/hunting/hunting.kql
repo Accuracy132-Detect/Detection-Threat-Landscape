@@ -1,3 +1,17 @@
+// Rule: [T1176] Jewelbug - Com Microsoft Runedge Native Messaging Host
+// MITRE ATT&CK: T1176
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR /
+// Required telemetry: DeviceRegistryEvents
+// Purpose: Source-observed Chrome native-messaging host used to bridge a malicious browser extension to a Windows command helper.
+// Logic: Evaluate DeviceRegistryEvents for com microsoft runedge native messaging host using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: The endpoint recorded activity against the exact campaign-specific native-messaging host path and requires immediate provenance review.
+// A match does not prove: Malicious manifest/helper content, extension load, command execution, C2 activity, data theft or Jewelbug attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Hunting query - Untested implementation sketch
 // Primary platform: Microsoft Defender XDR / Advanced Hunting
 // Required telemetry: Microsoft Defender for Endpoint registry events on Windows

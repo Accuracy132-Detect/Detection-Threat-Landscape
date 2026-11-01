@@ -1,0 +1,85 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "not observe real-world abuse.",
+      "organization": "research.checkpoint.com",
+      "author": null,
+      "published": "2026-08-20",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "original-research",
+      "url": "https://research.checkpoint.com/2026/btr-reforged-weaponizing-defenders-remediation-driver-as-a-kernel-operation-primitive/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "the stream contents.",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-06-17",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "the stream contents.",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-06-17",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/windowsevent",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "the stream contents.",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-06-17",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/azure/sentinel/data-connectors/windows-event-forwarding",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S005",
+      "title": "MITRE ATT&CK, T1564.004, \"Hide Artifacts: NTFS File Attributes.",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-08-24",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1564/004/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

@@ -1,3 +1,17 @@
+// Rule: [T1102.002][T1071.001] Hollowgraph - Hollowgraph Calendar C2
+// MITRE ATT&CK: T1102.002, T1071.001
+// Classification: Production candidate
+// Status: Production candidate
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: MicrosoftGraphActivityLogs
+// Purpose: access associated with a covert bidirectional channel.
+// Logic: Evaluate MicrosoftGraphActivityLogs for hollowgraph calendar c2 using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A match indicates successful Graph access to the exact far-future calendar range used by the analyzed sample.
+// A match does not prove: It does not expose event-body content, attachment names, encrypted data, implant presence or exfiltration success.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Title: HOLLOWGRAPH calendar C2 access via Microsoft Graph
 // Status: Production candidate
 // Confidence: High

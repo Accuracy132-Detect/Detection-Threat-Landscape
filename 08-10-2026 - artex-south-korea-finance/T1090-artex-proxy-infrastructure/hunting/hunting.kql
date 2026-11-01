@@ -1,3 +1,17 @@
+// Rule: [T1090] Artex South Korea Finance - Artex Proxy Infrastructure
+// MITRE ATT&CK: T1090
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceNetworkEvents
+// Purpose: Hunts connections to source-documented proxy and ARTEX infrastructure.
+// Logic: Evaluate DeviceNetworkEvents for artex proxy infrastructure using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceNetworkEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: successful exploitation, malicious ownership, downstream impact, campaign attribution or complete compromise without corroborating evidence.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // MITRE ATT&CK: T1090 (Proxy)
 // Classification: Hunting query - Untested implementation sketch
 // Confidence: Medium; IOC-based and time-bounded

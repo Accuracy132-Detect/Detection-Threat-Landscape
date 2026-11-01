@@ -1,0 +1,53 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Primary technical research",
+      "organization": "welivesecurity.com",
+      "author": null,
+      "published": "2026-10-08",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "original-research",
+      "url": "https://www.welivesecurity.com/en/eset-research/matchboil-new-tricks-same-old-evil-intentions/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Official telemetry documentation",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-10-08",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-devicefileevents-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Documents DeviceFileEvents, Timestamp, DeviceId, DeviceName, ActionType, FileName, FolderPath, SHA1, and initiating-process fields.",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-06-22",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1036/005/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

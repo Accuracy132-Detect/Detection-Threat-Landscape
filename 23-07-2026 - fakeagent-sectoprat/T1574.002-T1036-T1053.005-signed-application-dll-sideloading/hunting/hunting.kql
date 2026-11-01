@@ -1,3 +1,17 @@
+// Rule: [T1574.002][T1036][T1053.005] Fakeagent Sectoprat - Signed Application DLL Sideloading
+// MITRE ATT&CK: T1574.002, T1036, T1053.005
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceImageLoadEvents
+// Purpose: Signed-application DLL sideloading through source-observed process-module pairs.
+// Logic: Evaluate DeviceImageLoadEvents for signed application dll sideloading using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A match indicates that a source-observed executable name loaded the corresponding campaign DLL name.
+// A match does not prove: that the loaded DLL is modified or malicious.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Title: FakeAgent Signed-Application DLL Sideloading
 // Status: Hunting query - Untested implementation sketch
 // Confidence: High

@@ -1,3 +1,17 @@
+// Rule: [T1555][T1539] Volta Autodoxer - Volta Debug Artifacts
+// MITRE ATT&CK: T1555, T1539
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceFileEvents
+// Purpose: Hunting query for volta debug artifacts, with evidence boundaries and target-environment validation requirements
+// Logic: Evaluate DeviceFileEvents for volta debug artifacts using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceFileEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: collection, AI analysis, exfiltration, or attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Hunting query - Untested implementation sketch
 // Primary platform: Microsoft Defender XDR Advanced Hunting
 // Campaign-specific artifact hunt for VOLTA-AUTODOXER.

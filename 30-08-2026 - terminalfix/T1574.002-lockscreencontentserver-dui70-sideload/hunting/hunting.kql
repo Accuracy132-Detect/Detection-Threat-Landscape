@@ -1,3 +1,17 @@
+// Rule: [T1574.002] Terminalfix - Lockscreencontentserver DUI70 Sideload
+// MITRE ATT&CK: T1574.002
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceImageLoadEvents
+// Purpose: Campaign-specific hunt for a legitimate Lock Screen binary loading a co-located malicious DirectUI DLL outside its standard Windows SystemApps location.
+// Logic: Evaluate DeviceImageLoadEvents for lockscreencontentserver dui70 sideload using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceImageLoadEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: successful exploitation, malicious ownership, downstream impact, campaign attribution or complete compromise without corroborating evidence.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // TerminalFix - LockScreenContentServer.exe loads co-located dui70.dll outside SystemApps
 // Classification: Hunting query - Untested implementation sketch
 // Confidence: Medium

@@ -1,0 +1,101 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Sample first seen: 2026-10-11 12:46 UTC",
+      "organization": "blog.talosintelligence.com",
+      "author": null,
+      "published": "2026-10-31",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "primary",
+      "url": "https://blog.talosintelligence.com/appraisal-by-ai-model-driven-victim-prioritization-in-the-volta-infostealer/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Microsoft Learn, DeviceFileEvents table in Microsoft Defender XDR advanced hunting",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-10-31",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-devicefileevents-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "T1555 - Credentials from Password Stores",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "undated",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1555/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "T1555 - Credentials from Password Stores",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "undated",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1539/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S005",
+      "title": "T1555 - Credentials from Password Stores",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "undated",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1552/001/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S006",
+      "title": "T1555 - Credentials from Password Stores",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "undated",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1074/001/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

@@ -1,3 +1,17 @@
+// Rule: [T1059.005][T1059.001] REF8801 Apex Accelerator - Wscript Powershell Temp Staging
+// MITRE ATT&CK: T1059.005, T1059.001
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Defender XDR hunt for the REF8801 Windows bootstrap chain in which WScript launches PowerShell against campaign-named scripts staged in the user T emp directory.
+// Logic: Evaluate DeviceProcessEvents for wscript powershell temp staging using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceProcessEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: This hunt does not prove npm execution, successful payload download, malware execution, persistence, credential access, C2, compromise, or REF8801 attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // REF8801 / Apex Accelerator - WScript launches PowerShell from campaign-named Temp scripts
 // Platform: Microsoft Defender XDR Advanced Hunting
 // Status: Hunting query - Untested implementation sketch

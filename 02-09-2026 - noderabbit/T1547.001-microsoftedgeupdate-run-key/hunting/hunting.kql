@@ -1,3 +1,17 @@
+// Rule: [T1547.001] Noderabbit - Microsoftedgeupdate Run Key
+// MITRE ATT&CK: T1547.001
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceRegistryEvents
+// Purpose: Exact registry-change hunt for the source observed MicrosoftEdgeUpdate value launching a renamed Node.js runtime and script from the first NodeRabbit variant.
+// Logic: Evaluate DeviceRegistryEvents for microsoftedgeupdate run key using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceRegistryEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: successful exploitation, malicious ownership, downstream impact, campaign attribution or complete compromise without corroborating evidence.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // NodeRabbit MicrosoftEdgeUpdate Run-key persistence
 // Classification: Hunting query - Untested implementation sketch
 // Confidence: Medium

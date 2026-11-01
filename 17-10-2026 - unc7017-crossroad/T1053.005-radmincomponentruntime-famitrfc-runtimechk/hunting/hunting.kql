@@ -1,3 +1,17 @@
+// Rule: [T1053.005] UNC7017 Crossroad - Radmincomponentruntime Famitrfc Runtimechk
+// MITRE ATT&CK: T1053.005
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Hunting query for radmincomponentruntime famitrfc runtimechk, with evidence boundaries and target-environment validation requirements
+// Logic: Evaluate DeviceProcessEvents for radmincomponentruntime famitrfc runtimechk using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceProcessEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: task creation, DLL hijacking, successful C2, supply-chain delivery, compromise, or UNC7017 attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Hunting query - Untested implementation sketch
 // Classification: Hunting query | Confidence: Medium
 // Primary platform: Microsoft Defender XDR advanced hunting

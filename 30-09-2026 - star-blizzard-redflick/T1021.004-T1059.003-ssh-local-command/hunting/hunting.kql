@@ -1,3 +1,17 @@
+// Rule: [T1021.004][T1059.003] Star Blizzard Redflick - SSH Local Command
+// MITRE ATT&CK: T1021.004, T1059.003
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR / DeviceProcessEvents
+// Required telemetry: DeviceProcessEvents
+// Purpose: Hunts for ssh.exe launched with both PermitLocalCommand=yes and LocalCommand=cmd.exe, an option pairing observed in RedFlick delivery.
+// Logic: Evaluate DeviceProcessEvents for ssh local command using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceProcessEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: Star Blizzard, a successful download, MSI execution, or CosmicPulse.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Rule name: [T1021.004][T1059.003] SSH PermitLocalCommand to Local CMD Execution
 // Hunting query - Untested implementation sketch
 // Confidence: Medium

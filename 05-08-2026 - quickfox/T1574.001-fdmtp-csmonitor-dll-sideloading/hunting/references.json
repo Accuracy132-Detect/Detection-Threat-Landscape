@@ -1,0 +1,53 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "FortiGuard Incident Response Team, \"QuickFox Supply Chain Attack Used to Deploy FDMTP Implant,\" 2026-08-04.",
+      "organization": "fortinet.com",
+      "author": null,
+      "published": "2026-08-04",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "original-research",
+      "url": "https://www.fortinet.com/blog/threat-research/quickfox-supply-chain-attack-used-to-deploy-fdmtp-implant",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Microsoft Learn, \"DeviceImageLoadEvents table in the advanced hunting schema,\" accessed 2026-08-05.",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-08-04",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceimageloadevents-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "MITRE ATT&CK, T1574.001 - Hijack Execution Flow: DLL, accessed 2026-08-05.",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-08-05",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1574/001/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

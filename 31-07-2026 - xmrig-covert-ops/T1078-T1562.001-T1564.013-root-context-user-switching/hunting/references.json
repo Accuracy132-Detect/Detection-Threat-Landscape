@@ -1,0 +1,85 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Observed activity: May 2026",
+      "organization": "group-ib.com",
+      "author": null,
+      "published": "2026-07-31",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "original-research",
+      "url": "https://www.group-ib.com/blog/xmrig-covert-linux-pam-abuse/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Microsoft Learn, \"DeviceProcessEvents table in the advanced hunting schema",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2025-03-28",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Microsoft Learn, \"DeviceProcessEvents table in the advanced hunting schema",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2025-03-28",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-best-practices",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "T1078 - Valid Accounts",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-07-31",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1078/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S005",
+      "title": "T1078 - Valid Accounts",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-07-31",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1562/001/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

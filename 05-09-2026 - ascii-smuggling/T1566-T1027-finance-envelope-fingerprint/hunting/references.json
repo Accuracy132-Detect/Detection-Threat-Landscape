@@ -1,0 +1,69 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Observed activity: signature spike on 2026-02-09; high-volume use for approximately three months; sharp decline after 2026-05-15; residual activity through mid-June 2026",
+      "organization": "Microsoft Security Research",
+      "author": null,
+      "published": "2026-09-03",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "original-research",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/09/03/ascii-smuggling-crosses-over-from-ai-prompt-injection-to-phishing-evasion/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Organization: Microsoft Learn",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-02-09",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-emailevents-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "MITRE ATT&CK T1566 - Phishing",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-09-02",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1566/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "MITRE ATT&CK T1566 - Phishing",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-09-02",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1027/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

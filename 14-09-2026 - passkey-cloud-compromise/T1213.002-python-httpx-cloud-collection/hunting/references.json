@@ -1,0 +1,53 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Observed activity: since May 2026; sustained collection observed over hours to days",
+      "organization": "Microsoft",
+      "author": null,
+      "published": "2026-09-09",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "original-research",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/09/09/passkey-themed-social-engineering-leads-identity-cloud-compromise/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Microsoft Learn - CloudAppEvents table in the advanced hunting schema",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-09-09",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-cloudappevents-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "MITRE ATT&CK - T1213.002 Data from Information Repositories: SharePoint",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2025-05-15",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1213/002/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

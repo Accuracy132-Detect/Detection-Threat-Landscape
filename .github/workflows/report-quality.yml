@@ -1,0 +1,24 @@
+name: Report quality
+
+on:
+  pull_request:
+  push:
+    branches: [threat-landscape]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-v2-packages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned validators
+        run: pip install "pypdf==6.1.1"
+      - name: Install Poppler
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Validate v2 packages
+        run: python scripts/quality/validate_repository.py --strict-all

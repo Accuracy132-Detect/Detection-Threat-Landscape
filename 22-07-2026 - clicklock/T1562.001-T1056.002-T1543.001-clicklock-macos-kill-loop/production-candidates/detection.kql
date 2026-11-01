@@ -1,3 +1,17 @@
+// Rule: [T1562.001][T1056.002][T1543.001] Clicklock - Clicklock macOS Kill Loop
+// MITRE ATT&CK: T1562.001, T1056.002, T1543.001
+// Classification: Production candidate
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR on macOS
+// Required telemetry: DeviceProcessEvents
+// Purpose: Repeated termination of core GUI processes used to coerce credential entry.
+// Logic: Evaluate DeviceProcessEvents for clicklock macos kill loop using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A match indicates repeated process-termination activity compatible with the source-described coercion loop.
+// A match does not prove: that a credential prompt was shown, credentials were captured or the activity belongs to ClickLock.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Title: ClickLock macOS Repeated Process-Termination Loop
 // Status: Production candidate - untested threshold
 // Confidence: Medium

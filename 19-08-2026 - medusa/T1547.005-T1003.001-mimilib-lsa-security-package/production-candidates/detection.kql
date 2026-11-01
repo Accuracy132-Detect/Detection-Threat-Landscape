@@ -1,3 +1,17 @@
+// Rule: [T1547.005][T1003.001] Medusa - Mimilib LSA Security Package
+// MITRE ATT&CK: T1547.005, T1003.001
+// Classification: Production candidate
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR /
+// Required telemetry: DeviceRegistryEvents
+// Purpose: Source-observed registration of the Mimikatz mimilib Security Support Provider for plaintext credential capture.
+// Logic: Evaluate DeviceRegistryEvents for mimilib lsa security package using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: Detection boundary: a match proves the Registry value contained "mimilib"; it does not prove the DLL loaded, passwords were captured, or Medusa attribution.
+// A match does not prove: Detection boundary: a match proves the Registry value contained "mimilib"; it does not prove the DLL loaded, passwords were captured, or Medusa attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Production candidate - Untested implementation sketch
 // Primary platform: Microsoft Defender XDR / Advanced Hunting
 // Required telemetry: Microsoft Defender for Endpoint registry events on Windows

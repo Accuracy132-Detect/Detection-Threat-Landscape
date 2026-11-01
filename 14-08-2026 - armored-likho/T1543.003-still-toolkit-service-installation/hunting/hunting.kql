@@ -1,3 +1,17 @@
+// Rule: [T1543.003] Armored Likho - Still Toolkit Service Installation
+// MITRE ATT&CK: T1543.003
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required telemetry: SecurityEvent
+// Purpose: Campaign hunt for source-observed Windows services created by T elegram-theft and audio surveillance implants.
+// Logic: Evaluate SecurityEvent for still toolkit service installation using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: The host recorded installation of a source-observed Still T oolkit service name and requires immediate service, file and installer review.
+// A match does not prove: Malicious ImagePath, service start, implant execution, T elegram access, microphone use, C2 traffic, successful persistence or Armored Likho attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Armored Likho / Still Toolkit Windows service installation
 // Classification: Hunting query - Untested implementation sketch
 // Confidence: Medium

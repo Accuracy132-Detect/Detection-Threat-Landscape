@@ -1,0 +1,69 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Microsoft Security Research, \"ChainDrop supply chain compromise: Anatomy of a self-propagating worm,\" 2026-08-04.",
+      "organization": "Microsoft",
+      "author": null,
+      "published": "2026-08-04",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "original-research",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/08/04/chaindrop-supply-chain-compromise-anatomy-self-propagating-worm/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Elastic Security Labs, \"Shai-Hulud strikes again: CHAINDROP worm hits 400+ npm packages,\" 2026-08-06.",
+      "organization": "elastic.co",
+      "author": null,
+      "published": "2026-08-04",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "primary",
+      "url": "https://www.elastic.co/security-labs/shai-hulud-chaindrop-npm-supply-chain",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Microsoft Learn, \"DeviceProcessEvents table in the advanced hunting schema,\" accessed 2026-08-06.",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-08-06",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "MITRE ATT&CK, T1059.007 - Command and Scripting Interpreter: JavaScript, accessed 2026-08-06.",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-08-06",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1059/007/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

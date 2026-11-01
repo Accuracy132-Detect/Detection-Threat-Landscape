@@ -1,3 +1,17 @@
+// Rule: [NO-MITRE-MAPPING] Studio 5000 Acd Path Traversal - Studio 5000 Novel Write Path
+// MITRE ATT&CK: NO-MITRE-MAPPING
+// Classification: Hunting query
+// Status: Hunting / validation query - not exploit proof
+// Primary platform: Microsoft Defender XDR / Microsoft Sentinel with MDE tables
+// Required telemetry: DeviceFileEvents
+// Purpose: Baseline-assisted hunt for file-write consequences compatible with project path traversal.
+// Logic: Evaluate DeviceFileEvents for studio 5000 novel write path using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A match indicates a baseline deviation compatible with the advisory's file-write consequence.
+// A match does not prove: crafted content, project opening, path traversal, code execution or process-safety impact.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Title: Studio 5000 ACD-Associated Novel File Writes
 // Status: Hunting / validation query - not exploit proof
 // Confidence: Medium

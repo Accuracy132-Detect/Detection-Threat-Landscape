@@ -1,3 +1,17 @@
+// Rule: [T1547.001] Chosen Brick - Spaced Windows Run Key
+// MITRE ATT&CK: T1547.001
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceRegistryEvents
+// Purpose: Hunts for a Run-key value pointing to C: \Windows \SysWOW64, the actor-created lookalike directory most commonly observed for CHOSEN BRICK payload staging.
+// Logic: Evaluate DeviceRegistryEvents for spaced windows run key using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceRegistryEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: A match indicates the source-observed persistence artifact; it does not prove CHOSEN BRICK execution, Telegram C2, collection, or exfiltration.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // CHOSEN BRICK - Run-key persistence to a non-standard spaced Windows directory
 // Status: Hunting query - Untested implementation sketch
 // Confidence: Medium

@@ -1,3 +1,17 @@
+// Rule: [T1543.003] Honeymyte - Coolclient Msagent Driver Service
+// MITRE ATT&CK: T1543.003
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required telemetry: SecurityEvent
+// Purpose: Campaign hunt for the source-observed msagent kernel driver service and msagent.sys image.
+// Logic: Evaluate SecurityEvent for coolclient msagent driver service using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: The host recorded creation of the source-observed CoolClient driver service/image pair and requires immediate service, file and installer review.
+// A match does not prove: A match is a campaign lead, not proof that the driver loaded, its IOCTLs ran, or HoneyMyte operated the host.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Hunting query - Untested implementation sketch
 // Primary platform: Microsoft Sentinel / Log Analytics
 // Required connector: Windows Security Events via AMA

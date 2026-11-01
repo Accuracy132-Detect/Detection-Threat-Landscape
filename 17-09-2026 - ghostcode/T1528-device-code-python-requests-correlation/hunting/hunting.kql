@@ -1,3 +1,17 @@
+// Rule: [T1528] Ghostcode - Device Code Python Requests Correlation
+// MITRE ATT&CK: T1528
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required telemetry: SigninLogs
+// Purpose: Hunts for a successful device-code authentication followed by non-interactive python-requests token use for the same user within the source-supported 10-minute window.
+// Logic: Evaluate SigninLogs for device code python requests correlation using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in SigninLogs; it is an investigative event, not a malicious verdict.
+// A match does not prove: successful exploitation, malicious ownership, downstream impact, campaign attribution or complete compromise without corroborating evidence.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // GhostCode device-code authentication followed by python-requests token use
 // Hunting query - Untested implementation sketch
 // Primary platform: Microsoft Sentinel / Log Analytics

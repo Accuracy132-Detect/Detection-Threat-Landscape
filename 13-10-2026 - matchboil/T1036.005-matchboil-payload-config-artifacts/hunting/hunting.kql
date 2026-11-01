@@ -1,3 +1,17 @@
+// Rule: [T1036.005] Matchboil - Matchboil Payload Config Artifacts
+// MITRE ATT&CK: T1036.005
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceFileEvents
+// Purpose: Hunts source-observed MATCHBOIL payload and configuration artifacts.
+// Logic: Evaluate DeviceFileEvents for matchboil payload config artifacts using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceFileEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: execution, persistence, C2 communication, compromise, or UAC-0099 attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // MATCHBOIL payload and configuration artifact hunt
 // Platform: Microsoft Defender XDR Advanced Hunting
 // Status: Hunting query - Untested implementation sketch

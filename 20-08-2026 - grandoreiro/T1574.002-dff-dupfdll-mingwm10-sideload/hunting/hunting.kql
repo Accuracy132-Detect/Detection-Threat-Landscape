@@ -1,3 +1,17 @@
+// Rule: [T1574.002] Grandoreiro - Dff Dupfdll MINGWM10 Sideload
+// MITRE ATT&CK: T1574.002
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR /
+// Required telemetry: DeviceImageLoadEvents
+// Purpose: Source-observed Duplicate Files Finder dependency chain used to load a malicious mingwm10.dll replacement.
+// Logic: Evaluate DeviceImageLoadEvents for dff dupfdll mingwm10 sideload using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: One process loaded the exact two-module co-located dependency chain reported in the campaign and requires immediate file-provenance review.
+// A match does not prove: Malicious module content, code execution success, anti-analysis, C2 communication, financial theft or Grandoreiro attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Hunting query - Untested implementation sketch
 // Primary platform: Microsoft Defender XDR / Advanced Hunting
 // Required telemetry: Microsoft Defender for Endpoint DLL load events on Windows

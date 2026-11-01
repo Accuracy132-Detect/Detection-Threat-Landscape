@@ -1,0 +1,11 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {"id": "S001", "title": "AI, Scripts, Operator: Inside the ConnectWise Attack", "organization": "Huntress", "author": null, "published": "2026-10-26", "event_date": "2026-10-15", "accessed": "2026-11-01", "type": "original-research", "url": "https://www.huntress.com/blog/connectwise-attack-ai", "supports": ["C001", "C002"]},
+    {"id": "S002", "title": "ConnectWise (SkyKick) Vendor Credentials Abused in M365 Attacks", "organization": "Huntress", "author": null, "published": "2026-10-16", "event_date": "2026-10-15", "accessed": "2026-11-01", "type": "original-research", "url": "https://www.huntress.com/blog/vendor-credential-enables-unauthorized-access", "supports": ["C001"]},
+    {"id": "S003", "title": "AuditLogs table", "organization": "Microsoft Learn", "author": null, "published": "2026-08-28", "event_date": null, "accessed": "2026-11-01", "type": "official-schema", "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/auditlogs", "supports": ["C004", "C005"]},
+    {"id": "S004", "title": "Microsoft Entra audit log categories and activities", "organization": "Microsoft Learn", "author": null, "published": "undated", "event_date": null, "accessed": "2026-11-01", "type": "official-schema", "url": "https://learn.microsoft.com/en-us/entra/identity/monitoring-health/reference-audit-activities", "supports": ["C003", "C005"]},
+    {"id": "S005", "title": "directoryAudit resource type", "organization": "Microsoft Learn", "author": null, "published": "undated", "event_date": null, "accessed": "2026-11-01", "type": "official-schema", "url": "https://learn.microsoft.com/en-us/graph/api/resources/directoryaudit?view=graph-rest-1.0", "supports": ["C004", "C005"]},
+    {"id": "S006", "title": "Account Manipulation: Additional Cloud Roles (T1098.003)", "organization": "MITRE ATT&CK", "author": null, "published": "2025-10-24", "event_date": null, "accessed": "2026-11-01", "type": "attck", "url": "https://attack.mitre.org/techniques/T1098/003/", "supports": ["C006"]}
+  ]
+}

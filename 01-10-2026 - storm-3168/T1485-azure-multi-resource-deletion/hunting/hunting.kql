@@ -1,3 +1,17 @@
+// Rule: [T1485] STORM-3168 - Azure Multi Resource Deletion
+// MITRE ATT&CK: T1485
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required telemetry: AzureActivity
+// Purpose: Hunts Azure administrative events that delete storage accounts, Key Vaults, Function Apps, App Services, or App Service plans.
+// Logic: Evaluate AzureActivity for azure multi resource deletion using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: [T1485] Azure multi-resource control-plane deletion Hunting query - Untested implementation sketch Primary platform: Microsoft Sentinel / Log Analytics Required connector: Azure Activity Confidence: Medium A match proves a delete operation was requested; it does not prove compromise, ransomware, agentic execution, exfiltration, or Storm-3168 attribution.
+// A match does not prove: successful exploitation, malicious ownership, downstream impact, campaign attribution or complete compromise without corroborating evidence.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // [T1485] Azure multi-resource control-plane deletion
 // Hunting query - Untested implementation sketch
 // Primary platform: Microsoft Sentinel / Log Analytics

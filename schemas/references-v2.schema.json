@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://detectra.it/schemas/references-v2.schema.json",
+  "title": "Detection Threat Landscape source ledger",
+  "type": "object",
+  "required": ["schema_version", "sources"],
+  "properties": {
+    "schema_version": {"const": "2.0"},
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "organization", "published", "accessed", "type", "url", "supports"],
+        "properties": {
+          "id": {"pattern": "^S[0-9]{3}$"},
+          "title": {"type": "string", "minLength": 4},
+          "organization": {"type": "string", "minLength": 2},
+          "published": {"type": "string"},
+          "accessed": {"type": "string", "format": "date"},
+          "type": {"enum": ["primary", "original-research", "official-schema", "attck", "secondary", "poc"]},
+          "url": {"type": "string", "format": "uri"},
+          "supports": {"type": "array", "items": {"pattern": "^C[0-9]{3}$"}}
+        }
+      }
+    }
+  }
+}

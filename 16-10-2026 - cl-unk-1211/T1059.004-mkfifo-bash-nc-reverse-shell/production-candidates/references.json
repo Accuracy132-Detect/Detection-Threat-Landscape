@@ -1,0 +1,37 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Observed activity: October 2025-April 2026",
+      "organization": "Unit 42",
+      "author": null,
+      "published": "2026-10-15",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "primary",
+      "url": "https://unit42.paloaltonetworks.com/ai-campaign-targets-linux-infrastructure/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Microsoft Learn - DeviceProcessEvents table in the advanced hunting schema",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-10-16",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

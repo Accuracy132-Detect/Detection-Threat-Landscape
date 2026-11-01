@@ -1,3 +1,17 @@
+// Rule: [T1105][T1053.005] Cleangulp - Localappdata Microsoft IME File
+// MITRE ATT&CK: T1105, T1053.005
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceFileEvents
+// Purpose: Hunts for the source-observed CLEANGULP filename in the Microsoft IME-like LocalAppData directory while preserving file origin and process context for investigation.
+// Logic: Evaluate DeviceFileEvents for localappdata microsoft ime file using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: CLEANGULP - MicrosoftIME.exe staged under %LOCALAPPDATA%\Microsoft\IME Classification: Hunting query - Untested implementation sketch Confidence: Medium Primary platform: Microsoft Defender XDR advanced hunting Required telemetry: Microsoft Defender for Endpoint DeviceFileEvents Evidence boundary: a match proves only a file-system event at the...
+// A match does not prove: exploitation, execution, scheduled-task persistence, C2, malware identity, or attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // CLEANGULP — MicrosoftIME.exe staged under %LOCALAPPDATA%\Microsoft\IME
 // Classification: Hunting query — Untested implementation sketch
 // Confidence: Medium

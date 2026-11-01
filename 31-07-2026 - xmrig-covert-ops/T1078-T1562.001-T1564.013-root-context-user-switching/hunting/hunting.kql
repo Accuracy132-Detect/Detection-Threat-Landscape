@@ -1,3 +1,17 @@
+// Rule: [T1078][T1562.001][T1564.013] Xmrig Covert Ops - Root Context User Switching
+// MITRE ATT&CK: T1078, T1562.001, T1564.013
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: A Defender XDR hunting model for Linux execution from root context, based on Group-IB incident-response evidence of pam_rootok abuse.
+// Logic: Evaluate DeviceProcessEvents for root context user switching using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceProcessEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: pam_rootok abuse, credential theft, persistence, cryptomining, or campaign attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // XMRig covert operations: root-initiated Linux user switching
 // Platform: Microsoft Defender XDR Advanced Hunting
 // Classification: Hunting query - Untested implementation sketch

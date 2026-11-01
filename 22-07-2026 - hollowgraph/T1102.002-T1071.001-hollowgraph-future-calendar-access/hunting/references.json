@@ -1,0 +1,85 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Group-IB - HOLLOWGRAPH: Turning Microsoft Graph into a Covert C2 Channel",
+      "organization": "group-ib.com",
+      "author": null,
+      "published": "undated",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "original-research",
+      "url": "https://www.group-ib.com/blog/hollowgraph-microsoft-365/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Microsoft Learn - Microsoft Graph activity logs overview",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "undated",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/graph/microsoft-graph-activity-logs-overview",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Microsoft Learn - Microsoft Graph activity logs overview",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "undated",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/microsoftgraphactivitylogs",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "T1102.002 - Web Service: Bidirectional Communication",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "undated",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1102/002/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S005",
+      "title": "T1102.002 - Web Service: Bidirectional Communication",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "undated",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1071/001/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

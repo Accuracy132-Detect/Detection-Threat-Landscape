@@ -1,3 +1,17 @@
+// Rule: [T1564.004] Btr Reforged - Btr CLI Driver Dat Ads
+// MITRE ATT&CK: T1564.004
+// Classification: Validation query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required telemetry: WindowsEvent
+// Purpose: Proactive validation of the current BTR_CLI feedback-stream artifact on Microsoft Defender remediation drivers.
+// Logic: Evaluate WindowsEvent for btr cli driver dat ads using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A .dat named stream was created on a .sys file and requires raw-event, driver and privilege investigation.
+// A match does not prove: BTR.sys abuse, successful kernel actions, Defender neutralization or attacker presence.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Validation query - Untested implementation sketch
 // Primary platform: Microsoft Sentinel / Log Analytics
 // Prerequisite: Sysmon Event ID 15 from Microsoft-Windows-Sysmon/Operational

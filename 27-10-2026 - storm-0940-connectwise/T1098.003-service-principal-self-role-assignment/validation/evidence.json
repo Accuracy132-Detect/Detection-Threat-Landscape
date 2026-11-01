@@ -1,0 +1,11 @@
+{
+  "schema_version": "2.0",
+  "claims": [
+    {"id": "C001", "statement": "Huntress observed unauthorized ConnectWise-related application activity including credential changes and an application identity assigning itself Global Administrator.", "evidence_type": "documented", "source_ids": ["S001", "S002"], "confidence": "High"},
+    {"id": "C002", "statement": "Application-only audit events lacked source IP and monitored victims did not have Microsoft Graph activity logging needed for complete request reconstruction.", "evidence_type": "documented", "source_ids": ["S001"], "confidence": "High"},
+    {"id": "C003", "statement": "Microsoft documents Add member to role and related PIM role-management activities in Entra audit logs.", "evidence_type": "documented", "source_ids": ["S004"], "confidence": "High"},
+    {"id": "C004", "statement": "AuditLogs documents InitiatedBy and TargetResources as dynamic fields and Id/CorrelationId as event context.", "evidence_type": "documented", "source_ids": ["S003", "S005"], "confidence": "High"},
+    {"id": "C005", "statement": "Production self-assignment logic requires local proof of which initiating and target identifiers are comparable across direct and PIM workflows.", "evidence_type": "analyst-inference", "source_ids": ["S003", "S004", "S005"], "confidence": "High", "confirm_or_refute": "Capture representative direct, eligible, PIM, user and service-principal assignment events and compare raw identifier semantics."},
+    {"id": "C006", "statement": "Granting a cloud administrative role to an adversary-controlled or compromised principal maps to ATT&CK T1098.003.", "evidence_type": "documented", "source_ids": ["S006"], "confidence": "High"}
+  ]
+}

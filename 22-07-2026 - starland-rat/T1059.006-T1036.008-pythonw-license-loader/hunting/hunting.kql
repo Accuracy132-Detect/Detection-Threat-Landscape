@@ -1,3 +1,17 @@
+// Rule: [T1059.006][T1036.008] Starland RAT - Pythonw License Loader
+// MITRE ATT&CK: T1059.006, T1036.008
+// Classification: Hunting query
+// Status: Hunting query - campaign-specific artifact
+// Primary platform: Microsoft Defender XDR / Microsoft Sentinel with MDE tables
+// Required telemetry: DeviceProcessEvents
+// Purpose: pythonw.exe executes a compiled loader disguised as LICENSE.txt.
+// Logic: Evaluate DeviceProcessEvents for pythonw license loader using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A match indicates the exact runtime and masqueraded filename relationship described by the source.
+// A match does not prove: Python bytecode content, decryption, Starland execution or ClickFix initial access.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Title: Starland RAT Python Loader Masquerading as LICENSE.txt
 // Status: Hunting query - campaign-specific artifact
 // Confidence: High

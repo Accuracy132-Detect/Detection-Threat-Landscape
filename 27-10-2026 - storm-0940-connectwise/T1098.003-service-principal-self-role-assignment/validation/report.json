@@ -1,0 +1,92 @@
+{
+  "schema_version": "2.0",
+  "id": "2026-10-27-storm-0940-service-principal-role-validation",
+  "title": "Service Principal Self-Role Assignment Telemetry Validation",
+  "short_title": "Storm-0940 Role Validation",
+  "subtitle": "Raw Entra role-assignment collection with candidate application and target identifier extraction",
+  "published": "2026-10-27",
+  "report_type": "cloud-identity",
+  "classification": "Validation query",
+  "maturity": "validation",
+  "confidence": "Medium",
+  "operational_value": 9,
+  "primary_platform": "Microsoft Sentinel",
+  "mitre": ["T1098.003"],
+  "decision": "Publish a non-alerting schema-validation query. The observed behavior is high impact, but production self-assignment logic must wait until representative tenant events establish how the initiating service principal, assigned principal and directory role are encoded in InitiatedBy, TargetResources and modifiedProperties.",
+  "key_findings": [
+    "Huntress observed a ConnectWise-related application identity assigning itself Global Administrator and granting roles to sibling principals during unauthorized tenant activity. [C001]",
+    "Application-only audit events lacked source IP and affected tenants did not retain the Microsoft Graph request logs needed to reconstruct every read and request. [C002]",
+    "AuditLogs documents InitiatedBy and TargetResources as dynamic fields, so raw preservation and tenant-specific mapping are prerequisites for defensible equality logic. [C003][C004][C005]"
+  ],
+  "source_facts": [
+    "Huntress directly observed credential additions, failed certificate upload, role grants and subsequent changes across monitored tenants. [C001]",
+    "Microsoft Entra documents role-management activities and the AuditLogs fields used by the validation query. [C003][C004]",
+    "MITRE ATT&CK T1098.003 covers adding cloud roles for persistence or privilege escalation. [C006]"
+  ],
+  "analyst_assessment": [
+    "Comparing an initiating service-principal object ID with a target principal ID is a high-value detection concept, but identifier semantics must be proven from local raw events. [C005]",
+    "The actor's pace and tooling changes are useful incident context but are less durable than the privileged identity mutation itself. [C001][C002]"
+  ],
+  "assumptions": [
+    "The tenant exports Microsoft Entra audit events to the Sentinel AuditLogs table with unmodified dynamic fields. [C003][C004]",
+    "At least one target resource row contains the assigned principal or role context needed to distinguish self-assignment from ordinary administration. [C005]"
+  ],
+  "unknowns": [
+    "The exact nested representation of direct, PIM, eligible and service-principal role assignments has not been validated in the target tenant.",
+    "The public evidence does not prove that AI performed each role-assignment request or that every matching tenant event is connected to Storm-0940."
+  ],
+  "technical_background": "A compromised application credential can authenticate as a service principal and call Microsoft Graph or directory role-management operations without an interactive user. Entra audit records preserve the initiating app or user and changed target resources as dynamic structures. The durable detection opportunity is an application identity granting an administrative role to itself or a related principal, but the exact identifier and role placement can differ across direct and PIM workflows. [C001][C003][C004][C005]",
+  "attack_chain": [
+    {"phase": "Vendor credential abuse", "behavior": "Compromised ConnectWise application credentials reach downstream Microsoft 365 tenants.", "observable": "Application sign-ins, application identity and unusual user agent or tenant access.", "claim_ids": ["C001"]},
+    {"phase": "Credential planting", "behavior": "Secrets are added, removed or retried and a certificate upload is attempted.", "observable": "Application-management audit events and changed credential properties.", "claim_ids": ["C001"]},
+    {"phase": "Role escalation", "behavior": "An application identity grants itself Global Administrator and roles are granted to related principals.", "observable": "Successful role-assignment events with initiating-app and target-resource identifiers.", "claim_ids": ["C001", "C006"]},
+    {"phase": "Rapid adaptation", "behavior": "Tooling changes between runs after failures.", "observable": "High-resolution chronology and preserved raw user agents; not a stable detection condition.", "claim_ids": ["C001", "C002"]},
+    {"phase": "Visibility boundary", "behavior": "Graph reads and some application-only source context are unavailable.", "observable": "Missing Graph activity and absent source IP in application-only audit events.", "claim_ids": ["C002"]}
+  ],
+  "telemetry": [
+    {"field": "AuditLogs", "status": "Required", "purpose": "Microsoft Entra directory and role-management activity."},
+    {"field": "OperationName", "status": "Required", "purpose": "Select supported role-assignment activities."},
+    {"field": "Result", "status": "Required", "purpose": "Limit validation to successful recorded operations."},
+    {"field": "InitiatedBy", "status": "Required", "purpose": "Raw initiating app or user and candidate service-principal identifiers."},
+    {"field": "TargetResources", "status": "Required", "purpose": "Raw changed principals, roles and modified properties."},
+    {"field": "Id / CorrelationId", "status": "Required", "purpose": "Event identity and workflow correlation."},
+    {"field": "Graph activity logs", "status": "Enrichment", "purpose": "Request-level context when licensing and collection permit."},
+    {"field": "Service principal inventory", "status": "Enrichment", "purpose": "Owner, app ID, object ID, expected roles and vendor relationship."}
+  ],
+  "query": {
+    "file": "validation.kql",
+    "language": "KQL",
+    "status": "Untested implementation sketch",
+    "logic": "Collect successful supported role-assignment events, preserve raw dynamics, expand target resources and expose candidate initiating-app and target identifiers without promoting them to an alert.",
+    "match_proves": "Microsoft Entra recorded a successful supported role-assignment operation and the query extracted the displayed raw and candidate fields.",
+    "match_does_not_prove": "Service-principal self-assignment, Global Administrator, compromise, malicious intent, Storm-0940/ConnectWise involvement or AI-agent use."
+  },
+  "triage": [
+    "Export the complete raw AuditLogs event before flattening and preserve Id, CorrelationId, InitiatedBy, TargetResources and modifiedProperties.",
+    "Resolve initiating appId and servicePrincipalId against current and historical service-principal inventory, ownership and vendor records.",
+    "Identify the assigned principal and role template/display name; distinguish direct, PIM, eligible and administrative workflows.",
+    "Compare initiating and target object identifiers only after confirming their semantics in representative local events.",
+    "Review adjacent credential additions, application deletions, application sign-ins, Graph activity, consent and role removals.",
+    "Escalate only when unauthorized ownership, self/related-principal assignment or corroborating compromise evidence is established."
+  ],
+  "false_positives": [
+    {"source": "Legitimate application governance", "control": "Validate owner, change ticket, expected role and approved automation identity."},
+    {"source": "PIM activation or eligible assignment", "control": "Separate PIM workflows by operation, LoggedByService, target type and modified properties."},
+    {"source": "Administrative role delegation", "control": "Resolve the human or automation owner and confirm the target principal differs from the initiating application."}
+  ],
+  "validation": {
+    "steps": [
+      "Export representative user-initiated, service-principal, direct, eligible and PIM role-assignment events.",
+      "Map InitiatedBy appId/servicePrincipalId and every TargetResources element without discarding raw JSON.",
+      "Perform an authorized low-risk application role-assignment control in a test tenant and capture the complete event.",
+      "Confirm how Global Administrator and Privileged Role Administrator are represented by display name and template ID.",
+      "Measure whether candidate self-assignment equality is stable and whether any legitimate workflow produces the same condition."
+    ],
+    "success": "A controlled app-to-self or app-to-related-principal assignment yields stable comparable identifiers and role context while benign workflows are correctly characterized.",
+    "rejection": "Reject production promotion when initiator, target or role semantics are ambiguous, absent, licensing-hidden or inconsistent across assignment paths.",
+    "visibility_gaps": ["No source IP for application-only audit events", "Graph activity logging disabled", "Dynamic schema variation", "Retention gaps", "Deleted service principals"],
+    "promotion_gate": "Retain raw positive and negative samples, prove identifier semantics and role extraction, then implement and test the exact self/related-principal condition."
+  },
+  "conclusion": "The self-assignment behavior is an excellent high-impact detection target, but the current defensible artifact is a schema-validation query. The report deliberately refuses to infer principal equality or malicious intent from unvalidated dynamic mappings. Once local samples establish stable identifiers and role semantics, this package can become a production candidate.",
+  "artwork": {"kind": "cloud-role", "label": "IDENTITY · CLOUD · PRIVILEGE"}
+}

@@ -1,3 +1,17 @@
+// Rule: [NO-MITRE-MAPPING] GTG-20006 - Actor Controlled Device Registration
+// MITRE ATT&CK: NO-MITRE-MAPPING
+// Classification: Validation query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required telemetry: AuditLogs
+// Purpose: Microsoft Sentinel validation for Entra audit coverage of a source-observed access maintenance behavior.
+// Logic: Evaluate AuditLogs for actor controlled device registration using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result is not evidence of malicious activity.
+// A match does not prove: successful exploitation, malicious ownership, downstream impact, campaign attribution or complete compromise without corroborating evidence.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // GTG-20006 actor-controlled device registration
 // Classification: Validation query - Untested implementation sketch
 // Confidence: Medium

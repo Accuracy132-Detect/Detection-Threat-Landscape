@@ -1,3 +1,17 @@
+// Rule: [T1574.001] Mirage Kitten - Appvshnotify Sspicli Sideloading
+// MITRE ATT&CK: T1574.001
+// Classification: Production candidate
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceImageLoadEvents
+// Purpose: Behavioral detection for AppVShNotify loading a co-located SspiCli module outside the Windows directory.
+// Logic: Evaluate DeviceImageLoadEvents for appvshnotify sspicli sideloading using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: The documented host binary loaded a same-directory SspiCli.dll from a non-Windows path and requires immediate file and process validation.
+// A match does not prove: Malicious DLL contents, successful C2, operator activity, data theft or Mirage Kitten attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Title: AppVShNotify loads co-located SspiCli outside the Windows directory
 // Platform: Microsoft Defender XDR Advanced Hunting
 // Status: Production candidate - Untested implementation sketch

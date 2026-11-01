@@ -1,3 +1,17 @@
+// Rule: [T1060] Patchcord - Beaconbrowserhijack Run Key
+// MITRE ATT&CK: T1060
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR /
+// Required telemetry: DeviceRegistryEvents
+// Purpose: Windows registry hunt for the source observed BeaconBrowserHijack current-user startup value.
+// Logic: Evaluate DeviceRegistryEvents for beaconbrowserhijack run key using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: The endpoint recorded the PATCHCORD-associated startup value and requires immediate file, process and shortcut review.
+// A match does not prove: Malware identity, successful execution, shortcut hijacking, C2 activity, compromise scope or actor attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Hunting query - Untested implementation sketch
 // Primary platform: Microsoft Defender XDR / Advanced Hunting
 // Required telemetry: Microsoft Defender for Endpoint registry events on Windows

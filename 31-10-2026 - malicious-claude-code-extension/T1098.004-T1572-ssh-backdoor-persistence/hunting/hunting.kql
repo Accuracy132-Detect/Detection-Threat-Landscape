@@ -1,24 +1,77 @@
-// Hunting query - Untested implementation sketch
+// Rule: [T1098.004][T1572] Malicious Claude Code Extension Backdoor Evidence
+// MITRE ATT&CK: T1098.004 (SSH Authorized Keys), T1572 (Protocol Tunneling)
+// Classification: Hunting query
+// Status: Untested implementation sketch
 // Primary platform: Microsoft Defender XDR Advanced Hunting
-// Purpose: identify source-published file artifacts written by the trojanized
-// anthropic.claude-code Cursor Marketplace extension versions 2.1.312/2.1.313.
-// A match is an investigative lead, not proof of successful reverse SSH access.
-DeviceFileEvents
-| where Timestamp > ago(30d)
-| where SHA256 in~ (
-    "ecb58cb29078d9646ad1dcdbe51526f2d9cfea06be5fb2ab183e8ecc3ab6bf15",
-    "7e0a52885fadee05544a9e99eb18c792bec05900a5e1a66d68f8383decb0e278"
-  )
-  or FileName in~ (
-    ".smt",
-    ".smtk",
-    "smt.cmd",
-    "smtk",
-    "sysmon.cmd",
-    "com.apple.sysmond.plist"
-  )
-  or FileName startswith ".stk_"
-| project Timestamp, DeviceId, DeviceName, ActionType, FolderPath, FileName,
-          SHA256, InitiatingProcessFileName, InitiatingProcessCommandLine,
-          InitiatingProcessAccountName
+// Required telemetry: DeviceFileEvents, DeviceNetworkEvents, DeviceProcessEvents
+// Logic: union exact published artifacts and infrastructure with a constrained
+// reverse-SSH command pattern to expose independent evidence layers.
+// A match proves: the corresponding endpoint telemetry matched one published
+// artifact/infrastructure value or the defined reverse-forwarding grammar.
+// A match does not prove successful tunnel establishment, attacker login,
+// credential access, downstream execution, exfiltration, or attribution.
+// Expected false positives: security research copies; generic filenames;
+// authorized SSH forwarding. Validate path, provenance and adjacent evidence.
+// Coverage limits: missing hashes, deleted files, encrypted traffic without
+// endpoint process context, unsupported platforms and expired retention.
+// Evidence claims: C001, C002, C003, C005, C006, C007
+let Lookback = 30d;
+let PublishedIP = "134.209.82.225";
+union isfuzzy=true
+(
+    DeviceFileEvents
+    | where Timestamp > ago(Lookback)
+    | where SHA256 in~ (
+        "ecb58cb29078d9646ad1dcdbe51526f2d9cfea06be5fb2ab183e8ecc3ab6bf15",
+        "7e0a52885fadee05544a9e99eb18c792bec05900a5e1a66d68f8383decb0e278"
+      )
+      or FileName in~ (
+        ".smt", ".smtk", "smt.cmd", "smtk",
+        "sysmon.cmd", "com.apple.sysmond.plist"
+      )
+      or FileName matches regex @"(?i)^\.stk_[0-9a-f]{10}$"
+    | extend SignalType = "FileArtifact",
+             SignalStrength = iff(isnotempty(SHA256), "High", "Medium"),
+             Evidence = strcat(FolderPath, " | SHA256=", SHA256),
+             ActorProcess = InitiatingProcessFileName,
+             ActorCommandLine = InitiatingProcessCommandLine,
+             ActorAccount = InitiatingProcessAccountName,
+             RemoteEvidence = ""
+    | project Timestamp, DeviceId, DeviceName, SignalType, SignalStrength,
+              Evidence, ActorProcess, ActorCommandLine, ActorAccount,
+              RemoteEvidence, ReportId
+),
+(
+    DeviceNetworkEvents
+    | where Timestamp > ago(Lookback)
+    | where RemoteIP == PublishedIP or RemoteUrl has PublishedIP
+    | extend SignalType = "PublishedInfrastructure",
+             SignalStrength = "High",
+             Evidence = strcat("RemoteIP=", RemoteIP, ":", RemotePort),
+             ActorProcess = InitiatingProcessFileName,
+             ActorCommandLine = InitiatingProcessCommandLine,
+             ActorAccount = InitiatingProcessAccountName,
+             RemoteEvidence = strcat(RemoteUrl, " | Protocol=", Protocol)
+    | project Timestamp, DeviceId, DeviceName, SignalType, SignalStrength,
+              Evidence, ActorProcess, ActorCommandLine, ActorAccount,
+              RemoteEvidence, ReportId
+),
+(
+    DeviceProcessEvents
+    | where Timestamp > ago(Lookback)
+    | where FileName in~ ("ssh", "ssh.exe", "autossh")
+    | where ProcessCommandLine has "-R"
+      and ProcessCommandLine has "localhost:22"
+      and ProcessCommandLine has_any ("StrictHostKeyChecking=no", "UserKnownHostsFile=/dev/null")
+    | extend SignalType = "ReverseSshGrammar",
+             SignalStrength = "Medium",
+             Evidence = strcat(FolderPath, " | ", ProcessCommandLine),
+             ActorProcess = InitiatingProcessFileName,
+             ActorCommandLine = InitiatingProcessCommandLine,
+             ActorAccount = AccountName,
+             RemoteEvidence = ""
+    | project Timestamp, DeviceId, DeviceName, SignalType, SignalStrength,
+              Evidence, ActorProcess, ActorCommandLine, ActorAccount,
+              RemoteEvidence, ReportId
+)
 | order by Timestamp desc

@@ -1,3 +1,17 @@
+// Rule: [T1218.011] Clearfake - WebDAV RUNDLL32 Ordinal
+// MITRE ATT&CK: T1218.011
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Defender XDR hunt for source-observed execution of disguised DLLs directly from WebDAV UNC paths through export ordinal #1.
+// Logic: Evaluate DeviceProcessEvents for webdav rundll32 ordinal using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceProcessEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: A match does not establish ClickFix delivery, Amatera execution, credential theft, NetSupport installation, C2, or compromise.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // ClearFake WebDAV rundll32 ordinal execution
 // Status: Hunting query - Untested implementation sketch
 // Confidence: Medium

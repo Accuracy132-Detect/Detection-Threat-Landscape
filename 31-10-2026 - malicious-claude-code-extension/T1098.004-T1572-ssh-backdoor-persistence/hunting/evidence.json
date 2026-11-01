@@ -1,0 +1,12 @@
+{
+  "schema_version": "2.0",
+  "claims": [
+    {"id": "C001", "statement": "Malicious anthropic.claude-code versions 2.1.312 and 2.1.313 were served from Cursor Marketplace during a limited 29 October 2026 exposure window; official npm and Visual Studio Marketplace distribution were not affected.", "evidence_type": "documented", "source_ids": ["S001", "S002"], "confidence": "High"},
+    {"id": "C002", "statement": "Injected JavaScript attempted host reconnaissance, SSH key installation, local SSH enablement, reverse SSH forwarding, persistence and delayed host reporting.", "evidence_type": "documented", "source_ids": ["S001", "S002"], "confidence": "High"},
+    {"id": "C003", "statement": "The sources publish exact file hashes, filenames, persistence paths, an infrastructure IP, SSH-key context and reverse-forwarding command grammar.", "evidence_type": "documented", "source_ids": ["S001", "S002"], "confidence": "High"},
+    {"id": "C004", "statement": "Defender XDR documents the file, process and network fields used by the hunt.", "evidence_type": "documented", "source_ids": ["S003", "S004", "S005"], "confidence": "High"},
+    {"id": "C005", "statement": "Exact hashes and published infrastructure have higher campaign specificity than generic filenames or SSH grammar.", "evidence_type": "analyst-inference", "source_ids": ["S001", "S002"], "confidence": "High", "confirm_or_refute": "Measure benign prevalence and validate ownership, extension provenance and destination context for every condition."},
+    {"id": "C006", "statement": "Two independent evidence layers on one device materially strengthen the exposure assessment.", "evidence_type": "analyst-inference", "source_ids": ["S001", "S002"], "confidence": "Medium", "confirm_or_refute": "Use controlled file, process and network events to test whether legitimate workflows produce the same combinations."},
+    {"id": "C007", "statement": "Successful attacker access depended on privileges and SSH configuration; artifacts could be written even when tunnel access failed.", "evidence_type": "documented", "source_ids": ["S001", "S002"], "confidence": "High"}
+  ]
+}

@@ -1,3 +1,17 @@
+// Rule: [T1543.003] Head Mare - Phantomgraph Temp Batch Services
+// MITRE ATT&CK: T1543.003
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required telemetry: SecurityEvent
+// Purpose: Campaign hunt for Windows service installation that launches a temporary command batch through cmd.exe.
+// Logic: Evaluate SecurityEvent for phantomgraph temp batch services using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: The host recorded the complete campaign-specific service installation pattern and requires immediate raw-event, file and server review.
+// A match does not prove: Service start, batch execution, PhantomGraph DLL loading, TrueConf exploitation, OneDrive C2, LSASS access or Head Mare attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Head Mare / PhantomGraph Windows service persistence
 // Classification: Hunting query - Untested implementation sketch
 // Confidence: Medium

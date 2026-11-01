@@ -1,3 +1,17 @@
+// Rule: [T1036.005] Nik C2 - Csrss Non SYSTEM32 Execution
+// MITRE ATT&CK: T1036.005
+// Classification: Production candidate
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Production candidate for csrss non system32 execution, with evidence boundaries and target-environment validation requirements
+// Logic: Evaluate DeviceProcessEvents for csrss non system32 execution using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: NIK C2 / system-process masquerading Production candidate - Untested implementation sketch Primary platform: Microsoft Defender XDR Advanced Hunting Required telemetry: Microsoft Defender for Endpoint DeviceProcessEvents A match proves only that a process named csrss.exe executed outside the canonical Windows System32 path.
+// A match does not prove: It does not establish NIK C2 attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // NIK C2 / system-process masquerading
 // Production candidate - Untested implementation sketch
 // Primary platform: Microsoft Defender XDR Advanced Hunting

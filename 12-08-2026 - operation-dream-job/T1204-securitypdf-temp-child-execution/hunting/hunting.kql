@@ -1,3 +1,17 @@
+// Rule: [T1204] Operation Dream Job - Securitypdf Temp Child Execution
+// MITRE ATT&CK: T1204
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Campaign hunt for a trojanized PDF viewer creating and launching a decrypted executable from the Windows temporary directory.
+// Logic: Evaluate DeviceProcessEvents for securitypdf temp child execution using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: The endpoint recorded the exact campaign parent- child execution pattern and requires immediate file collection and lineage review.
+// A match does not prove: Malicious PDF content, successful Troy loading, zero- day exploitation, SYSTEM privilege, EDR impairment, C2 or Lazarus attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Operation Dream Job / SecurityPDF child execution
 // Classification: Hunting query - Untested implementation sketch
 // Confidence: Medium

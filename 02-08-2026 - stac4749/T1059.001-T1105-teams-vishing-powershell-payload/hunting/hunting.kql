@@ -1,3 +1,17 @@
+// Rule: [T1059.001][T1105] STAC4749 - Teams Vishing Powershell Payload
+// MITRE ATT&CK: T1059.001, T1105
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Source-observed PowerShell staging into AppData\Roaming followed by tokenized implant launch.
+// Logic: Evaluate DeviceProcessEvents for teams vishing powershell payload using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A source-observed PowerShell staging pattern occurred on the endpoint and requires authorization and payload review.
+// A match does not prove: Successful C2, malware identity, ransomware deployment, data theft or attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // STAC4749 PowerShell payload retrieval and tokenized implant launch
 // Classification: Hunting query - Untested implementation sketch
 // Confidence: Medium

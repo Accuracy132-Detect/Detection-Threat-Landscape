@@ -1,0 +1,26 @@
+// Rule: [T1059] PHP2SHELL Agentic - Agentic Output Markers
+// MITRE ATT&CK: T1059
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Hunting query for agentic output markers, with evidence boundaries and target-environment validation requirements
+// Logic: Evaluate DeviceProcessEvents for agentic output markers using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceProcessEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: exploitation, agentic AI use, credential access, or attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
+// Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Defender XDR Advanced Hunting
+// Classification: Hunting | Confidence: Medium | Logic: Campaign-specific artifact
+// Source-observed markers: Unit 42, PHP2Shell update dated 2026-10-23.
+// A match does not prove exploitation, agentic AI use, credential access, or attribution.
+DeviceProcessEvents
+| where ProcessCommandLine has_any ("==SHELLUSER==", "==PASSWD==")
+| project Timestamp, DeviceId, DeviceName, AccountDomain, AccountName,
+          FileName, FolderPath, ProcessCommandLine,
+          InitiatingProcessFileName, InitiatingProcessCommandLine,
+          InitiatingProcessAccountName, ReportId
+| order by Timestamp desc

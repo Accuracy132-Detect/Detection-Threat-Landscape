@@ -1,15 +1,45 @@
-// Storm-0940 / ConnectWise privilege-escalation telemetry validation
+// Rule: [T1098.003] Service Principal Role-Assignment Schema Validation
+// MITRE ATT&CK: T1098.003 (Additional Cloud Roles)
 // Classification: Validation query - Untested implementation sketch
+// Status: Untested implementation sketch
 // Confidence: Medium
 // Platform: Microsoft Sentinel / Log Analytics
 // Prerequisite: Microsoft Entra ID audit logs connected to the AuditLogs table.
-// Purpose: collect raw successful role-assignment events and validate the local
-// representation of the initiating app, assigned principal and directory role.
-// This is not an alert and does not yet prove self-assignment or malicious intent.
+// Logic: collect successful role-assignment events, preserve raw dynamic fields,
+// and expose candidate initiating-app and target-resource identifiers.
+// A match proves: Entra recorded a successful supported role-assignment activity.
+// A match does not prove app-to-self assignment, Global Administrator, compromise,
+// Storm-0940/ConnectWise involvement, malicious intent, or AI-agent use.
+// Expected false positives: normal administration, PIM and application governance.
+// Coverage limits: tenant-specific nested representation, missing Graph activity
+// logs, no source IP on application-only events and retention/licensing gaps.
+// Evidence claims: C001, C002, C003, C004, C005, C006
 AuditLogs
 | where OperationName in ("Add member to role", "Add eligible member to role")
 | where Result =~ "success"
+| extend
+    InitiatorAppId = tostring(InitiatedBy.app.appId),
+    InitiatorServicePrincipalId = tostring(InitiatedBy.app.servicePrincipalId),
+    InitiatorAppName = tostring(InitiatedBy.app.displayName),
+    InitiatorUserId = tostring(InitiatedBy.user.id),
+    InitiatorUserPrincipalName = tostring(InitiatedBy.user.userPrincipalName)
+| mv-expand Target = TargetResources to typeof(dynamic)
+| extend
+    TargetId = tostring(Target.id),
+    TargetType = tostring(Target.type),
+    TargetDisplayName = tostring(Target.displayName),
+    TargetModifiedProperties = Target.modifiedProperties,
+    CandidateSelfAssignment = iff(
+        isnotempty(InitiatorServicePrincipalId)
+        and InitiatorServicePrincipalId =~ TargetId,
+        true,
+        false
+    )
 | project TimeGenerated, Id, CorrelationId, OperationName, Category,
-          LoggedByService, Identity, InitiatedBy, TargetResources,
+          LoggedByService, Identity, InitiatorAppName, InitiatorAppId,
+          InitiatorServicePrincipalId, InitiatorUserId,
+          InitiatorUserPrincipalName, TargetId, TargetType,
+          TargetDisplayName, TargetModifiedProperties,
+          CandidateSelfAssignment, InitiatedBy, TargetResources,
           Result, ResultDescription
 | order by TimeGenerated desc

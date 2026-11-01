@@ -1,3 +1,17 @@
+// Rule: [T1195.002][T1059.007][T1546] Joyfill - Developer Tool Runtime Modification
+// MITRE ATT&CK: T1195.002, T1059.007, T1546
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceFileEvents
+// Purpose: A Defender XDR hunting model for Node.js writes into developer-tool runtime files after a compromised npm package import.
+// Logic: Evaluate DeviceFileEvents for developer tool runtime modification using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceFileEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: successful exploitation, malicious ownership, downstream impact, campaign attribution or complete compromise without corroborating evidence.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Joyfill-derived Node.js writes to developer-tool runtime files
 // Classification: Hunting query - Untested implementation sketch
 // Confidence: Medium

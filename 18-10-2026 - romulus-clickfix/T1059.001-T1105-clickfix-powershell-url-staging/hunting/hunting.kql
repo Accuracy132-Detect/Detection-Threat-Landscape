@@ -1,3 +1,17 @@
+// Rule: [T1059.001][T1105] Romulus Clickfix - Clickfix Powershell URL Staging
+// MITRE ATT&CK: T1059.001, T1105
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Hunting query for clickfix powershell url staging, with evidence boundaries and target-environment validation requirements
+// Logic: Evaluate DeviceProcessEvents for clickfix powershell url staging using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceProcessEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: ClickFix delivery, payload retrieval, execution, C2, or compromise.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // ROMULUS ClickFix PowerShell URL staging
 // Classification: Hunting query - Untested implementation sketch
 // Confidence: Medium

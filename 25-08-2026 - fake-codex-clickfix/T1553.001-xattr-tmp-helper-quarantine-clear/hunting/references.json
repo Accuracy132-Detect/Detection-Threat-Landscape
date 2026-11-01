@@ -1,0 +1,53 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Direct support: the deobfuscated second stage downloads the final payload to /tmp/helper, runs xattr -c, applies chmod +x, and executes the Mach-O.",
+      "organization": "catonetworks.com",
+      "author": null,
+      "published": "2026-08-24",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "original-research",
+      "url": "https://www.catonetworks.com/blog/cato-ctrl-when-trust-becomes-payload-in-fake-codex-clickfix-campaign/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Direct support: DeviceProcessEvents contains process-creation records from Microsoft Defender for Endpoint and documents the fields used by hunting.kql.",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-08-25",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Direct support: removal of macOS quarantine extended attributes can subvert Gatekeeper warning and trust checks.",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-05-12",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1553/001/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

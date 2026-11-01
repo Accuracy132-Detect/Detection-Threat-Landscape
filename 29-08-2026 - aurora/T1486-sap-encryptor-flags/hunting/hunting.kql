@@ -1,3 +1,17 @@
+// Rule: [T1486] Aurora - SAP Encryptor Flags
+// MITRE ATT&CK: T1486
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Campaign-specific hunt for the Windows encryptor name and compiled command line flags recovered from an Aurora affiliate.
+// Logic: Evaluate DeviceProcessEvents for sap encryptor flags using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceProcessEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: successful exploitation, malicious ownership, downstream impact, campaign attribution or complete compromise without corroborating evidence.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Aurora Windows encryptor execution with source-documented flags
 // Platform: Microsoft Defender XDR Advanced Hunting
 // Status: Hunting query - Untested implementation sketch

@@ -1,0 +1,51 @@
+{
+  "schema_version": "2.0",
+  "id": "YYYY-MM-DD-slug",
+  "title": "Threat title with technical hook",
+  "short_title": "Threat short title",
+  "subtitle": "One-sentence detection scope",
+  "published": "YYYY-MM-DD",
+  "report_type": "campaign",
+  "classification": "Hunting query",
+  "maturity": "hunting",
+  "confidence": "Medium",
+  "operational_value": 8,
+  "primary_platform": "Microsoft Defender XDR",
+  "mitre": ["T0000"],
+  "decision": "State what should be published or operated and what must wait.",
+  "key_findings": ["Finding one [C001]", "Finding two [C002]", "Finding three [C003]"],
+  "source_facts": ["Source-confirmed fact [C001]"],
+  "analyst_assessment": ["Analyst conclusion [C002]"],
+  "assumptions": ["Telemetry or environment assumption [C003]"],
+  "unknowns": ["Explicit unresolved question"],
+  "technical_background": "Explain only the mechanism needed to understand the detection surface.",
+  "attack_chain": [
+    {"phase": "Stage", "behavior": "Supported behavior", "observable": "Required evidence", "claim_ids": ["C001"]},
+    {"phase": "Stage", "behavior": "Supported behavior", "observable": "Required evidence", "claim_ids": ["C002"]},
+    {"phase": "Stage", "behavior": "Supported behavior", "observable": "Required evidence", "claim_ids": ["C003"]}
+  ],
+  "telemetry": [
+    {"field": "Table or field", "status": "Required", "purpose": "Why it is needed"},
+    {"field": "Table or field", "status": "Required", "purpose": "Why it is needed"},
+    {"field": "Table or field", "status": "Enrichment", "purpose": "What it adds"}
+  ],
+  "query": {
+    "file": "hunting.kql",
+    "language": "KQL",
+    "status": "Untested implementation sketch",
+    "logic": "One-line analytical logic.",
+    "match_proves": "The exact evidence established by a result.",
+    "match_does_not_prove": "Claims that require additional evidence."
+  },
+  "triage": ["Preserve raw evidence", "Validate provenance", "Correlate adjacent behavior", "Scope affected identities and assets"],
+  "false_positives": [{"source": "Expected overlap", "control": "How to distinguish it"}],
+  "validation": {
+    "steps": ["Validate schema", "Run a controlled positive", "Measure benign prevalence"],
+    "success": "Expected positive and negative controls behave as designed.",
+    "rejection": "Reject promotion when required context is missing or overlap is unbounded.",
+    "visibility_gaps": ["Known missing evidence"],
+    "promotion_gate": "Evidence required before the next maturity state."
+  },
+  "conclusion": "Concise analyst conclusion and residual risk.",
+  "artwork": {"kind": "generic", "label": "CAMPAIGN-SPECIFIC OBSERVABILITY"}
+}

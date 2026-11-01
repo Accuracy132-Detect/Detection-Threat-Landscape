@@ -1,3 +1,17 @@
+// Rule: [T1195.001] npm Cooldown - Npmrc File Event Coverage
+// MITRE ATT&CK: T1195.001
+// Classification: Validation query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceFileEvents
+// Purpose: Endpoint telemetry validation for .npmrc activity before deploying privacy-preserving state snapshots.
+// Logic: Evaluate DeviceFileEvents for npmrc file event coverage using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: Defender recorded activity affecting .npmrc and the event can be assessed for path, action and creator completeness.
+// A match does not prove: Cooldown removal, weak configuration, package compromise, secret access, malicious intent or T1195.001 execution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // npm cooldown state - endpoint file-event coverage
 // Classification: Validation query - Untested implementation sketch
 // Confidence: Medium

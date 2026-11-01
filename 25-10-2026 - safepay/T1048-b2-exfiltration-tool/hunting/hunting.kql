@@ -1,0 +1,26 @@
+// Rule: [T1048] Safepay - B2 Exfiltration Tool
+// MITRE ATT&CK: T1048
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Hunting query for b2 exfiltration tool, with evidence boundaries and target-environment validation requirements
+// Logic: Evaluate DeviceProcessEvents for b2 exfiltration tool using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A match proves only process execution; it does not prove exfiltration, ransomware activity, or attribution.
+// A match does not prove: A match proves only process execution; it does not prove exfiltration, ransomware activity, or attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
+// Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Defender XDR Advanced Hunting
+// Classification: Hunting | Confidence: Medium | Logic: Campaign-specific artifact
+// Joint advisory AA26-293A states SafePay actors executed commands via b2.exe to exfiltrate victim data.
+// A match proves only process execution; it does not prove exfiltration, ransomware activity, or attribution.
+DeviceProcessEvents
+| where FileName =~ "b2.exe"
+| project Timestamp, DeviceId, DeviceName, AccountDomain, AccountName,
+          FileName, FolderPath, ProcessCommandLine, SHA1,
+          InitiatingProcessFileName, InitiatingProcessCommandLine,
+          InitiatingProcessAccountName, ReportId
+| order by Timestamp desc

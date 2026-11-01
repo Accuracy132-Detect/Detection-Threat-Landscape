@@ -1,3 +1,17 @@
+// Rule: [T1003.002][T1003.005] Interlock - Volatility Credential Plugins
+// MITRE ATT&CK: T1003.002, T1003.005
+// Classification: Production candidate
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Behavioral candidate for Volatility3 plugins that extract SAM hashes or cached domain credentials from a Windows memory image.
+// Logic: Evaluate DeviceProcessEvents for volatility credential plugins using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A process requested a Volatility3 plugin designed to extract local or cached domain credential material and requires immediate authorization review.
+// A match does not prove: Successful extraction, valid credentials, malicious operator, follow-on access, ransomware deployment or Interlock attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Interlock - Volatility credential-extraction plugins
 // Classification: Production candidate - Untested implementation sketch
 // Confidence: Medium

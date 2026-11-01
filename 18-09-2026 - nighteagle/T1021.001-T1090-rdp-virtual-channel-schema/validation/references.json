@@ -1,0 +1,85 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Kaspersky Global Emergency Response Team, \"NightEagle targets Russian companies,\" published 2026-09-16; incidents investigated during the preceding year.",
+      "organization": "securelist.com",
+      "author": null,
+      "published": "2026-09-16",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "primary",
+      "url": "https://securelist.com/tr/nighteagle-apt-ghostcontainer-and-tunneling/121323/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Microsoft, Azure Monitor Logs reference - Event; accessed 2026-09-18; page last updated 2026-07-28.",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-09-16",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/event",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Microsoft, Azure Monitor Logs reference - Event; accessed 2026-09-18; page last updated 2026-07-28.",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-09-16",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/vm/data-collection-windows-events",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "T1021.001 - Remote Services: Remote Desktop Protocol.",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-09-18",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1021/001/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S005",
+      "title": "T1021.001 - Remote Services: Remote Desktop Protocol.",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-09-18",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1090/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

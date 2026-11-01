@@ -1,3 +1,17 @@
+// Rule: [T1127][T1036] Blinder Tunnel - MSBuild Runtimebrokers Runtimebroker
+// MITRE ATT&CK: T1127, T1036
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Hunts MSBuild launching a masqueraded RuntimeBroker from a user-writable campaign path.
+// Logic: Evaluate DeviceProcessEvents for msbuild runtimebrokers runtimebroker using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceProcessEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: A match supports the source-observed execution shape; it does not prove Blinder Tunnel attribution, DLL sideloading, C2, or successful compromise.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // MITRE ATT&CK: T1127 (Trusted Developer Utilities Proxy Execution), T1036 (Masquerading)
 // Classification: Hunting query - Untested implementation sketch
 // Primary platform: Microsoft Defender XDR Advanced Hunting

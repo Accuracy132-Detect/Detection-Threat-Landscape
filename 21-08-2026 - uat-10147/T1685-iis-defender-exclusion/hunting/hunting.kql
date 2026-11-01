@@ -1,3 +1,17 @@
+// Rule: [T1685] UAT-10147 - IIS Defender Exclusion
+// MITRE ATT&CK: T1685
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR /
+// Required telemetry: DeviceProcessEvents
+// Purpose: Source-observed PowerShell and Registry commands adding standard IIS directories to Microsoft Defender exclusions.
+// Logic: Evaluate DeviceProcessEvents for iis defender exclusion using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A source-aligned attempt to add a standard IIS directory to Microsoft Defender exclusions occurred and requires authorization and state validation.
+// A match does not prove: Successful configuration change, exploitation, privilege escalation, BadIIS deployment, C2 activity or UAT-10147 attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Hunting query - Untested implementation sketch
 // Primary platform: Microsoft Defender XDR / Advanced Hunting
 // Required telemetry: Microsoft Defender for Endpoint process creation events on Windows

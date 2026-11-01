@@ -1,3 +1,17 @@
+// Rule: [T1484.001] Payload Ransomware - Domain Root GPO Change
+// MITRE ATT&CK: T1484.001
+// Classification: Validation query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required telemetry: SecurityEvent
+// Purpose: Validates collection and raw representation of Active Directory object creation and modification events before detecting groupPolicyContainer creation or domain root gPLink...
+// Logic: Evaluate SecurityEvent for domain root gpo change using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in SecurityEvent; it is an investigative event, not a malicious verdict.
+// A match does not prove: Important: a returned row is not proof of malicious GPO activity or PAYLOAD attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // PAYLOAD ransomware - Active Directory GPO change telemetry validation
 // Classification: Validation query - Untested implementation sketch
 // Confidence: Medium

@@ -1,3 +1,17 @@
+// Rule: [T1218.011] Clickfix Pcalua RUNDLL32 - Clickfix Multi Stage Execution
+// MITRE ATT&CK: T1218.011
+// Classification: Production candidate
+// Status: Production candidate - environment validation required
+// Primary platform: Microsoft Defender XDR / Microsoft Sentinel with MDE tables
+// Required telemetry: DeviceProcessEvents
+// Purpose: Hidden WMI process creation, remote WebDAV access and Rundll32 proxy execution.
+// Logic: Evaluate DeviceProcessEvents for clickfix multi stage execution using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A match indicates that one process event retained the high-signal combination of pcalua, PowerShell/WMI hidden-process syntax, rundll32 and remote-path notation.
+// A match does not prove: ATT&CK: T1202, T1047, T1218.011, T1059.001 Important: This behavior is compatible with an observed ClickFix incident, but the match alone does not prove the initial lure or actor attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Title: ClickFix Multi-Stage Execution via Pcalua, WMI and Rundll32
 // Status: Production candidate - environment validation required
 // Confidence: High

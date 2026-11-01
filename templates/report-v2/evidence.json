@@ -1,0 +1,20 @@
+{
+  "schema_version": "2.0",
+  "claims": [
+    {
+      "id": "C001",
+      "statement": "Source-confirmed technical statement.",
+      "evidence_type": "documented",
+      "source_ids": ["S001"],
+      "confidence": "High"
+    },
+    {
+      "id": "C002",
+      "statement": "Analyst inference with a measurable falsification condition.",
+      "evidence_type": "analyst-inference",
+      "source_ids": ["S001"],
+      "confidence": "Medium",
+      "confirm_or_refute": "Describe the telemetry or experiment that would confirm or refute it."
+    }
+  ]
+}

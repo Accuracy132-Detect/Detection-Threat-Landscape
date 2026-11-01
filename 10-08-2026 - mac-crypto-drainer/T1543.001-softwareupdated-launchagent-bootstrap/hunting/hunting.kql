@@ -1,3 +1,17 @@
+// Rule: [T1543.001] Mac Crypto Drainer - Softwareupdated Launchagent Bootstrap
+// MITRE ATT&CK: T1543.001
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Campaign hunt for launchctl bootstrapping the source-observed com.apple.softwareupdated LaunchAgent.
+// Logic: Evaluate DeviceProcessEvents for softwareupdated launchagent bootstrap using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: An endpoint invoked the source-observed persistence command and requires immediate plist, payload and ownership validation.
+// A match does not prove: A match is campaign-specific persistence evidence, not proof of payload execution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Hunting query - Untested implementation sketch
 // Primary platform: Microsoft Defender XDR advanced hunting
 // Telemetry: Microsoft Defender for Endpoint DeviceProcessEvents on macOS

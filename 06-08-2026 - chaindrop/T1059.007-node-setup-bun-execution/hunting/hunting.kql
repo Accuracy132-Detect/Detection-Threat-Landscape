@@ -1,3 +1,17 @@
+// Rule: [T1059.007] Chaindrop - Node Setup Bun Execution
+// MITRE ATT&CK: T1059.007
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Campaign hunt for the source-observed setup.mjs dropper launching a Bun payload from temporary or node_modules paths.
+// Logic: Evaluate DeviceProcessEvents for node setup bun execution using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: The endpoint recorded the published CHAINDROP dropper-to-runtime relationship and requires package, file and repository validation.
+// A match does not prove: A match is not proof of a compromised npm package: validate package provenance, repository changes, script hashes, signer/origin, credentials and follow-on activity.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // CHAINDROP - node setup.mjs launches Bun payload
 // Classification: Hunting query - Untested implementation sketch
 // Confidence: Medium

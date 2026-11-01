@@ -1,0 +1,53 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Observed campaign period: 2025-07 through 2026-02",
+      "organization": "proofpoint.com",
+      "author": null,
+      "published": "2026-07-23",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "original-research",
+      "url": "https://www.proofpoint.com/us/blog/threat-insight/ta488-targets-zimbra-mailservers-half-click-exploits",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Splunk Enterprise - search command",
+      "organization": "help.splunk.com",
+      "author": null,
+      "published": "2026-07-24",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "primary",
+      "url": "https://help.splunk.com/en/splunk-enterprise/spl-search-reference/9.0/search-commands/search",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "T1098 - Account Manipulation",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-07-24",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1098/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

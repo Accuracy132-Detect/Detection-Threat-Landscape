@@ -1,0 +1,69 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Kaspersky GReAT, \"APT group HoneyMyte upgrades CoolClient: the backdoor gets a kernel-level Windows rootkit,\" published 14 August 2026; observed activity: late 2025 and 2026, with victims in Myanmar, Mongolia, Pakistan, and Russia.",
+      "organization": "securelist.com",
+      "author": null,
+      "published": "2026-08-15",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "primary",
+      "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Microsoft Learn, \"SecurityEvent\" table, updated 27 July 2026; accessed 15 August 2026.",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-08-14",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/securityevent",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Microsoft Learn, \"SecurityEvent\" table, updated 27 July 2026; accessed 15 August 2026.",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-08-14",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4697",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "MITRE ATT&CK, T1543.003 Create or Modify System Process: Windows Service, accessed 15 August 2026.",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-07-27",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1543/003/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

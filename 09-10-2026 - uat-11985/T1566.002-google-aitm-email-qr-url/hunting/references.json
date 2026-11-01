@@ -1,0 +1,69 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Cisco Talos. \"UAT-11985: AI-assisted event lures delivering real-time Google AitM phishing.",
+      "organization": "blog.talosintelligence.com",
+      "author": null,
+      "published": "2026-10-08",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "primary",
+      "url": "https://blog.talosintelligence.com/uat-11985/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Cisco Talos IOCs repository. uat-11985.txt. Accessed 2026-10-09.",
+      "organization": "GitHub",
+      "author": null,
+      "published": "2026-10-08",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "primary",
+      "url": "https://github.com/Cisco-Talos/IOCs/blob/main/2026/10/uat-11985.txt",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Microsoft Learn. EmailUrlInfo advanced hunting table. Accessed 2026-10-09.",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-10-09",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-emailurlinfo-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "MITRE ATT&CK T1566.002 - Phishing: Spearphishing Link.",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-10-09",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1566/002/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

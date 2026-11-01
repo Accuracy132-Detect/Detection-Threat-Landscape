@@ -1,3 +1,17 @@
+// Rule: [NO-MITRE-MAPPING] Darklantern - UDP 9992 Firewall Visibility
+// MITRE ATT&CK: NO-MITRE-MAPPING
+// Classification: Validation query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required telemetry: CommonSecurityLog
+// Purpose: Firewall telemetry validation for traffic directed to the source-documented router backdoor listener. Port metadata is not proof of probe, command execution, implant presence...
+// Logic: Evaluate CommonSecurityLog for udp 9992 firewall visibility using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in CommonSecurityLog; it is an investigative event, not a malicious verdict.
+// A match does not prove: the 19-byte probe, command packet, device response, implant presence, or compromise.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // DARKLANTERN inbound UDP/9992 firewall visibility
 // Classification: Validation query - Untested implementation sketch
 // Confidence: Medium

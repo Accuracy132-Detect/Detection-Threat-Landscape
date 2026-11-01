@@ -1,3 +1,17 @@
+// Rule: [T1059.004][T1053.003] EVOOO1BOT - Cron Download Pipe Shell
+// MITRE ATT&CK: T1059.004, T1053.003
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR /
+// Required telemetry: DeviceProcessEvents
+// Purpose: Linux process hunt for the source-observed recurring downloader-to-shell command pattern.
+// Logic: Evaluate DeviceProcessEvents for cron download pipe shell using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: The host executed the complete Evooo1Bot-associated downloader-to-shell pattern and requires immediate cron, URL, process-tree and network review.
+// A match does not prove: A match is a persistence lead, not proof of Evooo1Bot attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Hunting query - Untested implementation sketch
 // Primary platform: Microsoft Defender XDR / Advanced Hunting
 // Required telemetry: Microsoft Defender for Endpoint process creation on Linux

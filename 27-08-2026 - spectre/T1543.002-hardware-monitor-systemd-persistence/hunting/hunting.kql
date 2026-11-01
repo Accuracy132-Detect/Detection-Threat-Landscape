@@ -1,3 +1,17 @@
+// Rule: [T1543.002] Spectre - Hardware Monitor Systemd Persistence
+// MITRE ATT&CK: T1543.002
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceFileEvents
+// Purpose: Campaign-specific hunting for the source observed on Defender-onboarded Linux servers.
+// Logic: Evaluate DeviceFileEvents for hardware monitor systemd persistence using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceFileEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: SPECTRE execution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // SPECTRE hardware-monitor.service persistence hunt
 // Classification: Hunting query - Untested implementation sketch
 // Confidence: Medium

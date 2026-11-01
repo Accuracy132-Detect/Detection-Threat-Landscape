@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://detectra.it/schemas/evidence-v2.schema.json",
+  "title": "Detection Threat Landscape evidence ledger",
+  "type": "object",
+  "required": ["schema_version", "claims"],
+  "properties": {
+    "schema_version": {"const": "2.0"},
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "statement", "evidence_type", "source_ids", "confidence"],
+        "properties": {
+          "id": {"pattern": "^C[0-9]{3}$"},
+          "statement": {"type": "string", "minLength": 10},
+          "evidence_type": {"enum": ["documented", "analyst-inference", "static-observed", "dynamic-observed", "exploit-reproduced", "detection-validated"]},
+          "source_ids": {"type": "array", "items": {"pattern": "^S[0-9]{3}$"}},
+          "confidence": {"enum": ["Low", "Medium", "High"]},
+          "confirm_or_refute": {"type": "string"}
+        }
+      }
+    }
+  }
+}

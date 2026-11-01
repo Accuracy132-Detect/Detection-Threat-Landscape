@@ -1,3 +1,17 @@
+// Rule: [T1566][T1027] Ascii Smuggling - Finance Envelope Fingerprint
+// MITRE ATT&CK: T1566, T1027
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: EmailEvents, EmailDirection, EmailClusterId
+// Purpose: Defender XDR hunt for the source-observed finance-themed header domain and marketing-platform envelope pattern. This is not body-content detection.
+// Logic: Evaluate EmailEvents, EmailDirection, EmailClusterId for finance envelope fingerprint using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in EmailEvents, EmailDirection, EmailClusterId; it is an investigative event, not a malicious verdict.
+// A match does not prove: successful exploitation, malicious ownership, downstream impact, campaign attribution or complete compromise without corroborating evidence.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // ASCII-smuggling campaign infrastructure hunt
 // Platform: Microsoft Defender XDR Advanced Hunting
 // Classification: Hunting query - Untested implementation sketch

@@ -1,0 +1,101 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Microsoft Security Research - Storm-3168: Agentic-driven cloud attacks using compromised service principals",
+      "organization": "Microsoft",
+      "author": null,
+      "published": "2026-09-25",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "original-research",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/09/25/storm-3168-agentic-driven-cloud-attacks-using-compromised-service-principals/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Microsoft Learn - AzureActivity table schema",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-09-25",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/AzureActivity",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Microsoft Learn - AzureActivity table schema",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-09-25",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/platform/activity-log",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "Microsoft Learn - AzureActivity table schema",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-09-25",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/azure/sentinel/audit-sentinel-data",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S005",
+      "title": "Microsoft Learn - AzureActivity table schema",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-09-25",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/rest/api/storagerp/storage-accounts/list-keys?view=rest-storagerp-2026-06-01",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S006",
+      "title": "T1485 - Data Destruction",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-06-01",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1485/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

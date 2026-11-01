@@ -1,3 +1,17 @@
+// Rule: [T1021.001][T1090] Nighteagle - RDP Virtual Channel Schema
+// MITRE ATT&CK: T1021.001, T1090
+// Classification: Validation query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required telemetry: Event
+// Purpose: Validates collection and raw representation of RdpCoreTS event IDs 132 and 148 before designing content logic for rdp2tcp or attacker-selected virtual-channel names.
+// Logic: Evaluate Event for rdp virtual channel schema using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in Event; it is an investigative event, not a malicious verdict.
+// A match does not prove: It does not establish malicious rdp2tcp use.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // NightEagle / rdp2tcp virtual-channel telemetry validation
 // Validation query - Untested implementation sketch
 // Primary platform: Microsoft Sentinel / Log Analytics

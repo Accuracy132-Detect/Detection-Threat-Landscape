@@ -4,6 +4,8 @@ A curated detection-engineering repository built from primary threat research an
 
 Only technically defensible content is published. Every package separates production candidates from hunting or validation material and documents telemetry requirements, assumptions, false-positive considerations, validation steps, MITRE ATT&CK mappings, and source references.
 
+The repository currently contains **95 detection packages**. Every package uses the same schema 2.0 contract and canonical eight-page PDF layout. See the [Reporting Standard v2](./docs/REPORTING_STANDARD_V2.md) and the [daily research workflow](./prompts/daily-threat-landscape-v2.md).
+
 > **Important:** A production candidate is not production-validated. Every query must be tested against the target environment, actual schema, retention, and legitimate activity before deployment.
 
 ## Repository structure
@@ -184,11 +186,11 @@ Detection-Threat-Landscape/
 ├── 18-10-2026 - romulus-clickfix/
 │   └── T1059.001-T1105-clickfix-powershell-url-staging/hunting/
 ├── 22-10-2026 - php2shell/
-│   └── web-php-suspicious-child/hunting/
+│   └── T1190-T1059-web-php-suspicious-child/hunting/
 ├── 24-10-2026 - php2shell-agentic/
-│   └── agentic-output-markers/hunting/
+│   └── T1059-agentic-output-markers/hunting/
 ├── 25-10-2026 - safepay/
-│   └── b2-exfiltration-tool/hunting/
+│   └── T1048-b2-exfiltration-tool/hunting/
 ├── 27-10-2026 - storm-0940-connectwise/
 │   └── T1098.003-service-principal-self-role-assignment/validation/
 ├── 28-10-2026 - camera-management-compromise/
@@ -213,9 +215,9 @@ Detection-Threat-Landscape/
 | 30 October 2026 | [NIK C2](./30-10-2026%20-%20nik-c2/T1036.005-csrss-non-system32-execution/production-candidates/) | Microsoft Defender XDR | **[T1036.005] csrss.exe execution outside System32** — detects a process using the protected Windows runtime name from a non-canonical path; a match supports masquerading but does not prove NIK C2, C2 activity, credential theft, ransomware, or attribution | Production candidate |
 | 28 October 2026 | [Camera management compromise](./28-10-2026%20-%20camera-management-compromise/T1574.002-wpcmon-appdata-execution/hunting/) | Microsoft Defender XDR | **[T1574.002] WpcMon.exe execution from AppData** — hunts the source-observed legitimate Windows utility running from a user-writable AppData path; a match does not prove DLL sideloading, camera-software compromise, persistence, C2 or attribution | Hunting |
 | 27 October 2026 | [Storm-0940 / ConnectWise](./27-10-2026%20-%20storm-0940-connectwise/T1098.003-service-principal-self-role-assignment/validation/) | Microsoft Sentinel | **[T1098.003] Entra role-assignment raw-schema validation** — collects successful `Add member to role` and `Add eligible member to role` events while preserving raw `InitiatedBy` and `TargetResources`; a row does not prove self-assignment, Global Administrator, compromise, Storm-0940 attribution or AI use | Validation |
-| 25 October 2026 | [SafePay](./25-10-2026%20-%20safepay/b2-exfiltration-tool/hunting/) | Microsoft Defender XDR | **[T1048] Backblaze B2 command-line client execution** — hunts source-observed `b2.exe` use; a match does not prove upload, actor-controlled destination, ransomware activity or attribution | Hunting |
-| 24 October 2026 | [PHP2Shell agentic output markers](./24-10-2026%20-%20php2shell-agentic/agentic-output-markers/hunting/) | Microsoft Defender XDR | **[T1059] Machine-readable command-batch delimiters** — hunts the exact source-observed `==SHELLUSER==` and `==PASSWD==` strings in process command lines; a match does not prove PHP exploitation, agentic AI use, credential access or attribution | Hunting |
-| 22 October 2026 | [php2shell / PHP core RCE coverage](./22-10-2026%20-%20php2shell/web-php-suspicious-child/hunting/) | Microsoft Defender XDR | **[T1190 context][T1059 observed] Web/PHP worker suspicious child execution** — hunts direct web/PHP-parent starts of shells, downloaders, reverse-shell helpers or interpreters with source-supported command grammar; a match does not identify either CVE, prove exploitation, compromise or attribution | Hunting |
+| 25 October 2026 | [SafePay](./25-10-2026%20-%20safepay/T1048-b2-exfiltration-tool/hunting/) | Microsoft Defender XDR | **[T1048] Backblaze B2 command-line client execution** — hunts source-observed `b2.exe` use; a match does not prove upload, actor-controlled destination, ransomware activity or attribution | Hunting |
+| 24 October 2026 | [PHP2Shell agentic output markers](./24-10-2026%20-%20php2shell-agentic/T1059-agentic-output-markers/hunting/) | Microsoft Defender XDR | **[T1059] Machine-readable command-batch delimiters** — hunts the exact source-observed `==SHELLUSER==` and `==PASSWD==` strings in process command lines; a match does not prove PHP exploitation, agentic AI use, credential access or attribution | Hunting |
+| 22 October 2026 | [php2shell / PHP core RCE coverage](./22-10-2026%20-%20php2shell/T1190-T1059-web-php-suspicious-child/hunting/) | Microsoft Defender XDR | **[T1190 context][T1059 observed] Web/PHP worker suspicious child execution** — hunts direct web/PHP-parent starts of shells, downloaders, reverse-shell helpers or interpreters with source-supported command grammar; a match does not identify either CVE, prove exploitation, compromise or attribution | Hunting |
 | 18 October 2026 | [ROMULUS / ClickFix](./18-10-2026%20-%20romulus-clickfix/T1059.001-T1105-clickfix-powershell-url-staging/hunting/) | Microsoft Defender XDR | **[T1059.001][T1105] PowerShell URL staging with evasion switches** — hunts PowerShell or PowerShell Core command lines combining a source-supported evasion switch with an HTTP(S) URL; a match does not prove ClickFix delivery, payload retrieval, execution, C2, compromise, or attribution | Hunting |
 | 17 October 2026 | [UNC7017 / CROSSROAD](./17-10-2026%20-%20unc7017-crossroad/T1053.005-radmincomponentruntime-famitrfc-runtimechk/hunting/) | Microsoft Defender XDR | **[T1053.005] Radmin scheduled-task runtime execution** — hunts source-observed `FamItrfc.exe` or `FamItrf2.exe` under the LocalAppData Radmin directory with `--runtimechk`; a match does not prove task creation, DLL hijacking, successful C2, supply-chain delivery, compromise or attribution | Hunting |
 | 16 October 2026 | [CL-UNK-1211](./16-10-2026%20-%20cl-unk-1211/T1059.004-mkfifo-bash-nc-reverse-shell/production-candidates/) | Microsoft Defender XDR | **[T1059.004] Named-pipe Bash/Netcat reverse shell** — detects the source-observed command grammar combining `mkfifo`, `/tmp/f`, `bash -i`, `nc` and a shell pipe; a match supports reverse-shell execution but does not prove successful C2, downstream activity, impact or attribution | Production candidate |
@@ -314,20 +316,27 @@ ew.exe` after opening a crafted PDF | Hunting |
 
 Each package contains:
 
-- a KQL, SPL, or YARA-L query for the selected Primary Platform;
-- an eight-page A4 `threat-analysis.pdf`;
-- `references.txt` with primary research, official schema documentation, relevant dates, and ATT&CK references.
+- `report.json`, the canonical machine-readable report source;
+- `evidence.json`, with atomic claim IDs and evidence maturity;
+- `references.json`, the normalized source ledger;
+- `validation.md`, containing the planned or completed validation record;
+- a native KQL or SPL query for the selected primary platform, with ATT&CK and match-boundary comments;
+- `references.txt`, retained for human-readable compatibility;
+- an eight-page A4 `threat-analysis.pdf` built from the canonical source.
+
+Packages mechanically migrated from the previous layout are explicitly marked `legacy-review-required`. Their query bodies are protected by a recorded pre-migration SHA-256 and remain unmodified; claim-level provenance must be reviewed before their evidence status can be promoted.
 
 ## Visual publication standard
 
-All dossiers use a controlled master maintained outside the public repository. The standard provides:
+All dossiers are generated by the versioned canonical builder in `scripts/reporting/`. The standard provides:
 
 - a high-contrast black, white, electric-violet, magenta, and lime identity;
 - consistent cover, assessment, attack-flow, telemetry, query, triage, validation, ATT&CK, and reference sections;
-- a fixed eight-page A4 structure with no externally loaded report assets;
-- visual quality assurance for page count, overflow, clipped query text, readable tables, correct classification, defanged references, and absence of customer data.
+- a fixed eight-page A4 structure with embedded fonts and no externally loaded report assets;
+- one campaign-specific, faded cover illustration while typography, grid, colors and every internal page remain fixed;
+- automated quality gates for package completeness, query-body integrity, page count, A4 size, blank pages, embedded fonts, MITRE-folder-query consistency and explicit evidence boundaries.
 
-HTML templates, rendering sources, intermediate images, and working assets are never published.
+Intermediate renders and working assets are not published.
 
 ## Quality principles
 

@@ -1,3 +1,17 @@
+// Rule: [T1219] Msarat - Browser Cdp Remote Debugging
+// MITRE ATT&CK: T1219
+// Classification: Production candidate
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: A process-telemetry candidate for browser mediated command and control through headless Chrome or Edge.
+// Logic: Evaluate DeviceProcessEvents for browser cdp remote debugging using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceProcessEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: msaRAT.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // msaRAT browser-mediated C2: headless Chrome/Edge with CDP remote debugging
 // Status: Production candidate - Untested implementation sketch
 // Platform: Microsoft Defender XDR Advanced Hunting

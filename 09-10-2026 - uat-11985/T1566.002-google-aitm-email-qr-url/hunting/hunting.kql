@@ -1,3 +1,17 @@
+// Rule: [T1566.002] UAT-11985 - Google Aitm Email Qr URL
+// MITRE ATT&CK: T1566.002
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: EmailUrlInfo
+// Purpose: Hunts five source-published hostnames in email and QR-code-extracted URLs.
+// Logic: Evaluate EmailUrlInfo for google aitm email qr url using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result is an IOC association, not proof of credential theft, MFA bypass, account takeover, campaign attribution, or successful delivery.
+// A match does not prove: Interpretation: A result is an IOC association, not proof of credential theft, MFA bypass, account takeover, campaign attribution, or successful delivery.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // UAT-11985 Google AitM infrastructure in email and QR-code URLs
 // Platform: Microsoft Defender XDR Advanced Hunting
 // Status: Hunting query - Untested implementation sketch

@@ -1,0 +1,69 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "eSentire Threat Response Unit, \"GhostCode: Dissecting a Novel Device Code Phishing Kit,\" published 2026-09-15; activity observed in late August 2026.",
+      "organization": "esentire.com",
+      "author": null,
+      "published": "2026-09-15",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "original-research",
+      "url": "https://www.esentire.com/blog/ghostcode-dissecting-a-novel-device-code-phishing-kit",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Microsoft, Azure Monitor Logs reference - SigninLogs; accessed 2026-09-17; page last updated 2026-08-27.",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-09-15",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/signinlogs",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Microsoft, Azure Monitor Logs reference - SigninLogs; accessed 2026-09-17; page last updated 2026-08-27.",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-09-15",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-device-code",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "T1528 - Steal Application Access Token.",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-09-17",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1528/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

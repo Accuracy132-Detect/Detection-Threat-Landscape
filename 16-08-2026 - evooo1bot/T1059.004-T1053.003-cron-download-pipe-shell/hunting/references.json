@@ -1,0 +1,101 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "FortiGuard Labs, \"Multi-Functional Linux Botnet Evooo1Bot,\" published 13 August 2026; active targeting observed since July 2026.",
+      "organization": "fortinet.com",
+      "author": null,
+      "published": "2026-08-16",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "original-research",
+      "url": "https://www.fortinet.com/blog/threat-research/multi-functional-linux-botnet-evooo1bot",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Microsoft Learn, \"DeviceProcessEvents table in the advanced hunting schema,\" updated 7 August 2026; accessed 16 August 2026.",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-08-13",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Microsoft Learn, \"DeviceProcessEvents table in the advanced hunting schema,\" updated 7 August 2026; accessed 16 August 2026.",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-08-13",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-endpoint/mde-linux-prerequisites",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "Microsoft Learn, \"DeviceProcessEvents table in the advanced hunting schema,\" updated 7 August 2026; accessed 16 August 2026.",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-08-13",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-endpoint/linux-support-ebpf",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S005",
+      "title": "MITRE ATT&CK, T1059.004 Unix Shell and T1053.003 Cron; accessed 16 August 2026.",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-06-12",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1059/004/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S006",
+      "title": "MITRE ATT&CK, T1059.004 Unix Shell and T1053.003 Cron; accessed 16 August 2026.",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-06-12",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1053/003/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

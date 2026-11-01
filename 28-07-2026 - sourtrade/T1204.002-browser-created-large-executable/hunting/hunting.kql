@@ -1,3 +1,17 @@
+// Rule: [T1204.002] Sourtrade - Browser Created Large Executable
+// MITRE ATT&CK: T1204.002
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceFileEvents
+// Purpose: Hunting for oversized Windows executables created by browsers after in-page Bun assembly.
+// Logic: Evaluate DeviceFileEvents for browser created large executable using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result shows a supported browser creating an executable at least 600 MB in size.
+// A match does not prove: This is consistent with the source-observed SourTrade delivery shape but does not prove browser-side assembly, malicious bytecode, execution, credential theft, or attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // SourTrade browser-created oversized executable
 // Classification: Hunting query - Untested implementation sketch
 // Confidence: Medium

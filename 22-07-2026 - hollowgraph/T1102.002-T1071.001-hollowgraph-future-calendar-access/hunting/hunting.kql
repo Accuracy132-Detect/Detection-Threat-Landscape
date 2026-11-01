@@ -1,3 +1,17 @@
+// Rule: [T1102.002][T1071.001] Hollowgraph - Hollowgraph Future Calendar Access
+// MITRE ATT&CK: T1102.002, T1071.001
+// Classification: Hunting query
+// Status: Hunting query
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: MicrosoftGraphActivityLogs
+// Purpose: Generalized Microsoft Graph discovery experiment for calendarView ranges in years 2040-2099.
+// Logic: Evaluate MicrosoftGraphActivityLogs for hollowgraph future calendar access using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A match indicates a calendarView request targeting a year from 2040 through 2099.
+// A match does not prove: HOLLOWGRAPH, covert tasking, malicious attachment access or compromised credentials.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Title: Far-future Microsoft Graph calendarView access
 // Status: Hunting query
 // Confidence: High for telemetry observability; Medium for maliciousness

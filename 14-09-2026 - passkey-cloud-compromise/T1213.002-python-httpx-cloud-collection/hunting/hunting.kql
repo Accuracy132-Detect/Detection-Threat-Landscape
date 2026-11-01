@@ -1,3 +1,17 @@
+// Rule: [T1213.002] Passkey Cloud Compromise - Python Httpx Cloud Collection
+// MITRE ATT&CK: T1213.002
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: CloudAppEvents
+// Purpose: Hunts source-observed programmatic SharePoint and OneDrive access using python-httpx, an uncommon ISP or user agent, and at least 100 file events in two hours.
+// Logic: Evaluate CloudAppEvents for python httpx cloud collection using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in CloudAppEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: successful exploitation, malicious ownership, downstream impact, campaign attribution or complete compromise without corroborating evidence.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Programmatic SharePoint/OneDrive collection using python-httpx
 // Hunting query - Untested implementation sketch
 // Confidence: Medium

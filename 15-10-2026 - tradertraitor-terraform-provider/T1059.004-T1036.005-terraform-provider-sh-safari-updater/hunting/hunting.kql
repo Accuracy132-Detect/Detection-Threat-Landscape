@@ -1,3 +1,17 @@
+// Rule: [T1059.004][T1036.005] Tradertraitor Terraform Provider - Terraform Provider Sh Safari Updater
+// MITRE ATT&CK: T1059.004, T1036.005
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Hunting query for terraform provider sh safari updater, with evidence boundaries and target-environment validation requirements
+// Logic: Evaluate DeviceProcessEvents for terraform provider sh safari updater using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceProcessEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: This is a campaign-specific hunt; a match does not prove compromise.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Hunting query - Untested implementation sketch
 // Confidence: Medium | Primary platform: Microsoft Defender XDR
 // Behavior: source-observed Terraform provider starts sh/bash through -c

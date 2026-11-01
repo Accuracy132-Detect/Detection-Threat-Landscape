@@ -1,3 +1,17 @@
+// Rule: [T1649] Certighost - AD CS Chase to Non DC
+// MITRE ATT&CK: T1649
+// Classification: Validation query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceNetworkEvents
+// Purpose: Validation query for ad cs chase to non dc, with evidence boundaries and target-environment validation requirements
+// Logic: Evaluate DeviceNetworkEvents for ad cs chase to non dc using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result shows source-observed CA egress to LDAP or SMB/LSA toward an address that is absent from the approved DC inventory.
+// A match does not prove: successful certificate issuance, PKINIT, DCSync, or CVE-2026-54121 abuse.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Certighost AD CS chase to a non-Domain-Controller destination
 // Classification: Validation query - Untested implementation sketch
 // Confidence: Medium

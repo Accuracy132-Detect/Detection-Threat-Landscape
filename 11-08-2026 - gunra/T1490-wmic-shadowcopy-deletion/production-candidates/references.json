@@ -1,0 +1,53 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Observed activity: Gunra first observed 2025-04; RaaS expansion from 2026-01; advisory includes recent and historical observations",
+      "organization": "FBI, CISA, DC3, NSA, USSS, KNPA",
+      "author": null,
+      "published": "2026-08-10",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "primary",
+      "url": "https://media.defense.gov/2026/Aug/10/2003976697/-1/-1/0/CSA_STOPRANSOMWARE_GUNRA_RANSOMWARE.PDF",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Title: DeviceProcessEvents table in the advanced hunting schema",
+      "organization": "Microsoft",
+      "author": null,
+      "published": "2026-08-07",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Technique: T1490 - Inhibit System Recovery",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-08-11",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1490/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

@@ -1,3 +1,17 @@
+// Rule: [T1490] Gunra - WMIC Shadowcopy Deletion
+// MITRE ATT&CK: T1490
+// Classification: Production candidate
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Behavioral candidate for source-observed volume shadow-copy deletion through WMIC before ransomware impact.
+// Logic: Evaluate DeviceProcessEvents for wmic shadowcopy deletion using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: An endpoint invoked the complete WMIC shadow-copy deletion pattern and requires urgent validation of authorization, execution result and surrounding impact.
+// A match does not prove: Successful deletion, loss of backups, file encryption, data theft, malicious intent or Gunra attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Gunra / WMIC shadow-copy deletion
 // Classification: Production candidate - Untested implementation sketch
 // Confidence: Medium

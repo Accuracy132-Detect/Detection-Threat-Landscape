@@ -1,3 +1,17 @@
+// Rule: [T1027.013] Valleyrat - Qnwallpaper Peloader
+// MITRE ATT&CK: T1027.013
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceFileEvents
+// Purpose: Exact file-metadata hunt for the AES encrypted backdoor artifact staged by the source-observed QNWallpaper delivery chain. A match is not proof of memory loading, persistence...
+// Logic: Evaluate DeviceFileEvents for qnwallpaper peloader using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceFileEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: A match is not proof of payload execution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // ValleyRAT QNWallpaper PeLoader artifact
 // Classification: Hunting query - Untested implementation sketch
 // Confidence: Medium

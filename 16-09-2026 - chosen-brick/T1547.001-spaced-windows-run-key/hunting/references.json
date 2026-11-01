@@ -1,0 +1,69 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "CHOSEN BRICK joint advisory - NCSC, FBI, AIVD - published 2026-09-15 - observed activity from at least 2025",
+      "organization": "ncsc.gov.uk",
+      "author": null,
+      "published": "2026-09-15",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "primary",
+      "url": "https://www.ncsc.gov.uk/news/iranian-cyber-targeting-of-dissidents-activists-and-journalists",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "FBI / IC3 technical advisory PDF - Version 1, 2026-09-15",
+      "organization": "ic3.gov",
+      "author": null,
+      "published": "2026-09-15",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "primary",
+      "url": "https://www.ic3.gov/CSA/2026/260915-2.pdf",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Microsoft Defender XDR DeviceRegistryEvents schema - accessed 2026-09-16",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-09-15",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceregistryevents-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "MITRE ATT&CK T1547.001 - Registry Run Keys / Startup Folder",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-09-16",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1547/001/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

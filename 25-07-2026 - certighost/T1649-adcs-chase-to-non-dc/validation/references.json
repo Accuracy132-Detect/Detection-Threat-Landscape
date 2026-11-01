@@ -1,0 +1,85 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "H0j3n and Aniq Fakhrul, \"Certighost (CVE-2026-54121)",
+      "organization": "GitHub",
+      "author": null,
+      "published": "2026-07-25",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "poc",
+      "url": "https://gist.github.com/H0j3n/a5ef2609b5f2944ac2390a191a534c26",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Aniq Fakhrul, \"CVE-2026-54121: Certighost POC",
+      "organization": "GitHub",
+      "author": null,
+      "published": "undated",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "poc",
+      "url": "https://github.com/aniqfakhrul/CVE-2026-54121",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Microsoft Security Update Guide, CVE-2026-54121",
+      "organization": "Microsoft",
+      "author": null,
+      "published": "undated",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "primary",
+      "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-54121",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "Microsoft Defender XDR, DeviceNetworkEvents table",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "undated",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-devicenetworkevents-table",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S005",
+      "title": "T1649 - Steal or Forge Authentication Certificates",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "undated",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1649/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

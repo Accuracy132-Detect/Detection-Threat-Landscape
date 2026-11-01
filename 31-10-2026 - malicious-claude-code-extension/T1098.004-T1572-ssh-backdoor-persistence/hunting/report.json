@@ -1,0 +1,91 @@
+{
+  "schema_version": "2.0",
+  "id": "2026-10-31-malicious-claude-code-extension",
+  "title": "Trojanized Claude Code Extension Persistent SSH Backdoor",
+  "short_title": "Malicious Claude Code Extension",
+  "subtitle": "Multi-signal hunt for source-published persistence artifacts, infrastructure and reverse SSH behavior",
+  "published": "2026-10-31",
+  "report_type": "campaign",
+  "classification": "Hunting query",
+  "maturity": "hunting",
+  "confidence": "High",
+  "operational_value": 9,
+  "primary_platform": "Microsoft Defender XDR",
+  "mitre": ["T1098.004", "T1572"],
+  "decision": "Publish a time-sensitive, multi-signal exposure hunt. Treat an exact hash or published infrastructure match as high-priority evidence; treat filenames and reverse-SSH grammar as investigative leads until extension provenance and adjacent persistence or authentication evidence are established.",
+  "key_findings": [
+    "Cursor Marketplace served malicious anthropic.claude-code versions 2.1.312 and 2.1.313 for a limited window on 29 October 2026; the official npm and Visual Studio Marketplace distributions were not affected. [C001]",
+    "The injected loader attempted SSH authorized-key modification, local SSH enablement, reverse forwarding and cross-platform persistence. [C002]",
+    "The source publishes exact hashes, paths, an infrastructure IP and reverse-SSH grammar suitable for independent evidence-layer hunting. [C003]"
+  ],
+  "source_facts": [
+    "Microsoft reconstructed a five-stage loader sequence but explicitly stated that code order does not prove every action succeeded on each host. [C002]",
+    "Cursor reported that errors and missing administrative privileges blocked SSH access on most macOS and Windows hosts, while persistence artifacts and the unauthorized key could still be written. [C007]",
+    "Microsoft and Cursor published file, network, SSH-key and command-line indicators. [C003]"
+  ],
+  "analyst_assessment": [
+    "Exact hashes and the published IP have high campaign specificity; filenames and SSH command patterns are mutable and require provenance. [C005]",
+    "Independent file, process and network signals support a stronger exposure assessment than any single artifact alone. [C006]"
+  ],
+  "assumptions": [
+    "Defender for Endpoint retains file, process and network telemetry across the exposure and investigation window. [C004]",
+    "Full command lines and hashes are populated sufficiently to distinguish authorized remote-development behavior from the published backdoor pattern. [C005]"
+  ],
+  "unknowns": [
+    "The public evidence does not establish which exposed hosts accepted attacker authentication or whether commands were executed through a tunnel.",
+    "A matching generic filename does not establish that the affected Cursor Marketplace extension created it."
+  ],
+  "technical_background": "The extension contained injected JavaScript that executed before normal initialization. It collected host context, attempted to append a public key marked svc-telemetry to SSH authorization files, enabled SSH where possible, wrote a separate tunnel identity and launched outbound reverse SSH forwarding. Platform-specific startup objects retried the tunnel after failure. [C002][C003]",
+  "attack_chain": [
+    {"phase": "Supply-chain exposure", "behavior": "The malicious extension version is installed or automatically updated from Cursor Marketplace.", "observable": "Extension inventory, package hash and marketplace provenance.", "claim_ids": ["C001"]},
+    {"phase": "Access preparation", "behavior": "The loader attempts to append an attacker-controlled public key and enable SSH.", "observable": "authorized_keys modification, service changes and installer process lineage.", "claim_ids": ["C002", "C003"]},
+    {"phase": "Reverse forwarding", "behavior": "ssh or autossh requests remote forwarding to victim loopback port 22.", "observable": "Process command line and outbound connection to the published IP.", "claim_ids": ["C002", "C003"]},
+    {"phase": "Persistence", "behavior": "LaunchAgent, cron, scheduled-task or Startup-folder artifacts relaunch the tunnel.", "observable": "Exact source-published paths, task objects and repeated SSH process creation.", "claim_ids": ["C002", "C003"]},
+    {"phase": "Host reporting", "behavior": "A delayed callback attempts to transmit collected host details.", "observable": "HTTP POST to the published beacon endpoint and adjacent extension execution.", "claim_ids": ["C002", "C003"]}
+  ],
+  "telemetry": [
+    {"field": "DeviceFileEvents", "status": "Required", "purpose": "Exact hashes, filenames, paths and creating-process context."},
+    {"field": "DeviceNetworkEvents", "status": "Required", "purpose": "Connections to the published IP and beacon infrastructure."},
+    {"field": "DeviceProcessEvents", "status": "Required", "purpose": "ssh/autossh reverse-forwarding grammar and process lineage."},
+    {"field": "SHA256", "status": "Required", "purpose": "High-specificity artifact identity when populated."},
+    {"field": "ProcessCommandLine", "status": "Required", "purpose": "Reverse forwarding and host-key-check bypass context."},
+    {"field": "Extension inventory", "status": "Enrichment", "purpose": "Confirm affected version and Cursor Marketplace provenance."},
+    {"field": "SSH authentication logs", "status": "Enrichment", "purpose": "Determine whether the planted key was accepted."}
+  ],
+  "query": {
+    "file": "hunting.kql",
+    "language": "KQL",
+    "status": "Untested implementation sketch",
+    "logic": "Union exact file artifacts and published infrastructure with constrained reverse-SSH command grammar, preserving signal strength and raw context.",
+    "match_proves": "The corresponding Defender event matched one published artifact, infrastructure value or the defined reverse-forwarding grammar.",
+    "match_does_not_prove": "Successful tunnel establishment, attacker authentication, command execution, credential theft, exfiltration or campaign attribution."
+  },
+  "triage": [
+    "Confirm Cursor installation, extension version 2.1.312/2.1.313 and Cursor Marketplace provenance; preserve the extension package before removal.",
+    "Collect matching files, SSH authorization files, startup objects, hashes, timestamps and creator-process lineage.",
+    "Review ssh/autossh processes, reverse-forwarding arguments, outbound connections and retry cadence around the first artifact event.",
+    "Inspect SSH server state and authentication logs for acceptance of the unauthorized key and post-authentication command execution.",
+    "Isolate hosts with loader execution or backdoor installation; remove exact malicious entries and rotate credentials or sessions from a known-clean device.",
+    "Close only when artifact ownership and provenance establish a benign collision with no adjacent suspicious behavior."
+  ],
+  "false_positives": [
+    {"source": "Generic .smt, .smtk or sysmon.cmd names", "control": "Require exact path, extension provenance, creator process or a second evidence layer."},
+    {"source": "Authorized SSH reverse forwarding", "control": "Validate owner, destination, identity path, change record and expected host-key policy."},
+    {"source": "Security research or incident-response copies", "control": "Confirm approved case timeline and prevent copied samples from being treated as execution evidence."}
+  ],
+  "validation": {
+    "steps": [
+      "Create benign files matching the published names and verify path, hash and creator fields across supported operating systems.",
+      "Run an authorized SSH reverse-forwarding control and verify command-line and network representation without contacting malicious infrastructure.",
+      "Measure filename and command-pattern prevalence across retention.",
+      "Test exact-hash, published-IP and multi-signal branches independently.",
+      "Confirm that approved remote-development workflows can be distinguished through destination, identity and ownership context."
+    ],
+    "success": "Each controlled evidence layer produces a complete row with correct device, path or command, actor context and signal strength; negative controls remain explainable.",
+    "rejection": "Reject alert promotion when generic filenames or authorized SSH workflows cannot be separated, or when required fields are systematically absent.",
+    "visibility_gaps": ["Deleted artifacts before sensor capture", "Unpopulated SHA256", "Missing extension inventory", "SSH activity outside endpoint retention"],
+    "promotion_gate": "At least one high-specificity branch or two independent medium-strength branches must be reproducible, with benign prevalence and ownership controls documented."
+  },
+  "conclusion": "This package is a high-confidence exposure hunt for a narrowly bounded supply-chain incident. Exact artifacts and infrastructure provide immediate value, while generic filenames and reverse-SSH behavior remain supporting evidence. Promotion to an alert requires local prevalence, extension provenance and controlled positive/negative validation.",
+  "artwork": {"kind": "supply-chain-ssh", "label": "SUPPLY CHAIN · SSH · PERSISTENCE"}
+}

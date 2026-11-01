@@ -1,3 +1,17 @@
+// Rule: [T1133][T1036.003] Integrity Tech Flax Typhoon - Softether System Binary Masquerade
+// MITRE ATT&CK: T1133, T1036.003
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceProcessEvents
+// Purpose: Hunts SoftEther clients masquerading as Windows system binaries outside system directories.
+// Logic: Evaluate DeviceProcessEvents for softether system binary masquerade using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result is not proof that the binary is SoftEther or actor-controlled.
+// A match does not prove: A result is not proof that the binary is SoftEther or actor-controlled.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Integrity Tech / Flax Typhoon - masqueraded SoftEther installer execution
 // Platform: Microsoft Defender XDR Advanced Hunting
 // Status: Hunting query - Untested implementation sketch

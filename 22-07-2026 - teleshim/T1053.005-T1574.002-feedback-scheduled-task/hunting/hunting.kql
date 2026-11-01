@@ -1,3 +1,17 @@
+// Rule: [T1053.005][T1574.002] Teleshim - Feedback Scheduled Task
+// MITRE ATT&CK: T1053.005, T1574.002
+// Classification: Hunting query
+// Status: Hunting query - campaign-specific artifacts
+// Primary platform: Microsoft Defender XDR / Microsoft Sentinel with MDE tables
+// Required telemetry: DeviceProcessEvents
+// Purpose: Campaign-specific persistence through a ten-minute task targeting ProgramData.
+// Logic: Evaluate DeviceProcessEvents for feedback scheduled task using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A match indicates the complete campaign artifact intersection in a process command line.
+// A match does not prove: It does not identify task creation through COM/API, prove payload maliciousness or detect changed names, cadence or paths.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Title: TELESHIM Feedback Scheduled Task in ProgramData
 // Status: Hunting query - campaign-specific artifacts
 // Confidence: High

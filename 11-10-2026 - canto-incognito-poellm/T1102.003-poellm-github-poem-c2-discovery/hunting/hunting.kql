@@ -1,3 +1,17 @@
+// Rule: [T1102.003] Canto Incognito Poellm - Poellm Github Poem C2 Discovery
+// MITRE ATT&CK: T1102.003
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR
+// Required telemetry: DeviceNetworkEvents
+// Purpose: Hunts GitHub poem-based C2 discovery from compromised AI infrastructure.
+// Logic: Evaluate DeviceNetworkEvents for poellm github poem c2 discovery using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceNetworkEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: Absence of results therefore does not prove absence of PoeLLM or the GitHub fetch.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Canto Incognito / PoeLLM - GitHub poem-based C2 discovery
 // MITRE ATT&CK: T1102.003 - Web Service: One-Way Communication
 // Platform: Microsoft Defender XDR Advanced Hunting

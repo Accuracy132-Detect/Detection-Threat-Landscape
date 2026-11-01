@@ -1,0 +1,101 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Kaspersky Securelist, \"PAYLOAD ransomware via Group Policy",
+      "organization": "securelist.com",
+      "author": null,
+      "published": "2026-09-21",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "primary",
+      "url": "https://securelist.com/tr/payload-ransomware-via-group-policy/121335/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "Microsoft Learn, Azure Monitor Logs reference - SecurityEvent (updated 2026-08-27)",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-08-27",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/reference/tables/securityevent",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Microsoft Learn, Azure Monitor Logs reference - SecurityEvent (updated 2026-08-27)",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-08-27",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-5136",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "Microsoft Learn, Azure Monitor Logs reference - SecurityEvent (updated 2026-08-27)",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-08-27",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-5137",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S005",
+      "title": "Microsoft Learn, Azure Monitor Logs reference - SecurityEvent (updated 2026-08-27)",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-08-27",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/audit-directory-service-changes",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    },
+    {
+      "id": "S006",
+      "title": "Microsoft Sentinel, Windows security event sets (updated 2026-08-28)",
+      "organization": "docs.azure.cn",
+      "author": null,
+      "published": "2021-09-07",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "primary",
+      "url": "https://docs.azure.cn/en-us/sentinel/windows-security-event-id-reference",
+      "supports": [
+        "C001",
+        "C002",
+        "C003"
+      ]
+    }
+  ]
+}

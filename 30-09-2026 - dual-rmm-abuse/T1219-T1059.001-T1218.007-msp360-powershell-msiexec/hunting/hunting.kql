@@ -1,3 +1,17 @@
+// Rule: [T1219][T1059.001][T1218.007] Dual RMM Abuse - MSP360 Powershell Msiexec
+// MITRE ATT&CK: T1219, T1059.001, T1218.007
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR / DeviceProcessEvents
+// Required telemetry: DeviceProcessEvents
+// Purpose: Hunts for MSP360 RMM Agent launching PowerShell and for PowerShell, with MSP360 as parent, launching an MSI from T emp.
+// Logic: Evaluate DeviceProcessEvents for msp360 powershell msiexec using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A result proves that the published query conditions matched in DeviceProcessEvents; it is an investigative event, not a malicious verdict.
+// A match does not prove: phishing, malicious ScreenConnect use, or credential access.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Rule name: [T1219][T1059.001][T1218.007] MSP360 RMM Agent to PowerShell and MSIExec
 // Hunting query - Untested implementation sketch
 // Confidence: Medium

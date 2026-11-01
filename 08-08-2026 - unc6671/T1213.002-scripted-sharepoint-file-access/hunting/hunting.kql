@@ -1,3 +1,17 @@
+// Rule: [T1213.002] UNC6671 - Scripted Sharepoint File Access
+// MITRE ATT&CK: T1213.002
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Sentinel / Log Analytics
+// Required telemetry: OfficeActivity
+// Purpose: Hunt for SharePoint or OneDrive file access performed through scripting clients observed in cloud data-theft operations.
+// Logic: Evaluate OfficeActivity for scripted sharepoint file access using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: A scripting client accessed a SharePoint or OneDrive file under an identified account and requires ownership and session validation.
+// A match does not prove: File download, bulk collection, sensitive content, successful exfiltration, malicious intent or UNC6671 attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // UNC6671 - scripted SharePoint or OneDrive file access
 // Classification: Hunting query - Untested implementation sketch
 // Confidence: Medium

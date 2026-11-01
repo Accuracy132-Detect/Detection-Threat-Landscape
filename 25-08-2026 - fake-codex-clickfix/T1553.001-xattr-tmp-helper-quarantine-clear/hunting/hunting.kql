@@ -1,3 +1,17 @@
+// Rule: [T1553.001] Fake Codex Clickfix - Xattr Tmp Helper Quarantine Clear
+// MITRE ATT&CK: T1553.001
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR /
+// Required telemetry: DeviceProcessEvents
+// Purpose: Campaign hunt for source-observed removal of extended attributes from a staged macOS Mach-O payload.
+// Logic: Evaluate DeviceProcessEvents for xattr tmp helper quarantine clear using the existing source-derived conditions while preserving projected investigation context.
+// A match proves: The endpoint recorded the exact source-observed xattr invocation and requires raw-event, file, lineage and ownership review.
+// A match does not prove: A match is an investigation lead; it does not prove AMOS execution, successful C2, credential theft, or attribution.
+// Expected false positives: authorized administration, approved software, testing, or benign artifact collisions.
+// Coverage limits: local schema, field population, retention, collection scope, and attacker variation require validation.
+// Evidence claims: C001, C002, C003
+//
 // Fake Codex ClickFix - xattr clearing on staged /tmp/helper
 // Classification: Hunting query - Untested implementation sketch
 // Confidence: Medium
