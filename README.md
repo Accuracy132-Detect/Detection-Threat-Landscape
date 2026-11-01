@@ -195,8 +195,10 @@ Detection-Threat-Landscape/
 │   └── T1574.002-wpcmon-appdata-execution/hunting/
 ├── 30-10-2026 - nik-c2/
 │   └── T1036.005-csrss-non-system32-execution/production-candidates/
-└── 31-10-2026 - malicious-claude-code-extension/
-    └── T1098.004-T1572-ssh-backdoor-persistence/hunting/
+├── 31-10-2026 - malicious-claude-code-extension/
+│   └── T1098.004-T1572-ssh-backdoor-persistence/hunting/
+└── 01-11-2026 - volta-autodoxer/
+    └── T1555-T1539-volta-debug-artifacts/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -206,6 +208,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 1 November 2026 | [VOLTA-AUTODOXER](./01-11-2026%20-%20volta-autodoxer/T1555-T1539-volta-debug-artifacts/hunting/) | Microsoft Defender XDR | **[T1555][T1539] Source-published VOLTA executable hash and AppData debug log** — hunts the analyzed sample hash or `volta_debug.txt` under AppData; a match does not prove collection, AI analysis, exfiltration, victim impact or attribution | Hunting |
 | 31 October 2026 | [Malicious Claude Code-branded extension](./31-10-2026%20-%20malicious-claude-code-extension/T1098.004-T1572-ssh-backdoor-persistence/hunting/) | Microsoft Defender XDR | **[T1098.004][T1572] Source-published SSH backdoor file artifacts** — hunts exact hashes, filenames and the temporary identity prefix written by the trojanized Cursor Marketplace extension; a match does not prove extension execution, tunnel success, attacker access or attribution | Hunting |
 | 30 October 2026 | [NIK C2](./30-10-2026%20-%20nik-c2/T1036.005-csrss-non-system32-execution/production-candidates/) | Microsoft Defender XDR | **[T1036.005] csrss.exe execution outside System32** — detects a process using the protected Windows runtime name from a non-canonical path; a match supports masquerading but does not prove NIK C2, C2 activity, credential theft, ransomware, or attribution | Production candidate |
 | 28 October 2026 | [Camera management compromise](./28-10-2026%20-%20camera-management-compromise/T1574.002-wpcmon-appdata-execution/hunting/) | Microsoft Defender XDR | **[T1574.002] WpcMon.exe execution from AppData** — hunts the source-observed legitimate Windows utility running from a user-writable AppData path; a match does not prove DLL sideloading, camera-software compromise, persistence, C2 or attribution | Hunting |

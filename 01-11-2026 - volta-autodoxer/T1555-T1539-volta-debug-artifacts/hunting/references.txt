@@ -1,0 +1,19 @@
+Primary technical research
+Cisco Talos, "Appraisal by AI: Model-driven victim prioritization in the VOLTA infostealer"
+Publication date: 2026-10-31
+Sample first seen: 2026-10-11 12:46 UTC
+hxxps://blog[.]talosintelligence[.]com/appraisal-by-ai-model-driven-victim-prioritization-in-the-volta-infostealer/
+
+Official platform documentation
+Microsoft Learn, DeviceFileEvents table in Microsoft Defender XDR advanced hunting
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-devicefileevents-table
+
+MITRE ATT&CK
+T1555 - Credentials from Password Stores
+hxxps://attack[.]mitre[.]org/techniques/T1555/
+T1539 - Steal Web Session Cookie
+hxxps://attack[.]mitre[.]org/techniques/T1539/
+T1552.001 - Unsecured Credentials: Credentials In Files
+hxxps://attack[.]mitre[.]org/techniques/T1552/001/
+T1074.001 - Local Data Staging
+hxxps://attack[.]mitre[.]org/techniques/T1074/001/

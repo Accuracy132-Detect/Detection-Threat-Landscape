@@ -1,0 +1,12 @@
+// Hunting query - Untested implementation sketch
+// Primary platform: Microsoft Defender XDR Advanced Hunting
+// Campaign-specific artifact hunt for VOLTA-AUTODOXER.
+// A match does not prove collection, AI analysis, exfiltration, or attribution.
+DeviceFileEvents
+| where Timestamp > ago(30d)
+| where SHA256 =~ "57ef4242666d78c50df145b34023df564f0fad38812d6a580e66433d427e2279"
+   or (FileName =~ "volta_debug.txt" and FolderPath contains @"\AppData\Roaming\")
+| project Timestamp, DeviceId, DeviceName, ActionType, FolderPath, FileName,
+          SHA256, InitiatingProcessFileName, InitiatingProcessCommandLine,
+          InitiatingProcessAccountName, ReportId
+| order by Timestamp desc
