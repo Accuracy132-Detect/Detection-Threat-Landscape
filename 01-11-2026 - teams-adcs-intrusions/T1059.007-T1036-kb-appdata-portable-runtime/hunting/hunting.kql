@@ -1,0 +1,38 @@
+// Rule: [T1059.007][T1036] Teams AD CS Intrusions - KB AppData Portable Runtime
+// MITRE ATT&CK: T1059.007, T1036
+// Classification: Hunting query
+// Maturity: hunting
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR Advanced Hunting
+// Required telemetry: Microsoft Defender for Endpoint DeviceProcessEvents
+// Purpose: Hunt source-observed Bun or Java execution from KB-prefixed AppData paths.
+// Logic: Runtime identity + .js/.java operand + numeric KB AppData Roaming path.
+// A match proves: DeviceProcessEvents matched the published endpoint conditions.
+// A match does not prove: Teams contact, malicious code, AD CS abuse, certificate use or attribution.
+// Expected false positives: approved portable runtimes and developer or QA workflows.
+// Coverage limits: mutable path/runtime; requires command line, path and version metadata.
+// Evidence claims: C002, C003, C004, C005, C006, C007
+// Validation status: Not executed; complete validation.md before promotion.
+
+DeviceProcessEvents
+| where Timestamp > ago(7d)
+| where ProcessVersionInfoOriginalFileName =~ "bun.exe"
+    or FileName in~ ("bun.exe", "java.exe", "javaw.exe")
+| where ProcessCommandLine contains ".js"
+    or ProcessCommandLine contains ".java"
+| where FolderPath matches regex @"(?i)\\AppData\\Roaming\\KB[0-9]+\\"
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    AccountName,
+    FileName,
+    FolderPath,
+    ProcessCommandLine,
+    ProcessVersionInfoOriginalFileName,
+    SHA1,
+    ProcessUniqueId,
+    InitiatingProcessFileName,
+    InitiatingProcessCommandLine,
+    ReportId
+| order by Timestamp desc

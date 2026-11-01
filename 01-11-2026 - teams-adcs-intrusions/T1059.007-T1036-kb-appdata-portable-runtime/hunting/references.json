@@ -1,0 +1,68 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "From help desk impersonation to AD CS abuse: Investigating ESC1 and ESC8 intrusion paths",
+      "organization": "Microsoft Security Research",
+      "author": "Microsoft Security Research; Sagar Patil; Jesse Birch; Tal Tzhori",
+      "published": "2026-10-30",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "primary",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/10/30/help-desk-impersonation-ad-cs-abuse-investigating-esc1-esc8-intrusion-paths/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003",
+        "C005",
+        "C006",
+        "C007"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "DeviceProcessEvents table in the advanced hunting schema",
+      "organization": "Microsoft Learn",
+      "author": null,
+      "published": "2026-08-07",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table",
+      "supports": [
+        "C004",
+        "C005",
+        "C007"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "T1059.007 - Command and Scripting Interpreter: JavaScript",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-05-12",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1059/007/",
+      "supports": [
+        "C006"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "T1036 - Masquerading",
+      "organization": "MITRE ATT&CK",
+      "author": null,
+      "published": "2026-05-12",
+      "event_date": null,
+      "accessed": "2026-11-01",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1036/",
+      "supports": [
+        "C006"
+      ]
+    }
+  ]
+}

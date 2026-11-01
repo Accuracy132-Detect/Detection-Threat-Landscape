@@ -1,0 +1,163 @@
+{
+  "schema_version": "2.0",
+  "id": "2026-11-01-teams-adcs-intrusions-kb-appdata-portable-runtime",
+  "title": "Teams-to-AD CS intrusions - KB AppData runtime execution",
+  "short_title": "Teams / AD CS runtime staging",
+  "subtitle": "Defender XDR hunt for source-observed Bun or Java execution from KB-prefixed AppData Roaming paths",
+  "published": "2026-11-01",
+  "report_type": "campaign",
+  "classification": "Hunting query",
+  "maturity": "hunting",
+  "confidence": "Medium",
+  "operational_value": 8,
+  "primary_platform": "Microsoft Defender XDR",
+  "mitre": [
+    "T1059.007",
+    "T1036"
+  ],
+  "decision": "Publish as a campaign-scoped hunting query, not an alert. Investigate matches as portable-runtime execution leads and require independent Teams, remote-support, discovery, identity or certificate evidence before associating a result with either documented intrusion.",
+  "key_findings": [
+    "Microsoft investigated two human-operated intrusions that began with Teams help-desk impersonation and remote access, then staged portable runtimes and assessed AD CS. [C001]",
+    "The reusable endpoint observable is Bun or Java executing a script from a KB-prefixed AppData Roaming directory; one variant used a renamed Bun binary whose version metadata retained the original filename. [C002]",
+    "Microsoft published the exact DeviceProcessEvents conditions implemented here and explicitly positioned them as an investigation starting point requiring tenant validation and correlation. [C003]"
+  ],
+  "source_facts": [
+    "The source documents archive placement during a remote session, extraction into a newly created user-profile directory, portable runtime execution and subsequent discovery or AD CS assessment. [C001]",
+    "The source-published hunt filters Bun or Java process identity, a .js or .java command-line operand, and a numeric KB-prefixed AppData Roaming execution path. [C002][C003]",
+    "DeviceProcessEvents and every field used by the query are documented in the Microsoft Defender XDR advanced hunting schema. [C004]"
+  ],
+  "analyst_assessment": [
+    "The combined runtime, script operand and path constraints are materially more specific than a runtime name or user-writable path alone, but the KB path is campaign-scoped and mutable. [C005]",
+    "A match establishes only that the recorded process event met the published endpoint conditions; it does not establish Teams contact, remote-control success, AD CS abuse or certificate issuance. [C005]",
+    "T1059.007 applies to the Bun JavaScript branch and T1036 applies to the source-observed renamed runtime and update-themed staging context. [C006]"
+  ],
+  "assumptions": [
+    "Microsoft Defender for Endpoint populates full FolderPath, ProcessCommandLine and process version metadata across the intended Windows device scope. [C004]",
+    "Authorized software deployment and developer workflows can be resolved to durable owners during triage. [C007]"
+  ],
+  "unknowns": [
+    "Microsoft did not disclose campaign dates, actor attribution or the exact prevalence of each runtime variant.",
+    "Target-environment benign prevalence and ProcessVersionInfoOriginalFileName population are not measured.",
+    "The endpoint event alone cannot establish the preceding Teams interaction or subsequent AD CS activity."
+  ],
+  "technical_background": "In two investigated intrusions, Microsoft observed help-desk impersonation through Teams followed by user-approved remote access. The operator placed an archive, extracted it under a newly created user-profile directory and launched attacker-controlled code with portable Python, Bun or Java runtimes before host discovery and AD CS assessment. Runtime choice varied, so this package retains only the source-published Bun/Java process observable: an executable identified by filename or Bun original-file metadata, a JavaScript or Java source operand and a KB-prefixed directory under AppData Roaming. [C001][C002][C003]",
+  "attack_chain": [
+    {
+      "phase": "Social engineering",
+      "behavior": "External Teams messages or calls impersonate support personnel and persuade a user to start remote control.",
+      "observable": "Teams interaction and approved remote-support evidence; not queried by this package.",
+      "claim_ids": [
+        "C001"
+      ]
+    },
+    {
+      "phase": "Staging",
+      "behavior": "An archive is transferred and extracted into a newly created KB-prefixed directory under the user profile.",
+      "observable": "User-writable AppData Roaming path and surrounding file/process timeline.",
+      "claim_ids": [
+        "C001",
+        "C002"
+      ]
+    },
+    {
+      "phase": "Execution",
+      "behavior": "Bun or Java executes attacker-controlled JavaScript or Java source from the staged directory.",
+      "observable": "DeviceProcessEvents with runtime identity, script operand and KB-prefixed FolderPath.",
+      "claim_ids": [
+        "C002",
+        "C003",
+        "C004"
+      ]
+    },
+    {
+      "phase": "Follow-on context",
+      "behavior": "The staged components perform discovery and assess AD CS before the intrusion diverges into ESC1 or ESC8 paths.",
+      "observable": "Discovery process lineage, LDAPS/SMB activity, Defender alerts, CA records and Kerberos evidence; enrichment only.",
+      "claim_ids": [
+        "C001",
+        "C005"
+      ]
+    }
+  ],
+  "telemetry": [
+    {
+      "field": "DeviceProcessEvents",
+      "status": "Required",
+      "purpose": "Microsoft Defender for Endpoint process-creation records for the source-published hunt."
+    },
+    {
+      "field": "Timestamp, DeviceId, DeviceName, FileName, FolderPath, ProcessCommandLine",
+      "status": "Required",
+      "purpose": "Time scope, stable device pivot, runtime identity, execution location and script operand."
+    },
+    {
+      "field": "ProcessVersionInfoOriginalFileName, SHA1, ProcessUniqueId, ReportId",
+      "status": "Required",
+      "purpose": "Identify renamed Bun, preserve file/process context and support event-level investigation."
+    },
+    {
+      "field": "InitiatingProcessFileName, InitiatingProcessCommandLine, AccountName",
+      "status": "Required",
+      "purpose": "Preserve parent and user context for ownership and timeline analysis."
+    },
+    {
+      "field": "CloudAppEvents, AlertInfo, AlertEvidence, CA/IIS and Kerberos records",
+      "status": "Enrichment",
+      "purpose": "Test the non-claim boundary by corroborating Teams, relay, certificate and authentication activity."
+    }
+  ],
+  "query": {
+    "file": "hunting.kql",
+    "language": "KQL",
+    "status": "Untested implementation sketch",
+    "logic": "Return Bun or Java process events from numeric KB-prefixed AppData Roaming directories when the command line references JavaScript or Java source.",
+    "match_proves": "Microsoft Defender for Endpoint recorded a process event matching the published runtime identity, script operand and KB-prefixed AppData path conditions.",
+    "match_does_not_prove": "Teams impersonation, unauthorized remote access, malicious script content, AD CS assessment, ESC1 or ESC8 abuse, certificate issuance, PKINIT, DCSync, exfiltration or attribution."
+  },
+  "triage": [
+    "Preserve the raw DeviceProcessEvents row, query version, Timestamp, DeviceId, DeviceName, ProcessUniqueId and ReportId.",
+    "Confirm that FolderPath is the runtime image location and inspect ProcessVersionInfoOriginalFileName, FileName, SHA1 and file provenance without treating version metadata as signature evidence.",
+    "Recover the complete ProcessCommandLine and inspect the referenced .js or .java file, archive origin and creation timeline using authorized endpoint evidence.",
+    "Determine whether the runtime, KB-prefixed directory and account belong to approved software deployment, development or support activity.",
+    "Pivot to the initiating process and surrounding process/network timeline for discovery commands and LDAPS or SMB connections.",
+    "Escalate campaign linkage only when independent Teams, remote-support, Defender alert, CA issuance or Kerberos evidence corroborates the endpoint match."
+  ],
+  "false_positives": [
+    {
+      "source": "Approved portable Java or Bun deployment in a KB-named application directory",
+      "control": "Require package provenance, software owner, deployment record and expected script path or hash."
+    },
+    {
+      "source": "Developer or QA execution of JavaScript or Java source from a user-writable test directory",
+      "control": "Validate device role, user role, repository origin and repeatable development workflow."
+    },
+    {
+      "source": "Version metadata or command-line field gaps",
+      "control": "Retain raw events and reject promotion if required branches cannot be evaluated consistently."
+    }
+  ],
+  "validation": {
+    "steps": [
+      "Confirm DeviceProcessEvents coverage and population of every queried and projected field on representative Windows devices.",
+      "In an authorized lab, run a benign portable Bun or Java runtime from AppData\\Roaming\\KB12345 with a harmless .js or .java operand and retain the raw process event.",
+      "Run negative controls: the same runtime outside a KB-prefixed path, the KB path without a .js/.java operand, and an unrelated executable inside the KB path.",
+      "Execute the query unchanged and verify that the controlled positive is returned while all three negative controls are excluded.",
+      "Measure at least 30 days of historical prevalence, resolve every owner and document any legitimate software families before considering alert logic."
+    ],
+    "success": "The controlled positive returns one complete, explainable row; required fields are populated; negative controls do not match; and benign historical results can be separated with durable provenance.",
+    "rejection": "Reject promotion when FolderPath or ProcessCommandLine is absent, process version metadata is unreliable for the Bun branch, negative controls match, or benign ownership remains unbounded.",
+    "visibility_gaps": [
+      "No direct visibility into Teams interaction from this query",
+      "No proof of script contents or malicious intent",
+      "No CA issuance, PKINIT or DCSync evidence",
+      "Mutable folder name and runtime choice",
+      "Target-environment prevalence not measured"
+    ],
+    "promotion_gate": "Require retained positive and negative controls, field-completeness evidence, measured prevalence, durable allowlisting and an accountable owner before designing alert logic."
+  },
+  "conclusion": "The source-published process pattern is specific enough for a Defender XDR hunt and distinct from existing repository coverage, but it remains campaign-scoped and untested. Treat matches as endpoint execution leads; do not infer Teams delivery or AD CS compromise without independent evidence.",
+  "artwork": {
+    "kind": "endpoint-process",
+    "label": "KB RUNTIME · EXECUTION"
+  }
+}

@@ -1,0 +1,11 @@
+S001 | Primary technical research | Microsoft Security Research | Published 2026-10-30 | Observed campaign dates not disclosed | Accessed 2026-11-01
+https://www.microsoft.com/en-us/security/blog/2026/10/30/help-desk-impersonation-ad-cs-abuse-investigating-esc1-esc8-intrusion-paths/
+
+S002 | Official schema documentation | Microsoft Learn | Last updated 2026-08-07 | Accessed 2026-11-01
+https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+S003 | ATT&CK documentation | MITRE ATT&CK | T1059.007 last modified 2026-05-12 | Accessed 2026-11-01
+https://attack.mitre.org/techniques/T1059/007/
+
+S004 | ATT&CK documentation | MITRE ATT&CK | T1036 last modified 2026-05-12 | Accessed 2026-11-01
+https://attack.mitre.org/techniques/T1036/

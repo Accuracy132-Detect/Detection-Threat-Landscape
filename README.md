@@ -4,7 +4,7 @@ A curated detection-engineering repository built from primary threat research an
 
 Only technically defensible content is published. Every package separates production candidates from hunting or validation material and documents telemetry requirements, assumptions, false-positive considerations, validation steps, MITRE ATT&CK mappings, and source references.
 
-The repository currently contains **95 detection packages**. Every package uses the same schema 2.0 contract and canonical eight-page PDF layout. See the [Reporting Standard v2](./docs/REPORTING_STANDARD_V2.md) and the [daily research workflow](./prompts/daily-threat-landscape-v2.md).
+The repository currently contains **96 detection packages**. Every package uses the same schema 2.0 contract and canonical eight-page PDF layout. See the [Reporting Standard v2](./docs/REPORTING_STANDARD_V2.md) and the [daily research workflow](./prompts/daily-threat-landscape-v2.md).
 
 > **Important:** A production candidate is not production-validated. Every query must be tested against the target environment, actual schema, retention, and legitimate activity before deployment.
 
@@ -199,8 +199,10 @@ Detection-Threat-Landscape/
 │   └── T1036.005-csrss-non-system32-execution/production-candidates/
 ├── 31-10-2026 - malicious-claude-code-extension/
 │   └── T1098.004-T1572-ssh-backdoor-persistence/hunting/
-└── 01-11-2026 - volta-autodoxer/
-    └── T1555-T1539-volta-debug-artifacts/hunting/
+├── 01-11-2026 - volta-autodoxer/
+│   └── T1555-T1539-volta-debug-artifacts/hunting/
+└── 01-11-2026 - teams-adcs-intrusions/
+    └── T1059.007-T1036-kb-appdata-portable-runtime/hunting/
         ├── hunting.kql
         ├── references.txt
         └── threat-analysis.pdf
@@ -210,6 +212,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 1 November 2026 | [Teams-to-AD CS intrusions](./01-11-2026%20-%20teams-adcs-intrusions/T1059.007-T1036-kb-appdata-portable-runtime/hunting/) | Microsoft Defender XDR | **[T1059.007][T1036] Bun/Java execution from a numeric KB-prefixed AppData Roaming path** — hunts the source-published runtime, script-operand and path combination; a match does not prove Teams contact, unauthorized remote access, malicious script content, AD CS abuse, certificate issuance, PKINIT, DCSync or attribution | Hunting |
 | 1 November 2026 | [VOLTA-AUTODOXER](./01-11-2026%20-%20volta-autodoxer/T1555-T1539-volta-debug-artifacts/hunting/) | Microsoft Defender XDR | **[T1555][T1539] Source-published VOLTA executable hash and AppData debug log** — hunts the analyzed sample hash or `volta_debug.txt` under AppData; a match does not prove collection, AI analysis, exfiltration, victim impact or attribution | Hunting |
 | 31 October 2026 | [Malicious Claude Code-branded extension](./31-10-2026%20-%20malicious-claude-code-extension/T1098.004-T1572-ssh-backdoor-persistence/hunting/) | Microsoft Defender XDR | **[T1098.004][T1572] Source-published SSH backdoor file artifacts** — hunts exact hashes, filenames and the temporary identity prefix written by the trojanized Cursor Marketplace extension; a match does not prove extension execution, tunnel success, attacker access or attribution | Hunting |
 | 30 October 2026 | [NIK C2](./30-10-2026%20-%20nik-c2/T1036.005-csrss-non-system32-execution/production-candidates/) | Microsoft Defender XDR | **[T1036.005] csrss.exe execution outside System32** — detects a process using the protected Windows runtime name from a non-canonical path; a match supports masquerading but does not prove NIK C2, C2 activity, credential theft, ransomware, or attribution | Production candidate |

@@ -1,0 +1,74 @@
+{
+  "schema_version": "2.0",
+  "claims": [
+    {
+      "id": "C001",
+      "statement": "Microsoft investigated two human-operated intrusions that began with Teams help-desk impersonation and remote access, then staged portable runtimes, performed discovery and assessed AD CS.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C002",
+      "statement": "Microsoft observed Bun or Java executing attacker-controlled code from a newly created KB-prefixed AppData Roaming directory, including a renamed Bun variant whose version metadata retained bun.exe as the original filename.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C003",
+      "statement": "Microsoft published a DeviceProcessEvents hunt that combines Bun or Java identity, a .js or .java command-line operand and a numeric KB-prefixed AppData Roaming FolderPath.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C004",
+      "statement": "Microsoft documents DeviceProcessEvents as process-creation telemetry and documents every table field used or projected by the query.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S002"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C005",
+      "statement": "A query match establishes the published endpoint process conditions but does not establish Teams contact, remote-control success, malicious script content, AD CS abuse or certificate issuance.",
+      "evidence_type": "analyst-inference",
+      "source_ids": [
+        "S001",
+        "S002"
+      ],
+      "confidence": "High",
+      "confirm_or_refute": "Correlate the raw process event with Teams, remote-support, script-content, Defender alert, CA request/issuance and Kerberos evidence; absence of those layers preserves the non-claim boundary."
+    },
+    {
+      "id": "C006",
+      "statement": "T1059.007 is defensible for the observed Bun JavaScript execution branch, while T1036 is defensible for the renamed runtime and masquerading context documented by Microsoft.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001",
+        "S003",
+        "S004"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C007",
+      "statement": "The published conditions are suitable for hunting, but target-environment benign prevalence and field completeness must be measured before any alert promotion.",
+      "evidence_type": "analyst-inference",
+      "source_ids": [
+        "S001",
+        "S002"
+      ],
+      "confidence": "Medium",
+      "confirm_or_refute": "Run the documented positive and negative controls, measure 30-day prevalence and resolve every legitimate owner; bounded overlap supports promotion while missing fields or unbounded overlap refute it."
+    }
+  ]
+}
