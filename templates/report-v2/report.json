@@ -1,5 +1,6 @@
 {
   "schema_version": "2.0",
+  "threat_research_contract": "1.0",
   "id": "YYYY-MM-DD-slug",
   "title": "Threat title with technical hook",
   "short_title": "Threat short title",
@@ -18,7 +19,7 @@
   "analyst_assessment": ["Analyst conclusion [C002]"],
   "assumptions": ["Telemetry or environment assumption [C003]"],
   "unknowns": ["Explicit unresolved question"],
-  "technical_background": "Explain only the mechanism needed to understand the detection surface.",
+  "technical_background": "Explain the attack prerequisites, root cause or enabling condition, affected component and trust boundary. Distinguish documented facts from inference and identify any critical unknown. Reference evidence claim IDs.",
   "attack_chain": [
     {"phase": "Stage", "behavior": "Supported behavior", "observable": "Required evidence", "claim_ids": ["C001"]},
     {"phase": "Stage", "behavior": "Supported behavior", "observable": "Required evidence", "claim_ids": ["C002"]},

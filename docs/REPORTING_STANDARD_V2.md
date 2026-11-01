@@ -6,6 +6,8 @@ This standard turns every repository package into a traceable detection-engineer
 
 The repository publishes the strongest implementation that the available evidence supports. It never promotes a query because a threat is important, and it never implies validation that did not occur.
 
+For newly authored packages, `docs/THREAT_RESEARCH_REQUIREMENTS.md` is a mandatory additive contract: retain this entire detection standard and add a full technical threat report with a separate editorial publication gate. This addition changes neither existing detection logic nor the canonical eight-page PDF design, and does not retroactively relabel or rewrite published packages.
+
 ## Core principles
 
 1. **Evidence before narrative.** Every material technical claim has a stable claim ID and maps to one or more sources.
@@ -29,6 +31,8 @@ Each detection directory contains:
 ├── references.txt       # human-readable compatibility file
 └── threat-analysis.pdf  # canonical eight-page operational dossier
 ```
+
+Newly authored packages additionally set `threat_research_contract: "1.0"` in `report.json` and contain `threat-report.md` (extended technical research) and `threat-review.json` (recorded editorial assessment). Copy their templates from `templates/report-v2/`. Run `python scripts/quality/validate_threat_report.py <new-package-directory>` in addition to the repository validator. The editorial score is separate from the 51-point operational score and does not promote detection maturity.
 
 Every repository package is now v2-complete. Packages converted mechanically from the previous layout include a `migration` record with `provenance_status: legacy-review-required`, the SHA-256 of the previous PDF and query, and `query_conditions_changed: false`. Repository QA recomputes the query-body hash after removing the managed v2 header and fails if the original logic changed.
 
@@ -101,6 +105,8 @@ Maximum score: 51. Scores support prioritization; they do not override a failed 
 7. **False Positives & Validation** - overlap model, validation procedure, success/rejection criteria and promotion gate.
 8. **Analyst Assessment & References** - ATT&CK mapping, conclusion, open questions, source summary and document control.
 
+The existing sections must also convey a self-contained technical explanation under the additive threat-research contract. Page 2 carries scope, chronology and observed versus potential impact; page 3 explains prerequisites, root cause or enabling condition, and causal execution transitions; page 4 carries the evidence boundary; page 7 summarizes the laboratory design and execution status; page 8 states residual uncertainty. Use the extended `threat-report.md` for depth without removing detection content, changing the layout or treating an external link as a substitute for the essential explanation.
+
 ## Query header contract
 
 Every query starts with comments containing:
@@ -127,5 +133,7 @@ Repository QA fails when:
 - query and PDF maturity labels disagree.
 
 ## Publication policy
+
+Newly authored packages must pass the separate editorial gate: seven dimensions scored 0-4, at least 24/28 overall, no dimension below 3, no blocking defect, documented source review and a self-contained canonical PDF. `validate_threat_report.py` validates the presence, references and consistency of this assessment; technical quality still requires the separate source-based editorial review described in the addendum. Historical packages remain subject to their existing v2 validation contract until deliberately revised.
 
 Public packages contain no customer data, secrets, live malware samples or unreviewed exploit code. URLs may remain clickable in structured source files; IOCs shown in prose are defanged. Publication records the analysis date separately from the source event date.

@@ -6,6 +6,8 @@ Only technically defensible content is published. Every package separates produc
 
 The repository currently contains **96 detection packages**. Every package uses the same schema 2.0 contract and canonical eight-page PDF layout. See the [Reporting Standard v2](./docs/REPORTING_STANDARD_V2.md) and the [daily research workflow](./prompts/daily-threat-landscape-v2.md).
 
+Newly authored packages also follow the [mandatory technical threat-research contract](./docs/THREAT_RESEARCH_REQUIREMENTS.md): a full `threat-report.md` explains mechanism, chronology, root cause/enabling conditions, execution flow, impact, evidence and laboratory design. A separate `threat-review.json` records the editorial publication gate (at least 24/28, every dimension at least 3/4). This addition preserves the existing detection requirements and PDF design; historical packages have not been retroactively reviewed under this contract.
+
 > **Important:** A production candidate is not production-validated. Every query must be tested against the target environment, actual schema, retention, and legitimate activity before deployment.
 
 ## Repository structure

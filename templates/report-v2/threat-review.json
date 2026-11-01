@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "decision": "needs-work",
+  "review_method": "separate-editorial-pass",
+  "pdf_self_contained": false,
+  "blocking_issues": ["TODO: complete source-based editorial review after drafting and rendering"],
+  "source_checks": [],
+  "dimensions": {
+    "mechanism": {"score": 0, "rationale": "", "report_sections": [2], "claim_ids": [], "pdf_pages": [3]},
+    "timeline": {"score": 0, "rationale": "", "report_sections": [3], "claim_ids": [], "pdf_pages": [2, 3]},
+    "root_cause": {"score": 0, "rationale": "", "report_sections": [2], "claim_ids": [], "pdf_pages": [3]},
+    "execution_flow": {"score": 0, "rationale": "", "report_sections": [3], "claim_ids": [], "pdf_pages": [3]},
+    "impact": {"score": 0, "rationale": "", "report_sections": [4], "claim_ids": [], "pdf_pages": [2, 8]},
+    "evidence": {"score": 0, "rationale": "", "report_sections": [5], "claim_ids": [], "pdf_pages": [4, 8]},
+    "lab_plan": {"score": 0, "rationale": "", "report_sections": [7], "claim_ids": [], "pdf_pages": [7]}
+  }
+}
