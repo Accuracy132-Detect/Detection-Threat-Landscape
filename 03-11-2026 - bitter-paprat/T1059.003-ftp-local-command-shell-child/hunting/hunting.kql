@@ -1,0 +1,40 @@
+// Title: BITTER / PapRAT - ftp.exe local command shell child
+// Rule name: T1059.003 - ftp.exe local command shell child
+// Classification: Hunting query
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR advanced hunting
+// Telemetry: Microsoft Defender for Endpoint DeviceProcessEvents
+// MITRE ATT&CK: T1059.003 - Windows Command Shell
+// Purpose: Identify cmd.exe process creation with the native Windows FTP client as its direct initiating process.
+// Logic: Two documented process-name equality filters; the portal time picker controls the search interval.
+// Match proves: Defender XDR recorded cmd.exe with InitiatingProcessFileName represented as ftp.exe.
+// Match does not prove: use of the FTP ! token, malicious script content, LNK execution, scheduled-task creation,
+// PapRAT deployment, C2, reconnaissance, exfiltration, compromise, or BITTER attribution.
+// False positives: authorized legacy FTP automation using !, compatibility/security testing, or lineage-quality issues.
+// Limits: DeviceProcessEvents does not guarantee visibility into the FTP script token or file contents; the exact
+// parent-child representation and target-environment prevalence have not been validated.
+// Validation: run the controlled positive and negative tests in validation.md before any alert promotion.
+// Evidence claims: C002, C004, C005, C006, C007, C008, C009
+
+DeviceProcessEvents
+| where FileName =~ "cmd.exe"
+| where InitiatingProcessFileName =~ "ftp.exe"
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    AccountName,
+    InitiatingProcessAccountName,
+    FileName,
+    FolderPath,
+    ProcessCommandLine,
+    SHA1,
+    ProcessUniqueId,
+    InitiatingProcessFileName,
+    InitiatingProcessFolderPath,
+    InitiatingProcessCommandLine,
+    InitiatingProcessSHA1,
+    InitiatingProcessUniqueId,
+    InitiatingProcessParentFileName,
+    ReportId
+| order by Timestamp desc

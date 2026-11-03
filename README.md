@@ -4,7 +4,7 @@ A curated detection-engineering repository built from primary threat research an
 
 Only technically defensible content is published. Every package separates production candidates from hunting or validation material and documents telemetry requirements, assumptions, false-positive considerations, validation steps, MITRE ATT&CK mappings, and source references.
 
-The repository currently contains **96 detection packages**. Every package uses the same schema 2.0 contract and canonical eight-page PDF layout. See the [Reporting Standard v2](./docs/REPORTING_STANDARD_V2.md) and the [daily research workflow](./prompts/daily-threat-landscape-v2.md).
+The repository currently contains **97 detection packages**. Every package uses the same schema 2.0 contract and canonical eight-page PDF layout. See the [Reporting Standard v2](./docs/REPORTING_STANDARD_V2.md) and the [daily research workflow](./prompts/daily-threat-landscape-v2.md).
 
 Newly authored packages also follow the [mandatory technical threat-research contract](./docs/THREAT_RESEARCH_REQUIREMENTS.md): a full `threat-report.md` explains mechanism, chronology, root cause/enabling conditions, execution flow, impact, evidence and laboratory design. A separate `threat-review.json` records the editorial publication gate (at least 24/28, every dimension at least 3/4). This addition preserves the existing detection requirements and PDF design; historical packages have not been retroactively reviewed under this contract.
 
@@ -203,17 +203,26 @@ Detection-Threat-Landscape/
 │   └── T1098.004-T1572-ssh-backdoor-persistence/hunting/
 ├── 01-11-2026 - volta-autodoxer/
 │   └── T1555-T1539-volta-debug-artifacts/hunting/
-└── 01-11-2026 - teams-adcs-intrusions/
-    └── T1059.007-T1036-kb-appdata-portable-runtime/hunting/
+├── 01-11-2026 - teams-adcs-intrusions/
+│   └── T1059.007-T1036-kb-appdata-portable-runtime/hunting/
+└── 03-11-2026 - bitter-paprat/
+    └── T1059.003-ftp-local-command-shell-child/hunting/
+        ├── evidence.json
         ├── hunting.kql
+        ├── references.json
         ├── references.txt
-        └── threat-analysis.pdf
+        ├── report.json
+        ├── threat-analysis.pdf
+        ├── threat-report.md
+        ├── threat-review.json
+        └── validation.md
 ```
 
 ## Threat catalog
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 3 November 2026 | [BITTER / PapRAT FTP shell escape](./03-11-2026%20-%20bitter-paprat/T1059.003-ftp-local-command-shell-child/hunting/) | Microsoft Defender XDR | **[T1059.003] Direct ftp.exe-to-cmd.exe process lineage** — hunts the expected endpoint representation of the source-documented FTP `!` local-command transition; a match does not prove the token, malicious script content, LNK execution, PapRAT, downstream activity, compromise or attribution | Hunting |
 | 1 November 2026 | [Teams-to-AD CS intrusions](./01-11-2026%20-%20teams-adcs-intrusions/T1059.007-T1036-kb-appdata-portable-runtime/hunting/) | Microsoft Defender XDR | **[T1059.007][T1036] Bun/Java execution from a numeric KB-prefixed AppData Roaming path** — hunts the source-published runtime, script-operand and path combination; a match does not prove Teams contact, unauthorized remote access, malicious script content, AD CS abuse, certificate issuance, PKINIT, DCSync or attribution | Hunting |
 | 1 November 2026 | [VOLTA-AUTODOXER](./01-11-2026%20-%20volta-autodoxer/T1555-T1539-volta-debug-artifacts/hunting/) | Microsoft Defender XDR | **[T1555][T1539] Source-published VOLTA executable hash and AppData debug log** — hunts the analyzed sample hash or `volta_debug.txt` under AppData; a match does not prove collection, AI analysis, exfiltration, victim impact or attribution | Hunting |
 | 31 October 2026 | [Malicious Claude Code-branded extension](./31-10-2026%20-%20malicious-claude-code-extension/T1098.004-T1572-ssh-backdoor-persistence/hunting/) | Microsoft Defender XDR | **[T1098.004][T1572] Source-published SSH backdoor file artifacts** — hunts exact hashes, filenames and the temporary identity prefix written by the trojanized Cursor Marketplace extension; a match does not prove extension execution, tunnel success, attacker access or attribution | Hunting |
@@ -325,6 +334,8 @@ Each package contains:
 - `evidence.json`, with atomic claim IDs and evidence maturity;
 - `references.json`, the normalized source ledger;
 - `validation.md`, containing the planned or completed validation record;
+- `threat-report.md`, the technical narrative for newly authored packages under the threat-research contract;
+- `threat-review.json`, the separate seven-dimension editorial publication gate for newly authored packages;
 - a native KQL or SPL query for the selected primary platform, with ATT&CK and match-boundary comments;
 - `references.txt`, retained for human-readable compatibility;
 - an eight-page A4 `threat-analysis.pdf` built from the canonical source.

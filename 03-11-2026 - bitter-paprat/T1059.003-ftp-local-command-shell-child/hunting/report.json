@@ -1,0 +1,189 @@
+{
+  "schema_version": "2.0",
+  "threat_research_contract": "1.0",
+  "id": "2026-11-03-bitter-paprat-ftp-local-command-shell-child",
+  "title": "BITTER / PapRAT - ftp.exe local command shell escape",
+  "short_title": "BITTER ftp.exe shell escape",
+  "subtitle": "Defender XDR hunt for cmd.exe launched directly by the native Windows FTP client",
+  "published": "2026-11-03",
+  "report_type": "campaign",
+  "classification": "Hunting query",
+  "maturity": "hunting",
+  "confidence": "Medium",
+  "operational_value": 9,
+  "primary_platform": "Microsoft Defender XDR",
+  "mitre": [
+    "T1059.003"
+  ],
+  "operational_score": {
+    "total": 44,
+    "maximum": 51,
+    "breakdown": {
+      "observed_use": 9,
+      "detection_yield": 9,
+      "evidence_quality": 6,
+      "observability": 6,
+      "technical_novelty": 4,
+      "exposure_relevance": 4,
+      "reproducibility": 3,
+      "freshness": 3
+    },
+    "deductions": [
+      "The campaign mechanism and exact commands are documented by one original investigation, without an independent incident-data source.",
+      "The FTP shell-escape feature is established, but the proposed Defender XDR parent-child representation has not been reproduced in an authorized lab."
+    ]
+  },
+  "decision": "Publish as a behavioral hunting query, not an alert. Investigate direct ftp.exe-to-cmd.exe process lineage as evidence of a local FTP shell escape, and require script provenance plus adjacent endpoint activity before associating a match with BITTER, PapRAT or compromise.",
+  "key_findings": [
+    "FortiGuard Labs documented a BITTER campaign in which one infection chain used a malicious LNK, ftp.exe and the FTP ! command to pass local commands to cmd.exe. [C001][C002]",
+    "The durable observable is the unusual direct process relationship ftp.exe to cmd.exe; the published scheduled-task, curl, reconnaissance and exfiltration behavior is outside this query. [C003][C006]",
+    "Microsoft documents both the FTP shell escape and the Defender XDR parent-process fields, but the exact EDR lineage remains an unexecuted analytical inference requiring a controlled test. [C004][C005][C007]"
+  ],
+  "source_facts": [
+    "Only FortiGuard's LNK/ftp.exe chain is in scope. [C001]",
+    "Chain 1 sends res.ico to cmd.exe; later scripts use scheduled tasks and curl. [C002][C003]",
+    "Microsoft documents FTP ! and the DeviceProcessEvents fields used. [C004][C005]"
+  ],
+  "analyst_assessment": [
+    "A direct ftp.exe-to-cmd.exe relationship avoids mutable campaign artifacts. [C006]",
+    "A match proves process lineage only, not malicious content or the wider intrusion. [C007]",
+    "Keep as Medium-confidence hunting until controls measure telemetry and overlap. [C009]"
+  ],
+  "assumptions": [
+    "Defender for Endpoint represents the FTP shell escape as ftp.exe directly starting cmd.exe. [C006]",
+    "Required DeviceProcessEvents fields are populated on in-scope Windows endpoints. [C005][C009]"
+  ],
+  "unknowns": [
+    "FortiGuard Labs does not provide exact campaign start and end dates; it reports activity over the preceding several months.",
+    "The initial delivery channel and victim interaction that caused LNK execution are not disclosed.",
+    "Target-environment prevalence of legitimate FTP scripts that invoke local operating-system commands is not measured.",
+    "No raw Defender XDR event from the reported intrusion or retained laboratory execution was available for this analysis."
+  ],
+  "technical_background": "FortiGuard Labs separated the activity into three infection chains. In chain 1, a malicious LNK starts the native Windows FTP client with script content; the FTP ! facility crosses from FTP directive processing into a local command prompt. The source shows !more res.ico feeding local script content to cmd.exe, after which later commands establish scheduled-task execution, retrieve command files and perform reconnaissance or upload. The enabling condition is successful LNK execution plus the documented FTP shell-escape behavior; the original delivery vector and exact EDR lineage remain unresolved. This package detects only the proposed ftp.exe-to-cmd.exe process boundary and deliberately excludes the two PapRAT MSI chains. [C001][C002][C003][C004][C006]",
+  "attack_chain": [
+    {
+      "phase": "Initial execution",
+      "behavior": "A user or process opens a malicious LNK that invokes the native Windows FTP client with attacker-supplied script content.",
+      "observable": "LNK provenance and ftp.exe command line; contextual evidence, not required by the query.",
+      "claim_ids": [
+        "C001",
+        "C002"
+      ]
+    },
+    {
+      "phase": "Trust-boundary transition",
+      "behavior": "The FTP ! command leaves FTP directive processing and runs an operating-system command locally.",
+      "observable": "Expected direct child-process lineage from ftp.exe to cmd.exe; laboratory confirmation is pending.",
+      "claim_ids": [
+        "C002",
+        "C004",
+        "C006"
+      ]
+    },
+    {
+      "phase": "Command execution",
+      "behavior": "cmd.exe interprets script content read from res.ico in the source-observed chain.",
+      "observable": "DeviceProcessEvents child FileName cmd.exe and InitiatingProcessFileName ftp.exe.",
+      "claim_ids": [
+        "C002",
+        "C005",
+        "C006"
+      ]
+    },
+    {
+      "phase": "Follow-on activity",
+      "behavior": "Source-observed scripts create scheduled tasks, use curl, perform host discovery and upload collected data.",
+      "observable": "Scheduled-task, process, file and network evidence; enrichment only and not inferred from a query match.",
+      "claim_ids": [
+        "C003",
+        "C007"
+      ]
+    }
+  ],
+  "telemetry": [
+    {
+      "field": "DeviceProcessEvents",
+      "status": "Required",
+      "purpose": "Microsoft Defender for Endpoint process-creation records for the child and initiating process."
+    },
+    {
+      "field": "FileName, InitiatingProcessFileName",
+      "status": "Required",
+      "purpose": "Evaluate the child and direct initiating-process conditions."
+    },
+    {
+      "field": "Timestamp, DeviceName, ReportId",
+      "status": "Required",
+      "purpose": "Preserve the documented compound event identity for investigation."
+    },
+    {
+      "field": "ProcessCommandLine, InitiatingProcessCommandLine",
+      "status": "Enrichment",
+      "purpose": "Preserve child and parent command context without assuming FTP script contents are present."
+    },
+    {
+      "field": "ProcessUniqueId, InitiatingProcessUniqueId",
+      "status": "Enrichment",
+      "purpose": "Retain stable process pivots for lineage validation."
+    },
+    {
+      "field": "DeviceId, account, path, hash, file, network and scheduled-task context",
+      "status": "Enrichment",
+      "purpose": "Resolve ownership and test for source-observed script, curl and persistence activity."
+    }
+  ],
+  "query": {
+    "file": "hunting.kql",
+    "language": "KQL",
+    "status": "Untested implementation sketch",
+    "logic": "Return Defender XDR process events where cmd.exe is created directly by ftp.exe; use the portal time picker rather than an embedded threshold.",
+    "match_proves": "Microsoft Defender for Endpoint recorded a cmd.exe process event whose initiating process is represented as ftp.exe.",
+    "match_does_not_prove": "A match does not prove use of the FTP ! token, malicious script content, LNK execution, scheduled-task creation, PapRAT deployment, C2, reconnaissance, exfiltration, compromise or BITTER attribution."
+  },
+  "triage": [
+    "Preserve the raw DeviceProcessEvents row, query version, Timestamp, DeviceId, DeviceName and ReportId.",
+    "Confirm the direct lineage using ProcessUniqueId and InitiatingProcessUniqueId; inspect full child and parent command lines without assuming they contain FTP script contents.",
+    "Recover the ftp.exe script source, LNK provenance and adjacent file events where authorized; identify whether the FTP ! command was present.",
+    "Validate user, device role, software owner and any approved FTP automation that intentionally runs local operating-system commands.",
+    "Pivot to scheduled-task, curl, file and network activity documented for chain 1, while treating each as independent corroboration.",
+    "Associate with BITTER or PapRAT only when campaign artifacts or independent incident evidence corroborate the process lineage."
+  ],
+  "false_positives": [
+    {
+      "source": "Authorized FTP automation using local commands",
+      "control": "Require an accountable owner, approved script provenance, known execution schedule and expected child command."
+    },
+    {
+      "source": "Windows FTP training or security-control testing",
+      "control": "Validate change or test records, isolated device role and a harmless command payload."
+    },
+    {
+      "source": "EDR process-lineage or field-quality anomaly",
+      "control": "Inspect raw events and stable process identifiers; reject alert promotion if lineage cannot be reproduced consistently."
+    }
+  ],
+  "validation": {
+    "steps": [
+      "Confirm DeviceProcessEvents coverage and population of every filtered and projected field on representative Windows endpoints.",
+      "In an isolated authorized Windows lab, run ftp.exe with a benign script that uses ! to invoke cmd.exe and write a uniquely named harmless marker file.",
+      "Run negative controls: FTP automation without !, cmd.exe launched by PowerShell, and an interactive FTP session that performs only transfer commands.",
+      "Execute the query unchanged and preserve the raw positive and negative events, process tree and marker-file timeline.",
+      "Measure historical prevalence over an approved review period and resolve every legitimate owner before considering alert logic."
+    ],
+    "success": "The controlled FTP shell escape yields one complete ftp.exe-to-cmd.exe process event, all required fields are populated, negative controls do not match and legitimate overlap can be bounded by provenance.",
+    "rejection": "Reject the hypothesis or redesign the hunt if the shell escape does not create the expected lineage, required fields are absent, negative controls match or legitimate overlap cannot be bounded.",
+    "visibility_gaps": [
+      "The command token and FTP script contents are not guaranteed in DeviceProcessEvents",
+      "The published Microsoft FTP command documentation covers legacy Windows versions",
+      "No direct proof of LNK provenance, script intent, scheduled-task persistence or network outcome",
+      "Target-environment prevalence is unmeasured",
+      "Laboratory execution has not been performed"
+    ],
+    "promotion_gate": "Require retained positive and negative controls, reproducible parent-child semantics, field-completeness evidence, measured prevalence and durable ownership controls before designing an alert."
+  },
+  "conclusion": "The source documents a technically coherent abuse of a built-in FTP shell escape, and the proposed parent-child primitive is more durable than campaign IOCs. Because the exact Defender XDR lineage and benign prevalence remain untested, retain this as a Medium-confidence hunt and do not infer the wider BITTER/PapRAT intrusion from a match.",
+  "artwork": {
+    "kind": "command-chain",
+    "label": "FTP SHELL · PROCESS LINEAGE"
+  }
+}

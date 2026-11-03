@@ -1,0 +1,114 @@
+{
+  "schema_version": "2.0",
+  "claims": [
+    {
+      "id": "C001",
+      "statement": "FortiGuard Labs tracked a BITTER-attributed campaign targeting South Asian organizations over several months and separated the activity into three distinct infection chains; chain 1 began with an LNK that used ftp.exe.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C002",
+      "statement": "In the documented chain 1, the FTP ! prefix ran a local shell command and !more res.ico piped the contents of res.ico to cmd.exe for execution.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C003",
+      "statement": "The chain 1 scripts created scheduled tasks, used curl to retrieve command content, performed host reconnaissance and uploaded collected data in at least one source-observed branch.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C004",
+      "statement": "Microsoft documentation describes ! as an FTP command that temporarily exits to a Windows command prompt so operating-system commands can be run, while noting applicability to legacy Windows versions.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S003"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C005",
+      "statement": "Microsoft documents DeviceProcessEvents as Defender for Endpoint process-creation telemetry and documents the child, initiating-process and event-identity fields used or projected by the query.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S002"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C006",
+      "statement": "A Windows FTP shell escape should be observable in Defender XDR as cmd.exe created directly by ftp.exe.",
+      "evidence_type": "analyst-inference",
+      "source_ids": [
+        "S001",
+        "S002",
+        "S003"
+      ],
+      "confidence": "Medium",
+      "confirm_or_refute": "Run an authorized positive control using the FTP ! facility and retain the raw DeviceProcessEvents process tree; a direct ftp.exe-to-cmd.exe lineage confirms the representation, while different ancestry or absent telemetry refutes it."
+    },
+    {
+      "id": "C007",
+      "statement": "A query match proves only that Defender XDR represented cmd.exe with ftp.exe as the initiating process; it does not prove the FTP ! token, malicious script content, the BITTER campaign, PapRAT deployment or downstream impact.",
+      "evidence_type": "analyst-inference",
+      "source_ids": [
+        "S001",
+        "S002"
+      ],
+      "confidence": "High",
+      "confirm_or_refute": "Recover the FTP script and LNK, correlate scheduled-task, file, network and malware evidence, and retain raw telemetry; absent corroboration preserves the non-claim boundary."
+    },
+    {
+      "id": "C008",
+      "statement": "MITRE ATT&CK T1059.003 is the defensible mapping for adversary command execution through cmd.exe in the documented chain.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001",
+        "S004"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C009",
+      "statement": "The process-lineage primitive is suitable for hunting, but field completeness, the exact EDR representation and legitimate FTP automation prevalence must be measured before alert promotion.",
+      "evidence_type": "analyst-inference",
+      "source_ids": [
+        "S001",
+        "S002",
+        "S003"
+      ],
+      "confidence": "Medium",
+      "confirm_or_refute": "Execute the planned positive and negative controls, inspect field population and resolve historical matches to accountable owners; reproducible lineage and bounded overlap support promotion, while missing context or unbounded overlap refute it."
+    },
+    {
+      "id": "C010",
+      "statement": "The FortiGuard Labs report was published on 2 November 2026 and describes a campaign tracked over the preceding several months without exact start or end dates.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C011",
+      "statement": "FortiGuard Labs attributes the campaign to BITTER with high confidence, but this package has no independent attribution evidence and does not use attribution as a query condition.",
+      "evidence_type": "analyst-inference",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High",
+      "confirm_or_refute": "Require independent incident, infrastructure, malware or intelligence evidence before applying actor attribution to any local match; process lineage alone cannot confirm or refute attribution."
+    }
+  ]
+}

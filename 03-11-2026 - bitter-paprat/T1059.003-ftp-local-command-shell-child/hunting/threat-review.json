@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0",
+  "decision": "pass",
+  "review_method": "separate-editorial-pass",
+  "pdf_self_contained": true,
+  "blocking_issues": [],
+  "source_checks": [
+    {
+      "source_id": "S001",
+      "opened": true,
+      "notes": "Reviewed the publication metadata, campaign scope, all three chain descriptions, the Attack Chain 1 ftp.exe/!more/cmd sequence, scheduled-task and curl commands, reconnaissance/upload behavior, conclusion and stated attribution basis."
+    },
+    {
+      "source_id": "S002",
+      "opened": true,
+      "notes": "Reviewed the DeviceProcessEvents purpose, MDE prerequisite, child and initiating-process fields, process unique identifiers and the documented Timestamp/DeviceName/ReportId event identity guidance."
+    },
+    {
+      "source_id": "S003",
+      "opened": true,
+      "notes": "Reviewed the FTP ! semantics, syntax, legacy Windows applicability and last-updated date; the version-scope limitation is stated in the report and validation plan."
+    },
+    {
+      "source_id": "S004",
+      "opened": true,
+      "notes": "Reviewed the Windows Command Shell technique definition and used it only to support T1059.003 for the source-documented cmd.exe execution."
+    }
+  ],
+  "dimensions": {
+    "mechanism": {
+      "score": 4,
+      "rationale": "Section 2 and PDF page 3 identify the attacker-controlled LNK/script input, ftp.exe interpreter, documented ! trust-boundary transition, cmd.exe capability, inherited privilege context and the unverified EDR representation without treating the feature as a vulnerability.",
+      "report_sections": [
+        2
+      ],
+      "claim_ids": [
+        "C002",
+        "C004",
+        "C006"
+      ],
+      "pdf_pages": [
+        3
+      ]
+    },
+    "timeline": {
+      "score": 3,
+      "rationale": "Section 3 and PDF pages 2-3 distinguish the 2026-11-02 publication, 2026-11-03 analysis and source-stated several-month campaign period, then use a supported relative sequence because exact event dates and timezone were not disclosed.",
+      "report_sections": [
+        3
+      ],
+      "claim_ids": [
+        "C001",
+        "C010"
+      ],
+      "pdf_pages": [
+        2,
+        3
+      ]
+    },
+    "root_cause": {
+      "score": 3,
+      "rationale": "Section 2 and PDF page 3 correctly identify LNK execution plus the documented FTP ! facility as enabling conditions and explicitly retain the initial delivery vector, victim interaction and current-build behavior as unresolved rather than inventing a root cause.",
+      "report_sections": [
+        2
+      ],
+      "claim_ids": [
+        "C001",
+        "C004"
+      ],
+      "pdf_pages": [
+        3
+      ]
+    },
+    "execution_flow": {
+      "score": 4,
+      "rationale": "Section 3 and PDF page 3 provide a causal five-stage flow from LNK execution through the FTP shell transition, cmd interpretation and separately scoped persistence/retrieval and discovery/transfer, with privileges and proof boundaries preserved.",
+      "report_sections": [
+        3
+      ],
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003",
+        "C006",
+        "C007"
+      ],
+      "pdf_pages": [
+        3
+      ]
+    },
+    "impact": {
+      "score": 3,
+      "rationale": "Section 4 and PDF pages 2 and 8 separate source-observed commands and vendor-stated campaign impact from possible command-execution consequences, reject privilege-escalation inference and avoid applying PapRAT capabilities to the FTP-only observable.",
+      "report_sections": [
+        4,
+        8
+      ],
+      "claim_ids": [
+        "C003",
+        "C007",
+        "C011"
+      ],
+      "pdf_pages": [
+        2,
+        8
+      ]
+    },
+    "evidence": {
+      "score": 4,
+      "rationale": "Section 5 and PDF pages 4 and 8 map campaign facts, official command semantics, schema and ATT&CK to C###/S### ledgers; they isolate the parent-child inference, single-source dependence, legacy documentation limitation and absent raw/lab evidence.",
+      "report_sections": [
+        5,
+        8
+      ],
+      "claim_ids": [
+        "C002",
+        "C004",
+        "C005",
+        "C006",
+        "C007",
+        "C011"
+      ],
+      "pdf_pages": [
+        4,
+        8
+      ]
+    },
+    "lab_plan": {
+      "score": 4,
+      "rationale": "Section 7, validation.md and PDF page 7 specify authorized Windows/MDE environment and versions to record, logging, a harmless positive, three negative controls, expected artifacts, success/rejection/failure criteria, cleanup and the explicit not-executed state.",
+      "report_sections": [
+        7
+      ],
+      "claim_ids": [
+        "C006",
+        "C009"
+      ],
+      "pdf_pages": [
+        7
+      ]
+    }
+  }
+}

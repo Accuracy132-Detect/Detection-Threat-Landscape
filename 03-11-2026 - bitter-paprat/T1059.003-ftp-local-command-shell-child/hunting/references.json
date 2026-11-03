@@ -1,0 +1,74 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "BITTER Expands Its Arsenal with PapRAT",
+      "organization": "FortiGuard Labs",
+      "author": "Cara Lin",
+      "published": "2026-11-02",
+      "event_date": "Campaign tracked over several months; exact dates not disclosed",
+      "accessed": "2026-11-03",
+      "type": "original-research",
+      "url": "https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat",
+      "supports": [
+        "C001",
+        "C002",
+        "C003",
+        "C006",
+        "C007",
+        "C008",
+        "C009",
+        "C010",
+        "C011"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "DeviceProcessEvents table in the advanced hunting schema",
+      "organization": "Microsoft",
+      "author": "Microsoft Learn",
+      "published": "2026-08-07",
+      "event_date": "Schema reference",
+      "accessed": "2026-11-03",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table",
+      "supports": [
+        "C005",
+        "C006",
+        "C007",
+        "C009"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Ftp: !",
+      "organization": "Microsoft",
+      "author": "Microsoft Learn",
+      "published": "2016-08-31",
+      "event_date": "Command reference for Windows Vista through Windows 8 and Windows Server 2008 through 2012",
+      "accessed": "2026-11-03",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/ff687695(v=ws.11)",
+      "supports": [
+        "C004",
+        "C006",
+        "C009"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "Command and Scripting Interpreter: Windows Command Shell, T1059.003",
+      "organization": "MITRE ATT&CK",
+      "author": "MITRE",
+      "published": "2026-05-12",
+      "event_date": "ATT&CK technique reference",
+      "accessed": "2026-11-03",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1059/003/",
+      "supports": [
+        "C008"
+      ]
+    }
+  ]
+}

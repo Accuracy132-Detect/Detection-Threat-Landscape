@@ -1,0 +1,21 @@
+S001 — FortiGuard Labs, Cara Lin, "BITTER Expands Its Arsenal with PapRAT"
+Publication date: 2026-11-02
+Campaign period: tracked over several months; exact dates not disclosed
+Accessed: 2026-11-03
+https://www.fortinet.com/blog/threat-research/bitter-expands-its-arsenal-with-paprat
+
+S002 — Microsoft Learn, "DeviceProcessEvents table in the advanced hunting schema"
+Last updated: 2026-08-07
+Accessed: 2026-11-03
+https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+
+S003 — Microsoft Learn, "Ftp: !"
+Last updated: 2016-08-31
+Applicability stated by source: Windows Vista through Windows 8; Windows Server 2008 through 2012
+Accessed: 2026-11-03
+https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/ff687695(v=ws.11)
+
+S004 — MITRE ATT&CK, "Command and Scripting Interpreter: Windows Command Shell, T1059.003"
+Last modified: 2026-05-12
+Accessed: 2026-11-03
+https://attack.mitre.org/techniques/T1059/003/
