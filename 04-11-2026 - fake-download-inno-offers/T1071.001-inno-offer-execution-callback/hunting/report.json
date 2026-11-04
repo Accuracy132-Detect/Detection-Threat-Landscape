@@ -1,0 +1,190 @@
+{
+  "schema_version": "2.0",
+  "threat_research_contract": "1.0",
+  "id": "2026-11-04-fake-download-inno-offer-execution-callback",
+  "title": "Fake-download campaign - Inno offer-execution callback contract",
+  "short_title": "Inno offer callback",
+  "subtitle": "Defender XDR hunt for the stable callback structure used by rotating fake-download installers",
+  "published": "2026-11-04",
+  "report_type": "campaign",
+  "classification": "Hunting query",
+  "maturity": "hunting",
+  "confidence": "Medium",
+  "operational_value": 9,
+  "primary_platform": "Microsoft Defender XDR",
+  "mitre": [
+    "T1071.001"
+  ],
+  "operational_score": {
+    "total": 44,
+    "maximum": 51,
+    "breakdown": {
+      "observed_use": 9,
+      "detection_yield": 9,
+      "evidence_quality": 6,
+      "observability": 6,
+      "technical_novelty": 4,
+      "exposure_relevance": 4,
+      "reproducibility": 3,
+      "freshness": 3
+    },
+    "deductions": [
+      "The campaign and callback semantics are documented by one original Microsoft investigation; official schema and language references corroborate observability but are not an independent incident source.",
+      "The callback contract is a significant campaign variant rather than a new protocol, and target-environment prevalence has not been measured.",
+      "Exposure depends on users executing deceptive unofficial installers; enterprise relevance is meaningful but not universal."
+    ]
+  },
+  "decision": "Publish as a Medium-confidence hunting query, not an alert. Investigate outbound URLs containing both the documented Inno delivery marker and an offer-result marker, while requiring process, file and installation evidence before concluding that an offer ran or a device was monetized.",
+  "key_findings": [
+    "Microsoft documented an evolving fake-download campaign whose Inno Setup-style wrappers coordinate multiple downstream offers during one installer session. [C001][C002]",
+    "Rotating domains preserved the combined d=inno and r=offer_execution or r=offer_execution_fail callback structure, making the URL contract more durable than individual infrastructure. [C003][C004]",
+    "A callback can describe an individual success or failure and can occur after a child payload starts; a match is therefore a sequencing lead, not proof of prevention, installation or monetization. [C003][C008][C013]"
+  ],
+  "source_facts": [
+    "Users executed deceptive installers presented as cracked or unofficial software. [C001]",
+    "The wrapper staged runners, sent callbacks and delivered monetized software. [C002][C003][C005]",
+    "Microsoft published the two callback filters in a Defender XDR advanced-hunting query. [C006]"
+  ],
+  "analyst_assessment": [
+    "The paired markers support targeted hunting across rotating domains. [C004][C009]",
+    "A match proves only a captured URL; adjacent endpoint evidence is required. [C008]",
+    "Alert promotion requires a controlled URL-capture test and measured benign overlap. [C009]"
+  ],
+  "assumptions": [
+    "MDE preserves the required query-string tokens in RemoteUrl. [C007][C009]",
+    "Authorized tooling does not routinely emit the same paired markers. [C009]"
+  ],
+  "unknowns": [
+    "Microsoft describes an evolving campaign but does not publish exact campaign dates, a complete victim count or named threat-actor attribution.",
+    "The server-side definitions of several callback parameters remain unconfirmed in the source.",
+    "No independent incident source, raw customer event or retained laboratory event was available for this analysis.",
+    "Target-environment field completeness and benign prevalence are unmeasured."
+  ],
+  "technical_background": "The source describes a deceptive software-distribution system, not a vulnerability in Inno Setup. A user runs a fake installer, an Inno Setup-style wrapper stages temporary runners under %TEMP%\\is-*.tmp, and numbered components coordinate one or more downstream offers. The delivery system reports each offer through rotating HTTP infrastructure while preserving d=inno and r=offer_execution or r=offer_execution_fail in the URL. Offer identifiers and session-like parameters vary, and failed offers do not necessarily stop other branches. The query observes only this web callback contract in Microsoft Defender for Endpoint; it does not infer the lure, payload, result or impact. [C001][C002][C003][C004][C008][C013]",
+  "attack_chain": [
+    {
+      "phase": "User execution",
+      "behavior": "A user launches an installer presented as cracked software, a game, an activator, a plugin or an unofficial utility.",
+      "observable": "Download and process provenance are contextual evidence and are not required by this query.",
+      "claim_ids": [
+        "C001"
+      ]
+    },
+    {
+      "phase": "Inno-style staging",
+      "behavior": "The wrapper runs a temporary component under %TEMP%\\is-*.tmp and starts numbered stages such as eld*.exe or set_*.exe.",
+      "observable": "DeviceProcessEvents and DeviceFileEvents are optional enrichment; this package does not filter on mutable stage names.",
+      "claim_ids": [
+        "C002"
+      ]
+    },
+    {
+      "phase": "Offer callback",
+      "behavior": "The delivery runner contacts rotating infrastructure with d=inno and an r value representing offer_execution or offer_execution_fail.",
+      "observable": "DeviceNetworkEvents RemoteUrl plus initiating-process and remote-endpoint context.",
+      "claim_ids": [
+        "C003",
+        "C004",
+        "C006",
+        "C007"
+      ]
+    },
+    {
+      "phase": "Downstream outcome",
+      "behavior": "Independent offers may install proxyware, distributed-compute components or utility-style software; WorldProxyPool may also create recurring SYSTEM tasks.",
+      "observable": "Process, file, task, software-inventory and network evidence are required separately and cannot be inferred from the callback alone.",
+      "claim_ids": [
+        "C005",
+        "C008",
+        "C013"
+      ]
+    }
+  ],
+  "telemetry": [
+    {
+      "field": "DeviceNetworkEvents",
+      "status": "Required",
+      "purpose": "Microsoft Defender for Endpoint network-connection records containing the documented URL field."
+    },
+    {
+      "field": "RemoteUrl",
+      "status": "Required",
+      "purpose": "Evaluate the two source-published callback conditions."
+    },
+    {
+      "field": "Timestamp, DeviceName, ReportId",
+      "status": "Required",
+      "purpose": "Preserve the documented compound event identity for investigation."
+    },
+    {
+      "field": "DeviceId, ActionType, RemoteIP, RemotePort, Protocol",
+      "status": "Enrichment",
+      "purpose": "Scope the endpoint and remote network context without treating transport success as payload success."
+    },
+    {
+      "field": "InitiatingProcessFileName, InitiatingProcessCommandLine, InitiatingProcessUniqueId",
+      "status": "Enrichment",
+      "purpose": "Retain process provenance and stable pivots for correlation with the installer session."
+    },
+    {
+      "field": "Process, file, scheduled-task, software-inventory and protection events",
+      "status": "Enrichment",
+      "purpose": "Determine whether staging or a downstream monetization branch occurred; not queried here."
+    }
+  ],
+  "query": {
+    "file": "hunting.kql",
+    "language": "KQL",
+    "status": "Untested implementation sketch",
+    "logic": "Return DeviceNetworkEvents rows whose RemoteUrl contains d=inno and either documented offer-result marker; use the portal time picker without an embedded window or threshold.",
+    "match_proves": "Microsoft Defender for Endpoint recorded a network event whose RemoteUrl matched both source-published callback conditions.",
+    "match_does_not_prove": "A match does not prove fake-installer execution, successful payload transfer, offer installation, failed prevention, persistence, proxy or compute monetization, compromise, victim intent or actor attribution."
+  },
+  "triage": [
+    "Preserve the raw DeviceNetworkEvents row, query version, Timestamp, DeviceId, DeviceName and ReportId.",
+    "Inspect the complete RemoteUrl, remote endpoint and InitiatingProcessUniqueId; do not assume the r value establishes the final installer-session outcome.",
+    "Pivot to the initiating process and its ancestry, validating download origin, signature, folder path, command line and user intent.",
+    "Search the same device timeline for Inno temporary execution, numbered stages and independent offer callbacks while avoiding an arbitrary correlation window.",
+    "Review software inventory, scheduled tasks, files and network activity for WorldProxyPool, CharityEngine/BOINC or AW Manager only as separate corroboration.",
+    "Resolve any authorized bundler, affiliate, lab or software-distribution activity before assigning a malicious disposition."
+  ],
+  "false_positives": [
+    {
+      "source": "Authorized software bundlers or affiliate installers using a similar postback vocabulary",
+      "control": "Require a documented publisher, approved distribution workflow, expected signer, known destination and accountable software owner."
+    },
+    {
+      "source": "Security validation or telemetry-capture testing",
+      "control": "Match the authorized test record, isolated device, benign destination and unique test marker."
+    },
+    {
+      "source": "RemoteUrl tokenization or field-quality artifacts",
+      "control": "Inspect the raw URL and MDE event; reject promotion if the paired strings are not consistently preserved or have ambiguous semantics."
+    }
+  ],
+  "validation": {
+    "steps": [
+      "Confirm DeviceNetworkEvents coverage and population of RemoteUrl plus every projected field on representative Windows endpoints.",
+      "In an isolated authorized lab, send a harmless plain-HTTP request to an internal test server using ?d=inno&r=offer_execution and preserve the raw network event.",
+      "Run negative controls with only one marker, unrelated r values and normal Inno installer activity that does not use the campaign callback contract.",
+      "Execute the query unchanged and confirm only the paired-marker positive is returned with investigable process and network context.",
+      "Measure historical prevalence over an approved period and resolve every match to an owner before considering alert logic."
+    ],
+    "success": "The paired-marker request is represented in RemoteUrl and returned with complete context, negative controls do not match, and observed legitimate overlap can be bounded by provenance.",
+    "rejection": "Reject or redesign the hunt if query strings are absent or normalized away, single-marker controls match, required context is missing or legitimate overlap cannot be bounded.",
+    "visibility_gaps": [
+      "RemoteUrl may not preserve path or query content for every protocol, sensor path or encrypted connection",
+      "A callback can occur after a child payload starts and does not establish the complete installer sequence",
+      "The query does not parse session, affiliate, offer or placement values",
+      "No direct visibility into server-side offer handling or installation success",
+      "Target-environment prevalence and field completeness are unmeasured",
+      "Laboratory execution has not been performed"
+    ],
+    "promotion_gate": "Require retained positive and negative controls, verified URL capture semantics, measured prevalence, bounded authorized overlap and a documented alert owner before designing a production candidate."
+  },
+  "conclusion": "The stable paired callback markers provide a fresh, evidence-backed hunt that is more durable than the campaign's rotating domains. The source also shows why the result must remain narrow: callbacks represent individual offer outcomes and do not prove the installer-session result. Keep the query at Medium-confidence hunting maturity until URL capture and benign prevalence are validated. [C003][C004][C008][C009][C013]",
+  "artwork": {
+    "kind": "network-path",
+    "label": "OFFER CALLBACK CONTRACT"
+  }
+}

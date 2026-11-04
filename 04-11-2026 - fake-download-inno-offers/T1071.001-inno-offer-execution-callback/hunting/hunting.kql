@@ -1,0 +1,39 @@
+// Title: Fake-download campaign - Inno offer-execution callback
+// Rule name: T1071.001 - Inno offer-execution callback
+// Classification: Hunting query
+// Maturity: hunting
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR advanced hunting
+// Telemetry: Microsoft Defender for Endpoint DeviceNetworkEvents
+// MITRE ATT&CK: T1071.001 - Application Layer Protocol: Web Protocols
+// Purpose: Identify the paired URL markers Microsoft observed in rotating Inno offer callbacks.
+// Logic: Preserve Microsoft's two source-published RemoteUrl filters; the portal time picker controls the interval.
+// Match proves: Defender XDR recorded a network event whose RemoteUrl matched d=inno and one offer-result marker.
+// Match does not prove: fake-installer execution, successful payload transfer, offer installation, persistence,
+// proxy or compute monetization, compromise, victim intent, or threat-actor attribution.
+// False positives: authorized bundlers or affiliate postbacks, security testing, and RemoteUrl field-quality artifacts.
+// Limits: query-string capture and target-environment prevalence are unvalidated; callbacks are individual offer results
+// and may occur after child payload execution. The query does not parse or correlate session parameters.
+// Validation: run the controlled paired-marker positive and single-marker negative tests in validation.md before promotion.
+// Evidence claims: C003, C004, C006, C007, C008, C009, C010, C013
+
+DeviceNetworkEvents
+| where RemoteUrl has "d=inno"
+| where RemoteUrl has_any ("r=offer_execution", "r=offer_execution_fail")
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    ActionType,
+    RemoteUrl,
+    RemoteIP,
+    RemotePort,
+    Protocol,
+    InitiatingProcessFileName,
+    InitiatingProcessFolderPath,
+    InitiatingProcessCommandLine,
+    InitiatingProcessSHA1,
+    InitiatingProcessAccountName,
+    InitiatingProcessUniqueId,
+    ReportId
+| order by Timestamp desc

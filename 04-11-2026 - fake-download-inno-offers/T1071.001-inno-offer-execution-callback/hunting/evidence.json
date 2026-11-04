@@ -1,0 +1,131 @@
+{
+  "schema_version": "2.0",
+  "claims": [
+    {
+      "id": "C001",
+      "statement": "Microsoft Threat Intelligence identified an evolving fake-download campaign in which users executed deceptive installers presented as cracked software, games, activators, plugins or unofficial utilities, and the installers distributed multiple monetized software offers.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C002",
+      "statement": "The source-observed chain used Inno Setup-style temporary runners under %TEMP%\\is-*.tmp and recurring numbered stages before downstream offer delivery.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C003",
+      "statement": "The delivery system used randomized URL paths but preserved d=inno together with r=offer_execution or r=offer_execution_fail; callbacks represented individual offer results and failed offers did not necessarily stop the full bundle.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C004",
+      "statement": "Microsoft observed rotating callback domains across recurring lure categories and assessed the paired callback structure, together with adjacent installer activity, as more durable than individual domains.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C005",
+      "statement": "The investigation confirmed proxy and network-resource monetization through WorldProxyPool, distributed-compute monetization through CharityEngine and BOINC, and utility-style software installation; the WorldProxyPool branch created recurring SYSTEM scheduled tasks.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C006",
+      "statement": "Microsoft published a Defender XDR advanced-hunting query that filters DeviceNetworkEvents RemoteUrl for d=inno and either r=offer_execution or r=offer_execution_fail.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001",
+        "S004",
+        "S005"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C007",
+      "statement": "Microsoft documents DeviceNetworkEvents as Defender for Endpoint network-connection telemetry and documents RemoteUrl, remote endpoint, initiating-process and compound event-identity fields used or projected by the query.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S002"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C008",
+      "statement": "A query result proves only that Defender XDR recorded a RemoteUrl matching both callback conditions; it does not establish fake-installer execution, offer success, installation, monetization, compromise or attribution.",
+      "evidence_type": "analyst-inference",
+      "source_ids": [
+        "S001",
+        "S002"
+      ],
+      "confidence": "High",
+      "confirm_or_refute": "Preserve the raw network event and correlate process ancestry, download provenance, staged files, protection events, scheduled tasks and software inventory. Without those independent artifacts, retain the callback-only boundary."
+    },
+    {
+      "id": "C009",
+      "statement": "The paired callback structure is suitable for hunting, but RemoteUrl capture semantics, required-field completeness and legitimate bundler prevalence must be measured before alert promotion.",
+      "evidence_type": "analyst-inference",
+      "source_ids": [
+        "S001",
+        "S002",
+        "S004",
+        "S005"
+      ],
+      "confidence": "Medium",
+      "confirm_or_refute": "Run the authorized paired-marker positive and single-marker negative controls, inspect raw RemoteUrl values and resolve historical matches. Consistent capture plus bounded overlap supports promotion; absent query strings or unbounded legitimate matches refute it."
+    },
+    {
+      "id": "C010",
+      "statement": "MITRE ATT&CK T1071.001 is the defensible mapping for the source-observed HTTP callback behavior queried by this package.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001",
+        "S003"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C011",
+      "statement": "The Microsoft report was published on 3 November 2026 and describes an evolving campaign without exact public start and end dates.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C012",
+      "statement": "Microsoft notes that several downstream products may have legitimate uses, while their silent installation through deceptive bundles without informed consent creates security and privacy risk.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C013",
+      "statement": "Microsoft observed child payloads launching before or around offer callbacks in some EDR traces, so callback time and result markers cannot be treated as a complete prevention or execution verdict.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Fake-download campaign uses trojanized installers to deliver monetization payloads",
+      "organization": "Microsoft Security Research",
+      "author": "Microsoft Security Research and Jiacen Xu",
+      "published": "2026-11-03",
+      "event_date": "Evolving campaign; exact public start and end dates not disclosed",
+      "accessed": "2026-11-04",
+      "type": "original-research",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/11/03/fake-download-campaign-uses-trojanized-installers-deliver-monetization-payloads/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003",
+        "C004",
+        "C005",
+        "C006",
+        "C008",
+        "C009",
+        "C010",
+        "C011",
+        "C012",
+        "C013"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "DeviceNetworkEvents table in the advanced hunting schema",
+      "organization": "Microsoft",
+      "author": "Microsoft Learn",
+      "published": "2026-06-22",
+      "event_date": "Schema reference",
+      "accessed": "2026-11-04",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-devicenetworkevents-table",
+      "supports": [
+        "C007",
+        "C008",
+        "C009"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Application Layer Protocol: Web Protocols, T1071.001",
+      "organization": "MITRE ATT&CK",
+      "author": "MITRE",
+      "published": "2026-09-11",
+      "event_date": "ATT&CK technique reference",
+      "accessed": "2026-11-04",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1071/001/",
+      "supports": [
+        "C010"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "has operator",
+      "organization": "Microsoft",
+      "author": "Microsoft Learn",
+      "published": "2025-05-25",
+      "event_date": "Kusto query-language reference",
+      "accessed": "2026-11-04",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/kusto/query/has-operator?view=microsoft-fabric",
+      "supports": [
+        "C006",
+        "C009"
+      ]
+    },
+    {
+      "id": "S005",
+      "title": "has_any operator",
+      "organization": "Microsoft",
+      "author": "Microsoft Learn",
+      "published": "2025-05-25",
+      "event_date": "Kusto query-language reference",
+      "accessed": "2026-11-04",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/kusto/query/has-any-operator?view=microsoft-fabric",
+      "supports": [
+        "C006",
+        "C009"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "decision": "pass",
+  "review_method": "separate-editorial-pass",
+  "pdf_self_contained": true,
+  "blocking_issues": [],
+  "source_checks": [
+    {
+      "source_id": "S001",
+      "opened": true,
+      "notes": "Reviewed publication metadata, the four-stage attack chain, Inno temporary staging, callback lifecycle and parameter table, independent offer outcomes, child-payload timing, all three monetization branches, mitigation guidance, official hunt, hunting note and source-provided ATT&CK mapping."
+    },
+    {
+      "source_id": "S002",
+      "opened": true,
+      "notes": "Reviewed DeviceNetworkEvents purpose and MDE prerequisite plus every required and projected field used by hunting.kql, including RemoteUrl, remote endpoint, initiating-process fields, InitiatingProcessUniqueId and Timestamp/DeviceName/ReportId event identity guidance."
+    },
+    {
+      "source_id": "S003",
+      "opened": true,
+      "notes": "Reviewed the T1071.001 definition and used it only for the source-observed HTTP callback behavior; downstream persistence and resource-hijacking techniques were deliberately excluded from the rule scope and name."
+    },
+    {
+      "source_id": "S004",
+      "opened": true,
+      "notes": "Reviewed the Kusto has operator syntax and token semantics used by the source-published first predicate; no unsupported parsing behavior is claimed."
+    },
+    {
+      "source_id": "S005",
+      "opened": true,
+      "notes": "Reviewed the Kusto has_any operator syntax and term-list semantics used by the source-published second predicate; no threshold, sequence or correlation semantics are inferred."
+    }
+  ],
+  "dimensions": {
+    "mechanism": {
+      "score": 4,
+      "rationale": "Section 2 and PDF page 3 identify the user-controlled execution boundary, Inno-style runner, per-offer coordinator, HTTP callback contract, inherited user context and downstream capability while explicitly rejecting a vulnerability inference and limiting the query to URL observability.",
+      "report_sections": [2],
+      "claim_ids": ["C001", "C002", "C003", "C005", "C007", "C008", "C013"],
+      "pdf_pages": [3]
+    },
+    "timeline": {
+      "score": 3,
+      "rationale": "Section 3 and PDF pages 1-3 separate the 2026-11-03 publication, 2026-11-04 analysis and unknown campaign dates, then preserve the source-supported relative sequence because the investigation does not disclose complete event timestamps or timezone.",
+      "report_sections": [3],
+      "claim_ids": ["C001", "C002", "C003", "C005", "C011", "C013"],
+      "pdf_pages": [1, 2, 3]
+    },
+    "root_cause": {
+      "score": 3,
+      "rationale": "Section 2 and PDF pages 2-3 identify deceptive unofficial-installer execution and delegated runner processing as enabling conditions, state the relevant trust boundary and explicitly retain advertising, search poisoning, redirect path and per-victim intent as unknown rather than inventing a delivery root cause.",
+      "report_sections": [2],
+      "claim_ids": ["C001", "C002", "C008"],
+      "pdf_pages": [2, 3]
+    },
+    "execution_flow": {
+      "score": 4,
+      "rationale": "Section 3 and PDF page 3 provide a causal five-stage sequence from user execution through temporary staging, independent offer processing, callback and separately scoped downstream behavior, distinguishing source-observed campaign steps from what one hunt match can prove.",
+      "report_sections": [3],
+      "claim_ids": ["C001", "C002", "C003", "C004", "C005", "C008", "C013"],
+      "pdf_pages": [3]
+    },
+    "impact": {
+      "score": 3,
+      "rationale": "Section 4 and PDF pages 2-3 and 8 separate source-confirmed proxy, distributed-compute and utility monetization from potential endpoint consequences, preserve legitimate-product context and reject installation, privilege-escalation or compromise conclusions from the callback alone; victim count and per-host outcomes remain unavailable.",
+      "report_sections": [4, 8],
+      "claim_ids": ["C005", "C008", "C012", "C013"],
+      "pdf_pages": [2, 3, 8]
+    },
+    "evidence": {
+      "score": 4,
+      "rationale": "Section 5 and PDF pages 2, 4 and 8 map source facts, official schema, Kusto semantics and ATT&CK to C###/S### ledgers; they isolate two analyst inferences, single-investigation dependence, unknown server-side meanings, absent raw events and unmeasured field completeness.",
+      "report_sections": [5, 8],
+      "claim_ids": ["C003", "C006", "C007", "C008", "C009", "C010", "C011", "C013"],
+      "pdf_pages": [2, 4, 8]
+    },
+    "lab_plan": {
+      "score": 4,
+      "rationale": "Section 7, validation.md and PDF page 7 specify an authorized Windows/MDE environment and versions to retain, an internal listener, a harmless paired-marker positive, three semantic negatives, proxy-path comparison, expected artifacts, success/rejection/failure criteria, cleanup and the explicit not-executed state.",
+      "report_sections": [7],
+      "claim_ids": ["C007", "C008", "C009", "C013"],
+      "pdf_pages": [7]
+    }
+  }
+}

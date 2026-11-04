@@ -1,0 +1,25 @@
+S001 — Microsoft Security Research and Jiacen Xu, "Fake-download campaign uses trojanized installers to deliver monetization payloads"
+Publication date: 2026-11-03
+Campaign period: evolving campaign; exact public start and end dates not disclosed
+Accessed: 2026-11-04
+https://www.microsoft.com/en-us/security/blog/2026/11/03/fake-download-campaign-uses-trojanized-installers-deliver-monetization-payloads/
+
+S002 — Microsoft Learn, "DeviceNetworkEvents table in the advanced hunting schema"
+Last updated: 2026-06-22
+Accessed: 2026-11-04
+https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-devicenetworkevents-table
+
+S003 — MITRE ATT&CK, "Application Layer Protocol: Web Protocols, T1071.001"
+Last modified: 2026-09-11
+Accessed: 2026-11-04
+https://attack.mitre.org/techniques/T1071/001/
+
+S004 — Microsoft Learn, "has operator"
+Last updated: 2025-05-25
+Accessed: 2026-11-04
+https://learn.microsoft.com/en-us/kusto/query/has-operator?view=microsoft-fabric
+
+S005 — Microsoft Learn, "has_any operator"
+Last updated: 2025-05-25
+Accessed: 2026-11-04
+https://learn.microsoft.com/en-us/kusto/query/has-any-operator?view=microsoft-fabric
