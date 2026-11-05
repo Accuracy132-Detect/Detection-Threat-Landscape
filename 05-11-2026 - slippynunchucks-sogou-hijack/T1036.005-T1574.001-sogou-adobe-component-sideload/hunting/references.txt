@@ -1,0 +1,25 @@
+S001 — ESET Research and Anh Ho, "SlippyNunchucks hijacks Sogou Input Method's brand promotion mechanism to distribute malware"
+Publication date: 2026-11-04
+Observed activity: from 2026-07-01; coordinated disclosure: 2026-09-11; remediation boundary: 2026-10-29 to 2026-10-30
+Accessed: 2026-11-05
+hxxps://www[.]welivesecurity[.]com/en/eset-research/slippynunchucks-hijacks-sogou-input-methods-brand-promotion-mechanism-to-distribute-malware/
+
+S002 — Microsoft Learn, "DeviceImageLoadEvents table in the advanced hunting schema"
+Last updated: 2025-06-11
+Accessed: 2026-11-05
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-deviceimageloadevents-table
+
+S003 — MITRE ATT&CK, "Hijack Execution Flow: DLL, T1574.001"
+Last modified: 2026-09-11
+Accessed: 2026-11-05
+hxxps://attack[.]mitre[.]org/techniques/T1574/001/
+
+S004 — MITRE ATT&CK, "Masquerading: Match Legitimate Resource Name or Location, T1036.005"
+Last modified: 2026-09-11
+Accessed: 2026-11-05
+hxxps://attack[.]mitre[.]org/techniques/T1036/005/
+
+S005 — Microsoft Learn, "String operators"
+Last updated: 2025-03-10
+Accessed: 2026-11-05
+hxxps://learn[.]microsoft[.]com/en-us/kusto/query/datatypes-string-operators?view=azure-data-explorer

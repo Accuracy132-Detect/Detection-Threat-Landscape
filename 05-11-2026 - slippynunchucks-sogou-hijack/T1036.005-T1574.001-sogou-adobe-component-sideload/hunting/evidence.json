@@ -1,0 +1,129 @@
+{
+  "schema_version": "2.0",
+  "claims": [
+    {
+      "id": "C001",
+      "statement": "ESET observed DarkVigil implants being launched by the Sogou Input Method component SGTool.exe beginning on 1 July 2026 and published the investigation on 4 November 2026.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C002",
+      "statement": "ESET attributed the operation to the China-aligned SlippyNunchucks activity cluster and reported affected organizations and Chinese-speaking users across Hong Kong, Thailand, Japan, Vietnam, Sri Lanka and Oman.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C003",
+      "statement": "The affected SGTool.exe brand-promotion workflow retrieved configuration over unencrypted HTTP; ESET observed attacker-controlled DNS resolution redirecting requests to staging servers but did not determine where the DNS manipulation occurred.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C004",
+      "statement": "The malicious encrypted configuration instructed SGTool.exe to download a legitimate Adobe Licensing WF Helper and the DarkVigil implant libcef.dll, with attacker-controlled integrity values and destination paths.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C005",
+      "statement": "One source-observed workflow saved the Adobe helper as SogouInput\\Components\\SogouComMgr.exe beside libcef.dll, causing later Sogou component-management activity to execute the helper and side-load the implant.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C006",
+      "statement": "An alternate workflow placed the pair under a versioned Components\\biz_center directory and used SGTool.exe component invocation; ESET states only one of the two workflows can be achieved at a time and that both can disrupt the software.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C007",
+      "statement": "Tencent addressed the affected request path in Sogou Input Method version 16.10 by moving it to HTTPS with certificate pinning; the source places this remediation at the 29-30 October 2026 boundary and assigns CVE-2026-120422.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C008",
+      "statement": "Microsoft documents DeviceImageLoadEvents as Defender for Endpoint DLL-load telemetry and documents the module, initiating-process, version-metadata, path, hash and compound event-identity fields used or projected by the query.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S002"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C009",
+      "statement": "A query result proves only that Defender recorded the source-supported loader name, co-located module, component path and Adobe company-metadata relationship; it does not prove malicious content, signing state, DNS hijacking, vulnerability exploitation, DarkVigil execution, compromise or attribution.",
+      "evidence_type": "analyst-inference",
+      "source_ids": [
+        "S001",
+        "S002"
+      ],
+      "confidence": "High",
+      "confirm_or_refute": "Preserve the raw event, collect both files, verify hashes and certificates, establish Sogou version and installer provenance, and correlate SGTool.exe, DNS, HTTP, registry and network evidence. Without those layers, retain the narrow image-load boundary."
+    },
+    {
+      "id": "C010",
+      "statement": "The multi-field relationship is suitable for hunting, but DeviceImageLoadEvents coverage, InitiatingProcessVersionInfoCompanyName population and benign repackaging prevalence must be measured before alert promotion.",
+      "evidence_type": "analyst-inference",
+      "source_ids": [
+        "S001",
+        "S002",
+        "S005"
+      ],
+      "confidence": "Medium",
+      "confirm_or_refute": "Run the specified synthetic positive and three negative controls, inspect raw fields and resolve all historical matches. Complete metadata plus bounded overlap supports promotion; absent image loads, null metadata or unexplained legitimate matches refute it."
+    },
+    {
+      "id": "C011",
+      "statement": "MITRE ATT&CK T1036.005 and T1574.001 are defensible mappings for the renamed Adobe helper in a trusted Sogou component location and its co-located malicious DLL load; no other campaign technique is represented by this query.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001",
+        "S003",
+        "S004"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C012",
+      "statement": "ESET identifies libcef.dll as the DarkVigil implant and describes DMTP-based plugin delivery and data-collection capabilities, but these downstream capabilities are not established by the image-load hunt.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S001"
+      ],
+      "confidence": "High"
+    },
+    {
+      "id": "C013",
+      "statement": "Kusto string-operator documentation defines the case-insensitive equality and term-based has semantics used by the query; path tokens are matched as terms and co-location is evaluated with case-insensitive equality.",
+      "evidence_type": "documented",
+      "source_ids": [
+        "S005"
+      ],
+      "confidence": "High"
+    }
+  ]
+}

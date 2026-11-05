@@ -1,0 +1,88 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "SlippyNunchucks hijacks Sogou Input Method's brand promotion mechanism to distribute malware",
+      "organization": "ESET Research",
+      "author": "Anh Ho",
+      "published": "2026-11-04",
+      "event_date": "Observed from 2026-07-01; disclosure 2026-09-11; version 16.10 remediation boundary 2026-10-29 to 2026-10-30",
+      "accessed": "2026-11-05",
+      "type": "original-research",
+      "url": "https://www.welivesecurity.com/en/eset-research/slippynunchucks-hijacks-sogou-input-methods-brand-promotion-mechanism-to-distribute-malware/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003",
+        "C004",
+        "C005",
+        "C006",
+        "C007",
+        "C009",
+        "C010",
+        "C011",
+        "C012"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "DeviceImageLoadEvents table in the advanced hunting schema",
+      "organization": "Microsoft",
+      "author": "Microsoft Learn",
+      "published": "2025-06-11",
+      "event_date": "Schema reference",
+      "accessed": "2026-11-05",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceimageloadevents-table",
+      "supports": [
+        "C008",
+        "C009",
+        "C010"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Hijack Execution Flow: DLL, T1574.001",
+      "organization": "MITRE ATT&CK",
+      "author": "MITRE",
+      "published": "2026-09-11",
+      "event_date": "ATT&CK technique reference",
+      "accessed": "2026-11-05",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1574/001/",
+      "supports": [
+        "C011"
+      ]
+    },
+    {
+      "id": "S004",
+      "title": "Masquerading: Match Legitimate Resource Name or Location, T1036.005",
+      "organization": "MITRE ATT&CK",
+      "author": "MITRE",
+      "published": "2026-09-11",
+      "event_date": "ATT&CK technique reference",
+      "accessed": "2026-11-05",
+      "type": "attck",
+      "url": "https://attack.mitre.org/techniques/T1036/005/",
+      "supports": [
+        "C011"
+      ]
+    },
+    {
+      "id": "S005",
+      "title": "String operators",
+      "organization": "Microsoft",
+      "author": "Microsoft Learn",
+      "published": "2025-03-10",
+      "event_date": "Kusto query-language reference",
+      "accessed": "2026-11-05",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/kusto/query/datatypes-string-operators?view=azure-data-explorer",
+      "supports": [
+        "C010",
+        "C013"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+// Title: SlippyNunchucks - Adobe helper masquerades as Sogou component and side-loads libcef.dll
+// Rule name: T1036.005-T1574.001 - Sogou Adobe component side-load
+// Classification: Hunting query
+// Maturity: hunting
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR advanced hunting
+// Telemetry: Microsoft Defender for Endpoint DeviceImageLoadEvents
+// MITRE ATT&CK: T1036.005 - Match Legitimate Resource Name or Location; T1574.001 - DLL
+// Purpose: Identify the source-observed Adobe helper, Sogou component identity, co-located libcef.dll relationship.
+// Logic: Require the observed loader and module names, SogouInput Components path, same loader/module directory,
+// and Adobe company metadata. No hash, domain, threshold, sequence, rarity, join or inferred signature state is used.
+// Match proves: Defender recorded this loader-module-path-company-metadata relationship in one image-load event.
+// Match does not prove: malicious DLL content, a valid signature, DNS hijacking, CVE-2026-120422 exploitation,
+// DarkVigil execution, compromise, campaign membership, victim scope, or SlippyNunchucks attribution.
+// False positives: authorized malware research, software testing, third-party repackaging, or misleading metadata.
+// Limits: image-load coverage, metadata population and benign prevalence are unvalidated; names and paths are mutable.
+// Validation: execute the isolated positive and three semantic negative controls in validation.md before promotion.
+// Evidence claims: C004, C005, C006, C008, C009, C010, C011, C013
+
+DeviceImageLoadEvents
+| where FileName =~ "libcef.dll"
+| where FolderPath has "SogouInput" and FolderPath has "Components"
+| where InitiatingProcessFileName =~ "SogouComMgr.exe"
+| where InitiatingProcessFolderPath has "SogouInput"
+    and InitiatingProcessFolderPath has "Components"
+| where FolderPath =~ InitiatingProcessFolderPath
+| where InitiatingProcessVersionInfoCompanyName has "Adobe"
+| project
+    Timestamp,
+    DeviceId,
+    DeviceName,
+    ActionType,
+    FileName,
+    FolderPath,
+    SHA1,
+    InitiatingProcessFileName,
+    InitiatingProcessFolderPath,
+    InitiatingProcessCommandLine,
+    InitiatingProcessSHA1,
+    InitiatingProcessVersionInfoCompanyName,
+    InitiatingProcessVersionInfoProductName,
+    InitiatingProcessAccountName,
+    InitiatingProcessUniqueId,
+    ReportId
+| order by Timestamp desc

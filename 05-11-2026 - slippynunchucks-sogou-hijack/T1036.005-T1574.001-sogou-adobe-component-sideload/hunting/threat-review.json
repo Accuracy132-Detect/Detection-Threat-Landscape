@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "decision": "pass",
+  "review_method": "separate-editorial-pass",
+  "pdf_self_contained": true,
+  "blocking_issues": [],
+  "source_checks": [
+    {
+      "source_id": "S001",
+      "opened": true,
+      "notes": "Reviewed publication metadata, first-observed date, affected brand-promotion request, DNS-hijack evidence and unresolved interception point, encrypted configuration workflow, both Adobe-helper/libcef placement paths, execution transition, DarkVigil capabilities, disclosure, version 16.10 remediation and the source's 29/30 October date discrepancy."
+    },
+    {
+      "source_id": "S002",
+      "opened": true,
+      "notes": "Reviewed DeviceImageLoadEvents purpose, Microsoft Defender for Endpoint prerequisite and every field used or projected by hunting.kql, including module and process paths, hashes, version information, InitiatingProcessUniqueId and Timestamp/DeviceName/ReportId event identity."
+    },
+    {
+      "source_id": "S003",
+      "opened": true,
+      "notes": "Reviewed T1574.001 and used it only for the source-observed co-located DLL load; upstream DNS manipulation, download and downstream implant capabilities are deliberately excluded from the query mapping."
+    },
+    {
+      "source_id": "S004",
+      "opened": true,
+      "notes": "Reviewed T1036.005 and used it only for the renamed Adobe helper operating as a trusted-looking Sogou component; no broader masquerading or signed-binary claim is inferred."
+    },
+    {
+      "source_id": "S005",
+      "opened": true,
+      "notes": "Reviewed Kusto string comparison and term-operator semantics used by =~ and has; the query relies on documented equality and token matching without regex, parsing or unstated normalization."
+    }
+  ],
+  "dimensions": {
+    "mechanism": {
+      "score": 4,
+      "rationale": "Section 2 and PDF page 3 identify SGTool.exe, the unauthenticated HTTP transport boundary, attacker-controlled resolution, accepted encrypted configuration, integrity/path substitution, renamed Adobe helper, co-located DLL and loader privilege context while limiting the hunt to the final image-load relationship.",
+      "report_sections": [2],
+      "claim_ids": ["C003", "C004", "C005", "C006", "C008", "C009"],
+      "pdf_pages": [3]
+    },
+    "timeline": {
+      "score": 3,
+      "rationale": "Section 3 and PDF pages 1-3 separate first observation, relative causal stages, coordinated disclosure, remediation and publication, preserve the 29-30 October discrepancy and state that exact event times, timezone and campaign end are unavailable.",
+      "report_sections": [3],
+      "claim_ids": ["C001", "C003", "C004", "C005", "C006", "C007", "C012"],
+      "pdf_pages": [1, 2, 3]
+    },
+    "root_cause": {
+      "score": 3,
+      "rationale": "Section 2 and PDF pages 2-3 identify unencrypted configuration transport plus attacker traffic influence as enabling conditions, explain the client trust transition and explicitly retain the unresolved manipulation point and any deeper product-design cause as unknown.",
+      "report_sections": [2],
+      "claim_ids": ["C003", "C004", "C007"],
+      "pdf_pages": [2, 3]
+    },
+    "execution_flow": {
+      "score": 4,
+      "rationale": "Section 3 and PDF page 3 give a causal sequence from HTTP request through redirection, malicious configuration, file placement, masqueraded helper execution and DLL load to separately scoped implant capability, distinguishing observed campaign transitions from what one event proves.",
+      "report_sections": [3],
+      "claim_ids": ["C003", "C004", "C005", "C006", "C009", "C012"],
+      "pdf_pages": [3]
+    },
+    "impact": {
+      "score": 3,
+      "rationale": "Section 4 and PDF pages 2-3 and 8 separate ESET-observed DarkVigil delivery and geographic victim scope from possible plugin and collection effects, avoid per-host outcome claims and state that victim count, complete capability execution and compromise cannot be inferred from the hunt.",
+      "report_sections": [4, 8],
+      "claim_ids": ["C002", "C007", "C009", "C012"],
+      "pdf_pages": [2, 3, 8]
+    },
+    "evidence": {
+      "score": 4,
+      "rationale": "Section 5 and PDF pages 2, 4 and 8 map campaign facts, official schema, Kusto semantics and ATT&CK to C###/S### ledgers; they isolate two analyst inferences, single-investigation dependence, date inconsistency, absent raw events, unresolved DNS point and unmeasured field completeness.",
+      "report_sections": [5, 8],
+      "claim_ids": ["C001", "C003", "C007", "C008", "C009", "C010", "C011", "C013"],
+      "pdf_pages": [2, 4, 8]
+    },
+    "lab_plan": {
+      "score": 4,
+      "rationale": "Section 7, validation.md and PDF page 7 specify an authorized isolated Windows/MDE environment, versions and artifacts to retain, an internally built benign positive, three semantic negatives plus a legitimate CEF control, success/rejection/failure criteria, historical prevalence, cleanup and the explicit not-executed state.",
+      "report_sections": [7],
+      "claim_ids": ["C005", "C008", "C009", "C010", "C013"],
+      "pdf_pages": [7]
+    }
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "schema_version": "2.0",
+  "threat_research_contract": "1.0",
+  "id": "2026-11-05-slippynunchucks-sogou-adobe-component-sideload",
+  "title": "SlippyNunchucks - Adobe helper masquerades as a Sogou component to side-load DarkVigil",
+  "short_title": "Sogou component sideload",
+  "subtitle": "Defender XDR hunt for the source-observed Sogou loader, Adobe metadata and co-located libcef.dll relationship",
+  "published": "2026-11-05",
+  "report_type": "campaign",
+  "classification": "Hunting query",
+  "maturity": "hunting",
+  "confidence": "Medium",
+  "operational_value": 9,
+  "primary_platform": "Microsoft Defender XDR",
+  "mitre": [
+    "T1036.005",
+    "T1574.001"
+  ],
+  "operational_score": {
+    "total": 43,
+    "maximum": 51,
+    "breakdown": {
+      "observed_use": 9,
+      "detection_yield": 9,
+      "evidence_quality": 6,
+      "observability": 6,
+      "technical_novelty": 4,
+      "exposure_relevance": 4,
+      "reproducibility": 2,
+      "freshness": 3
+    },
+    "deductions": [
+      "The execution relationship is documented by one original ESET investigation; official schema and ATT&CK references establish semantics but do not independently corroborate the incident.",
+      "The hunt depends on source-observed loader, module, directory and version-metadata relationships that an actor can change, and local metadata population has not been measured.",
+      "Exposure is meaningful for organizations with Sogou Input Method on Windows but is not universal, and the controlled laboratory design has not been executed."
+    ]
+  },
+  "decision": "Publish as a Medium-confidence hunting query, not an alert. Investigate a SogouComMgr.exe process with Adobe company metadata loading a co-located libcef.dll under a SogouInput Components path, while requiring file provenance and adjacent telemetry before concluding malicious side-loading or campaign activity.",
+  "key_findings": [
+    "ESET observed DarkVigil delivery through Sogou Input Method beginning on 1 July 2026 after attacker-controlled DNS resolution redirected an unencrypted configuration request. [C001][C002][C003]",
+    "The malicious configuration placed a legitimate Adobe Licensing WF Helper under a Sogou component name and co-located a DarkVigil libcef.dll so the application workflow would execute the helper and side-load the implant. [C004][C005][C006]",
+    "The query represents only the loader-module-metadata relationship in DeviceImageLoadEvents; it does not establish malicious DLL content, DNS hijacking, CVE exploitation, DarkVigil execution or SlippyNunchucks attribution. [C008][C009]"
+  ],
+  "source_facts": [
+    "Sogou Input Method versions before 16.10 used an unencrypted HTTP request for the affected brand-promotion configuration path. [C003][C007]",
+    "ESET documented the renamed Adobe helper, libcef.dll and Sogou Components execution relationships in victim environments. [C004][C005][C006]",
+    "Microsoft documents DeviceImageLoadEvents and all fields used or projected by the query. [C008]"
+  ],
+  "analyst_assessment": [
+    "The co-located module load plus Adobe/Sogou identity mismatch is more discriminating than either filename alone and is suitable for targeted hunting. [C009][C010]",
+    "Local field completeness and benign software-packaging overlap must be measured before alert promotion. [C010]",
+    "T1036.005 and T1574.001 are limited to the masquerading and DLL-load behavior represented by the query. [C011]"
+  ],
+  "assumptions": [
+    "Microsoft Defender for Endpoint records the relevant DLL load and populates InitiatingProcessVersionInfoCompanyName for the executing helper. [C008][C010]",
+    "Authorized software does not normally rename an Adobe helper to SogouComMgr.exe and place it beside libcef.dll under a SogouInput Components path. [C010]"
+  ],
+  "unknowns": [
+    "ESET did not determine where the attacker-controlled DNS manipulation occurred.",
+    "The source does not publish a complete victim count, raw endpoint events or a campaign end date.",
+    "The report gives 29 and 30 October 2026 in different passages for the version 16.10 remediation boundary; this package uses the conservative 29-30 October boundary.",
+    "Target-environment image-load coverage, version-metadata completeness and benign prevalence remain unmeasured."
+  ],
+  "technical_background": "Sogou Input Method's SGTool.exe used an unencrypted HTTP request to retrieve an encrypted brand-promotion configuration. ESET reports that attacker-controlled DNS resolution redirected this request to staging servers, which returned a validly encrypted but malicious configuration. The configuration changed download hashes and destination fields so SGTool.exe placed a legitimate Adobe Licensing WF Helper under the SogouComMgr.exe component name and placed DarkVigil as libcef.dll beside it, either directly under SogouInput\\Components or in a versioned biz_center component directory. Later component-management activity executed the renamed Adobe helper, which loaded the co-located DLL. The network interception point remains unknown; the query deliberately covers only the resulting endpoint identity and image-load relationship. [C003][C004][C005][C006][C009]",
+  "attack_chain": [
+    {
+      "phase": "Enabling condition",
+      "behavior": "A pre-16.10 Windows installation sends the affected SGTool.exe brand-configuration request over unencrypted HTTP, while an attacker can manipulate DNS or network traffic.",
+      "observable": "Version inventory and external DNS or proxy evidence are contextual; the query does not prove this stage.",
+      "claim_ids": [
+        "C003",
+        "C007"
+      ]
+    },
+    {
+      "phase": "Configuration injection",
+      "behavior": "Attacker-controlled resolution directs the official host request to staging infrastructure that returns a malicious encrypted configuration.",
+      "observable": "DNS and network telemetry may corroborate redirection, but the manipulation point is unknown and is not queried here.",
+      "claim_ids": [
+        "C003"
+      ]
+    },
+    {
+      "phase": "Component placement",
+      "behavior": "SGTool.exe downloads a legitimate Adobe helper and DarkVigil libcef.dll into Sogou component locations, renaming the helper as SogouComMgr.exe.",
+      "observable": "File creation, hashes and provenance are independent evidence layers; the hunt starts at the later image load.",
+      "claim_ids": [
+        "C004",
+        "C005"
+      ]
+    },
+    {
+      "phase": "Masqueraded module load",
+      "behavior": "A process named SogouComMgr.exe with Adobe version metadata loads a co-located libcef.dll from a SogouInput Components path.",
+      "observable": "DeviceImageLoadEvents records the module, initiating process, path relationship and version metadata used by the query.",
+      "claim_ids": [
+        "C005",
+        "C006",
+        "C008",
+        "C009"
+      ]
+    },
+    {
+      "phase": "Downstream implant",
+      "behavior": "ESET identifies the loaded libcef.dll as DarkVigil, whose DMTP framework can receive plugins and collect data.",
+      "observable": "File validation, registry, process and network evidence are required separately; a query match cannot establish this outcome.",
+      "claim_ids": [
+        "C002",
+        "C012"
+      ]
+    }
+  ],
+  "telemetry": [
+    {
+      "field": "DeviceImageLoadEvents",
+      "status": "Required",
+      "purpose": "Microsoft Defender for Endpoint DLL-load records for the source-observed loader-module relationship."
+    },
+    {
+      "field": "FileName, FolderPath, SHA1",
+      "status": "Required",
+      "purpose": "Identify libcef.dll, preserve its component location and retain a file pivot."
+    },
+    {
+      "field": "InitiatingProcessFileName, InitiatingProcessFolderPath",
+      "status": "Required",
+      "purpose": "Identify SogouComMgr.exe and require the source-supported co-location relationship."
+    },
+    {
+      "field": "Adobe company metadata",
+      "status": "Required",
+      "purpose": "Expose the Adobe/Sogou identity mismatch without treating version metadata as a digital-signature verdict."
+    },
+    {
+      "field": "Timestamp, DeviceName, ReportId",
+      "status": "Required",
+      "purpose": "Preserve the documented compound event identity for investigation."
+    },
+    {
+      "field": "InitiatingProcessSHA1, InitiatingProcessUniqueId, InitiatingProcessCommandLine",
+      "status": "Enrichment",
+      "purpose": "Support file validation, stable process pivoting and component-workflow reconstruction."
+    },
+    {
+      "field": "Software inventory, file-certificate and DNS/proxy telemetry",
+      "status": "Enrichment",
+      "purpose": "Confirm Sogou version, signing provenance and any upstream redirection; these are not inferred by the query."
+    }
+  ],
+  "query": {
+    "file": "hunting.kql",
+    "language": "KQL",
+    "status": "Untested implementation sketch",
+    "logic": "Select co-located libcef.dll loads under SogouInput Components initiated by SogouComMgr.exe whose version metadata identifies Adobe.",
+    "match_proves": "Defender recorded the exact source-supported loader name, module name, component location, co-location and Adobe company-metadata relationship.",
+    "match_does_not_prove": "Malicious DLL content, a valid signature, DNS hijacking, CVE-2026-120422 exploitation, DarkVigil execution, compromise or SlippyNunchucks attribution."
+  },
+  "triage": [
+    "Preserve the raw DeviceImageLoadEvents row, query version, Timestamp, DeviceName, ReportId and InitiatingProcessUniqueId before remediation.",
+    "Collect the initiating executable and loaded DLL hashes, version metadata, certificate records and file-origin evidence; do not infer signing from ProcessVersionInfo fields.",
+    "Verify whether the endpoint has Sogou Input Method, determine its version and compare the component paths with an approved installation or software-owner baseline.",
+    "Reconstruct adjacent SGTool.exe activity, file creation, component-management commands, DNS answers and HTTP requests to the official configuration host.",
+    "Look separately for the source-reported DarkVigil registry and network artifacts, and escalate only when independent evidence closes the match boundary."
+  ],
+  "false_positives": [
+    {
+      "source": "Authorized malware research, software testing or packaging",
+      "control": "Require a documented owner, isolated lab scope, retained build provenance and an approved change record."
+    },
+    {
+      "source": "Third-party repackaging that legitimately reuses an Adobe helper under the Sogou component name",
+      "control": "Validate installer provenance, certificate chain, hashes, Sogou version and the loaded DLL against the software owner's baseline."
+    },
+    {
+      "source": "Incomplete or stale version metadata",
+      "control": "Inspect the raw event and file directly; do not promote the rule if company metadata is inconsistently populated or misleading."
+    }
+  ],
+  "validation": {
+    "steps": [
+      "In an authorized isolated Windows VM with Microsoft Defender for Endpoint, confirm DeviceImageLoadEvents and all projected fields using a harmless baseline DLL load.",
+      "Create a benign lab loader named SogouComMgr.exe with Adobe-labelled test version metadata under a synthetic SogouInput\\Components path and make it load a no-op libcef.dll from the same directory.",
+      "Run the query unchanged and retain the raw positive event, hashes, version metadata, sensor version and event-identity fields.",
+      "Run three negatives: non-Adobe company metadata, a non-libcef module, and a non-Sogou Components path; then measure historical prevalence and resolve every owner.",
+      "Revert the VM snapshot, remove lab artifacts and record whether image-load coverage or metadata population created blind spots."
+    ],
+    "success": "The benign synthetic positive returns one complete, explainable row and each semantic negative is excluded for the intended reason, with bounded historical overlap.",
+    "rejection": "Reject alert promotion if image loads are absent, required version metadata is null or inconsistent, the co-location comparison is unreliable, or legitimate overlap cannot be durably separated.",
+    "visibility_gaps": [
+      "DeviceImageLoadEvents coverage can vary by endpoint and sensor state",
+      "Version metadata is not a signature verdict and may be missing or attacker-controlled",
+      "Renamed loaders, alternate modules or non-Sogou paths evade the exact relationship",
+      "The query does not observe DNS manipulation, file download or implant capabilities"
+    ],
+    "promotion_gate": "Require a retained controlled positive, all three negative controls, measured prevalence, verified metadata population, file-provenance triage and an accountable endpoint owner."
+  },
+  "conclusion": "The source provides a direct and specific endpoint relationship for a newly disclosed Sogou delivery vector. DeviceImageLoadEvents can represent that relationship with documented fields and no threshold or join, but local execution evidence is absent and the behavior remains mutable. Keep the package at Medium-confidence hunting maturity until the planned controls and prevalence study are retained.",
+  "artwork": {
+    "kind": "library-load",
+    "label": "T1036.005 + T1574.001 · SOGOU COMPONENT LOAD"
+  }
+}

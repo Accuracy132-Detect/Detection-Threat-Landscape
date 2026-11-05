@@ -4,7 +4,7 @@ A curated detection-engineering repository built from primary threat research an
 
 Only technically defensible content is published. Every package separates production candidates from hunting or validation material and documents telemetry requirements, assumptions, false-positive considerations, validation steps, MITRE ATT&CK mappings, and source references.
 
-The repository currently contains **98 detection packages**. Every package uses the same schema 2.0 contract and canonical eight-page PDF layout. See the [Reporting Standard v2](./docs/REPORTING_STANDARD_V2.md) and the [daily research workflow](./prompts/daily-threat-landscape-v2.md).
+The repository currently contains **99 detection packages**. Every package uses the same schema 2.0 contract and canonical eight-page PDF layout. See the [Reporting Standard v2](./docs/REPORTING_STANDARD_V2.md) and the [daily research workflow](./prompts/daily-threat-landscape-v2.md).
 
 Newly authored packages also follow the [mandatory technical threat-research contract](./docs/THREAT_RESEARCH_REQUIREMENTS.md): a full `threat-report.md` explains mechanism, chronology, root cause/enabling conditions, execution flow, impact, evidence and laboratory design. A separate `threat-review.json` records the editorial publication gate (at least 24/28, every dimension at least 3/4). This addition preserves the existing detection requirements and PDF design; historical packages have not been retroactively reviewed under this contract.
 
@@ -207,8 +207,10 @@ Detection-Threat-Landscape/
 │   └── T1059.007-T1036-kb-appdata-portable-runtime/hunting/
 ├── 03-11-2026 - bitter-paprat/
 │   └── T1059.003-ftp-local-command-shell-child/hunting/
-└── 04-11-2026 - fake-download-inno-offers/
-    └── T1071.001-inno-offer-execution-callback/hunting/
+├── 04-11-2026 - fake-download-inno-offers/
+│   └── T1071.001-inno-offer-execution-callback/hunting/
+└── 05-11-2026 - slippynunchucks-sogou-hijack/
+    └── T1036.005-T1574.001-sogou-adobe-component-sideload/hunting/
         ├── evidence.json
         ├── hunting.kql
         ├── references.json
@@ -224,6 +226,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 5 November 2026 | [SlippyNunchucks / Sogou hijack](./05-11-2026%20-%20slippynunchucks-sogou-hijack/T1036.005-T1574.001-sogou-adobe-component-sideload/hunting/) | Microsoft Defender XDR | **[T1036.005][T1574.001] Adobe helper masquerading as a Sogou component and loading co-located libcef.dll** — hunts the source-observed loader, module, component-path and Adobe company-metadata relationship; a match does not prove malicious DLL content, signing state, DNS hijacking, CVE exploitation, DarkVigil execution, compromise or attribution | Hunting |
 | 4 November 2026 | [Fake-download Inno offer callbacks](./04-11-2026%20-%20fake-download-inno-offers/T1071.001-inno-offer-execution-callback/hunting/) | Microsoft Defender XDR | **[T1071.001] Paired Inno offer-execution callback markers** — hunts source-published `d=inno` plus per-offer result markers in `DeviceNetworkEvents.RemoteUrl`; a match does not prove fake-installer execution, offer installation, persistence, monetization, compromise or attribution | Hunting |
 | 3 November 2026 | [BITTER / PapRAT FTP shell escape](./03-11-2026%20-%20bitter-paprat/T1059.003-ftp-local-command-shell-child/hunting/) | Microsoft Defender XDR | **[T1059.003] Direct ftp.exe-to-cmd.exe process lineage** — hunts the expected endpoint representation of the source-documented FTP `!` local-command transition; a match does not prove the token, malicious script content, LNK execution, PapRAT, downstream activity, compromise or attribution | Hunting |
 | 1 November 2026 | [Teams-to-AD CS intrusions](./01-11-2026%20-%20teams-adcs-intrusions/T1059.007-T1036-kb-appdata-portable-runtime/hunting/) | Microsoft Defender XDR | **[T1059.007][T1036] Bun/Java execution from a numeric KB-prefixed AppData Roaming path** — hunts the source-published runtime, script-operand and path combination; a match does not prove Teams contact, unauthorized remote access, malicious script content, AD CS abuse, certificate issuance, PKINIT, DCSync or attribution | Hunting |
