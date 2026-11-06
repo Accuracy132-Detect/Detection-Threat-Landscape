@@ -1,0 +1,197 @@
+{
+  "schema_version": "2.0",
+  "threat_research_contract": "1.0",
+  "id": "2026-11-06-m365-detected-threat-allow-delivery",
+  "title": "Microsoft 365 - Detected threats delivered through tenant or user allow overrides",
+  "short_title": "M365 threat override delivery",
+  "subtitle": "Defender XDR hunt for inbound messages with a threat verdict, explicit allow override and delivered outcome",
+  "published": "2026-11-06",
+  "report_type": "behavior",
+  "classification": "Hunting query",
+  "maturity": "hunting",
+  "confidence": "Medium",
+  "operational_value": 9,
+  "primary_platform": "Microsoft Defender XDR",
+  "mitre": [
+    "NO-MITRE-MAPPING"
+  ],
+  "operational_score": {
+    "total": 45,
+    "maximum": 51,
+    "breakdown": {
+      "observed_use": 9,
+      "detection_yield": 9,
+      "evidence_quality": 6,
+      "observability": 6,
+      "technical_novelty": 4,
+      "exposure_relevance": 6,
+      "reproducibility": 2,
+      "freshness": 3
+    },
+    "deductions": [
+      "The Q3 outcome statistics come from one Microsoft investigation; the schema and allowlist guidance verify field semantics but do not independently corroborate the campaign measurements.",
+      "The query is deliberately broad across threat verdicts, so necessary business exceptions and false-positive verdicts require tenant-specific ownership and prevalence review.",
+      "A safe positive control needs an isolated Defender for Office 365 tenant and a vendor-supported harmless simulation that actually populates ThreatTypes; the laboratory plan has not been executed."
+    ]
+  },
+  "decision": "Publish as a Medium-confidence hunting query, not an alert. Investigate inbound messages for which Microsoft Defender recorded a threat verdict, an explicit organization- or user-level Allow override, and Delivered as the initial delivery action. Require policy ownership, current message state and interaction evidence before containment or promotion.",
+  "key_findings": [
+    "Microsoft reported approximately 129 million malicious messages spoofing tracked business-service sender domains in Q3 2026; many were delivered after configured exceptions overrode protection. [C002]",
+    "In September, overrides applied to 63 percent of the studied messages with a recorded security outcome, with tenant-level overrides accounting for most of them. [C003]",
+    "EmailEvents exposes the threat verdict, organization/user override and delivery fields in one native schema; the hunt uses no IOC, threshold, join, body parsing or authentication-string assumption. [C004][C005][C006]",
+    "A match establishes only the recorded control outcome. It does not establish sender spoofing, failed authentication, user interaction, current inbox presence, compromise or a correct threat verdict. [C007][C009]"
+  ],
+  "source_facts": [
+    "Microsoft observed configured exceptions overriding protection for messages that failed authentication checks and were identified as malicious. [C002]",
+    "Microsoft's allowlist guide states that attackers exploit unnecessary allowlist gaps and provides the documented OrgLevelAction/ThreatTypes hunting primitive. [C004][C006]",
+    "The EmailEvents schema documents the fields and exact Delivered value used by the query. [C005]"
+  ],
+  "analyst_assessment": [
+    "Combining verdict, explicit Allow and delivered outcome is more actionable than auditing allow entries or threat verdicts separately because it identifies realized control bypass at message level. [C007][C008]",
+    "Latest delivery fields must be treated as enrichment because post-delivery remediation can change exposure after the initial Delivered action. [C009]",
+    "No ATT&CK technique is assigned because the generic control outcome does not establish a specific delivery or post-delivery attacker behavior. [C010]"
+  ],
+  "assumptions": [
+    "The target tenant has Microsoft Defender for Office 365 Plan 2 and retains EmailEvents with populated organization- or user-level override fields. [C004][C005]",
+    "The literal Allow and Delivered values retain the documented semantics in the tenant and the advanced-hunting record represents the intended recipient/message event. [C005][C006]",
+    "Policy owners can distinguish necessary exceptions, test messages and false-positive verdicts during triage. [C008]"
+  ],
+  "unknowns": [
+    "The public research does not publish the affected tenants, individual policies, allow-entry scope or raw EmailEvents rows behind the aggregate override statistic.",
+    "The number of delivered messages that users opened, acted upon or converted into compromise is not established.",
+    "Target-tenant field completeness, benign prevalence, current-message-state reliability and policy ownership are unmeasured.",
+    "A vendor-supported harmless simulation that reproduces all four predicates has not been confirmed in the target environment."
+  ],
+  "technical_background": "Microsoft's Q3 2026 email analysis found that attackers spoofed familiar business-service sender domains and that configured security exceptions could override malicious identification and failed authentication outcomes. An organization-level or mailbox-level allow entry can therefore convert a filtering verdict into delivery. Microsoft documents this decision surface in EmailEvents through ThreatTypes, OrgLevelAction, UserLevelAction and DeliveryAction. The query observes only the resulting control state: an inbound message with a non-empty threat verdict, an explicit Allow action and Delivered initial outcome. It does not parse AuthenticationDetails, infer why the exception existed, identify a brand, inspect message content or establish recipient action. [C002][C004][C005][C006][C007]",
+  "attack_chain": [
+    {
+      "phase": "Attacker delivery",
+      "behavior": "An attacker sends an inbound message; the Q3 study includes large-scale spoofing of familiar business-service sender domains.",
+      "observable": "Sender and authentication fields are triage context only; the generic hunt does not require a particular brand or authentication result.",
+      "claim_ids": ["C002", "C007"]
+    },
+    {
+      "phase": "Security verdict",
+      "behavior": "The Microsoft 365 filtering stack records malware, phishing or another threat verdict for the message.",
+      "observable": "EmailEvents.ThreatTypes is non-empty, following the official override-analysis pattern.",
+      "claim_ids": ["C005", "C006"]
+    },
+    {
+      "phase": "Exception decision",
+      "behavior": "An organization-level or user-level policy applies an explicit Allow action despite the threat verdict.",
+      "observable": "OrgLevelAction or UserLevelAction equals Allow; associated policy fields identify the decision source for triage.",
+      "claim_ids": ["C003", "C004", "C005", "C006"]
+    },
+    {
+      "phase": "Initial delivery",
+      "behavior": "The service records Delivered as the initial delivery action for the recipient/message event.",
+      "observable": "DeliveryAction equals Delivered; latest action and location are projected but not assumed to be unchanged.",
+      "claim_ids": ["C005", "C007", "C009"]
+    },
+    {
+      "phase": "Recipient and account outcome",
+      "behavior": "Opening, click-through, credential entry, malware execution and compromise are possible downstream outcomes but were not established for each delivered message.",
+      "observable": "Separate click, post-delivery, identity, endpoint and incident telemetry is required; the hunt does not represent this phase.",
+      "claim_ids": ["C002", "C007", "C009"]
+    }
+  ],
+  "telemetry": [
+    {
+      "field": "EmailEvents",
+      "status": "Required",
+      "purpose": "Microsoft Defender for Office 365 processing records; requires the documented service prerequisite."
+    },
+    {
+      "field": "EmailDirection, ThreatTypes",
+      "status": "Required",
+      "purpose": "Limit results to inbound mail with a recorded filtering-stack threat verdict."
+    },
+    {
+      "field": "OrgLevelAction, UserLevelAction",
+      "status": "Required",
+      "purpose": "Establish that an explicit organization- or mailbox-level Allow action was recorded."
+    },
+    {
+      "field": "DeliveryAction",
+      "status": "Required",
+      "purpose": "Establish the documented Delivered initial outcome."
+    },
+    {
+      "field": "NetworkMessageId, RecipientEmailAddress, Timestamp",
+      "status": "Required",
+      "purpose": "Preserve a strong recipient/message pivot and event time for investigation."
+    },
+    {
+      "field": "OrgLevelPolicy, UserLevelPolicy, AuthenticationDetails, DetectionMethods",
+      "status": "Enrichment",
+      "purpose": "Explain the policy source, verdict mechanism and authentication context without inferring their content."
+    },
+    {
+      "field": "LatestDeliveryAction, LatestDeliveryLocation",
+      "status": "Enrichment",
+      "purpose": "Assess possible post-delivery remediation; these fields do not establish interaction."
+    },
+    {
+      "field": "URL-click, post-delivery, sign-in and endpoint telemetry",
+      "status": "Enrichment",
+      "purpose": "Determine whether the recipient interacted and whether any downstream compromise occurred."
+    }
+  ],
+  "query": {
+    "file": "hunting.kql",
+    "language": "KQL",
+    "status": "Untested implementation sketch",
+    "logic": "Select inbound EmailEvents rows with a non-empty threat verdict, explicit organization- or user-level Allow action and Delivered initial outcome.",
+    "match_proves": "Defender recorded the threat verdict, explicit allow override and delivered initial action for the same recipient/message event.",
+    "match_does_not_prove": "Correct verdict, failed authentication, sender spoofing, current inbox presence, recipient interaction, malware execution, account compromise or a specific ATT&CK technique."
+  },
+  "triage": [
+    "Preserve the raw EmailEvents row, query hash, Timestamp, NetworkMessageId and RecipientEmailAddress before policy or message remediation.",
+    "Open the message entity and establish which OrgLevelPolicy or UserLevelPolicy produced Allow; identify its owner, scope, justification, approval and expiry.",
+    "Review ThreatTypes, DetectionMethods and AuthenticationDetails as recorded data; do not assume failure or maliciousness from an empty or ambiguous value.",
+    "Compare initial and latest delivery fields and inspect EmailPostDeliveryEvents or Threat Explorer to determine whether ZAP or an analyst later moved or removed the message.",
+    "Correlate URL clicks, sign-ins, consent changes, endpoint activity and incidents for the recipient; absence of these layers leaves impact unknown.",
+    "Scope other messages sharing the policy, sender, cluster or message characteristics only after preserving the exact matched row and policy provenance."
+  ],
+  "false_positives": [
+    {
+      "source": "Necessary exception for a legitimate vendor or business workflow after a false-positive verdict",
+      "control": "Require a named policy owner, narrow scope, documented review, expiration and message-level provenance; do not silently suppress it in the query."
+    },
+    {
+      "source": "Approved security simulation or mail-flow test",
+      "control": "Confirm the simulation identifier, test tenant or approved campaign record and verify that the exception is removed after testing."
+    },
+    {
+      "source": "Stale or overly broad tenant/mailbox allow entry",
+      "control": "Treat as a control gap rather than a benign false positive; review scope, remove unnecessary entries and rerun the hunt."
+    },
+    {
+      "source": "Threat verdict later corrected or message remediated post-delivery",
+      "control": "Use latest delivery state, post-delivery events and analyst disposition; retain the initial override as policy-risk evidence."
+    }
+  ],
+  "validation": {
+    "steps": [
+      "Confirm Defender for Office 365 Plan 2, EmailEvents availability and population of all four predicates using raw historical rows without changing policy.",
+      "Measure 30 days of matches, resolve every policy owner and label necessary exceptions, simulations, false-positive verdicts and unexplained deliveries.",
+      "In an isolated non-production tenant, create a temporary narrowly scoped Allow entry and use only a Microsoft-supported harmless simulation that is first confirmed to populate ThreatTypes.",
+      "Run one allowed-threat positive and three negatives: allowed benign mail, detected-but-not-allowed mail and non-delivered detected mail; retain raw events and policy change records.",
+      "Remove the temporary exception, purge test messages, verify policy rollback and record any telemetry delay or missing field."
+    ],
+    "success": "The unmodified query returns the safe positive with all four predicates and policy context, excludes each negative for the intended reason, and historical matches have bounded, attributable overlap.",
+    "rejection": "Reject alert promotion if any required field is absent, simulation semantics differ from normal mail, necessary exceptions dominate without durable ownership, or current-message and policy context cannot be recovered.",
+    "visibility_gaps": [
+      "EmailEvents requires Defender for Office 365 and documented licensing",
+      "Threat verdicts can be false positives or change after delivery",
+      "Latest-state fields do not prove that a recipient saw or acted on the message",
+      "The hunt does not cover undetected messages or exceptions not represented by the documented fields"
+    ],
+    "promotion_gate": "Require retained safe controls, 30-day prevalence, complete field population, policy-owner accountability, bounded overlap, post-delivery triage and an approved response owner before designing alert logic."
+  },
+  "conclusion": "Fresh Microsoft telemetry shows that allow overrides can turn a threat verdict into message delivery at meaningful scale. EmailEvents provides a direct, documented and durable control-outcome hunt with no arbitrary threshold, but legitimate exceptions, false-positive verdicts and later remediation remain material. Keep the package at Medium-confidence hunting maturity until the isolated controls and tenant prevalence study are retained.",
+  "artwork": {
+    "kind": "phishing-mail",
+    "label": "NO-MITRE-MAPPING · OVERRIDE DELIVERY"
+  }
+}

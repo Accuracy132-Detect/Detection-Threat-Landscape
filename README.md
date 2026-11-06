@@ -4,7 +4,7 @@ A curated detection-engineering repository built from primary threat research an
 
 Only technically defensible content is published. Every package separates production candidates from hunting or validation material and documents telemetry requirements, assumptions, false-positive considerations, validation steps, MITRE ATT&CK mappings, and source references.
 
-The repository currently contains **99 detection packages**. Every package uses the same schema 2.0 contract and canonical eight-page PDF layout. See the [Reporting Standard v2](./docs/REPORTING_STANDARD_V2.md) and the [daily research workflow](./prompts/daily-threat-landscape-v2.md).
+The repository currently contains **100 detection packages**. Every package uses the same schema 2.0 contract and canonical eight-page PDF layout. See the [Reporting Standard v2](./docs/REPORTING_STANDARD_V2.md) and the [daily research workflow](./prompts/daily-threat-landscape-v2.md).
 
 Newly authored packages also follow the [mandatory technical threat-research contract](./docs/THREAT_RESEARCH_REQUIREMENTS.md): a full `threat-report.md` explains mechanism, chronology, root cause/enabling conditions, execution flow, impact, evidence and laboratory design. A separate `threat-review.json` records the editorial publication gate (at least 24/28, every dimension at least 3/4). This addition preserves the existing detection requirements and PDF design; historical packages have not been retroactively reviewed under this contract.
 
@@ -209,8 +209,10 @@ Detection-Threat-Landscape/
 │   └── T1059.003-ftp-local-command-shell-child/hunting/
 ├── 04-11-2026 - fake-download-inno-offers/
 │   └── T1071.001-inno-offer-execution-callback/hunting/
-└── 05-11-2026 - slippynunchucks-sogou-hijack/
-    └── T1036.005-T1574.001-sogou-adobe-component-sideload/hunting/
+├── 05-11-2026 - slippynunchucks-sogou-hijack/
+│   └── T1036.005-T1574.001-sogou-adobe-component-sideload/hunting/
+└── 06-11-2026 - m365-security-override-delivery/
+    └── NO-MITRE-MAPPING-detected-threat-allow-delivery/hunting/
         ├── evidence.json
         ├── hunting.kql
         ├── references.json
@@ -226,6 +228,7 @@ Detection-Threat-Landscape/
 
 | Date | Threat | Primary platform | Content | Status |
 |---|---|---|---|---|
+| 6 November 2026 | [Microsoft 365 threat override delivery](./06-11-2026%20-%20m365-security-override-delivery/NO-MITRE-MAPPING-detected-threat-allow-delivery/hunting/) | Microsoft Defender XDR | **[NO-MITRE-MAPPING] Detected threat allowed and delivered** — hunts inbound `EmailEvents` with a non-empty threat verdict, an explicit organization- or user-level `Allow` action and an initial `Delivered` outcome; a match does not prove verdict correctness, current inbox presence, failed authentication, spoofing, user interaction or compromise | Hunting |
 | 5 November 2026 | [SlippyNunchucks / Sogou hijack](./05-11-2026%20-%20slippynunchucks-sogou-hijack/T1036.005-T1574.001-sogou-adobe-component-sideload/hunting/) | Microsoft Defender XDR | **[T1036.005][T1574.001] Adobe helper masquerading as a Sogou component and loading co-located libcef.dll** — hunts the source-observed loader, module, component-path and Adobe company-metadata relationship; a match does not prove malicious DLL content, signing state, DNS hijacking, CVE exploitation, DarkVigil execution, compromise or attribution | Hunting |
 | 4 November 2026 | [Fake-download Inno offer callbacks](./04-11-2026%20-%20fake-download-inno-offers/T1071.001-inno-offer-execution-callback/hunting/) | Microsoft Defender XDR | **[T1071.001] Paired Inno offer-execution callback markers** — hunts source-published `d=inno` plus per-offer result markers in `DeviceNetworkEvents.RemoteUrl`; a match does not prove fake-installer execution, offer installation, persistence, monetization, compromise or attribution | Hunting |
 | 3 November 2026 | [BITTER / PapRAT FTP shell escape](./03-11-2026%20-%20bitter-paprat/T1059.003-ftp-local-command-shell-child/hunting/) | Microsoft Defender XDR | **[T1059.003] Direct ftp.exe-to-cmd.exe process lineage** — hunts the expected endpoint representation of the source-documented FTP `!` local-command transition; a match does not prove the token, malicious script content, LNK execution, PapRAT, downstream activity, compromise or attribution | Hunting |

@@ -1,0 +1,54 @@
+// Title: Microsoft 365 detected threat delivered through an explicit allow override
+// Rule name: NO-MITRE-MAPPING - Detected threat allow override delivery
+// Classification: Hunting query
+// Maturity: hunting
+// Status: Untested implementation sketch
+// Primary platform: Microsoft Defender XDR advanced hunting
+// Telemetry: Microsoft Defender for Office 365 EmailEvents
+// MITRE ATT&CK: NO-MITRE-MAPPING - the match is a mail-control outcome, not a specific attacker technique
+// Purpose: Find inbound messages that received a threat verdict, matched an organization- or user-level
+// allow override, and were recorded as delivered.
+// Logic: Require one EmailEvents row with inbound direction, non-empty ThreatTypes, an explicit Allow value
+// in OrgLevelAction or UserLevelAction, and DeliveryAction == "Delivered". No IOC, threshold, join, rarity,
+// content parsing, authentication-string assumption, or inferred post-delivery outcome is used.
+// Match proves: Defender recorded a threat verdict, an explicit allow override, and delivered initial action
+// for the same recipient/message event.
+// Match does not prove: the verdict is correct, the message remains in the inbox, authentication failed,
+// a tracked brand was spoofed, the recipient opened or acted on the message, or an account was compromised.
+// False positives: necessary vendor exceptions, approved simulations, test policies, or false-positive verdicts.
+// Limits: Defender for Office 365 Plan 2 and populated EmailEvents fields are required; policy ownership,
+// current message location, recipient interaction, and benign prevalence require local investigation.
+// Validation: execute the safe isolated controls and passive prevalence review in validation.md before promotion.
+// Evidence claims: C002, C003, C004, C005, C006, C007, C008, C009, C010
+
+EmailEvents
+| where EmailDirection == "Inbound"
+| where ThreatTypes != ""
+| where OrgLevelAction == "Allow" or UserLevelAction == "Allow"
+| where DeliveryAction == "Delivered"
+| project
+    Timestamp,
+    NetworkMessageId,
+    InternetMessageId,
+    SenderMailFromAddress,
+    SenderFromAddress,
+    SenderDisplayName,
+    RecipientEmailAddress,
+    Subject,
+    ThreatTypes,
+    ThreatNames,
+    DetectionMethods,
+    ConfidenceLevel,
+    AuthenticationDetails,
+    DeliveryAction,
+    DeliveryLocation,
+    LatestDeliveryAction,
+    LatestDeliveryLocation,
+    OrgLevelAction,
+    OrgLevelPolicy,
+    UserLevelAction,
+    UserLevelPolicy,
+    EmailAction,
+    EmailActionPolicy,
+    ReportId
+| order by Timestamp desc

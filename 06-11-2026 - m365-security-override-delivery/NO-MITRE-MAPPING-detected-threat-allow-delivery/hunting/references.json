@@ -1,0 +1,57 @@
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "id": "S001",
+      "title": "Email threat landscape: Q3 2026 trends and insights",
+      "organization": "Microsoft Threat Intelligence and Microsoft Defender Security Research Team",
+      "author": "Microsoft Threat Intelligence and Microsoft Defender Security Research Team",
+      "published": "2026-11-05",
+      "event_date": "Observed 2026-07-01 through 2026-09-30; override statistic reported for 2026-09",
+      "accessed": "2026-11-06",
+      "type": "original-research",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/11/05/email-threat-landscape-q3-2026-trends-and-insights/",
+      "supports": [
+        "C001",
+        "C002",
+        "C003",
+        "C006",
+        "C007"
+      ]
+    },
+    {
+      "id": "S002",
+      "title": "EmailEvents table in the advanced hunting schema",
+      "organization": "Microsoft",
+      "author": "Microsoft Learn",
+      "published": "2026-09-02",
+      "event_date": "Schema reference",
+      "accessed": "2026-11-06",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-emailevents-table",
+      "supports": [
+        "C005",
+        "C006",
+        "C007",
+        "C009"
+      ]
+    },
+    {
+      "id": "S003",
+      "title": "Review and remove unnecessary allowlist entries with Advanced Hunting",
+      "organization": "Microsoft",
+      "author": "Microsoft Learn",
+      "published": "2026-07-14",
+      "event_date": "Operational allowlist guidance",
+      "accessed": "2026-11-06",
+      "type": "official-schema",
+      "url": "https://learn.microsoft.com/en-us/defender-office-365/step-by-step-guides/review-allow-entries",
+      "supports": [
+        "C004",
+        "C006",
+        "C007",
+        "C010"
+      ]
+    }
+  ]
+}

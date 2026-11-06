@@ -1,0 +1,15 @@
+S001 — Microsoft Threat Intelligence and Microsoft Defender Security Research Team, "Email threat landscape: Q3 2026 trends and insights"
+Publication date: 2026-11-05
+Observed activity: 2026-07-01 through 2026-09-30; override statistic specifically reported for 2026-09
+Accessed: 2026-11-06
+hxxps://www[.]microsoft[.]com/en-us/security/blog/2026/11/05/email-threat-landscape-q3-2026-trends-and-insights/
+
+S002 — Microsoft Learn, "EmailEvents table in the advanced hunting schema"
+Last updated: 2026-09-02
+Accessed: 2026-11-06
+hxxps://learn[.]microsoft[.]com/en-us/defender-xdr/advanced-hunting-emailevents-table
+
+S003 — Microsoft Learn, "Review and remove unnecessary allowlist entries with Advanced Hunting"
+Last updated: 2026-07-14
+Accessed: 2026-11-06
+hxxps://learn[.]microsoft[.]com/en-us/defender-office-365/step-by-step-guides/review-allow-entries

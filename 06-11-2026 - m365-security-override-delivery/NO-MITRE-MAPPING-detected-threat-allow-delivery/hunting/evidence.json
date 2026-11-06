@@ -1,0 +1,79 @@
+{
+  "schema_version": "2.0",
+  "claims": [
+    {
+      "id": "C001",
+      "statement": "Microsoft analyzed email threat activity from July through September 2026 and published the research on 5 November 2026.",
+      "evidence_type": "documented",
+      "source_ids": ["S001"],
+      "confidence": "High"
+    },
+    {
+      "id": "C002",
+      "statement": "Microsoft detected approximately 129 million malicious messages spoofing tracked business-service sender domains during Q3 2026; many were delivered after organization- or user-configured exceptions overrode protection despite failed authentication checks and malicious identification.",
+      "evidence_type": "documented",
+      "source_ids": ["S001"],
+      "confidence": "High"
+    },
+    {
+      "id": "C003",
+      "statement": "For September 2026, Microsoft reported that overrides applied to 63 percent of the studied messages with a recorded security outcome and that tenant-level overrides accounted for most of those overrides.",
+      "evidence_type": "documented",
+      "source_ids": ["S001"],
+      "confidence": "High"
+    },
+    {
+      "id": "C004",
+      "statement": "Microsoft's operational guidance states that attackers exploit unnecessary allowlist gaps, documents OrgLevelAction as the organization-level override field, and states that UserLevelAction can be used to inspect user-level overrides.",
+      "evidence_type": "documented",
+      "source_ids": ["S003"],
+      "confidence": "High"
+    },
+    {
+      "id": "C005",
+      "statement": "Microsoft documents EmailEvents, EmailDirection, ThreatTypes, DeliveryAction, DeliveryLocation, LatestDeliveryAction, LatestDeliveryLocation, OrgLevelAction, OrgLevelPolicy, UserLevelAction, UserLevelPolicy, message identifiers and all projected fields used by the query.",
+      "evidence_type": "documented",
+      "source_ids": ["S002"],
+      "confidence": "High"
+    },
+    {
+      "id": "C006",
+      "statement": "The official allowlist guide uses OrgLevelAction == \"Allow\" together with a non-empty ThreatTypes field to identify detected threats that were overridden; the same guide explicitly permits substituting UserLevelAction for user overrides.",
+      "evidence_type": "documented",
+      "source_ids": ["S003"],
+      "confidence": "High"
+    },
+    {
+      "id": "C007",
+      "statement": "A query result proves only that Defender recorded inbound direction, a non-empty threat verdict, an explicit organization- or user-level Allow action, and Delivered as the initial delivery action for one recipient/message event; it does not prove sender spoofing, authentication failure, user interaction, compromise or a correct verdict.",
+      "evidence_type": "analyst-inference",
+      "source_ids": ["S001", "S002", "S003"],
+      "confidence": "High",
+      "confirm_or_refute": "Preserve the raw EmailEvents row, open the message entity by NetworkMessageId, review the applied policy and authentication data, confirm current delivery location, and correlate click, sign-in and incident telemetry. Any claim beyond the four queried fields must be removed if those adjacent records are absent."
+    },
+    {
+      "id": "C008",
+      "statement": "The four-field relationship is suitable for hunting but not alerting until field population, necessary business exceptions, policy ownership, false-positive verdicts and historical prevalence are measured in the target tenant.",
+      "evidence_type": "analyst-inference",
+      "source_ids": ["S001", "S002", "S003"],
+      "confidence": "Medium",
+      "confirm_or_refute": "Run the passive prevalence review and isolated controls in validation.md. Complete fields, attributable policy ownership and bounded overlap support continued use; missing fields or unbounded legitimate delivery refute alert promotion."
+    },
+    {
+      "id": "C009",
+      "statement": "LatestDeliveryAction and LatestDeliveryLocation are investigation context, not query predicates; a message initially recorded as delivered may later be moved, remediated or removed.",
+      "evidence_type": "analyst-inference",
+      "source_ids": ["S002"],
+      "confidence": "High",
+      "confirm_or_refute": "Compare DeliveryAction and DeliveryLocation with LatestDeliveryAction and LatestDeliveryLocation for every result and inspect post-delivery events. If latest-state fields are unavailable or stale, do not claim present inbox exposure."
+    },
+    {
+      "id": "C010",
+      "statement": "NO-MITRE-MAPPING is appropriate because the query detects a mail-control exception and delivery outcome without restricting results to a specific phishing, attachment, link, malware or account-access technique.",
+      "evidence_type": "analyst-inference",
+      "source_ids": ["S001", "S003"],
+      "confidence": "High",
+      "confirm_or_refute": "Assign a technique only if an additional query condition and source evidence establish that specific attacker behavior. The current generic threat-verdict and override logic does not meet that boundary."
+    }
+  ]
+}

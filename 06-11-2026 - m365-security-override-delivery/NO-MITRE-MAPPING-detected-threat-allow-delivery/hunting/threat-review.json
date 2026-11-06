@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "decision": "pass",
+  "review_method": "separate-editorial-pass",
+  "pdf_self_contained": true,
+  "blocking_issues": [],
+  "source_checks": [
+    {
+      "source_id": "S001",
+      "opened": true,
+      "notes": "Reviewed publication metadata, Q3 observation period, 129 million tracked business-service sender-domain spoofs, delivery after security exceptions, the September 63 percent override statistic, tenant-versus-user distribution and the explicit boundary that delivery does not establish message opening or compromise."
+    },
+    {
+      "source_id": "S002",
+      "opened": true,
+      "notes": "Reviewed EmailEvents purpose, Defender for Office 365 prerequisite, exact Inbound and Delivered values, ThreatTypes, organization/user actions and policies, message identifiers, latest delivery fields, authentication context and every field filtered or projected by hunting.kql."
+    },
+    {
+      "source_id": "S003",
+      "opened": true,
+      "notes": "Reviewed the Plan 2 prerequisite, Microsoft's warning that attackers exploit unnecessary allowlist gaps, the official OrgLevelAction == Allow plus non-empty ThreatTypes pattern and the documented substitution of UserLevelAction for mailbox-level overrides."
+    }
+  ],
+  "dimensions": {
+    "mechanism": {
+      "score": 4,
+      "rationale": "Section 2 and PDF page 3 identify the filtering stack, organization/mailbox policy engine and delivery pipeline; they explain how an Allow action can override a threat verdict while limiting the query to the recorded state transition.",
+      "report_sections": [2],
+      "claim_ids": ["C002", "C004", "C005", "C006", "C007"],
+      "pdf_pages": [3]
+    },
+    "timeline": {
+      "score": 4,
+      "rationale": "Section 3 and PDF pages 2-3 separate the July-September observation period, September override measurement, relative per-message flow and 5 November publication, while acknowledging that tenant and event timestamps are not public.",
+      "report_sections": [3],
+      "claim_ids": ["C001", "C002", "C003", "C005", "C007", "C009"],
+      "pdf_pages": [2, 3]
+    },
+    "root_cause": {
+      "score": 3,
+      "rationale": "Section 2 and PDF page 3 identify the enabling trust condition as an organization- or user-level allow exception rather than a product vulnerability, and explicitly retain the unknown policy scope, owner and rationale for each aggregate event.",
+      "report_sections": [2],
+      "claim_ids": ["C002", "C004", "C006", "C007"],
+      "pdf_pages": [3]
+    },
+    "execution_flow": {
+      "score": 4,
+      "rationale": "Section 3 and PDF page 3 provide a causal sequence from inbound attacker delivery through filtering verdict, policy Allow, initial Delivered outcome and separately scoped downstream interaction, distinguishing source-observed aggregate behavior from the four predicates a match proves.",
+      "report_sections": [3],
+      "claim_ids": ["C002", "C003", "C005", "C006", "C007", "C009"],
+      "pdf_pages": [3]
+    },
+    "impact": {
+      "score": 3,
+      "rationale": "Sections 4 and 8 and PDF pages 2 and 8 separate the observed control failure of delivery from potential credential theft, malware execution and compromise, preserve licensing and visibility limits and avoid converting aggregate message counts into victim outcomes.",
+      "report_sections": [4, 8],
+      "claim_ids": ["C002", "C003", "C007", "C009", "C010"],
+      "pdf_pages": [2, 8]
+    },
+    "evidence": {
+      "score": 4,
+      "rationale": "Section 5 and PDF pages 2, 4 and 8 map original Microsoft measurements and two official schema/operations references to C###/S### ledgers, isolate three analyst inferences and state raw-event, tenant, policy and independent-corroboration gaps.",
+      "report_sections": [5, 8],
+      "claim_ids": ["C001", "C002", "C003", "C004", "C005", "C006", "C007", "C008", "C009", "C010"],
+      "pdf_pages": [2, 4, 8]
+    },
+    "lab_plan": {
+      "score": 4,
+      "rationale": "Section 7, validation.md and PDF page 7 specify an isolated Plan 2 tenant, passive baseline, a vendor-supported harmless positive, semantic negatives, preserved policy and message evidence, success/rejection/failure criteria, fallback, rollback and an explicit not-executed state.",
+      "report_sections": [7],
+      "claim_ids": ["C004", "C005", "C006", "C007", "C008", "C009"],
+      "pdf_pages": [7]
+    }
+  }
+}
